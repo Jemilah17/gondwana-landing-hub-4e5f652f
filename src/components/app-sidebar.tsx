@@ -66,7 +66,7 @@ export function AppSidebar() {
             {section.items.map((item) => (
               <Link
                 key={item.to}
-                to={item.to as string}
+                to={item.to}
                 className={
                   "sidebar-item" +
                   (isActive(item.to) ? " sidebar-item-active" : "")
