@@ -7,42 +7,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-stone-bg text-earth-deep font-sans selection:bg-mineral/20">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-stone-bg/80 backdrop-blur-sm border-b border-earth-deep/5">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="size-5 bg-mineral rounded-sm" />
-            <span className="text-sm font-medium tracking-tight uppercase">
-              Gondwana Governance
-            </span>
-          </div>
-          <div className="hidden sm:flex gap-8">
-            <a
-              href="#"
-              className="text-sm text-earth-deep/60 hover:text-earth-deep transition-colors"
-            >
-              Philosophy
-            </a>
-            <a
-              href="#"
-              className="text-sm text-earth-deep/60 hover:text-earth-deep transition-colors"
-            >
-              Practice
-            </a>
-            <a
-              href="#"
-              className="text-sm text-earth-deep/60 hover:text-earth-deep transition-colors"
-            >
-              Registry
-            </a>
-          </div>
-          <button className="text-sm font-medium px-4 py-2 ring-1 ring-earth-deep/10 rounded-full hover:bg-earth-deep hover:text-stone-bg transition-colors">
-            Contact
-          </button>
-        </div>
-      </nav>
-
+    <div className="min-h-full bg-stone-bg text-earth-deep font-sans selection:bg-mineral/20">
       {/* Hero Section */}
       <section className="py-24 md:py-32 lg:py-48 px-6">
         <div className="max-w-7xl mx-auto">
