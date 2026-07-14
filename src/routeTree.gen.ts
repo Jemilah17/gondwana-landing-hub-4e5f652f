@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ResolutionsRouteImport } from './routes/resolutions'
+import { Route as MinutesRouteImport } from './routes/minutes'
 import { Route as EntitiesRouteImport } from './routes/entities'
 import { Route as DirectorsRouteImport } from './routes/directors'
 import { Route as CalendarRouteImport } from './routes/calendar'
@@ -24,6 +25,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const ResolutionsRoute = ResolutionsRouteImport.update({
   id: '/resolutions',
   path: '/resolutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinutesRoute = MinutesRouteImport.update({
+  id: '/minutes',
+  path: '/minutes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntitiesRoute = EntitiesRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/calendar': typeof CalendarRoute
   '/directors': typeof DirectorsRoute
   '/entities': typeof EntitiesRoute
+  '/minutes': typeof MinutesRoute
   '/resolutions': typeof ResolutionsRoute
   '/settings': typeof SettingsRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarRoute
   '/directors': typeof DirectorsRoute
   '/entities': typeof EntitiesRoute
+  '/minutes': typeof MinutesRoute
   '/resolutions': typeof ResolutionsRoute
   '/settings': typeof SettingsRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/calendar': typeof CalendarRoute
   '/directors': typeof DirectorsRoute
   '/entities': typeof EntitiesRoute
+  '/minutes': typeof MinutesRoute
   '/resolutions': typeof ResolutionsRoute
   '/settings': typeof SettingsRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/directors'
     | '/entities'
+    | '/minutes'
     | '/resolutions'
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/directors'
     | '/entities'
+    | '/minutes'
     | '/resolutions'
     | '/settings'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/directors'
     | '/entities'
+    | '/minutes'
     | '/resolutions'
     | '/settings'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   CalendarRoute: typeof CalendarRoute
   DirectorsRoute: typeof DirectorsRoute
   EntitiesRoute: typeof EntitiesRoute
+  MinutesRoute: typeof MinutesRoute
   ResolutionsRoute: typeof ResolutionsRoute
   SettingsRoute: typeof SettingsRoute
 }
@@ -122,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/resolutions'
       fullPath: '/resolutions'
       preLoaderRoute: typeof ResolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/minutes': {
+      id: '/minutes'
+      path: '/minutes'
+      fullPath: '/minutes'
+      preLoaderRoute: typeof MinutesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entities': {
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarRoute: CalendarRoute,
   DirectorsRoute: DirectorsRoute,
   EntitiesRoute: EntitiesRoute,
+  MinutesRoute: MinutesRoute,
   ResolutionsRoute: ResolutionsRoute,
   SettingsRoute: SettingsRoute,
 }
