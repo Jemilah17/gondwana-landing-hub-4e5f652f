@@ -1,65 +1,95 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { LayoutDashboard, FileText } from "lucide-react";
-
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar";
+  LayoutDashboard,
+  Building2,
+  Users,
+  FileText,
+  Calendar,
+  ShieldCheck,
+  Settings,
+  ChevronRight,
+} from "lucide-react";
 
-const items = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Minutes", url: "/minutes", icon: FileText },
+import "@/features/shell/tokens.css";
+import "@/features/shell/shell.css";
+
+type NavItem = {
+  to: string;
+  icon: typeof LayoutDashboard;
+  label: string;
+};
+
+const sections: { title: string; items: NavItem[] }[] = [
+  {
+    title: "Overview",
+    items: [{ to: "/", icon: LayoutDashboard, label: "Dashboard" }],
+  },
+  {
+    title: "Management",
+    items: [
+      { to: "/entities", icon: Building2, label: "Entities" },
+      { to: "/directors", icon: Users, label: "Directors" },
+      { to: "/calendar", icon: Calendar, label: "Board calendar" },
+      { to: "/minutes", icon: FileText, label: "Minutes" },
+    ],
+  },
+  {
+    title: "Compliance",
+    items: [{ to: "/resolutions", icon: ShieldCheck, label: "Resolutions" }],
+  },
+  {
+    title: "System",
+    items: [{ to: "/settings", icon: Settings, label: "Settings" }],
+  },
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
-  const collapsed = state === "collapsed";
-  const currentPath = useRouterState({
-    select: (router) => router.location.pathname,
-  });
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  const isActive = (path: string) =>
-    path === "/" ? currentPath === "/" : currentPath.startsWith(path);
+  const isActive = (to: string) =>
+    to === "/" ? pathname === "/" : pathname.startsWith(to);
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2 py-2">
-          <div className="size-5 shrink-0 rounded-sm bg-mineral" />
-          {!collapsed && (
-            <span className="text-xs font-semibold uppercase tracking-widest">
-              Gondwana
-            </span>
-          )}
+    <aside className="sidebar">
+      <div className="sidebar-brand">
+        <div className="sidebar-logo">G</div>
+        <div>
+          <div className="sidebar-brand-title">Gondwana</div>
+          <div className="sidebar-brand-sub">Governance</div>
         </div>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Workspace</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={isActive(item.url)}>
-                    <Link to={item.url} className="flex items-center gap-2">
-                      <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+      </div>
+
+      <nav className="sidebar-nav">
+        {sections.map((section) => (
+          <div key={section.title} className="sidebar-section">
+            <div className="sidebar-section-title">{section.title}</div>
+            {section.items.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={
+                  "sidebar-item" +
+                  (isActive(item.to) ? " sidebar-item-active" : "")
+                }
+              >
+                <item.icon size={18} />
+                <span>{item.label}</span>
+                <ChevronRight size={14} className="sidebar-item-chevron" />
+              </Link>
+            ))}
+          </div>
+        ))}
+      </nav>
+
+      <div className="sidebar-footer">
+        <div className="sidebar-user">
+          <div className="sidebar-user-avatar">FS</div>
+          <div>
+            <div className="sidebar-user-name">Fabiola Schrywer</div>
+            <div className="sidebar-user-role">Company Secretary</div>
+          </div>
+        </div>
+      </div>
+    </aside>
   );
 }
