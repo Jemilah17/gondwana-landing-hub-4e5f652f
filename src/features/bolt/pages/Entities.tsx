@@ -41,9 +41,6 @@ export default function Entities() {
     return colors[type] || 'bg-muted/10 text-muted';
   };
 
-  const entity = selectedEntity ? entities.find(e => e.id === selectedEntity) : null;
-  const entityFilings = selectedEntity ? filings.filter(f => f.entityId === selectedEntity) : [];
-
   return (
     <div>
       <Topbar title="Entities" />
