@@ -1,5 +1,5 @@
 interface StatusPillProps {
-  status: 'compliant' | 'due soon' | 'overdue' | 'filed' | 'pending' | 'active' | 'retired' | 'current' | 'review due' | 'expired' | 'draft' | 'applied' | 'applying' | 'not yet addressed' | 'critical' | 'high' | 'medium' | 'low' | 'expiring soon' | 'maturing' | 'under renewal';
+  status: string;
 }
 
 const statusConfig: Record<string, { label: string; bg: string; text: string }> = {
