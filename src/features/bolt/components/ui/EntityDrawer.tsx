@@ -240,7 +240,7 @@ export default function EntityDrawer({ entity, onClose }: EntityDrawerProps) {
             <button
               onClick={() => {
                 onClose();
-                navigate('/audit-trail');
+                navigate({ to: '/audit-trail' });
               }}
               className="w-full px-3 py-2.5 border border-border rounded-lg text-[10px] text-muted hover:bg-background"
             >
