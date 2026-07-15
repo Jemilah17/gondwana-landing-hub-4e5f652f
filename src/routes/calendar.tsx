@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Placeholder } from "@/features/shell/Placeholder";
+import Calendar from "@/features/bolt/pages/Calendar";
 
 export const Route = createFileRoute("/calendar")({
-  component: () => (
-    <Placeholder title="Board calendar" sub="Upcoming board activity" />
-  ),
+  component: Calendar,
 });

@@ -9,27 +9,93 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StakeholdersRouteImport } from './routes/stakeholders'
 import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as ResolutionsRouteImport } from './routes/resolutions'
-import { Route as MinutesRouteImport } from './routes/minutes'
+import { Route as SanctionsRouteImport } from './routes/sanctions'
+import { Route as RiskRouteImport } from './routes/risk'
+import { Route as RemunerationRouteImport } from './routes/remuneration'
+import { Route as RegistersRouteImport } from './routes/registers'
+import { Route as PoliciesRouteImport } from './routes/policies'
+import { Route as LegalRouteImport } from './routes/legal'
+import { Route as KingvRouteImport } from './routes/kingv'
+import { Route as InsuranceRouteImport } from './routes/insurance'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as FilingsRouteImport } from './routes/filings'
+import { Route as EsgRouteImport } from './routes/esg'
 import { Route as EntitiesRouteImport } from './routes/entities'
-import { Route as DirectorsRouteImport } from './routes/directors'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as DeadlinesRouteImport } from './routes/deadlines'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as AuditTrailRouteImport } from './routes/audit-trail'
+import { Route as AmlKycRouteImport } from './routes/aml-kyc'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AgreementsRouteImport } from './routes/agreements'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StakeholdersRoute = StakeholdersRouteImport.update({
+  id: '/stakeholders',
+  path: '/stakeholders',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResolutionsRoute = ResolutionsRouteImport.update({
-  id: '/resolutions',
-  path: '/resolutions',
+const SanctionsRoute = SanctionsRouteImport.update({
+  id: '/sanctions',
+  path: '/sanctions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MinutesRoute = MinutesRouteImport.update({
-  id: '/minutes',
-  path: '/minutes',
+const RiskRoute = RiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemunerationRoute = RemunerationRouteImport.update({
+  id: '/remuneration',
+  path: '/remuneration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegistersRoute = RegistersRouteImport.update({
+  id: '/registers',
+  path: '/registers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KingvRoute = KingvRouteImport.update({
+  id: '/kingv',
+  path: '/kingv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsuranceRoute = InsuranceRouteImport.update({
+  id: '/insurance',
+  path: '/insurance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilingsRoute = FilingsRouteImport.update({
+  id: '/filings',
+  path: '/filings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsgRoute = EsgRouteImport.update({
+  id: '/esg',
+  path: '/esg',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntitiesRoute = EntitiesRouteImport.update({
@@ -37,14 +103,44 @@ const EntitiesRoute = EntitiesRouteImport.update({
   path: '/entities',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DirectorsRoute = DirectorsRouteImport.update({
-  id: '/directors',
-  path: '/directors',
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeadlinesRoute = DeadlinesRouteImport.update({
+  id: '/deadlines',
+  path: '/deadlines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
   id: '/calendar',
   path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditTrailRoute = AuditTrailRouteImport.update({
+  id: '/audit-trail',
+  path: '/audit-trail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AmlKycRoute = AmlKycRouteImport.update({
+  id: '/aml-kyc',
+  path: '/aml-kyc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgreementsRoute = AgreementsRouteImport.update({
+  id: '/agreements',
+  path: '/agreements',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,74 +151,193 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agreements': typeof AgreementsRoute
+  '/alerts': typeof AlertsRoute
+  '/aml-kyc': typeof AmlKycRoute
+  '/audit-trail': typeof AuditTrailRoute
   '/calendar': typeof CalendarRoute
-  '/directors': typeof DirectorsRoute
+  '/dashboard': typeof DashboardRoute
+  '/deadlines': typeof DeadlinesRoute
+  '/documents': typeof DocumentsRoute
   '/entities': typeof EntitiesRoute
-  '/minutes': typeof MinutesRoute
-  '/resolutions': typeof ResolutionsRoute
+  '/esg': typeof EsgRoute
+  '/filings': typeof FilingsRoute
+  '/governance': typeof GovernanceRoute
+  '/insurance': typeof InsuranceRoute
+  '/kingv': typeof KingvRoute
+  '/legal': typeof LegalRoute
+  '/policies': typeof PoliciesRoute
+  '/registers': typeof RegistersRoute
+  '/remuneration': typeof RemunerationRoute
+  '/risk': typeof RiskRoute
+  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
+  '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agreements': typeof AgreementsRoute
+  '/alerts': typeof AlertsRoute
+  '/aml-kyc': typeof AmlKycRoute
+  '/audit-trail': typeof AuditTrailRoute
   '/calendar': typeof CalendarRoute
-  '/directors': typeof DirectorsRoute
+  '/dashboard': typeof DashboardRoute
+  '/deadlines': typeof DeadlinesRoute
+  '/documents': typeof DocumentsRoute
   '/entities': typeof EntitiesRoute
-  '/minutes': typeof MinutesRoute
-  '/resolutions': typeof ResolutionsRoute
+  '/esg': typeof EsgRoute
+  '/filings': typeof FilingsRoute
+  '/governance': typeof GovernanceRoute
+  '/insurance': typeof InsuranceRoute
+  '/kingv': typeof KingvRoute
+  '/legal': typeof LegalRoute
+  '/policies': typeof PoliciesRoute
+  '/registers': typeof RegistersRoute
+  '/remuneration': typeof RemunerationRoute
+  '/risk': typeof RiskRoute
+  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
+  '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agreements': typeof AgreementsRoute
+  '/alerts': typeof AlertsRoute
+  '/aml-kyc': typeof AmlKycRoute
+  '/audit-trail': typeof AuditTrailRoute
   '/calendar': typeof CalendarRoute
-  '/directors': typeof DirectorsRoute
+  '/dashboard': typeof DashboardRoute
+  '/deadlines': typeof DeadlinesRoute
+  '/documents': typeof DocumentsRoute
   '/entities': typeof EntitiesRoute
-  '/minutes': typeof MinutesRoute
-  '/resolutions': typeof ResolutionsRoute
+  '/esg': typeof EsgRoute
+  '/filings': typeof FilingsRoute
+  '/governance': typeof GovernanceRoute
+  '/insurance': typeof InsuranceRoute
+  '/kingv': typeof KingvRoute
+  '/legal': typeof LegalRoute
+  '/policies': typeof PoliciesRoute
+  '/registers': typeof RegistersRoute
+  '/remuneration': typeof RemunerationRoute
+  '/risk': typeof RiskRoute
+  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
+  '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agreements'
+    | '/alerts'
+    | '/aml-kyc'
+    | '/audit-trail'
     | '/calendar'
-    | '/directors'
+    | '/dashboard'
+    | '/deadlines'
+    | '/documents'
     | '/entities'
-    | '/minutes'
-    | '/resolutions'
+    | '/esg'
+    | '/filings'
+    | '/governance'
+    | '/insurance'
+    | '/kingv'
+    | '/legal'
+    | '/policies'
+    | '/registers'
+    | '/remuneration'
+    | '/risk'
+    | '/sanctions'
     | '/settings'
+    | '/stakeholders'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agreements'
+    | '/alerts'
+    | '/aml-kyc'
+    | '/audit-trail'
     | '/calendar'
-    | '/directors'
+    | '/dashboard'
+    | '/deadlines'
+    | '/documents'
     | '/entities'
-    | '/minutes'
-    | '/resolutions'
+    | '/esg'
+    | '/filings'
+    | '/governance'
+    | '/insurance'
+    | '/kingv'
+    | '/legal'
+    | '/policies'
+    | '/registers'
+    | '/remuneration'
+    | '/risk'
+    | '/sanctions'
     | '/settings'
+    | '/stakeholders'
   id:
     | '__root__'
     | '/'
+    | '/agreements'
+    | '/alerts'
+    | '/aml-kyc'
+    | '/audit-trail'
     | '/calendar'
-    | '/directors'
+    | '/dashboard'
+    | '/deadlines'
+    | '/documents'
     | '/entities'
-    | '/minutes'
-    | '/resolutions'
+    | '/esg'
+    | '/filings'
+    | '/governance'
+    | '/insurance'
+    | '/kingv'
+    | '/legal'
+    | '/policies'
+    | '/registers'
+    | '/remuneration'
+    | '/risk'
+    | '/sanctions'
     | '/settings'
+    | '/stakeholders'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgreementsRoute: typeof AgreementsRoute
+  AlertsRoute: typeof AlertsRoute
+  AmlKycRoute: typeof AmlKycRoute
+  AuditTrailRoute: typeof AuditTrailRoute
   CalendarRoute: typeof CalendarRoute
-  DirectorsRoute: typeof DirectorsRoute
+  DashboardRoute: typeof DashboardRoute
+  DeadlinesRoute: typeof DeadlinesRoute
+  DocumentsRoute: typeof DocumentsRoute
   EntitiesRoute: typeof EntitiesRoute
-  MinutesRoute: typeof MinutesRoute
-  ResolutionsRoute: typeof ResolutionsRoute
+  EsgRoute: typeof EsgRoute
+  FilingsRoute: typeof FilingsRoute
+  GovernanceRoute: typeof GovernanceRoute
+  InsuranceRoute: typeof InsuranceRoute
+  KingvRoute: typeof KingvRoute
+  LegalRoute: typeof LegalRoute
+  PoliciesRoute: typeof PoliciesRoute
+  RegistersRoute: typeof RegistersRoute
+  RemunerationRoute: typeof RemunerationRoute
+  RiskRoute: typeof RiskRoute
+  SanctionsRoute: typeof SanctionsRoute
   SettingsRoute: typeof SettingsRoute
+  StakeholdersRoute: typeof StakeholdersRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/stakeholders': {
+      id: '/stakeholders'
+      path: '/stakeholders'
+      fullPath: '/stakeholders'
+      preLoaderRoute: typeof StakeholdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -130,18 +345,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resolutions': {
-      id: '/resolutions'
-      path: '/resolutions'
-      fullPath: '/resolutions'
-      preLoaderRoute: typeof ResolutionsRouteImport
+    '/sanctions': {
+      id: '/sanctions'
+      path: '/sanctions'
+      fullPath: '/sanctions'
+      preLoaderRoute: typeof SanctionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/minutes': {
-      id: '/minutes'
-      path: '/minutes'
-      fullPath: '/minutes'
-      preLoaderRoute: typeof MinutesRouteImport
+    '/risk': {
+      id: '/risk'
+      path: '/risk'
+      fullPath: '/risk'
+      preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/remuneration': {
+      id: '/remuneration'
+      path: '/remuneration'
+      fullPath: '/remuneration'
+      preLoaderRoute: typeof RemunerationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/registers': {
+      id: '/registers'
+      path: '/registers'
+      fullPath: '/registers'
+      preLoaderRoute: typeof RegistersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kingv': {
+      id: '/kingv'
+      path: '/kingv'
+      fullPath: '/kingv'
+      preLoaderRoute: typeof KingvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insurance': {
+      id: '/insurance'
+      path: '/insurance'
+      fullPath: '/insurance'
+      preLoaderRoute: typeof InsuranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filings': {
+      id: '/filings'
+      path: '/filings'
+      fullPath: '/filings'
+      preLoaderRoute: typeof FilingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/esg': {
+      id: '/esg'
+      path: '/esg'
+      fullPath: '/esg'
+      preLoaderRoute: typeof EsgRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entities': {
@@ -151,11 +429,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/directors': {
-      id: '/directors'
-      path: '/directors'
-      fullPath: '/directors'
-      preLoaderRoute: typeof DirectorsRouteImport
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deadlines': {
+      id: '/deadlines'
+      path: '/deadlines'
+      fullPath: '/deadlines'
+      preLoaderRoute: typeof DeadlinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -163,6 +455,34 @@ declare module '@tanstack/react-router' {
       path: '/calendar'
       fullPath: '/calendar'
       preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit-trail': {
+      id: '/audit-trail'
+      path: '/audit-trail'
+      fullPath: '/audit-trail'
+      preLoaderRoute: typeof AuditTrailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aml-kyc': {
+      id: '/aml-kyc'
+      path: '/aml-kyc'
+      fullPath: '/aml-kyc'
+      preLoaderRoute: typeof AmlKycRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agreements': {
+      id: '/agreements'
+      path: '/agreements'
+      fullPath: '/agreements'
+      preLoaderRoute: typeof AgreementsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -177,12 +497,28 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgreementsRoute: AgreementsRoute,
+  AlertsRoute: AlertsRoute,
+  AmlKycRoute: AmlKycRoute,
+  AuditTrailRoute: AuditTrailRoute,
   CalendarRoute: CalendarRoute,
-  DirectorsRoute: DirectorsRoute,
+  DashboardRoute: DashboardRoute,
+  DeadlinesRoute: DeadlinesRoute,
+  DocumentsRoute: DocumentsRoute,
   EntitiesRoute: EntitiesRoute,
-  MinutesRoute: MinutesRoute,
-  ResolutionsRoute: ResolutionsRoute,
+  EsgRoute: EsgRoute,
+  FilingsRoute: FilingsRoute,
+  GovernanceRoute: GovernanceRoute,
+  InsuranceRoute: InsuranceRoute,
+  KingvRoute: KingvRoute,
+  LegalRoute: LegalRoute,
+  PoliciesRoute: PoliciesRoute,
+  RegistersRoute: RegistersRoute,
+  RemunerationRoute: RemunerationRoute,
+  RiskRoute: RiskRoute,
+  SanctionsRoute: SanctionsRoute,
   SettingsRoute: SettingsRoute,
+  StakeholdersRoute: StakeholdersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

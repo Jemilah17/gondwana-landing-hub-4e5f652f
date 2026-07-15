@@ -11,7 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { AppSidebar } from "@/components/app-sidebar";
+import Layout from "@/features/bolt/components/layout/Layout";
+import { UserProvider } from "@/features/bolt/contexts/UserContext";
+import { ToastProvider } from "@/features/bolt/contexts/ToastContext";
 
 function NotFoundComponent() {
   return (
@@ -110,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -140,13 +142,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="app-shell">
-        <AppSidebar />
-        <main className="app-main">
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </main>
-      </div>
+      <UserProvider>
+        <ToastProvider>
+          <Layout>
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </Layout>
+        </ToastProvider>
+      </UserProvider>
     </QueryClientProvider>
   );
 }

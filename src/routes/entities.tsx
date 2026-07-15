@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Placeholder } from "@/features/shell/Placeholder";
+import Entities from "@/features/bolt/pages/Entities";
 
 export const Route = createFileRoute("/entities")({
-  component: () => (
-    <Placeholder title="Entities" sub="Legal entities register" />
-  ),
+  component: Entities,
 });

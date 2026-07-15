@@ -1,163 +1,55 @@
 @import "tailwindcss" source(none);
 @source "../src";
-@import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@theme {
+  --color-background: #FDFBF7;
+  --color-card: #FFFFFF;
+  --color-border: #EFECE6;
+  --color-primary: #1C1F1A;
+  --color-muted: #6B6F68;
+  --color-charcoal: #3D3D3D;
 
-/*
- * Design system definition for Gondwana Governance.
- *
- * Palette: warm stone, deep earth, mineral green, clay.
- * Display: Fraunces. Body: Instrument Sans.
- */
+  --color-orange: #D4652A;
+  --color-orange-tint: #FBF0EA;
+  --color-orange-border: #F0C4A8;
 
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --color-green: #2D7A4F;
+  --color-green-tint: #EAF5EE;
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-amber: #9A6E1A;
+  --color-amber-tint: #FBF3E3;
 
-  /* Project-specific tokens */
-  --color-stone-bg: var(--stone-bg);
-  --color-stone-surface: var(--stone-surface);
-  --color-earth-deep: var(--earth-deep);
-  --color-mineral: var(--mineral);
-  --color-clay: var(--clay);
+  --color-red: #B53A2F;
+  --color-red-tint: #FAEAEA;
 
-  /* Typography */
-  --font-display: "Fraunces", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-blue: #1A5FA5;
+  --color-blue-tint: #E8F1FB;
+
+  --color-purple: #5B3D9A;
+  --color-purple-tint: #F0EBF8;
+
+  --color-teal: #0F6E56;
+  --color-teal-tint: #E1F5EE;
+
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --spacing-180: 180px;
+  --spacing-200: 200px;
+  --spacing-220: 220px;
+  --spacing-360: 360px;
 }
 
-:root {
-  --radius: 0.625rem;
-
-  --background: oklch(0.971 0.004 78.21);
-  --foreground: oklch(0.253 0.005 67.54);
-  --card: oklch(0.971 0.004 78.21);
-  --card-foreground: oklch(0.253 0.005 67.54);
-  --popover: oklch(0.971 0.004 78.21);
-  --popover-foreground: oklch(0.253 0.005 67.54);
-  --primary: oklch(0.512 0.031 138.41);
-  --primary-foreground: oklch(0.971 0.004 78.21);
-  --secondary: oklch(0.947 0.004 78.21);
-  --secondary-foreground: oklch(0.253 0.005 67.54);
-  --muted: oklch(0.947 0.004 78.21);
-  --muted-foreground: oklch(0.253 0.005 67.54 / 0.6);
-  --accent: oklch(0.618 0.078 65.54);
-  --accent-foreground: oklch(0.971 0.004 78.21);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.253 0.005 67.54 / 0.1);
-  --input: oklch(0.253 0.005 67.54 / 0.1);
-  --ring: oklch(0.512 0.031 138.41);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.947 0.004 78.21);
-  --sidebar-foreground: oklch(0.253 0.005 67.54);
-  --sidebar-primary: oklch(0.253 0.005 67.54);
-  --sidebar-primary-foreground: oklch(0.971 0.004 78.21);
-  --sidebar-accent: oklch(0.947 0.004 78.21);
-  --sidebar-accent-foreground: oklch(0.253 0.005 67.54);
-  --sidebar-border: oklch(0.253 0.005 67.54 / 0.1);
-  --sidebar-ring: oklch(0.512 0.031 138.41);
-
-  --stone-bg: oklch(0.971 0.004 78.21);
-  --stone-surface: oklch(0.947 0.004 78.21);
-  --earth-deep: oklch(0.253 0.005 67.54);
-  --mineral: oklch(0.512 0.031 138.41);
-  --clay: oklch(0.618 0.078 65.54);
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #FDFBF7;
+  color: #1C1F1A;
+  -webkit-font-smoothing: antialiased;
 }
 
-.dark {
-  --background: oklch(0.253 0.005 67.54);
-  --foreground: oklch(0.971 0.004 78.21);
-  --card: oklch(0.253 0.005 67.54);
-  --card-foreground: oklch(0.971 0.004 78.21);
-  --popover: oklch(0.253 0.005 67.54);
-  --popover-foreground: oklch(0.971 0.004 78.21);
-  --primary: oklch(0.512 0.031 138.41);
-  --primary-foreground: oklch(0.971 0.004 78.21);
-  --secondary: oklch(0.35 0.02 67.54);
-  --secondary-foreground: oklch(0.971 0.004 78.21);
-  --muted: oklch(0.35 0.02 67.54);
-  --muted-foreground: oklch(0.971 0.004 78.21 / 0.6);
-  --accent: oklch(0.618 0.078 65.54);
-  --accent-foreground: oklch(0.971 0.004 78.21);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.971 0.004 78.21 / 0.1);
-  --input: oklch(0.971 0.004 78.21 / 0.15);
-  --ring: oklch(0.512 0.031 138.41);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.253 0.005 67.54);
-  --sidebar-foreground: oklch(0.971 0.004 78.21);
-  --sidebar-primary: oklch(0.512 0.031 138.41);
-  --sidebar-primary-foreground: oklch(0.971 0.004 78.21);
-  --sidebar-accent: oklch(0.35 0.02 67.54);
-  --sidebar-accent-foreground: oklch(0.971 0.004 78.21);
-  --sidebar-border: oklch(0.971 0.004 78.21 / 0.1);
-  --sidebar-ring: oklch(0.512 0.031 138.41);
-
-  --stone-bg: oklch(0.253 0.005 67.54);
-  --stone-surface: oklch(0.35 0.02 67.54);
-  --earth-deep: oklch(0.971 0.004 78.21);
-  --mineral: oklch(0.512 0.031 138.41);
-  --clay: oklch(0.618 0.078 65.54);
-}
-
-@layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-  }
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #FDFBF7; }
+::-webkit-scrollbar-thumb { background: #EFECE6; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D4652A; }
