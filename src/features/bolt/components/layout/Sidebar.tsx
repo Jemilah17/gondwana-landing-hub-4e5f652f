@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, useRouterState } from '@tanstack/react-router';
 import {
   Home, Building2, FileText, Book, Calendar, Folder, Shield,
   AlertCircle, Clock, Bell, Users, AlertTriangle, FileCheck,
@@ -7,8 +7,6 @@ import {
 } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
 import { users } from '../../data/users';
-import { entities } from '../../data/entities';
-import { filings } from '../../data/filings';
 import { useState } from 'react';
 
 const navSections = [
@@ -66,12 +64,9 @@ const navSections = [
 ];
 
 export default function Sidebar() {
-  const { activeUser, setActiveUserById, canWrite } = useUser();
-  const [expanded, setExpanded] = useState(true);
-
-  const userEntities = entities.filter(e => canWrite(e.cluster));
-  const overdueCount = filings.filter(f => f.status === 'overdue' && canWrite(f.cluster)).length;
-  const dueSoonCount = filings.filter(f => f.status === 'due soon' && canWrite(f.cluster)).length;
+  const { activeUser, setActiveUserById } = useUser();
+  const [expanded] = useState(true);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <aside className={`fixed left-0 top-0 bottom-0 bg-primary z-40 flex flex-col ${expanded ? 'w-[180px]' : 'w-16'} transition-all duration-300`}>
@@ -98,16 +93,14 @@ export default function Sidebar() {
               </div>
             )}
             {section.items.map((item) => (
-              <NavLink
+              <Link
                 key={item.to}
                 to={item.to}
-                className={({ isActive }) =>
-                  `flex items-center gap-2 px-4 py-2 mx-2 rounded ${
-                    isActive
-                      ? 'bg-orange text-white'
-                      : 'text-white/55 hover:text-white hover:bg-white/10'
-                  }`
-                }
+                className={`flex items-center gap-2 px-4 py-2 mx-2 rounded ${
+                  pathname === item.to || (item.to !== '/' && pathname.startsWith(item.to))
+                    ? 'bg-orange text-white'
+                    : 'text-white/55 hover:text-white hover:bg-white/10'
+                }`}
               >
                 <item.icon className="w-4 h-4 flex-shrink-0" />
                 {expanded && (
@@ -123,7 +116,7 @@ export default function Sidebar() {
                     )}
                   </>
                 )}
-              </NavLink>
+              </Link>
             ))}
           </div>
         ))}
