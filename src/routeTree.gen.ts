@@ -16,6 +16,7 @@ import { Route as RiskRouteImport } from './routes/risk'
 import { Route as RemunerationRouteImport } from './routes/remuneration'
 import { Route as RegistersRouteImport } from './routes/registers'
 import { Route as PoliciesRouteImport } from './routes/policies'
+import { Route as MinutesRouteImport } from './routes/minutes'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as KingvRouteImport } from './routes/kingv'
 import { Route as InsuranceRouteImport } from './routes/insurance'
@@ -66,6 +67,11 @@ const RegistersRoute = RegistersRouteImport.update({
 const PoliciesRoute = PoliciesRouteImport.update({
   id: '/policies',
   path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinutesRoute = MinutesRouteImport.update({
+  id: '/minutes',
+  path: '/minutes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalRoute = LegalRouteImport.update({
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/insurance': typeof InsuranceRoute
   '/kingv': typeof KingvRoute
   '/legal': typeof LegalRoute
+  '/minutes': typeof MinutesRoute
   '/policies': typeof PoliciesRoute
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/insurance': typeof InsuranceRoute
   '/kingv': typeof KingvRoute
   '/legal': typeof LegalRoute
+  '/minutes': typeof MinutesRoute
   '/policies': typeof PoliciesRoute
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
@@ -217,6 +225,7 @@ export interface FileRoutesById {
   '/insurance': typeof InsuranceRoute
   '/kingv': typeof KingvRoute
   '/legal': typeof LegalRoute
+  '/minutes': typeof MinutesRoute
   '/policies': typeof PoliciesRoute
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/insurance'
     | '/kingv'
     | '/legal'
+    | '/minutes'
     | '/policies'
     | '/registers'
     | '/remuneration'
@@ -269,6 +279,7 @@ export interface FileRouteTypes {
     | '/insurance'
     | '/kingv'
     | '/legal'
+    | '/minutes'
     | '/policies'
     | '/registers'
     | '/remuneration'
@@ -294,6 +305,7 @@ export interface FileRouteTypes {
     | '/insurance'
     | '/kingv'
     | '/legal'
+    | '/minutes'
     | '/policies'
     | '/registers'
     | '/remuneration'
@@ -320,6 +332,7 @@ export interface RootRouteChildren {
   InsuranceRoute: typeof InsuranceRoute
   KingvRoute: typeof KingvRoute
   LegalRoute: typeof LegalRoute
+  MinutesRoute: typeof MinutesRoute
   PoliciesRoute: typeof PoliciesRoute
   RegistersRoute: typeof RegistersRoute
   RemunerationRoute: typeof RemunerationRoute
@@ -378,6 +391,13 @@ declare module '@tanstack/react-router' {
       path: '/policies'
       fullPath: '/policies'
       preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/minutes': {
+      id: '/minutes'
+      path: '/minutes'
+      fullPath: '/minutes'
+      preLoaderRoute: typeof MinutesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal': {
@@ -512,6 +532,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsuranceRoute: InsuranceRoute,
   KingvRoute: KingvRoute,
   LegalRoute: LegalRoute,
+  MinutesRoute: MinutesRoute,
   PoliciesRoute: PoliciesRoute,
   RegistersRoute: RegistersRoute,
   RemunerationRoute: RemunerationRoute,

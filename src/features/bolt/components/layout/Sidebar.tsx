@@ -18,6 +18,7 @@ const navSections = [
       { to: '/filings', icon: FileText, label: 'Filings', badge: 7 },
       { to: '/registers', icon: Book, label: 'Registers' },
       { to: '/calendar', icon: Calendar, label: 'Board calendar' },
+      { to: '/minutes', icon: FileText, label: 'Minutes' },
     ],
   },
   {
