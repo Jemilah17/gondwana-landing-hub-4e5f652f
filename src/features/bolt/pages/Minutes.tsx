@@ -9,6 +9,8 @@ import {
   CheckCircle2,
   Circle,
   Trash2,
+  Printer,
+  ArrowLeft,
 } from 'lucide-react';
 import {
   Document,
@@ -216,9 +218,11 @@ function Select({
 function SetupView({
   onBack,
   onUploaded,
+  onOpenFullMinutes,
 }: {
   onBack: () => void;
   onUploaded: () => void;
+  onOpenFullMinutes: () => void;
 }) {
   const [entity, setEntity] = useState(ENTITIES[0]);
   const [meetingType, setMeetingType] = useState(MEETING_TYPES[1]);
@@ -582,6 +586,12 @@ function SetupView({
                   </li>
                 ))}
               </ol>
+              <button
+                onClick={onOpenFullMinutes}
+                className="mt-3 text-[12px] font-medium text-orange hover:underline"
+              >
+                View full minutes →
+              </button>
             </Card>
           </div>
         </div>
@@ -599,8 +609,301 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
+interface Resolution {
+  code: string;
+  text: string;
+  for: number;
+  against: number;
+  abstain: number;
+}
+
+function ResolutionBox({ r }: { r: Resolution }) {
+  return (
+    <div className="bg-orange-tint border border-orange/30 rounded-lg p-4 my-3">
+      <div className="flex items-center justify-between gap-3 mb-2">
+        <span className="text-[11px] font-medium text-orange uppercase tracking-wider">
+          {r.code}
+        </span>
+        <span className="inline-flex px-2 py-[2px] rounded-lg text-[10px] font-medium bg-green-tint text-green">
+          PASSED
+        </span>
+      </div>
+      <p className="text-[12px] text-primary leading-relaxed mb-3">{r.text}</p>
+      <div className="grid grid-cols-3 gap-2 text-[11px]">
+        <div className="bg-card border border-border rounded p-2">
+          <div className="text-muted uppercase tracking-wider text-[9px] font-medium">For</div>
+          <div className="text-green font-medium">{r.for}%</div>
+        </div>
+        <div className="bg-card border border-border rounded p-2">
+          <div className="text-muted uppercase tracking-wider text-[9px] font-medium">Against</div>
+          <div className="text-primary font-medium">{(100 - r.for - r.abstain).toFixed(1)}%</div>
+        </div>
+        <div className="bg-card border border-border rounded p-2">
+          <div className="text-muted uppercase tracking-wider text-[9px] font-medium">Abstain</div>
+          <div className="text-primary font-medium">{r.abstain}%</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Section({
+  n,
+  title,
+  children,
+}: {
+  n: number;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mb-6">
+      <h3 className="text-[13px] font-medium text-primary mb-2">
+        {n}. {title}
+      </h3>
+      <div className="text-[12px] text-primary leading-relaxed space-y-2">{children}</div>
+    </section>
+  );
+}
+
+function ViewFullMinutes({ onBack }: { onBack: () => void }) {
+  return (
+    <div>
+      <Topbar
+        title="Minutes — 4th AGM"
+        actions={
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onBack}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border rounded-lg text-[12px] font-medium text-primary hover:bg-background"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" /> Back to register
+            </button>
+            <button
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
+            >
+              <Printer className="w-3.5 h-3.5" /> Print
+            </button>
+          </div>
+        }
+      />
+      <div className="p-6">
+        <article className="bg-card border border-border rounded-lg mx-auto p-10" style={{ maxWidth: 760 }}>
+          {/* Header */}
+          <header className="text-center mb-8">
+            <h1 className="text-[18px] font-medium text-primary tracking-wide">
+              GONDWANA HOLDINGS LIMITED
+            </h1>
+            <p className="text-[11px] text-muted mt-1">
+              42 Nelson Mandela Avenue, Windhoek · Reg. 2017/1055
+            </p>
+            <div className="h-px bg-border my-4" />
+            <h2 className="text-[14px] font-medium text-primary uppercase tracking-wider">
+              MINUTES OF THE 4TH ANNUAL GENERAL MEETING
+            </h2>
+            <p className="text-[11px] text-muted mt-1">
+              Held on Thursday, 24 June 2021 · Windhoek · Hybrid (in-person & virtual)
+            </p>
+          </header>
+
+          <Section n={1} title="Welcome and opening">
+            <p>
+              The Chairperson, Mr S. Galloway, welcomed shareholders, directors and invited
+              guests to the 4th Annual General Meeting of Gondwana Holdings Limited. He
+              acknowledged the extraordinary context in which the meeting was being held, with
+              the COVID-19 pandemic having profoundly affected the tourism industry, the
+              Namibian economy and the personal lives of many stakeholders.
+            </p>
+            <p>
+              A moment of silence was observed in memory of colleagues, family members and
+              friends of the Gondwana community who had passed away during the preceding period.
+            </p>
+          </Section>
+
+          <Section n={2} title="Quorum and notice of meeting">
+            <p>
+              The Company Secretary confirmed that proper notice of the meeting had been given
+              in accordance with the Articles of Association. Proxy representation of 56.1% of
+              the issued share capital was recorded, satisfying the quorum requirement set out
+              in Article 15.2 of the Articles of Association. The Chairperson declared the
+              meeting duly constituted.
+            </p>
+          </Section>
+
+          <Section n={3} title="Adoption of the minutes of the 3rd AGM (08 April 2020)">
+            <p>
+              The minutes of the 3rd Annual General Meeting, held on 08 April 2020, were tabled.
+              Shareholders having had the opportunity to review them, the minutes were adopted
+              as a true and accurate record of that meeting, without amendment.
+            </p>
+          </Section>
+
+          <Section n={4} title="Chairperson's overview">
+            <p>
+              Mr Galloway reflected on the 25-year history of Gondwana Collection Namibia,
+              highlighting the group's resilience through multiple economic cycles. He noted
+              with pride that despite the severe impact of COVID-19, no retrenchments had been
+              carried out and that all permanent staff had been retained throughout the crisis.
+            </p>
+            <p>
+              The Chairperson formally announced the appointment of Ms Fabiola Schrywer as
+              co-custodian of the group's cultural and heritage stewardship function, in
+              recognition of her long-standing contribution to the organisation.
+            </p>
+          </Section>
+
+          <Section n={5} title="Finance report">
+            <p>
+              The Chief Financial Officer, Mr J. Visser, presented the finance report for the
+              year under review. He reported a revenue decline of approximately 66% year-on-year,
+              driven by border closures and the near-complete suspension of international
+              tourism. Cost containment measures, debt restructuring and support from lenders
+              had preserved the group's liquidity position and going-concern status.
+            </p>
+          </Section>
+
+          <Section n={6} title="Approval of the Annual Financial Statements">
+            <p>
+              The audited Annual Financial Statements for the year were presented to shareholders
+              for approval.
+            </p>
+            <ResolutionBox
+              r={{
+                code: 'OR-1',
+                text: 'RESOLVED that the Annual Financial Statements of Gondwana Holdings Limited for the year under review, together with the reports of the directors and the auditors, be and are hereby received and approved.',
+                for: 95.6,
+                against: 3.9,
+                abstain: 0.5,
+              }}
+            />
+          </Section>
+
+          <Section n={7} title="Appointment of auditors">
+            <ResolutionBox
+              r={{
+                code: 'OR-2',
+                text: 'RESOLVED that Ernst & Young be and are hereby reappointed as auditors of the Company for the ensuing financial year, and that the directors be authorised to determine their remuneration.',
+                for: 99.6,
+                against: 0.2,
+                abstain: 0.2,
+              }}
+            />
+          </Section>
+
+          <Section n={8} title="Re-election of directors">
+            <ResolutionBox
+              r={{
+                code: 'OR-3',
+                text: 'RESOLVED that the directors retiring by rotation in accordance with the Articles of Association, being eligible and offering themselves for re-election, be and are hereby re-elected as directors of the Company.',
+                for: 95.9,
+                against: 3.6,
+                abstain: 0.5,
+              }}
+            />
+          </Section>
+
+          <Section n={9} title="Directors' fees">
+            <ResolutionBox
+              r={{
+                code: 'OR-4',
+                text: 'RESOLVED that the non-executive directors\' fees be approved at N$10,000 per meeting attended, with effect from the date of this meeting.',
+                for: 95.3,
+                against: 4.2,
+                abstain: 0.5,
+              }}
+            />
+          </Section>
+
+          <Section n={10} title="Employee share incentive scheme">
+            <ResolutionBox
+              r={{
+                code: 'OR-5',
+                text: 'RESOLVED that the directors be and are hereby authorised to implement the employee share incentive scheme, on the terms tabled and made available to shareholders.',
+                for: 98.9,
+                against: 0.8,
+                abstain: 0.3,
+              }}
+            />
+          </Section>
+
+          <Section n={11} title="General authority — borrowing powers">
+            <ResolutionBox
+              r={{
+                code: 'OR-6',
+                text: 'RESOLVED that the directors be and are hereby granted a general authority to raise borrowings on behalf of the Company, subject to the limits set out in the Articles of Association and applicable law.',
+                for: 98.3,
+                against: 1.4,
+                abstain: 0.3,
+              }}
+            />
+          </Section>
+
+          <Section n={12} title="Managing Director's report">
+            <p>
+              The Managing Director, Mr G. Joubert, reported on operational matters. He
+              confirmed that the Business Interruption insurance claim had been lodged and
+              was progressing through the insurers' assessment process. He further reported
+              on the successful placement of a bond on the Namibian Stock Exchange (NSX),
+              which had strengthened the group's medium-term funding base.
+            </p>
+          </Section>
+
+          <Section n={13} title="Brand and marketing report">
+            <p>
+              Ms M. Goldbeck presented the brand and marketing update. The Gondwana Card
+              loyalty programme had grown to more than 100,000 registered members, providing
+              a strong direct-to-consumer platform to support the group's domestic tourism
+              recovery strategy.
+            </p>
+          </Section>
+
+          <Section n={14} title="Questions and answers">
+            <p>
+              A shareholder enquired about the group's approach to COVID-19 vaccination for
+              staff and guests. The Chairperson responded that the group was following official
+              guidance from the Ministry of Health and Social Services, was actively supporting
+              staff access to vaccination, and would continue to review protocols as public
+              health guidance evolved.
+            </p>
+          </Section>
+
+          <Section n={15} title="Closing remarks">
+            <p>
+              The Chairperson thanked shareholders for their continued support, and the
+              directors, management and staff for their commitment through an exceptionally
+              difficult year. He expressed cautious optimism for the recovery of the tourism
+              sector and the group's outlook.
+            </p>
+          </Section>
+
+          <Section n={16} title="Adjournment">
+            <p>
+              There being no further business, the Chairperson declared the meeting closed and
+              adjourned at 19:32.
+            </p>
+          </Section>
+
+          {/* Signature block */}
+          <div className="mt-10 pt-6 border-t border-border grid grid-cols-2 gap-8">
+            <div>
+              <div className="h-10 border-b border-primary" />
+              <div className="text-[11px] text-muted mt-2">S. Galloway</div>
+              <div className="text-[10px] text-muted">Chairperson</div>
+            </div>
+            <div>
+              <div className="h-10 border-b border-primary" />
+              <div className="text-[11px] text-muted mt-2">Date</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+}
+
 export default function Minutes() {
-  const [view, setView] = useState<'list' | 'setup'>('list');
+  const [view, setView] = useState<'list' | 'setup' | 'view'>('list');
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
 
   const advanceDraftToCirculated = () => {
@@ -613,7 +916,14 @@ export default function Minutes() {
   };
 
   if (view === 'setup')
-    return <SetupView onBack={() => setView('list')} onUploaded={advanceDraftToCirculated} />;
+    return (
+      <SetupView
+        onBack={() => setView('list')}
+        onUploaded={advanceDraftToCirculated}
+        onOpenFullMinutes={() => setView('view')}
+      />
+    );
+  if (view === 'view') return <ViewFullMinutes onBack={() => setView('list')} />;
 
   return (
     <div>
@@ -665,7 +975,10 @@ export default function Minutes() {
                         Continue <ChevronRight className="w-3 h-3" />
                       </button>
                     ) : (
-                      <button className="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-primary rounded-lg text-[11px] font-medium hover:bg-background">
+                      <button
+                        onClick={() => row.id === 'm2' && setView('view')}
+                        className="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-primary rounded-lg text-[11px] font-medium hover:bg-background"
+                      >
                         View <ChevronRight className="w-3 h-3" />
                       </button>
                     )}
