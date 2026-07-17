@@ -218,9 +218,11 @@ function Select({
 function SetupView({
   onBack,
   onUploaded,
+  onOpenFullMinutes,
 }: {
   onBack: () => void;
   onUploaded: () => void;
+  onOpenFullMinutes: () => void;
 }) {
   const [entity, setEntity] = useState(ENTITIES[0]);
   const [meetingType, setMeetingType] = useState(MEETING_TYPES[1]);
