@@ -19,6 +19,8 @@ import {
   TextRun,
   HeadingLevel,
   AlignmentType,
+  ImageRun,
+  BorderStyle,
 } from 'docx';
 import { saveAs } from 'file-saver';
 import Topbar from '../components/layout/Topbar';
