@@ -9,6 +9,8 @@ import {
   CheckCircle2,
   Circle,
   Trash2,
+  Printer,
+  ArrowLeft,
 } from 'lucide-react';
 import {
   Document,
