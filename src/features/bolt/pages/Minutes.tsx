@@ -602,7 +602,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 export default function Minutes() {
-  const [view, setView] = useState<'list' | 'setup'>('list');
+  const [view, setView] = useState<'list' | 'setup' | 'view'>('list');
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
 
   const advanceDraftToCirculated = () => {
@@ -615,7 +615,14 @@ export default function Minutes() {
   };
 
   if (view === 'setup')
-    return <SetupView onBack={() => setView('list')} onUploaded={advanceDraftToCirculated} />;
+    return (
+      <SetupView
+        onBack={() => setView('list')}
+        onUploaded={advanceDraftToCirculated}
+        onOpenFullMinutes={() => setView('view')}
+      />
+    );
+  if (view === 'view') return <ViewFullMinutes onBack={() => setView('list')} />;
 
   return (
     <div>
@@ -667,7 +674,10 @@ export default function Minutes() {
                         Continue <ChevronRight className="w-3 h-3" />
                       </button>
                     ) : (
-                      <button className="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-primary rounded-lg text-[11px] font-medium hover:bg-background">
+                      <button
+                        onClick={() => row.id === 'm2' && setView('view')}
+                        className="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-primary rounded-lg text-[11px] font-medium hover:bg-background"
+                      >
                         View <ChevronRight className="w-3 h-3" />
                       </button>
                     )}
