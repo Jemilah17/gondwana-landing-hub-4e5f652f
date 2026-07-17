@@ -438,6 +438,12 @@ function SetupView({
     const bold = (t: string) => new TextRun({ text: t, bold: true });
     const line = (t: string) => new Paragraph({ children: [new TextRun(t)] });
 
+    const docTitle =
+      meetingType === 'General Meeting'
+        ? 'NOTICE OF THE GENERAL MEETING OF THE SHAREHOLDERS OF GONDWANA HOLDINGS LIMITED (REG. NO 2017/1055)'
+        : `MINUTES OF THE ${meetingType.toUpperCase()} OF GONDWANA HOLDINGS LIMITED (REG. NO 2017/1055)`;
+    const letterhead = await buildLetterheadParagraphs(docTitle);
+
     const doc = new Document({
       styles: {
         default: { document: { run: { font: 'Inter', size: 22 } } },
@@ -451,32 +457,7 @@ function SetupView({
             },
           },
           children: [
-            new Paragraph({
-              heading: HeadingLevel.HEADING_1,
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: COMPANY.name, bold: true, size: 32 })],
-            }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: `Reg. ${COMPANY.reg}`, size: 18 })],
-            }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: COMPANY.address, size: 18 })],
-            }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: `${COMPANY.phone}  ·  ${COMPANY.web}`, size: 18 })],
-            }),
-            new Paragraph({ children: [new TextRun('')] }),
-            new Paragraph({
-              heading: HeadingLevel.HEADING_2,
-              alignment: AlignmentType.CENTER,
-              children: [
-                new TextRun({ text: `Minutes — ${meetingType}`, bold: true, size: 28 }),
-              ],
-            }),
-            new Paragraph({ children: [new TextRun('')] }),
+            ...letterhead,
             new Paragraph({ children: [bold('Entity: '), new TextRun(entity)] }),
             new Paragraph({ children: [bold('Meeting no: '), new TextRun(meetingNumber)] }),
             new Paragraph({ children: [bold('Date: '), new TextRun(`${date} at ${time}`)] }),
