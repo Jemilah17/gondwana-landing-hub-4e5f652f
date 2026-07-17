@@ -231,19 +231,19 @@ async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
       new Paragraph({
         alignment: AlignmentType.CENTER,
         children: [
-          new TextRun({ text: 'GONDWANA', bold: true, size: 44, color: '3D2B1F', font: 'Inter', characterSpacing: 60 }),
+          new TextRun({ text: 'G O N D W A N A', bold: true, size: 44, color: '3D2B1F', font: 'Inter' }),
         ],
       }),
       new Paragraph({
         alignment: AlignmentType.CENTER,
         children: [
-          new TextRun({ text: 'HOLDINGS LIMITED', bold: true, size: 22, color: 'C4762A', font: 'Inter', characterSpacing: 80 }),
+          new TextRun({ text: 'H O L D I N G S   L I M I T E D', bold: true, size: 22, color: 'C4762A', font: 'Inter' }),
         ],
       }),
       new Paragraph({
         alignment: AlignmentType.CENTER,
         children: [
-          new TextRun({ text: 'NAMIBIA', size: 14, color: '6B6F68', font: 'Inter', characterSpacing: 100 }),
+          new TextRun({ text: 'N A M I B I A', size: 14, color: '6B6F68', font: 'Inter' }),
         ],
       }),
     );
