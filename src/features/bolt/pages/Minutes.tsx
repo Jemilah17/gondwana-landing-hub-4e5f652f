@@ -844,22 +844,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
       />
       <div className="p-6">
         <article className="bg-card border border-border rounded-lg mx-auto p-10" style={{ maxWidth: 760 }}>
-          {/* Header */}
-          <header className="text-center mb-8">
-            <h1 className="text-[18px] font-medium text-primary tracking-wide">
-              GONDWANA HOLDINGS LIMITED
-            </h1>
-            <p className="text-[11px] text-muted mt-1">
-              42 Nelson Mandela Avenue, Windhoek · Reg. 2017/1055
-            </p>
-            <div className="h-px bg-border my-4" />
-            <h2 className="text-[14px] font-medium text-primary uppercase tracking-wider">
-              MINUTES OF THE 4TH ANNUAL GENERAL MEETING
-            </h2>
-            <p className="text-[11px] text-muted mt-1">
-              Held on Thursday, 24 June 2021 · Windhoek · Hybrid (in-person & virtual)
-            </p>
-          </header>
+          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT GONDWANA HOUSE BOARDROOM, 42 NELSON MANDELA AVENUE, WINDHOEK, NAMIBIA" />
 
           <Section n={1} title="Welcome and opening">
             <p>
