@@ -98,6 +98,177 @@ const COMPANY = {
   web: 'www.gondwana-collection.com',
 };
 
+const LOGO_URL = 'https://www.gondwana-collection.com/images/gondwana-logo.png';
+
+function LetterheadLogo() {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="flex flex-col items-center leading-tight">
+        <div
+          style={{ color: '#3D2B1F', letterSpacing: '0.25em' }}
+          className="text-[28px] font-bold"
+        >
+          GONDWANA
+        </div>
+        <div
+          style={{ color: '#C4762A', letterSpacing: '0.28em' }}
+          className="text-[13px] font-medium mt-1"
+        >
+          HOLDINGS LIMITED
+        </div>
+        <div
+          style={{ color: '#6B6F68', letterSpacing: '0.3em' }}
+          className="text-[9px] font-medium mt-1"
+        >
+          NAMIBIA
+        </div>
+      </div>
+    );
+  }
+  return (
+    <img
+      src={LOGO_URL}
+      alt="Gondwana Holdings Limited"
+      onError={() => setFailed(true)}
+      style={{ maxHeight: 84, width: 'auto' }}
+    />
+  );
+}
+
+function Letterhead({ title }: { title: string }) {
+  return (
+    <header className="mb-6">
+      <div className="flex justify-center mb-3">
+        <LetterheadLogo />
+      </div>
+      <div
+        className="text-center"
+        style={{ color: '#6B6F68', fontSize: 11, lineHeight: 1.5 }}
+      >
+        Tel: +264 61 427 200&nbsp;&nbsp;|&nbsp;&nbsp;Fax: +264 61 251 863
+      </div>
+      <div
+        className="text-center"
+        style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
+      >
+        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Nelson Mandela Avenue&nbsp;&nbsp;|&nbsp;&nbsp;Windhoek, Namibia&nbsp;&nbsp;|&nbsp;&nbsp;info@gondwana-collection.com
+      </div>
+      <div
+        className="text-center"
+        style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
+      >
+        www.gondwana-collection.com
+      </div>
+      <div style={{ height: '0.5px', background: '#EFECE6', margin: '14px 0' }} />
+      <h2
+        className="text-center font-bold uppercase"
+        style={{ color: '#1C1F1A', fontSize: 13, lineHeight: 1.45, letterSpacing: '0.02em' }}
+      >
+        {title}
+      </h2>
+      <div style={{ height: '0.5px', background: '#EFECE6', margin: '14px 0' }} />
+    </header>
+  );
+}
+
+async function fetchLogoBuffer(): Promise<ArrayBuffer | null> {
+  try {
+    const res = await fetch(LOGO_URL, { mode: 'cors' });
+    if (!res.ok) return null;
+    return await res.arrayBuffer();
+  } catch {
+    return null;
+  }
+}
+
+function docxCentered(text: string, opts: { size?: number; bold?: boolean; color?: string } = {}) {
+  return new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [
+      new TextRun({
+        text,
+        size: opts.size ?? 18,
+        bold: opts.bold,
+        color: opts.color ?? '6B6F68',
+        font: 'Inter',
+      }),
+    ],
+  });
+}
+
+function docxDivider() {
+  return new Paragraph({
+    border: {
+      bottom: { style: BorderStyle.SINGLE, size: 4, color: 'EFECE6', space: 1 },
+    },
+  });
+}
+
+async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
+  const paras: Paragraph[] = [];
+  const logo = await fetchLogoBuffer();
+  if (logo) {
+    paras.push(
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new ImageRun({
+            type: 'png',
+            data: logo,
+            transformation: { width: 220, height: 90 },
+            altText: {
+              title: 'Gondwana Holdings Limited',
+              description: 'Gondwana Holdings Limited logo',
+              name: 'GondwanaLogo',
+            },
+          }),
+        ],
+      }),
+    );
+  } else {
+    paras.push(
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new TextRun({ text: 'GONDWANA', bold: true, size: 44, color: '3D2B1F', font: 'Inter', characterSpacing: 60 }),
+        ],
+      }),
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new TextRun({ text: 'HOLDINGS LIMITED', bold: true, size: 22, color: 'C4762A', font: 'Inter', characterSpacing: 80 }),
+        ],
+      }),
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new TextRun({ text: 'NAMIBIA', size: 14, color: '6B6F68', font: 'Inter', characterSpacing: 100 }),
+        ],
+      }),
+    );
+  }
+  paras.push(
+    new Paragraph({ children: [new TextRun('')] }),
+    docxCentered('Tel: +264 61 427 200  |  Fax: +264 61 251 863', { size: 18 }),
+    docxCentered(
+      'PO Box 80205  |  42 Nelson Mandela Avenue  |  Windhoek, Namibia  |  info@gondwana-collection.com',
+      { size: 16 },
+    ),
+    docxCentered('www.gondwana-collection.com', { size: 16 }),
+    docxDivider(),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [
+        new TextRun({ text: title.toUpperCase(), bold: true, size: 22, color: '1C1F1A', font: 'Inter' }),
+      ],
+    }),
+    docxDivider(),
+    new Paragraph({ children: [new TextRun('')] }),
+  );
+  return paras;
+}
+
 const ENTITIES = [
   'Gondwana Holdings Limited',
   'Gondwana Collection Namibia',
