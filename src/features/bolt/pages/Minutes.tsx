@@ -586,6 +586,12 @@ function SetupView({
                   </li>
                 ))}
               </ol>
+              <button
+                onClick={onOpenFullMinutes}
+                className="mt-3 text-[12px] font-medium text-orange hover:underline"
+              >
+                View full minutes →
+              </button>
             </Card>
           </div>
         </div>
