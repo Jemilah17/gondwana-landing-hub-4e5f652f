@@ -11,6 +11,8 @@ import {
   Trash2,
   Printer,
   ArrowLeft,
+  Check,
+  X,
 } from 'lucide-react';
 import {
   Document,
@@ -24,6 +26,7 @@ import {
 } from 'docx';
 import { saveAs } from 'file-saver';
 import Topbar from '../components/layout/Topbar';
+import { useToast } from '../contexts/ToastContext';
 
 type Stage = 'Draft' | 'Circulated' | 'Reviewed' | 'Approved' | 'Signed';
 
@@ -31,43 +34,86 @@ interface MinuteRow {
   id: string;
   title: string;
   date: string;
+  type: string;
+  chairperson: string;
   stage: Stage;
   flagged?: boolean;
+  signedDate?: string;
+  signedFile?: string;
 }
 
 const initialRows: MinuteRow[] = [
-  { id: 'm1', title: 'February 2026 General Meeting', date: 'Feb 2026', stage: 'Draft', flagged: true },
-  { id: 'm2', title: '4th Annual General Meeting', date: '24 Jun 2021', stage: 'Signed' },
-  { id: 'm3', title: '5th Annual General Meeting', date: '02 Jun 2022', stage: 'Signed' },
-  { id: 'm4', title: '3rd Annual General Meeting', date: '08 Apr 2020', stage: 'Signed' },
+  {
+    id: 'm1',
+    title: 'February 2026 General Meeting',
+    date: '15 Feb 2026',
+    type: 'General Meeting',
+    chairperson: 'Dave Smuts',
+    stage: 'Draft',
+    flagged: true,
+  },
+  {
+    id: 'm2',
+    title: '4th Annual General Meeting',
+    date: '24 Jun 2021',
+    type: 'AGM',
+    chairperson: 'S. Galloway',
+    stage: 'Signed',
+    signedDate: '24 Jun 2021',
+    signedFile: '4th-AGM-signed.pdf',
+  },
+  {
+    id: 'm3',
+    title: '5th Annual General Meeting',
+    date: '02 Jun 2022',
+    type: 'AGM',
+    chairperson: 'S. Galloway',
+    stage: 'Signed',
+    signedDate: '02 Jun 2022',
+    signedFile: '5th-AGM-signed.pdf',
+  },
+  {
+    id: 'm4',
+    title: '3rd Annual General Meeting',
+    date: '08 Apr 2020',
+    type: 'AGM',
+    chairperson: 'S. Galloway',
+    stage: 'Signed',
+    signedDate: '08 Apr 2020',
+    signedFile: '3rd-AGM-signed.pdf',
+  },
 ];
 
 const stages: Stage[] = ['Draft', 'Circulated', 'Reviewed', 'Approved', 'Signed'];
 
 function WorkflowBanner({ current }: { current: Stage }) {
   const currentIdx = stages.indexOf(current);
+  const isSignedFinal = current === 'Signed';
   return (
     <div className="bg-card border border-border rounded-lg p-4 mb-4">
       <div className="text-[10px] uppercase tracking-wider text-muted mb-3 font-medium">Minutes workflow</div>
       <div className="flex items-center">
         {stages.map((s, i) => {
-          const active = i <= currentIdx;
+          const completed = i < currentIdx || (isSignedFinal && i <= currentIdx);
+          const active = i === currentIdx && !isSignedFinal;
           return (
             <div key={s} className="flex items-center flex-1 last:flex-initial">
               <div className="flex items-center gap-2">
                 <div
                   className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-medium border ${
-                    active
+                    completed
+                      ? 'bg-green border-green text-white'
+                      : active
                       ? 'bg-orange border-orange text-white'
                       : 'bg-background border-border text-muted'
                   }`}
                 >
-                  {i + 1}
+                  {completed ? <Check className="w-3.5 h-3.5" /> : i + 1}
                 </div>
-                <span className={`text-[12px] font-medium ${active ? 'text-primary' : 'text-muted'}`}>{s}</span>
+                <span className={`text-[12px] font-medium ${completed || active ? 'text-primary' : 'text-muted'}`}>{s}</span>
               </div>
               {i < stages.length - 1 && (
-                <div className={`flex-1 h-px mx-3 ${i < currentIdx ? 'bg-orange' : 'bg-border'}`} />
+                <div className={`flex-1 h-px mx-3 ${i < currentIdx ? 'bg-green' : 'bg-border'}`} />
               )}
             </div>
           );
