@@ -1090,21 +1090,36 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
 export default function Minutes() {
   const [view, setView] = useState<'list' | 'setup' | 'view'>('list');
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
+  const [panelRowId, setPanelRowId] = useState<string | null>(null);
+  const { showToast } = useToast();
 
-  const advanceDraftToCirculated = () => {
+  const activeRow = rows.find((r) => r.id === panelRowId) ?? null;
+
+  const advance = (id: string, next: Stage, toastMsg: string, extra?: Partial<MinuteRow>) => {
     setRows((prev) =>
       prev.map((r) =>
-        r.stage === 'Draft' ? { ...r, stage: 'Circulated', flagged: false } : r,
+        r.id === id
+          ? { ...r, stage: next, flagged: false, ...(extra ?? {}) }
+          : r,
       ),
     );
-    setView('list');
+    showToast(toastMsg);
   };
 
   if (view === 'setup')
     return (
       <SetupView
         onBack={() => setView('list')}
-        onUploaded={advanceDraftToCirculated}
+        onUploaded={() => {
+          setRows((prev) =>
+            prev.map((r) =>
+              r.id === 'm1' ? { ...r, stage: 'Circulated', flagged: false } : r,
+            ),
+          );
+          showToast('Minutes circulated · Stage 2 active');
+          setView('list');
+          setPanelRowId('m1');
+        }}
         onOpenFullMinutes={() => setView('view')}
       />
     );
@@ -1124,7 +1139,7 @@ export default function Minutes() {
         }
       />
       <div className="p-6">
-        <WorkflowBanner current="Draft" />
+        <WorkflowBanner current={activeRow?.stage ?? 'Draft'} />
 
         <div className="bg-card border border-border rounded-lg overflow-hidden">
           <div className="px-4 py-3 border-b border-border flex items-center justify-between">
@@ -1133,45 +1148,306 @@ export default function Minutes() {
           </div>
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border">
+              <tr className="border-b border-border bg-background">
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Meeting</th>
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Date</th>
+                <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Type</th>
+                <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Chairperson</th>
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Stage</th>
-                <th className="px-4 py-2 w-32"></th>
+                <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Status</th>
+                <th className="px-4 py-2 w-36"></th>
               </tr>
             </thead>
             <tbody>
-              {rows.map((row) => (
-                <tr key={row.id} className="border-b border-border last:border-0 hover:bg-background">
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-2">
-                      {row.flagged && <Flag className="w-3.5 h-3.5 text-orange fill-orange" />}
-                      <span className="text-[12px] font-medium text-primary">{row.title}</span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-[12px] text-muted">{row.date}</td>
-                  <td className="px-4 py-3"><StageBadge stage={row.stage} /></td>
-                  <td className="px-4 py-3 text-right">
-                    {row.stage === 'Draft' ? (
-                      <button
-                        onClick={() => setView('setup')}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-orange text-white rounded-lg text-[11px] font-medium hover:opacity-90"
-                      >
-                        Continue <ChevronRight className="w-3 h-3" />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => row.id === 'm2' && setView('view')}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-primary rounded-lg text-[11px] font-medium hover:bg-background"
-                      >
-                        View <ChevronRight className="w-3 h-3" />
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
+              {rows.map((row) => {
+                const isSigned = row.stage === 'Signed';
+                const rowBg = row.flagged
+                  ? 'bg-[#FBF0EA] hover:bg-[#F7E6DB]'
+                  : 'hover:bg-background';
+                return (
+                  <tr
+                    key={row.id}
+                    className={`border-b border-border last:border-0 ${rowBg}`}
+                  >
+                    <td className="px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        {row.flagged && <Flag className="w-3.5 h-3.5 text-orange fill-orange" />}
+                        <span className="text-[12px] font-medium text-primary">{row.title}</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-[12px] text-muted">{row.date}</td>
+                    <td className="px-4 py-3 text-[12px] text-muted">{row.type}</td>
+                    <td className="px-4 py-3 text-[12px] text-muted">{row.chairperson}</td>
+                    <td className="px-4 py-3 text-[12px] text-primary">
+                      Stage {stages.indexOf(row.stage) + 1} of 5
+                    </td>
+                    <td className="px-4 py-3"><StageBadge stage={row.stage} /></td>
+                    <td className="px-4 py-3 text-right">
+                      {isSigned ? (
+                        <button
+                          onClick={() => row.id === 'm2' && setView('view')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-primary rounded-lg text-[11px] font-medium hover:bg-background"
+                        >
+                          View <ChevronRight className="w-3 h-3" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => setPanelRowId(row.id)}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 bg-orange text-white rounded-lg text-[11px] font-medium hover:opacity-90"
+                        >
+                          Continue <ChevronRight className="w-3 h-3" />
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      {activeRow && (
+        <WorkflowPanel
+          row={activeRow}
+          onClose={() => setPanelRowId(null)}
+          onAdvance={advance}
+          onOpenSetup={() => setView('setup')}
+        />
+      )}
+    </div>
+  );
+}
+
+function WorkflowPanel({
+  row,
+  onClose,
+  onAdvance,
+  onOpenSetup,
+}: {
+  row: MinuteRow;
+  onClose: () => void;
+  onAdvance: (id: string, next: Stage, toastMsg: string, extra?: Partial<MinuteRow>) => void;
+  onOpenSetup: () => void;
+}) {
+  const [draftFile, setDraftFile] = useState<string | null>(null);
+  const [reviewNotes, setReviewNotes] = useState('');
+  const [adoptedAt, setAdoptedAt] = useState('');
+  const [signedFile, setSignedFile] = useState<string | null>(null);
+  const draftRef = useRef<HTMLInputElement>(null);
+  const signedRef = useRef<HTMLInputElement>(null);
+
+  const stageIdx = stages.indexOf(row.stage);
+
+  return (
+    <div className="fixed inset-0 z-50">
+      <div className="absolute inset-0 bg-black/35" onClick={onClose} />
+      <div className="absolute right-0 top-0 bottom-0 w-[400px] bg-card border-l border-border overflow-y-auto">
+        <div className="px-5 py-4 border-b border-border flex items-center justify-between sticky top-0 bg-card z-10">
+          <div>
+            <div className="text-[13px] font-medium text-primary">{row.title}</div>
+            <div className="text-[11px] text-muted mt-0.5">Stage {stageIdx + 1} of 5 · {row.stage}</div>
+          </div>
+          <button onClick={onClose} className="text-muted hover:text-primary">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="p-5 space-y-4">
+          {/* Vertical stage progress */}
+          <ol className="space-y-2 mb-2">
+            {stages.map((s, i) => {
+              const completed = i < stageIdx || (row.stage === 'Signed' && i <= stageIdx);
+              const active = i === stageIdx && row.stage !== 'Signed';
+              return (
+                <li key={s} className="flex items-center gap-2">
+                  <div
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium border ${
+                      completed
+                        ? 'bg-green border-green text-white'
+                        : active
+                        ? 'bg-orange border-orange text-white'
+                        : 'bg-background border-border text-muted'
+                    }`}
+                  >
+                    {completed ? <Check className="w-3 h-3" /> : i + 1}
+                  </div>
+                  <span className={`text-[12px] ${completed || active ? 'text-primary font-medium' : 'text-muted'}`}>{s}</span>
+                </li>
+              );
+            })}
+          </ol>
+
+          {row.stage === 'Draft' && (
+            <div className="space-y-3">
+              <div className="text-[12px] text-primary">
+                Upload completed minutes draft from Microsoft Word.
+              </div>
+              <button
+                onClick={() => draftRef.current?.click()}
+                className="w-full border-2 border-dashed border-border rounded-lg p-6 flex flex-col items-center gap-2 hover:border-orange hover:bg-orange-tint/40"
+              >
+                <UploadCloud className="w-6 h-6 text-muted" />
+                <div className="text-[12px] font-medium text-primary">
+                  {draftFile ?? 'Upload draft (.docx or .pdf)'}
+                </div>
+              </button>
+              <input
+                ref={draftRef}
+                type="file"
+                accept=".docx,.pdf"
+                className="hidden"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) setDraftFile(f.name);
+                }}
+              />
+              {draftFile && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-medium bg-green-tint text-green">
+                  <CheckCircle2 className="w-3 h-3" /> {draftFile}
+                </span>
+              )}
+              <div className="flex gap-2">
+                <button
+                  onClick={onOpenSetup}
+                  className="px-3 py-2 border border-border rounded-lg text-[12px] font-medium text-primary hover:bg-background"
+                >
+                  Open setup
+                </button>
+                <button
+                  disabled={!draftFile}
+                  onClick={() =>
+                    onAdvance(row.id, 'Circulated', 'Minutes circulated · Stage 2 active')
+                  }
+                  className="flex-1 px-3 py-2 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Mark as circulated →
+                </button>
+              </div>
+            </div>
+          )}
+
+          {row.stage === 'Circulated' && (
+            <div className="space-y-3">
+              <div className="text-[12px] text-primary">
+                Draft sent to directors for review. Awaiting comments.
+              </div>
+              <div className="rounded-lg border border-blue-500/30 bg-blue-500/10 p-3 text-[11px] text-primary">
+                <div className="font-medium mb-1">Circulated to:</div>
+                <div className="text-muted leading-relaxed">
+                  Dave Smuts, Gys Joubert, James Mnyupe, David Namalenga, Hannes Gouws, Jaco Visser, Fabiola Schrywer
+                </div>
+                <div className="mt-2 text-muted">Date circulated: {new Date().toLocaleDateString()}</div>
+              </div>
+              <button
+                onClick={() =>
+                  onAdvance(row.id, 'Reviewed', 'Review complete · Stage 3 active')
+                }
+                className="w-full px-3 py-2 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
+              >
+                Mark as reviewed →
+              </button>
+            </div>
+          )}
+
+          {row.stage === 'Reviewed' && (
+            <div className="space-y-3">
+              <div className="text-[12px] text-primary">
+                Director comments received and addressed. Ready for adoption.
+              </div>
+              <div>
+                <div className="text-[11px] font-medium text-muted mb-1">Review notes</div>
+                <textarea
+                  value={reviewNotes}
+                  onChange={(e) => setReviewNotes(e.target.value)}
+                  placeholder="Record any material changes made..."
+                  rows={4}
+                  className="w-full px-3 py-2 border border-border rounded-lg text-[12px] bg-background text-primary focus:outline-none focus:border-orange"
+                />
+              </div>
+              <button
+                onClick={() =>
+                  onAdvance(row.id, 'Approved', 'Minutes approved · Stage 4 active')
+                }
+                className="w-full px-3 py-2 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
+              >
+                Mark as approved →
+              </button>
+            </div>
+          )}
+
+          {row.stage === 'Approved' && (
+            <div className="space-y-3">
+              <div className="text-[12px] text-primary">
+                Adopted at the next meeting as a true record. Awaiting chairperson signature.
+              </div>
+              <div>
+                <div className="text-[11px] font-medium text-muted mb-1">Adopted at meeting</div>
+                <input
+                  value={adoptedAt}
+                  onChange={(e) => setAdoptedAt(e.target.value)}
+                  placeholder="e.g. 5th AGM — 02 June 2022"
+                  className="w-full px-3 py-2 border border-border rounded-lg text-[12px] bg-background text-primary focus:outline-none focus:border-orange"
+                />
+              </div>
+              <button
+                onClick={() => signedRef.current?.click()}
+                className="w-full border-2 border-dashed border-border rounded-lg p-6 flex flex-col items-center gap-2 hover:border-orange hover:bg-orange-tint/40"
+              >
+                <UploadCloud className="w-6 h-6 text-muted" />
+                <div className="text-[12px] font-medium text-primary">
+                  {signedFile ?? 'Upload signed minutes PDF'}
+                </div>
+              </button>
+              <input
+                ref={signedRef}
+                type="file"
+                accept=".pdf"
+                className="hidden"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) setSignedFile(f.name);
+                }}
+              />
+              {signedFile && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-medium bg-green-tint text-green">
+                  <CheckCircle2 className="w-3 h-3" /> {signedFile}
+                </span>
+              )}
+              <button
+                disabled={!signedFile}
+                onClick={() =>
+                  onAdvance(row.id, 'Signed', 'Minutes signed · Record is permanent', {
+                    signedDate: new Date().toLocaleDateString(),
+                    signedFile: signedFile ?? undefined,
+                  })
+                }
+                className="w-full px-3 py-2 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Mark as signed →
+              </button>
+            </div>
+          )}
+
+          {row.stage === 'Signed' && (
+            <div className="space-y-3">
+              <div className="rounded-lg border border-green/30 bg-green-tint p-4 text-[12px] text-primary leading-relaxed">
+                <div className="flex items-center gap-2 font-medium text-green mb-1">
+                  <CheckCircle2 className="w-4 h-4" /> Minutes are signed and permanently retained.
+                </div>
+                This record cannot be edited or deleted. Retained per Companies Act s.179 —
+                5&nbsp;year minimum retention.
+              </div>
+              <div className="text-[11px] text-muted space-y-1">
+                <div><span className="text-primary font-medium">Date signed:</span> {row.signedDate ?? '—'}</div>
+                <div><span className="text-primary font-medium">Chairperson:</span> {row.chairperson}</div>
+                <div><span className="text-primary font-medium">Document:</span> {row.signedFile ?? '—'}</div>
+              </div>
+              <button className="w-full px-3 py-2 border border-border rounded-lg text-[12px] font-medium text-primary hover:bg-background">
+                View document
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
