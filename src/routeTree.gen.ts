@@ -29,6 +29,7 @@ import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DeadlinesRouteImport } from './routes/deadlines'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as BoardPackRouteImport } from './routes/board-pack'
 import { Route as AuditTrailRouteImport } from './routes/audit-trail'
 import { Route as AmlKycRouteImport } from './routes/aml-kyc'
 import { Route as AlertsRouteImport } from './routes/alerts'
@@ -135,6 +136,11 @@ const CalendarRoute = CalendarRouteImport.update({
   path: '/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BoardPackRoute = BoardPackRouteImport.update({
+  id: '/board-pack',
+  path: '/board-pack',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuditTrailRoute = AuditTrailRouteImport.update({
   id: '/audit-trail',
   path: '/audit-trail',
@@ -167,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof AlertsRoute
   '/aml-kyc': typeof AmlKycRoute
   '/audit-trail': typeof AuditTrailRoute
+  '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof AlertsRoute
   '/aml-kyc': typeof AmlKycRoute
   '/audit-trail': typeof AuditTrailRoute
+  '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/alerts': typeof AlertsRoute
   '/aml-kyc': typeof AmlKycRoute
   '/audit-trail': typeof AuditTrailRoute
+  '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/aml-kyc'
     | '/audit-trail'
+    | '/board-pack'
     | '/calendar'
     | '/dashboard'
     | '/deadlines'
@@ -278,6 +288,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/aml-kyc'
     | '/audit-trail'
+    | '/board-pack'
     | '/calendar'
     | '/dashboard'
     | '/deadlines'
@@ -305,6 +316,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/aml-kyc'
     | '/audit-trail'
+    | '/board-pack'
     | '/calendar'
     | '/dashboard'
     | '/deadlines'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   AlertsRoute: typeof AlertsRoute
   AmlKycRoute: typeof AmlKycRoute
   AuditTrailRoute: typeof AuditTrailRoute
+  BoardPackRoute: typeof BoardPackRoute
   CalendarRoute: typeof CalendarRoute
   DashboardRoute: typeof DashboardRoute
   DeadlinesRoute: typeof DeadlinesRoute
@@ -497,6 +510,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/board-pack': {
+      id: '/board-pack'
+      path: '/board-pack'
+      fullPath: '/board-pack'
+      preLoaderRoute: typeof BoardPackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/audit-trail': {
       id: '/audit-trail'
       path: '/audit-trail'
@@ -541,6 +561,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlertsRoute: AlertsRoute,
   AmlKycRoute: AmlKycRoute,
   AuditTrailRoute: AuditTrailRoute,
+  BoardPackRoute: BoardPackRoute,
   CalendarRoute: CalendarRoute,
   DashboardRoute: DashboardRoute,
   DeadlinesRoute: DeadlinesRoute,
@@ -565,3 +586,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

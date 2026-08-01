@@ -3,7 +3,7 @@ import {
   Home, Building2, FileText, Book, Calendar, Folder, Shield,
   AlertCircle, Clock, Bell, Users, AlertTriangle, FileCheck,
   Scale, FileSearch, Users as UsersIcon, BarChart3, Settings,
-  History, DollarSign
+  History, DollarSign, Package
 } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
@@ -20,6 +20,7 @@ const navSections = [
       { to: '/registers', icon: Book, label: 'Registers' },
       { to: '/calendar', icon: Calendar, label: 'Board calendar' },
       { to: '/minutes', icon: FileText, label: 'Minutes' },
+      { to: '/board-pack', icon: Package, label: 'Board pack' },
     ],
   },
   {
