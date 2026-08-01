@@ -1,10 +1,11 @@
-import { Link, useRouterState } from '@tanstack/react-router';
+import { Link, useRouterState, useNavigate } from '@tanstack/react-router';
 import {
   Home, Building2, FileText, Book, Calendar, Folder, Shield,
   AlertCircle, Clock, Bell, Users, AlertTriangle, FileCheck,
   Scale, FileSearch, Users as UsersIcon, BarChart3, Settings,
   History, DollarSign
 } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
 import { users } from '../../data/users';
 import { useState } from 'react';
@@ -68,6 +69,7 @@ export default function Sidebar() {
   const { activeUser, setActiveUserById } = useUser();
   const [expanded] = useState(true);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
 
   return (
     <aside className={`fixed left-0 top-0 bottom-0 bg-primary z-40 flex flex-col ${expanded ? 'w-[180px]' : 'w-16'} transition-all duration-300`}>
@@ -151,6 +153,16 @@ export default function Sidebar() {
             )}
           </button>
         ))}
+        <button
+          onClick={() => {
+            setActiveUserById(users[0].id);
+            navigate({ to: '/sign-in' });
+          }}
+          className="w-full flex items-center gap-2 px-2 py-2 mt-1 rounded text-left text-white/55 hover:text-white hover:bg-white/10"
+        >
+          <LogOut className="w-4 h-4 flex-shrink-0" />
+          {expanded && <span className="text-[12px]">Sign out</span>}
+        </button>
       </div>
     </aside>
   );

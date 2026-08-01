@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StakeholdersRouteImport } from './routes/stakeholders'
+import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as RiskRouteImport } from './routes/risk'
@@ -37,6 +38,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const StakeholdersRoute = StakeholdersRouteImport.update({
   id: '/stakeholders',
   path: '/stakeholders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/risk': typeof RiskRoute
   '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
+  '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesByTo {
@@ -205,6 +212,7 @@ export interface FileRoutesByTo {
   '/risk': typeof RiskRoute
   '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
+  '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesById {
@@ -232,6 +240,7 @@ export interface FileRoutesById {
   '/risk': typeof RiskRoute
   '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
+  '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRouteTypes {
@@ -260,6 +269,7 @@ export interface FileRouteTypes {
     | '/risk'
     | '/sanctions'
     | '/settings'
+    | '/sign-in'
     | '/stakeholders'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -286,6 +296,7 @@ export interface FileRouteTypes {
     | '/risk'
     | '/sanctions'
     | '/settings'
+    | '/sign-in'
     | '/stakeholders'
   id:
     | '__root__'
@@ -312,6 +323,7 @@ export interface FileRouteTypes {
     | '/risk'
     | '/sanctions'
     | '/settings'
+    | '/sign-in'
     | '/stakeholders'
   fileRoutesById: FileRoutesById
 }
@@ -339,6 +351,7 @@ export interface RootRouteChildren {
   RiskRoute: typeof RiskRoute
   SanctionsRoute: typeof SanctionsRoute
   SettingsRoute: typeof SettingsRoute
+  SignInRoute: typeof SignInRoute
   StakeholdersRoute: typeof StakeholdersRoute
 }
 
@@ -349,6 +362,13 @@ declare module '@tanstack/react-router' {
       path: '/stakeholders'
       fullPath: '/stakeholders'
       preLoaderRoute: typeof StakeholdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -539,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   RiskRoute: RiskRoute,
   SanctionsRoute: SanctionsRoute,
   SettingsRoute: SettingsRoute,
+  SignInRoute: SignInRoute,
   StakeholdersRoute: StakeholdersRoute,
 }
 export const routeTree = rootRouteImport
