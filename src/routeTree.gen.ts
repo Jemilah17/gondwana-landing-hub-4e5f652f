@@ -28,6 +28,7 @@ import { Route as EntitiesRouteImport } from './routes/entities'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DeadlinesRouteImport } from './routes/deadlines'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as BoardPackRouteImport } from './routes/board-pack'
 import { Route as AuditTrailRouteImport } from './routes/audit-trail'
@@ -131,6 +132,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComplianceRoute = ComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CalendarRoute = CalendarRouteImport.update({
   id: '/calendar',
   path: '/calendar',
@@ -175,6 +181,7 @@ export interface FileRoutesByFullPath {
   '/audit-trail': typeof AuditTrailRoute
   '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
+  '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/documents': typeof DocumentsRoute
@@ -203,6 +210,7 @@ export interface FileRoutesByTo {
   '/audit-trail': typeof AuditTrailRoute
   '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
+  '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/documents': typeof DocumentsRoute
@@ -232,6 +240,7 @@ export interface FileRoutesById {
   '/audit-trail': typeof AuditTrailRoute
   '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
+  '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/documents': typeof DocumentsRoute
@@ -262,6 +271,7 @@ export interface FileRouteTypes {
     | '/audit-trail'
     | '/board-pack'
     | '/calendar'
+    | '/compliance'
     | '/dashboard'
     | '/deadlines'
     | '/documents'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/audit-trail'
     | '/board-pack'
     | '/calendar'
+    | '/compliance'
     | '/dashboard'
     | '/deadlines'
     | '/documents'
@@ -318,6 +329,7 @@ export interface FileRouteTypes {
     | '/audit-trail'
     | '/board-pack'
     | '/calendar'
+    | '/compliance'
     | '/dashboard'
     | '/deadlines'
     | '/documents'
@@ -347,6 +359,7 @@ export interface RootRouteChildren {
   AuditTrailRoute: typeof AuditTrailRoute
   BoardPackRoute: typeof BoardPackRoute
   CalendarRoute: typeof CalendarRoute
+  ComplianceRoute: typeof ComplianceRoute
   DashboardRoute: typeof DashboardRoute
   DeadlinesRoute: typeof DeadlinesRoute
   DocumentsRoute: typeof DocumentsRoute
@@ -503,6 +516,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compliance': {
+      id: '/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/calendar': {
       id: '/calendar'
       path: '/calendar'
@@ -563,6 +583,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuditTrailRoute: AuditTrailRoute,
   BoardPackRoute: BoardPackRoute,
   CalendarRoute: CalendarRoute,
+  ComplianceRoute: ComplianceRoute,
   DashboardRoute: DashboardRoute,
   DeadlinesRoute: DeadlinesRoute,
   DocumentsRoute: DocumentsRoute,

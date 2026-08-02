@@ -26,7 +26,7 @@ const navSections = [
   {
     label: 'Compliance',
     items: [
-      { to: '/sanctions', icon: Shield, label: 'Sanctions', alert: true },
+      { to: '/compliance', icon: CheckCircle, label: 'Compliance' },
       { to: '/aml-kyc', icon: AlertCircle, label: 'AML / KYC' },
       { to: '/deadlines', icon: Clock, label: 'Deadlines' },
       { to: '/alerts', icon: Bell, label: 'Alerts', badge: 5 },
