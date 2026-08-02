@@ -115,9 +115,6 @@ export default function Sidebar() {
                         {item.badge}
                       </span>
                     )}
-                    {item.alert && (
-                      <span className="w-2 h-2 bg-red rounded-full" />
-                    )}
                   </>
                 )}
               </Link>

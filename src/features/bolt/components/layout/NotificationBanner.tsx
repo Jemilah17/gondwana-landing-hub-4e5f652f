@@ -12,7 +12,7 @@ export default function NotificationBanner() {
   const workloads = [
     { userId: 'fabiola', name: 'Fabiola', cluster: 'A', entities: 5, overdue: 3 },
     { userId: 'hilma', name: 'Hilma', cluster: 'C & D', entities: 11, due: '2 BIPA' },
-    { userId: 'jemilah', name: 'Jemilah', cluster: 'B & E', entities: 13, flag: '1 sanctions' },
+    { userId: 'jemilah', name: 'Jemilah', cluster: 'B & E', entities: 13, flag: '1 BO declaration pending' },
   ];
 
   return (
