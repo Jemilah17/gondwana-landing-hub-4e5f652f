@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StakeholdersRouteImport } from './routes/stakeholders'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as RiskRouteImport } from './routes/risk'
 import { Route as RemunerationRouteImport } from './routes/remuneration'
 import { Route as RegistersRouteImport } from './routes/registers'
@@ -50,11 +49,6 @@ const SignInRoute = SignInRouteImport.update({
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SanctionsRoute = SanctionsRouteImport.update({
-  id: '/sanctions',
-  path: '/sanctions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RiskRoute = RiskRouteImport.update({
@@ -197,7 +191,6 @@ export interface FileRoutesByFullPath {
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
-  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -226,7 +219,6 @@ export interface FileRoutesByTo {
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
-  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -256,7 +248,6 @@ export interface FileRoutesById {
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
-  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -287,7 +278,6 @@ export interface FileRouteTypes {
     | '/registers'
     | '/remuneration'
     | '/risk'
-    | '/sanctions'
     | '/settings'
     | '/sign-in'
     | '/stakeholders'
@@ -316,7 +306,6 @@ export interface FileRouteTypes {
     | '/registers'
     | '/remuneration'
     | '/risk'
-    | '/sanctions'
     | '/settings'
     | '/sign-in'
     | '/stakeholders'
@@ -345,7 +334,6 @@ export interface FileRouteTypes {
     | '/registers'
     | '/remuneration'
     | '/risk'
-    | '/sanctions'
     | '/settings'
     | '/sign-in'
     | '/stakeholders'
@@ -375,7 +363,6 @@ export interface RootRouteChildren {
   RegistersRoute: typeof RegistersRoute
   RemunerationRoute: typeof RemunerationRoute
   RiskRoute: typeof RiskRoute
-  SanctionsRoute: typeof SanctionsRoute
   SettingsRoute: typeof SettingsRoute
   SignInRoute: typeof SignInRoute
   StakeholdersRoute: typeof StakeholdersRoute
@@ -402,13 +389,6 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sanctions': {
-      id: '/sanctions'
-      path: '/sanctions'
-      fullPath: '/sanctions'
-      preLoaderRoute: typeof SanctionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/risk': {
@@ -599,7 +579,6 @@ const rootRouteChildren: RootRouteChildren = {
   RegistersRoute: RegistersRoute,
   RemunerationRoute: RemunerationRoute,
   RiskRoute: RiskRoute,
-  SanctionsRoute: SanctionsRoute,
   SettingsRoute: SettingsRoute,
   SignInRoute: SignInRoute,
   StakeholdersRoute: StakeholdersRoute,
@@ -607,13 +586,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
