@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StakeholdersRouteImport } from './routes/stakeholders'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as RiskRouteImport } from './routes/risk'
 import { Route as RemunerationRouteImport } from './routes/remuneration'
 import { Route as RegistersRouteImport } from './routes/registers'
@@ -28,6 +27,7 @@ import { Route as EntitiesRouteImport } from './routes/entities'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DeadlinesRouteImport } from './routes/deadlines'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as BoardPackRouteImport } from './routes/board-pack'
 import { Route as AuditTrailRouteImport } from './routes/audit-trail'
@@ -49,11 +49,6 @@ const SignInRoute = SignInRouteImport.update({
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SanctionsRoute = SanctionsRouteImport.update({
-  id: '/sanctions',
-  path: '/sanctions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RiskRoute = RiskRouteImport.update({
@@ -131,6 +126,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComplianceRoute = ComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CalendarRoute = CalendarRouteImport.update({
   id: '/calendar',
   path: '/calendar',
@@ -175,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/audit-trail': typeof AuditTrailRoute
   '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
+  '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/documents': typeof DocumentsRoute
@@ -190,7 +191,6 @@ export interface FileRoutesByFullPath {
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
-  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -203,6 +203,7 @@ export interface FileRoutesByTo {
   '/audit-trail': typeof AuditTrailRoute
   '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
+  '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/documents': typeof DocumentsRoute
@@ -218,7 +219,6 @@ export interface FileRoutesByTo {
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
-  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -232,6 +232,7 @@ export interface FileRoutesById {
   '/audit-trail': typeof AuditTrailRoute
   '/board-pack': typeof BoardPackRoute
   '/calendar': typeof CalendarRoute
+  '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/documents': typeof DocumentsRoute
@@ -247,7 +248,6 @@ export interface FileRoutesById {
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
-  '/sanctions': typeof SanctionsRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -262,6 +262,7 @@ export interface FileRouteTypes {
     | '/audit-trail'
     | '/board-pack'
     | '/calendar'
+    | '/compliance'
     | '/dashboard'
     | '/deadlines'
     | '/documents'
@@ -277,7 +278,6 @@ export interface FileRouteTypes {
     | '/registers'
     | '/remuneration'
     | '/risk'
-    | '/sanctions'
     | '/settings'
     | '/sign-in'
     | '/stakeholders'
@@ -290,6 +290,7 @@ export interface FileRouteTypes {
     | '/audit-trail'
     | '/board-pack'
     | '/calendar'
+    | '/compliance'
     | '/dashboard'
     | '/deadlines'
     | '/documents'
@@ -305,7 +306,6 @@ export interface FileRouteTypes {
     | '/registers'
     | '/remuneration'
     | '/risk'
-    | '/sanctions'
     | '/settings'
     | '/sign-in'
     | '/stakeholders'
@@ -318,6 +318,7 @@ export interface FileRouteTypes {
     | '/audit-trail'
     | '/board-pack'
     | '/calendar'
+    | '/compliance'
     | '/dashboard'
     | '/deadlines'
     | '/documents'
@@ -333,7 +334,6 @@ export interface FileRouteTypes {
     | '/registers'
     | '/remuneration'
     | '/risk'
-    | '/sanctions'
     | '/settings'
     | '/sign-in'
     | '/stakeholders'
@@ -347,6 +347,7 @@ export interface RootRouteChildren {
   AuditTrailRoute: typeof AuditTrailRoute
   BoardPackRoute: typeof BoardPackRoute
   CalendarRoute: typeof CalendarRoute
+  ComplianceRoute: typeof ComplianceRoute
   DashboardRoute: typeof DashboardRoute
   DeadlinesRoute: typeof DeadlinesRoute
   DocumentsRoute: typeof DocumentsRoute
@@ -362,7 +363,6 @@ export interface RootRouteChildren {
   RegistersRoute: typeof RegistersRoute
   RemunerationRoute: typeof RemunerationRoute
   RiskRoute: typeof RiskRoute
-  SanctionsRoute: typeof SanctionsRoute
   SettingsRoute: typeof SettingsRoute
   SignInRoute: typeof SignInRoute
   StakeholdersRoute: typeof StakeholdersRoute
@@ -389,13 +389,6 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sanctions': {
-      id: '/sanctions'
-      path: '/sanctions'
-      fullPath: '/sanctions'
-      preLoaderRoute: typeof SanctionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/risk': {
@@ -503,6 +496,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compliance': {
+      id: '/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/calendar': {
       id: '/calendar'
       path: '/calendar'
@@ -563,6 +563,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuditTrailRoute: AuditTrailRoute,
   BoardPackRoute: BoardPackRoute,
   CalendarRoute: CalendarRoute,
+  ComplianceRoute: ComplianceRoute,
   DashboardRoute: DashboardRoute,
   DeadlinesRoute: DeadlinesRoute,
   DocumentsRoute: DocumentsRoute,
@@ -578,7 +579,6 @@ const rootRouteChildren: RootRouteChildren = {
   RegistersRoute: RegistersRoute,
   RemunerationRoute: RemunerationRoute,
   RiskRoute: RiskRoute,
-  SanctionsRoute: SanctionsRoute,
   SettingsRoute: SettingsRoute,
   SignInRoute: SignInRoute,
   StakeholdersRoute: StakeholdersRoute,
@@ -586,13 +586,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

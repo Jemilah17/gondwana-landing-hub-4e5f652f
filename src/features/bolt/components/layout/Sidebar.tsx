@@ -3,7 +3,7 @@ import {
   Home, Building2, FileText, Book, Calendar, Folder, Shield,
   AlertCircle, Clock, Bell, Users, AlertTriangle, FileCheck,
   Scale, FileSearch, Users as UsersIcon, BarChart3, Settings,
-  History, DollarSign, Package
+  History, DollarSign, Package, CheckCircle
 } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
@@ -26,7 +26,7 @@ const navSections = [
   {
     label: 'Compliance',
     items: [
-      { to: '/sanctions', icon: Shield, label: 'Sanctions', alert: true },
+      { to: '/compliance', icon: CheckCircle, label: 'Compliance' },
       { to: '/aml-kyc', icon: AlertCircle, label: 'AML / KYC' },
       { to: '/deadlines', icon: Clock, label: 'Deadlines' },
       { to: '/alerts', icon: Bell, label: 'Alerts', badge: 5 },
@@ -114,9 +114,6 @@ export default function Sidebar() {
                       <span className="bg-white/20 text-white text-[10px] px-1.5 rounded">
                         {item.badge}
                       </span>
-                    )}
-                    {item.alert && (
-                      <span className="w-2 h-2 bg-red rounded-full" />
                     )}
                   </>
                 )}
