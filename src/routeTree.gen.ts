@@ -25,6 +25,11 @@ import { Route as FilingsRouteImport } from './routes/filings'
 import { Route as EsgRouteImport } from './routes/esg'
 import { Route as EntitiesRouteImport } from './routes/entities'
 import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as DirectorMinutesRouteImport } from './routes/director-minutes'
+import { Route as DirectorMeetingsRouteImport } from './routes/director-meetings'
+import { Route as DirectorEntitiesRouteImport } from './routes/director-entities'
+import { Route as DirectorDeclarationsRouteImport } from './routes/director-declarations'
+import { Route as DirectorDashboardRouteImport } from './routes/director-dashboard'
 import { Route as DeadlinesRouteImport } from './routes/deadlines'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ComplianceRouteImport } from './routes/compliance'
@@ -116,6 +121,31 @@ const DocumentsRoute = DocumentsRouteImport.update({
   path: '/documents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DirectorMinutesRoute = DirectorMinutesRouteImport.update({
+  id: '/director-minutes',
+  path: '/director-minutes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorMeetingsRoute = DirectorMeetingsRouteImport.update({
+  id: '/director-meetings',
+  path: '/director-meetings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorEntitiesRoute = DirectorEntitiesRouteImport.update({
+  id: '/director-entities',
+  path: '/director-entities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorDeclarationsRoute = DirectorDeclarationsRouteImport.update({
+  id: '/director-declarations',
+  path: '/director-declarations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorDashboardRoute = DirectorDashboardRouteImport.update({
+  id: '/director-dashboard',
+  path: '/director-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DeadlinesRoute = DeadlinesRouteImport.update({
   id: '/deadlines',
   path: '/deadlines',
@@ -178,6 +208,11 @@ export interface FileRoutesByFullPath {
   '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
+  '/director-dashboard': typeof DirectorDashboardRoute
+  '/director-declarations': typeof DirectorDeclarationsRoute
+  '/director-entities': typeof DirectorEntitiesRoute
+  '/director-meetings': typeof DirectorMeetingsRoute
+  '/director-minutes': typeof DirectorMinutesRoute
   '/documents': typeof DocumentsRoute
   '/entities': typeof EntitiesRoute
   '/esg': typeof EsgRoute
@@ -206,6 +241,11 @@ export interface FileRoutesByTo {
   '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
+  '/director-dashboard': typeof DirectorDashboardRoute
+  '/director-declarations': typeof DirectorDeclarationsRoute
+  '/director-entities': typeof DirectorEntitiesRoute
+  '/director-meetings': typeof DirectorMeetingsRoute
+  '/director-minutes': typeof DirectorMinutesRoute
   '/documents': typeof DocumentsRoute
   '/entities': typeof EntitiesRoute
   '/esg': typeof EsgRoute
@@ -235,6 +275,11 @@ export interface FileRoutesById {
   '/compliance': typeof ComplianceRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
+  '/director-dashboard': typeof DirectorDashboardRoute
+  '/director-declarations': typeof DirectorDeclarationsRoute
+  '/director-entities': typeof DirectorEntitiesRoute
+  '/director-meetings': typeof DirectorMeetingsRoute
+  '/director-minutes': typeof DirectorMinutesRoute
   '/documents': typeof DocumentsRoute
   '/entities': typeof EntitiesRoute
   '/esg': typeof EsgRoute
@@ -265,6 +310,11 @@ export interface FileRouteTypes {
     | '/compliance'
     | '/dashboard'
     | '/deadlines'
+    | '/director-dashboard'
+    | '/director-declarations'
+    | '/director-entities'
+    | '/director-meetings'
+    | '/director-minutes'
     | '/documents'
     | '/entities'
     | '/esg'
@@ -293,6 +343,11 @@ export interface FileRouteTypes {
     | '/compliance'
     | '/dashboard'
     | '/deadlines'
+    | '/director-dashboard'
+    | '/director-declarations'
+    | '/director-entities'
+    | '/director-meetings'
+    | '/director-minutes'
     | '/documents'
     | '/entities'
     | '/esg'
@@ -321,6 +376,11 @@ export interface FileRouteTypes {
     | '/compliance'
     | '/dashboard'
     | '/deadlines'
+    | '/director-dashboard'
+    | '/director-declarations'
+    | '/director-entities'
+    | '/director-meetings'
+    | '/director-minutes'
     | '/documents'
     | '/entities'
     | '/esg'
@@ -350,6 +410,11 @@ export interface RootRouteChildren {
   ComplianceRoute: typeof ComplianceRoute
   DashboardRoute: typeof DashboardRoute
   DeadlinesRoute: typeof DeadlinesRoute
+  DirectorDashboardRoute: typeof DirectorDashboardRoute
+  DirectorDeclarationsRoute: typeof DirectorDeclarationsRoute
+  DirectorEntitiesRoute: typeof DirectorEntitiesRoute
+  DirectorMeetingsRoute: typeof DirectorMeetingsRoute
+  DirectorMinutesRoute: typeof DirectorMinutesRoute
   DocumentsRoute: typeof DocumentsRoute
   EntitiesRoute: typeof EntitiesRoute
   EsgRoute: typeof EsgRoute
@@ -482,6 +547,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/director-minutes': {
+      id: '/director-minutes'
+      path: '/director-minutes'
+      fullPath: '/director-minutes'
+      preLoaderRoute: typeof DirectorMinutesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/director-meetings': {
+      id: '/director-meetings'
+      path: '/director-meetings'
+      fullPath: '/director-meetings'
+      preLoaderRoute: typeof DirectorMeetingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/director-entities': {
+      id: '/director-entities'
+      path: '/director-entities'
+      fullPath: '/director-entities'
+      preLoaderRoute: typeof DirectorEntitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/director-declarations': {
+      id: '/director-declarations'
+      path: '/director-declarations'
+      fullPath: '/director-declarations'
+      preLoaderRoute: typeof DirectorDeclarationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/director-dashboard': {
+      id: '/director-dashboard'
+      path: '/director-dashboard'
+      fullPath: '/director-dashboard'
+      preLoaderRoute: typeof DirectorDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/deadlines': {
       id: '/deadlines'
       path: '/deadlines'
@@ -566,6 +666,11 @@ const rootRouteChildren: RootRouteChildren = {
   ComplianceRoute: ComplianceRoute,
   DashboardRoute: DashboardRoute,
   DeadlinesRoute: DeadlinesRoute,
+  DirectorDashboardRoute: DirectorDashboardRoute,
+  DirectorDeclarationsRoute: DirectorDeclarationsRoute,
+  DirectorEntitiesRoute: DirectorEntitiesRoute,
+  DirectorMeetingsRoute: DirectorMeetingsRoute,
+  DirectorMinutesRoute: DirectorMinutesRoute,
   DocumentsRoute: DocumentsRoute,
   EntitiesRoute: EntitiesRoute,
   EsgRoute: EsgRoute,
