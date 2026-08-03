@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { users, User } from '../data/users';
+import { users, allUsers, User } from '../data/users';
 
 interface UserContextType {
   activeUser: User;
@@ -15,7 +15,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [activeUser, setActiveUser] = useState<User>(users[0]);
 
   const setActiveUserById = (userId: string) => {
-    const user = users.find(u => u.id === userId);
+    const user = allUsers.find(u => u.id === userId);
     if (user) setActiveUser(user);
   };
 
