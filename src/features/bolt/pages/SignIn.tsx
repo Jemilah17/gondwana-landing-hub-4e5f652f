@@ -49,8 +49,8 @@ export default function SignIn() {
   const setSelected = level === 'secretariat' ? setSecretarySel : setDirectorSel;
 
   const handleSignIn = () => {
-    if (level === 'secretariat') setActiveUserById(selectedId);
-    navigate({ to: '/dashboard' });
+    setActiveUserById(selectedId);
+    navigate({ to: level === 'director' ? '/director-dashboard' : '/dashboard' });
   };
 
   return (
