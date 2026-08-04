@@ -16,10 +16,11 @@ export interface Entity {
 
 export const entities: Entity[] = [
   // Cluster A - Holdings & Corporate (Fabiola)
-  { id: 'gcn-001', code: 'GCN-001', name: 'Gondwana Holdings Ltd', type: 'Holding', cluster: 'A', region: 'Khomas', complianceScore: 72, status: 'due soon', assignee: 'fabiola', incorporationDate: '2005-03-15', registrationNumber: '2005/0123' },
+  { id: 'gcn-001', code: 'GCN-001', name: 'Gondwana Holdings Ltd', type: 'Holding', cluster: 'A', region: 'Khomas', complianceScore: 72, status: 'due soon', assignee: 'fabiola', incorporationDate: '2005-03-15', registrationNumber: '2017/1055' },
   { id: 'gcn-002', code: 'GCN-002', name: 'Gondwana Collection Namibia', type: 'Operating', cluster: 'A', region: 'Khomas', complianceScore: 85, status: 'compliant', assignee: 'fabiola', incorporationDate: '2010-06-20', registrationNumber: '2010/0456' },
   { id: 'gcn-003', code: 'GCN-003', name: 'Gondwana Travel Centre', type: 'DNFBP', cluster: 'A', region: 'Khomas', complianceScore: 55, status: 'overdue', assignee: 'fabiola', incorporationDate: '2012-01-10', registrationNumber: '2012/0789', isFlagged: true },
   { id: 'gcn-016', code: 'GCN-016', name: 'Namibia2Go', type: 'Car rental', cluster: 'A', region: 'Khomas', complianceScore: 74, status: 'due soon', assignee: 'fabiola', incorporationDate: '2018-05-22', registrationNumber: '2018/0345' },
+  { id: 'gcn-015', code: 'GCN-015', name: 'Gondwana Properties (Pty) Ltd', type: 'Operating', cluster: 'A', region: 'Khomas', complianceScore: 53, status: 'overdue', assignee: 'fabiola', incorporationDate: '2005-03-15', registrationNumber: 'CC/2005/00891', isFlagged: true },
   { id: 'gcn-t01', code: 'GCN-T01', name: 'GCN Retirement Fund Trust', type: 'Trust', cluster: 'A', region: 'Khomas', complianceScore: 100, status: 'compliant', assignee: 'fabiola', incorporationDate: '2015-11-30', registrationNumber: 'T2015/001' },
 
   // Cluster B - Southern Desert (Jemilah)
