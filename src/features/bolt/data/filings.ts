@@ -17,6 +17,8 @@ export const filings: Filing[] = [
   { id: 'fil-001', entityId: 'gcn-003', entityName: 'Gondwana Travel Centre', cluster: 'A', type: 'BIPA Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'fabiola', isFlagged: true },
   { id: 'fil-002', entityId: 'gcn-001', entityName: 'Gondwana Holdings Ltd', cluster: 'A', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'fabiola' },
   { id: 'fil-003', entityId: 'gcn-002', entityName: 'Gondwana Collection Namibia', cluster: 'A', type: 'BO Declaration', dueDate: '2026-02-28', filedDate: '2026-02-20', receiptNumber: 'BO-2026-0234', status: 'filed', assignee: 'fabiola' },
+  { id: 'fil-p1', entityId: 'gcn-015', entityName: 'Gondwana Properties (Pty) Ltd', cluster: 'A', type: 'BIPA Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'fabiola' },
+  { id: 'fil-p2', entityId: 'gcn-015', entityName: 'Gondwana Properties (Pty) Ltd', cluster: 'A', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'fabiola' },
 
   // Cluster B - Overdue and flagged
   { id: 'fil-004', entityId: 'gcn-008', entityName: 'Kalahari Anib Lodge', cluster: 'B', type: 'BIPA Annual Return', dueDate: '2026-01-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'jemilah', isFlagged: true },
