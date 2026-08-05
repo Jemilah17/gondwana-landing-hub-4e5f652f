@@ -1094,6 +1094,7 @@ export default function Minutes() {
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
   const [panelRowId, setPanelRowId] = useState<string | null>(null);
   const { showToast } = useToast();
+  const [noticeOpen, setNoticeOpen] = useState(false);
 
   const activeRow = rows.find((r) => r.id === panelRowId) ?? null;
 
@@ -1132,14 +1133,23 @@ export default function Minutes() {
       <Topbar
         title="Minutes"
         actions={
-          <button
-            onClick={() => setView('setup')}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
-          >
-            <Plus className="w-3.5 h-3.5" /> New minutes
-          </button>
+          <>
+            <button
+              onClick={() => setNoticeOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-orange text-orange rounded-lg text-[12px] font-medium hover:bg-orange-tint"
+            >
+              <FileText className="w-3.5 h-3.5" /> Generate notice
+            </button>
+            <button
+              onClick={() => setView('setup')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
+            >
+              <Plus className="w-3.5 h-3.5" /> New minutes
+            </button>
+          </>
         }
       />
+      <NoticeModal isOpen={noticeOpen} onClose={() => setNoticeOpen(false)} />
       <div className="p-6">
         <WorkflowBanner current={activeRow?.stage ?? 'Draft'} />
 
