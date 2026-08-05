@@ -21,6 +21,7 @@ const navSections = [
       { to: '/calendar', icon: Calendar, label: 'Board calendar' },
       { to: '/minutes', icon: FileText, label: 'Minutes' },
       { to: '/board-pack', icon: Package, label: 'Board pack' },
+      { to: '/proxy', icon: FileCheck, label: 'Proxy register' },
     ],
   },
   {
