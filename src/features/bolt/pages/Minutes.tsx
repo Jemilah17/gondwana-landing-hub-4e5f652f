@@ -27,6 +27,8 @@ import {
 import { saveAs } from 'file-saver';
 import Topbar from '../components/layout/Topbar';
 import { useToast } from '../contexts/ToastContext';
+import Modal from '../components/ui/Modal';
+import { directors as boardDirectors } from '../data/governance';
 
 type Stage = 'Draft' | 'Circulated' | 'Reviewed' | 'Approved' | 'Signed';
 
