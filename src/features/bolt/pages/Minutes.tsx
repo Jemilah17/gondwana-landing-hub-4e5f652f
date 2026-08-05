@@ -1090,7 +1090,6 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
   );
 }
 
-export default function Minutes() {
 function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const { showToast } = useToast();
   const [noticeType, setNoticeType] = useState('AGM');
