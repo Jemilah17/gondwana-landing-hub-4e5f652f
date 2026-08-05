@@ -15,6 +15,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RiskRouteImport } from './routes/risk'
 import { Route as RemunerationRouteImport } from './routes/remuneration'
 import { Route as RegistersRouteImport } from './routes/registers'
+import { Route as ProxyRouteImport } from './routes/proxy'
 import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as MinutesRouteImport } from './routes/minutes'
 import { Route as LegalRouteImport } from './routes/legal'
@@ -69,6 +70,11 @@ const RemunerationRoute = RemunerationRouteImport.update({
 const RegistersRoute = RegistersRouteImport.update({
   id: '/registers',
   path: '/registers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProxyRoute = ProxyRouteImport.update({
+  id: '/proxy',
+  path: '/proxy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoliciesRoute = PoliciesRouteImport.update({
@@ -223,6 +229,7 @@ export interface FileRoutesByFullPath {
   '/legal': typeof LegalRoute
   '/minutes': typeof MinutesRoute
   '/policies': typeof PoliciesRoute
+  '/proxy': typeof ProxyRoute
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
@@ -256,6 +263,7 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalRoute
   '/minutes': typeof MinutesRoute
   '/policies': typeof PoliciesRoute
+  '/proxy': typeof ProxyRoute
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
@@ -290,6 +298,7 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/minutes': typeof MinutesRoute
   '/policies': typeof PoliciesRoute
+  '/proxy': typeof ProxyRoute
   '/registers': typeof RegistersRoute
   '/remuneration': typeof RemunerationRoute
   '/risk': typeof RiskRoute
@@ -325,6 +334,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/minutes'
     | '/policies'
+    | '/proxy'
     | '/registers'
     | '/remuneration'
     | '/risk'
@@ -358,6 +368,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/minutes'
     | '/policies'
+    | '/proxy'
     | '/registers'
     | '/remuneration'
     | '/risk'
@@ -391,6 +402,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/minutes'
     | '/policies'
+    | '/proxy'
     | '/registers'
     | '/remuneration'
     | '/risk'
@@ -425,6 +437,7 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   MinutesRoute: typeof MinutesRoute
   PoliciesRoute: typeof PoliciesRoute
+  ProxyRoute: typeof ProxyRoute
   RegistersRoute: typeof RegistersRoute
   RemunerationRoute: typeof RemunerationRoute
   RiskRoute: typeof RiskRoute
@@ -475,6 +488,13 @@ declare module '@tanstack/react-router' {
       path: '/registers'
       fullPath: '/registers'
       preLoaderRoute: typeof RegistersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proxy': {
+      id: '/proxy'
+      path: '/proxy'
+      fullPath: '/proxy'
+      preLoaderRoute: typeof ProxyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/policies': {
@@ -681,6 +701,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   MinutesRoute: MinutesRoute,
   PoliciesRoute: PoliciesRoute,
+  ProxyRoute: ProxyRoute,
   RegistersRoute: RegistersRoute,
   RemunerationRoute: RemunerationRoute,
   RiskRoute: RiskRoute,
