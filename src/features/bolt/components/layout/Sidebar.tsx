@@ -1,9 +1,9 @@
 import { Link, useRouterState, useNavigate } from '@tanstack/react-router';
 import {
   Home, Building2, FileText, Book, Calendar, Folder, Shield,
-  AlertCircle, Clock, Bell, Users, AlertTriangle, FileCheck,
-  Scale, FileSearch, Users as UsersIcon, BarChart3, Settings,
-  History, DollarSign, Package, CheckCircle
+  AlertCircle, Clock, Bell, Users, FileCheck,
+  Scale, FileSearch, BarChart3, Settings,
+  History, Package, CheckCircle
 } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
@@ -37,10 +37,6 @@ const navSections = [
     label: 'Governance',
     items: [
       { to: '/governance', icon: Users, label: 'Governance', badge: 8 },
-      { to: '/risk', icon: AlertTriangle, label: 'Risk register' },
-      { to: '/policies', icon: FileText, label: 'Policy register' },
-      { to: '/stakeholders', icon: UsersIcon, label: 'Stakeholder register' },
-      { to: '/remuneration', icon: DollarSign, label: 'Remuneration' },
     ],
   },
   {

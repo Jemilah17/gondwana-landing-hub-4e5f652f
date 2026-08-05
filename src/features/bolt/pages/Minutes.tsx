@@ -14,6 +14,7 @@ import {
   Check,
   X,
 } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import {
   Document,
   Packer,
@@ -27,6 +28,8 @@ import {
 import { saveAs } from 'file-saver';
 import Topbar from '../components/layout/Topbar';
 import { useToast } from '../contexts/ToastContext';
+import Modal from '../components/ui/Modal';
+import { directors as boardDirectors } from '../data/governance';
 
 type Stage = 'Draft' | 'Circulated' | 'Reviewed' | 'Approved' | 'Signed';
 
@@ -1087,11 +1090,188 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
   );
 }
 
+function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const { showToast } = useToast();
+  const [noticeType, setNoticeType] = useState('AGM');
+  const [meetingNumber, setMeetingNumber] = useState('6th');
+  const [date, setDate] = useState('2026-06-25');
+  const [time, setTime] = useState('18:00');
+  const [venue, setVenue] = useState('Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek');
+  const [deadline, setDeadline] = useState('2026-06-22');
+  const [proxyAddress, setProxyAddress] = useState('fabiola.s@gcnam.com');
+  const [chair, setChair] = useState('Dave Smuts');
+  const [items, setItems] = useState<string[]>([
+    'Welcome and confirmation of quorum',
+    'Adoption of the annual financial statements',
+    'Election of directors',
+    'Appointment of auditors',
+    'General business',
+  ]);
+
+  const TYPE_LABEL: Record<string, string> = {
+    AGM: 'ANNUAL GENERAL MEETING',
+    GM: 'GENERAL MEETING',
+    Board: 'BOARD MEETING',
+    Committee: 'COMMITTEE MEETING',
+  };
+
+  const fmtDate = (d: string) =>
+    d
+      ? new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', {
+          day: '2-digit', month: 'long', year: 'numeric',
+        })
+      : '—';
+
+  const generateNotice = async () => {
+    const title = `NOTICE OF THE ${TYPE_LABEL[noticeType]} OF THE SHAREHOLDERS OF GONDWANA HOLDINGS LIMITED (REG. NO 2017/1055)`;
+    const letterhead = await buildLetterheadParagraphs(title);
+    const p = (t: string, bold = false) =>
+      new Paragraph({ children: [new TextRun({ text: t, bold })], spacing: { after: 120 } });
+
+    const doc = new Document({
+      styles: { default: { document: { run: { font: 'Inter', size: 22 } } } },
+      sections: [
+        {
+          properties: {
+            page: {
+              size: { width: 12240, height: 15840 },
+              margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 },
+            },
+          },
+          children: [
+            ...letterhead,
+            p(
+              `Notice is hereby given that the ${meetingNumber} ${TYPE_LABEL[noticeType].toLowerCase()} of the shareholders of Gondwana Holdings Limited will be held on ${fmtDate(date)} at ${time} at ${venue}. The meeting will be chaired by ${chair}.`,
+            ),
+            new Paragraph({ children: [new TextRun('')] }),
+            p('AGENDA', true),
+            ...items
+              .map((a, i) => (a.trim() ? p(`${i + 1}. ${a.trim()}`) : null))
+              .filter((x): x is Paragraph => x !== null),
+            new Paragraph({ children: [new TextRun('')] }),
+            p(
+              `A member entitled to attend and vote is entitled to appoint a proxy. Proxy forms must be lodged with the Company Secretary no later than ${fmtDate(deadline)} at ${proxyAddress}.`,
+            ),
+            new Paragraph({ children: [new TextRun('')] }),
+            p('By order of the Board'),
+            new Paragraph({ children: [new TextRun('')] }),
+            p('Fabiola Schrywer'),
+            p('Company Secretary'),
+            p('Gondwana Holdings Limited'),
+            p('Date: _______________'),
+          ],
+        },
+      ],
+    });
+
+    const blob = await Packer.toBlob(doc);
+    saveAs(blob, `Notice_${noticeType}_${date}.docx`);
+    showToast('Notice downloaded · Ready for chairperson signature');
+    onClose();
+  };
+
+  const input = 'w-full border border-border rounded-lg px-2.5 py-1.5 text-[12px] text-primary bg-card focus:outline-none focus:border-orange';
+  const label = 'block text-[10px] uppercase tracking-wider text-muted mb-1';
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title="Generate meeting notice" maxWidth="max-w-[520px]">
+      <div className="space-y-3 max-h-[65vh] overflow-y-auto pr-1">
+        <div className="bg-background border border-border rounded-lg p-3 space-y-1">
+          <div className="flex items-center gap-1.5 text-[11px] text-muted">
+            <Lock className="w-3 h-3" /> Company: <span className="text-primary">Gondwana Holdings Limited</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[11px] text-muted">
+            <Lock className="w-3 h-3" /> Reg no: <span className="text-primary">2017/1055</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className={label}>Notice type</label>
+            <select className={input} value={noticeType} onChange={(e) => setNoticeType(e.target.value)}>
+              <option value="AGM">AGM</option>
+              <option value="GM">GM</option>
+              <option value="Board">Board</option>
+              <option value="Committee">Committee</option>
+            </select>
+          </div>
+          <div>
+            <label className={label}>Meeting number</label>
+            <input className={input} value={meetingNumber} onChange={(e) => setMeetingNumber(e.target.value)} placeholder="6th" />
+          </div>
+          <div>
+            <label className={label}>Date</label>
+            <input type="date" className={input} value={date} onChange={(e) => setDate(e.target.value)} />
+          </div>
+          <div>
+            <label className={label}>Time</label>
+            <input type="time" className={input} value={time} onChange={(e) => setTime(e.target.value)} />
+          </div>
+        </div>
+
+        <div>
+          <label className={label}>Venue</label>
+          <input className={input} value={venue} onChange={(e) => setVenue(e.target.value)} />
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className={label}>RSVP / proxy deadline</label>
+            <input type="date" className={input} value={deadline} onChange={(e) => setDeadline(e.target.value)} />
+          </div>
+          <div>
+            <label className={label}>Proxy address</label>
+            <input className={input} value={proxyAddress} onChange={(e) => setProxyAddress(e.target.value)} />
+          </div>
+        </div>
+
+        <div>
+          <label className={label}>Chairperson</label>
+          <select className={input} value={chair} onChange={(e) => setChair(e.target.value)}>
+            {boardDirectors
+              .filter((d) => d.status === 'active')
+              .map((d) => (
+                <option key={d.name} value={d.name}>{d.name} — {d.role}</option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className={label}>Agenda items</label>
+          <div className="space-y-2">
+            {items.map((v, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="text-[11px] text-muted w-4">{i + 1}.</span>
+                <input
+                  className={input}
+                  value={v}
+                  onChange={(e) => setItems((prev) => prev.map((x, idx) => (idx === i ? e.target.value : x)))}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-end gap-2 pt-4">
+        <button onClick={onClose} className="text-[12px] text-muted px-3 py-1.5 rounded-lg hover:bg-background">Cancel</button>
+        <button
+          onClick={generateNotice}
+          className="inline-flex items-center gap-1.5 text-[12px] text-white bg-orange px-3 py-1.5 rounded-lg font-medium hover:opacity-90"
+        >
+          <Download className="w-3.5 h-3.5" /> Generate notice (.docx)
+        </button>
+      </div>
+    </Modal>
+  );
+}
+
 export default function Minutes() {
   const [view, setView] = useState<'list' | 'setup' | 'view'>('list');
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
   const [panelRowId, setPanelRowId] = useState<string | null>(null);
   const { showToast } = useToast();
+  const [noticeOpen, setNoticeOpen] = useState(false);
 
   const activeRow = rows.find((r) => r.id === panelRowId) ?? null;
 
@@ -1130,14 +1310,23 @@ export default function Minutes() {
       <Topbar
         title="Minutes"
         actions={
-          <button
-            onClick={() => setView('setup')}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
-          >
-            <Plus className="w-3.5 h-3.5" /> New minutes
-          </button>
+          <>
+            <button
+              onClick={() => setNoticeOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-orange text-orange rounded-lg text-[12px] font-medium hover:bg-orange-tint"
+            >
+              <FileText className="w-3.5 h-3.5" /> Generate notice
+            </button>
+            <button
+              onClick={() => setView('setup')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
+            >
+              <Plus className="w-3.5 h-3.5" /> New minutes
+            </button>
+          </>
         }
       />
+      <NoticeModal isOpen={noticeOpen} onClose={() => setNoticeOpen(false)} />
       <div className="p-6">
         <WorkflowBanner current={activeRow?.stage ?? 'Draft'} />
 
