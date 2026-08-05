@@ -1,9 +1,9 @@
 import { Link, useRouterState, useNavigate } from '@tanstack/react-router';
 import {
   Home, Building2, FileText, Book, Calendar, Folder, Shield,
-  AlertCircle, Clock, Bell, Users, AlertTriangle, FileCheck,
-  Scale, FileSearch, Users as UsersIcon, BarChart3, Settings,
-  History, DollarSign, Package, CheckCircle
+  AlertCircle, Clock, Bell, Users, FileCheck,
+  Scale, FileSearch, BarChart3, Settings,
+  History, Package, CheckCircle
 } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
