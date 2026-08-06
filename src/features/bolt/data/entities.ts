@@ -55,6 +55,7 @@ export const entities: Entity[] = [
   { id: 'gcn-028', code: 'GCN-028', name: 'Zambezi Mubala Lodge', type: 'Lodge', cluster: 'E', region: 'Zambezi', complianceScore: 71, status: 'due soon', assignee: 'jemilah', incorporationDate: '2017-07-12', registrationNumber: '2017/0267' },
   { id: 'gcn-029', code: 'GCN-029', name: 'Chobe River Camp', type: 'Camp', cluster: 'E', region: 'Zambezi', complianceScore: 55, status: 'due soon', assignee: 'jemilah', incorporationDate: '2018-03-28', registrationNumber: '2018/0290' },
   { id: 'gcn-030', code: 'GCN-030', name: 'Kalahari Farmhouse', type: 'Lodge', cluster: 'E', region: 'Hardap', complianceScore: 80, status: 'compliant', assignee: 'jemilah', incorporationDate: '2012-12-10', registrationNumber: '2012/0345' },
+  { id: 'gcn-031', code: 'GCN-031', name: 'Divundu River Lodge', type: 'Lodge', cluster: 'E', region: 'Kavango East', complianceScore: 67, status: 'due soon', assignee: 'jemilah', incorporationDate: '2016-08-19', registrationNumber: '2016/0312' },
 ];
 
 export const getEntitiesByCluster = (clusterId: string): Entity[] => {
