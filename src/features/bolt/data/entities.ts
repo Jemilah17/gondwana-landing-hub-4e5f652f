@@ -30,6 +30,7 @@ export const entities: Entity[] = [
   { id: 'gcn-012', code: 'GCN-012', name: 'The Desert Grace', type: 'Lodge', cluster: 'B', region: 'Hardap', complianceScore: 90, status: 'compliant', assignee: 'jemilah', incorporationDate: '2017-03-20', registrationNumber: '2017/0156' },
   { id: 'gcn-017', code: 'GCN-017', name: 'Canyon Village', type: 'Lodge', cluster: 'B', region: '//Karas', complianceScore: 75, status: 'due soon', assignee: 'jemilah', incorporationDate: '2011-05-15', registrationNumber: '2011/0134' },
   { id: 'gcn-018', code: 'GCN-018', name: 'Canyon Roadhouse', type: 'Lodge', cluster: 'B', region: '//Karas', complianceScore: 68, status: 'due soon', assignee: 'jemilah', incorporationDate: '2009-08-22', registrationNumber: '2009/0100' },
+  { id: 'gcn-010', code: 'GCN-010', name: 'Gondwana Canyon Park', type: 'Lodge', cluster: 'B', region: '//Karas', complianceScore: 79, status: 'compliant', assignee: 'jemilah', incorporationDate: '2010-02-14', registrationNumber: '2010/0211' },
   { id: 'gcn-006', code: 'GCN-006', name: 'Namib Desert Lodge', type: 'Lodge', cluster: 'B', region: 'Hardap', complianceScore: 82, status: 'compliant', assignee: 'jemilah', incorporationDate: '2007-02-28', registrationNumber: '2007/0067' },
   { id: 'luna-001', code: 'LUNA-001', name: 'Luna Namib Collection', type: 'Lodge', cluster: 'B', region: 'Hardap', complianceScore: 0, status: 'due soon', assignee: 'jemilah', incorporationDate: '2026-07-01', registrationNumber: '2026/0001', isIncoming: true },
 
@@ -54,6 +55,7 @@ export const entities: Entity[] = [
   { id: 'gcn-028', code: 'GCN-028', name: 'Zambezi Mubala Lodge', type: 'Lodge', cluster: 'E', region: 'Zambezi', complianceScore: 71, status: 'due soon', assignee: 'jemilah', incorporationDate: '2017-07-12', registrationNumber: '2017/0267' },
   { id: 'gcn-029', code: 'GCN-029', name: 'Chobe River Camp', type: 'Camp', cluster: 'E', region: 'Zambezi', complianceScore: 55, status: 'due soon', assignee: 'jemilah', incorporationDate: '2018-03-28', registrationNumber: '2018/0290' },
   { id: 'gcn-030', code: 'GCN-030', name: 'Kalahari Farmhouse', type: 'Lodge', cluster: 'E', region: 'Hardap', complianceScore: 80, status: 'compliant', assignee: 'jemilah', incorporationDate: '2012-12-10', registrationNumber: '2012/0345' },
+  { id: 'gcn-031', code: 'GCN-031', name: 'Divundu River Lodge', type: 'Lodge', cluster: 'E', region: 'Kavango East', complianceScore: 67, status: 'due soon', assignee: 'jemilah', incorporationDate: '2016-08-19', registrationNumber: '2016/0312' },
 ];
 
 export const getEntitiesByCluster = (clusterId: string): Entity[] => {
