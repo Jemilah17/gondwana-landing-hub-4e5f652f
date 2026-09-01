@@ -8,6 +8,7 @@ import EnterpriseRiskTab from '../tabs/EnterpriseRiskTab';
 import EthicsConductTab from '../tabs/EthicsConductTab';
 import RemunerationTab from '../tabs/RemunerationTab';
 import StakeholderRegisterTab from '../tabs/StakeholderRegisterTab';
+import DirectorRotationTab from '../tabs/DirectorRotationTab';
 
 const tabs = [
   { id: 'committees', label: 'Board committees' },
@@ -18,6 +19,7 @@ const tabs = [
   { id: 'ethics', label: 'Ethics & conduct' },
   { id: 'remuneration', label: 'Remuneration governance' },
   { id: 'stakeholders', label: 'Stakeholder register' },
+  { id: 'rotation', label: 'Director rotation' },
 ];
 
 export default function Governance() {
@@ -41,6 +43,8 @@ export default function Governance() {
         return <RemunerationTab />;
       case 'stakeholders':
         return <StakeholderRegisterTab />;
+      case 'rotation':
+        return <DirectorRotationTab />;
       default:
         return <BoardCommitteesTab />;
     }
