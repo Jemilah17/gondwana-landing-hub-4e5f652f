@@ -99,7 +99,7 @@ export default function DirectorMinutes() {
         )}
 
         {review && (
-          <Card className="p-4" style={{ borderLeft: '3px solid #D4652A' }}>
+          <Card className="p-4" accent>
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-[13px] font-medium text-primary">{review.title}</div>
