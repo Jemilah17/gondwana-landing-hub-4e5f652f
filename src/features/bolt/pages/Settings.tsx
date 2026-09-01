@@ -28,7 +28,7 @@ const QUICK_LINKS = [
   { label: 'Board pack', to: '/board-pack' },
   { label: 'Minutes', to: '/minutes' },
   { label: 'Governance', to: '/governance' },
-  { label: 'Audit trail', to: '/audit' },
+  { label: 'Audit trail', to: '/audit-trail' },
 ] as const;
 
 function scopeText(userId: string) {
