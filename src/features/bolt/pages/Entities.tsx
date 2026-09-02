@@ -170,6 +170,58 @@ export default function Entities() {
           </select>
         </div>
 
+        {/* Incoming entities */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-[12px] font-medium text-primary">Incoming entities</div>
+            <span className="px-2 py-0.5 rounded-full bg-orange-tint text-orange text-[10px] font-medium">2 properties in onboarding</span>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {/* Luna Namib Collection */}
+            <div className="bg-[#FBF0EA] border-2 border-dashed border-orange rounded-lg p-4">
+              <div className="text-[12px] font-medium text-orange mb-0.5">Luna Namib Collection</div>
+              <div className="text-[10px] text-muted mb-3">LUNA-001 · Cluster B · Hardap</div>
+              <div className="grid grid-cols-2 gap-2 mb-3 text-[10px] text-muted">
+                <div>CoSec: Jemilah</div>
+                <div>Expected opening: July 2026</div>
+              </div>
+              <span className="inline-block px-2 py-0.5 rounded bg-red-tint text-red text-[9px] font-medium mb-3">OPENING THIS MONTH</span>
+              <div className="mb-1">
+                <div className="h-1.5 bg-white rounded-full overflow-hidden">
+                  <div className="h-full bg-orange rounded-full" style={{ width: `${getProgress('luna').pct}%` }} />
+                </div>
+              </div>
+              <div className="text-[10px] text-muted mb-3">{getProgress('luna').done} of {getProgress('luna').total} steps complete</div>
+              <div className="space-y-3">
+                {renderGroup('luna', 'incorporation')}
+                {renderGroup('luna', 'governance')}
+                {renderGroup('luna', 'operations')}
+              </div>
+            </div>
+
+            {/* The Admiral, Walvis Bay */}
+            <div className="bg-[#FBF0EA] border-2 border-dashed border-orange rounded-lg p-4">
+              <div className="text-[12px] font-medium text-orange mb-0.5">The Admiral, Walvis Bay</div>
+              <div className="text-[10px] text-muted mb-3">ADM-001 · Cluster C · Erongo</div>
+              <div className="grid grid-cols-2 gap-2 mb-3 text-[10px] text-muted">
+                <div>CoSec: Hilma</div>
+                <div>Expected opening: December 2027</div>
+              </div>
+              <div className="mb-1">
+                <div className="h-1.5 bg-white rounded-full overflow-hidden">
+                  <div className="h-full bg-orange rounded-full" style={{ width: `${getProgress('admiral').pct}%` }} />
+                </div>
+              </div>
+              <div className="text-[10px] text-muted mb-3">{getProgress('admiral').done} of {getProgress('admiral').total} steps complete</div>
+              <div className="space-y-3">
+                {renderGroup('admiral', 'incorporation')}
+                {renderGroup('admiral', 'governance')}
+                {renderGroup('admiral', 'operations')}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Entity grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {filteredEntities.map((entity) => {
