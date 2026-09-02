@@ -36,7 +36,7 @@ const navSections = [
   {
     label: 'Governance',
     items: [
-      { to: '/governance', icon: Users, label: 'Governance', badge: 8 },
+      { to: '/governance', icon: Users, label: 'Governance', badge: 9 },
     ],
   },
   {
