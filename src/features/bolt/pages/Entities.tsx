@@ -7,7 +7,8 @@ import Topbar from '../components/layout/Topbar';
 import StatusPill from '../components/ui/StatusPills';
 import ComplianceGauge from '../components/ui/ComplianceGauge';
 import EntityDrawer from '../components/ui/EntityDrawer';
-import { Search, Lock } from 'lucide-react';
+import { Search, Lock, Check } from 'lucide-react';
+import { useToast } from '../contexts/ToastContext';
 
 export default function Entities() {
   const { activeUser, canWrite, canRead, isDisabled } = useUser();
@@ -16,6 +17,83 @@ export default function Entities() {
   const [adminFilter, setAdminFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
+  const { showToast } = useToast();
+
+  const [onboarding, setOnboarding] = useState({
+    luna: {
+      incorporation: [
+        { label: 'BIPA company registration', done: true },
+        { label: 'Tax registration — NamRA', done: true },
+        { label: 'NTB tourism registration', done: false },
+      ],
+      governance: [
+        { label: 'First directors appointed', done: true },
+        { label: 'COI declarations received', done: false },
+        { label: 'BO declaration filed', done: false },
+      ],
+      operations: [
+        { label: 'Bank account opened', done: false },
+        { label: 'Insurance arranged', done: false },
+        { label: 'First board meeting held', done: false },
+      ],
+    },
+    admiral: {
+      incorporation: [
+        { label: 'BIPA company registration', done: true },
+        { label: 'Tax registration', done: false },
+        { label: 'NTB tourism registration', done: false },
+      ],
+      governance: [
+        { label: 'First directors appointed', done: false },
+        { label: 'COI declarations received', done: false },
+        { label: 'BO declaration filed', done: false },
+      ],
+      operations: [
+        { label: 'Bank account opened', done: false },
+        { label: 'Insurance arranged', done: false },
+        { label: 'First board meeting held', done: false },
+      ],
+    },
+  });
+
+  const toggleStep = (card: 'luna' | 'admiral', group: 'incorporation' | 'governance' | 'operations', index: number) => {
+    setOnboarding(prev => {
+      const next = { ...prev, [card]: { ...prev[card], [group]: [...prev[card][group]] } };
+      const item = next[card][group][index];
+      if (!item.done) {
+        showToast('Step completed · Audit trail updated');
+      }
+      next[card][group][index] = { ...item, done: !item.done };
+      return next;
+    });
+  };
+
+  const getProgress = (card: 'luna' | 'admiral') => {
+    const groups = Object.values(onboarding[card]);
+    const total = groups.reduce((sum, g) => sum + g.length, 0);
+    const done = groups.reduce((sum, g) => sum + g.filter(i => i.done).length, 0);
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
+  };
+
+  const renderGroup = (card: 'luna' | 'admiral', group: 'incorporation' | 'governance' | 'operations') => (
+    <div>
+      <div className="text-[10px] font-medium text-primary mb-1.5 capitalize">{group}</div>
+      <div className="space-y-1.5">
+        {onboarding[card][group].map((item, idx) => (
+          <button
+            key={idx}
+            onClick={() => toggleStep(card, group, idx)}
+            className="flex items-center gap-2 w-full text-left"
+          >
+            <div className={`w-4 h-4 rounded flex items-center justify-center ${item.done ? 'bg-green text-white' : 'border border-muted bg-white'}`}>
+              {item.done && <Check className="w-3 h-3" />}
+            </div>
+            <span className={`text-[10px] ${item.done ? 'text-muted line-through' : 'text-primary'}`}>{item.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
   const filteredEntities = entities.filter((entity) => {
     if (!canRead(entity.cluster)) return false;
