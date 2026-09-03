@@ -6,19 +6,20 @@ import { users } from '../../data/users';
 
 export default function DirectorSidebar() {
   const { activeUser, setActiveUserById } = useUser();
-  const { minutes, rsvp } = useDirector();
+  const { minutes, rsvp, declarations } = useDirector();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const navigate = useNavigate();
 
   const pendingMinutes = minutes.filter((m) => m.status === 'pending').length;
   const pendingRsvp = rsvp.status === 'pending' ? 1 : 0;
+  const pendingCoi = declarations.some((d) => d.id === 'coi-2026' && d.status === 'due') ? 1 : 0;
 
   const items = [
     { to: '/director-dashboard', icon: Home, label: 'My dashboard', badge: 0 },
     { to: '/director-entities', icon: Building2, label: 'My entities', badge: 0 },
     { to: '/director-minutes', icon: FileText, label: 'Minutes for review', badge: pendingMinutes },
     { to: '/director-meetings', icon: Calendar, label: 'Board meetings', badge: pendingRsvp },
-    { to: '/director-declarations', icon: FileCheck, label: 'My declarations', badge: 0 },
+    { to: '/director-declarations', icon: FileCheck, label: 'My declarations', badge: pendingCoi },
   ];
 
   return (
