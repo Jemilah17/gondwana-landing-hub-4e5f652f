@@ -70,6 +70,8 @@ export const filings: Filing[] = [
   { id: 'fil-034', entityId: 'gcn-024', entityName: 'Etosha Safari Lodge', cluster: 'D', type: 'BIPA Annual Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'hilma' },
   { id: 'fil-035', entityId: 'gcn-026', entityName: 'Okapuka Safari Lodge', cluster: 'D', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'hilma' },
   { id: 'fil-036', entityId: 'gcn-009', entityName: 'Etosha King Nehale', cluster: 'D', type: 'Board Meeting', dueDate: '2026-09-15', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
+  { id: 'fil-e1', entityId: 'gcn-032', entityName: 'Etosha Aoba Lodge', cluster: 'D', type: 'BIPA Annual Return', dueDate: '2026-04-15', filedDate: '2026-04-10', receiptNumber: 'BIPA/2026/EAL/0091', status: 'filed', assignee: 'hilma' },
+  { id: 'fil-e2', entityId: 'gcn-032', entityName: 'Etosha Aoba Lodge', cluster: 'D', type: 'NTB Statutory Levy', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
 
   // Cluster E additional filings
   { id: 'fil-037', entityId: 'gcn-007', entityName: 'Hakusembe River Lodge', cluster: 'E', type: 'BIPA Annual Return', dueDate: '2026-06-30', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'jemilah' },
