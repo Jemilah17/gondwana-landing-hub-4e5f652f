@@ -48,6 +48,7 @@ export const entities: Entity[] = [
   { id: 'gcn-024', code: 'GCN-024', name: 'Etosha Safari Lodge', type: 'Lodge', cluster: 'D', region: 'Oshikoto', complianceScore: 88, status: 'compliant', assignee: 'hilma', incorporationDate: '2011-08-22', registrationNumber: '2011/0156' },
   { id: 'gcn-025', code: 'GCN-025', name: 'Etosha Safari Camp', type: 'Camp', cluster: 'D', region: 'Oshikoto', complianceScore: 65, status: 'due soon', assignee: 'hilma', incorporationDate: '2013-06-15', registrationNumber: '2013/0178' },
   { id: 'gcn-026', code: 'GCN-026', name: 'Okapuka Safari Lodge', type: 'Lodge', cluster: 'D', region: 'Khomas', complianceScore: 71, status: 'due soon', assignee: 'hilma', incorporationDate: '2016-04-20', registrationNumber: '2016/0201' },
+  { id: 'gcn-032', code: 'GCN-032', name: 'Etosha Aoba Lodge', type: 'Lodge', cluster: 'D', region: 'Oshikoto', complianceScore: 83, status: 'compliant', assignee: 'hilma', incorporationDate: '2019-04-15', registrationNumber: '2019/0178' },
 
   // Cluster E - Waterways (Jemilah)
   { id: 'gcn-007', code: 'GCN-007', name: 'Hakusembe River Lodge', type: 'Lodge', cluster: 'E', region: 'Kavango West', complianceScore: 62, status: 'due soon', assignee: 'jemilah', incorporationDate: '2009-05-18', registrationNumber: '2009/0078' },
