@@ -191,7 +191,7 @@ export default function BoardPack() {
     const next = docs.map(d => (d.id === doc.id ? { ...d, file: file.name } : d));
     setDocs(next);
     setUploadFor(null);
-    showToast(`${doc.name} uploaded · Pack is ${next.filter(d => d.file).length} of 9 complete`);
+    showToast(`${doc.name} uploaded · Pack is ${next.filter(d => d.file).length} of ${next.length} complete`);
   };
 
   const compile = () => {
@@ -395,7 +395,7 @@ export default function BoardPack() {
                   <span className="text-amber">{docs.length - received}</span>
                 </div>
                 <div className="text-[10px] text-muted pt-1 border-t border-border">
-                  Required before compile: items 1–8
+                  Required before compile: {requiredDocs.length} of {docs.length} items
                 </div>
               </div>
             </div>
