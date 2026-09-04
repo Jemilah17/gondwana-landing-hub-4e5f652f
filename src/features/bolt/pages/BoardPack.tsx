@@ -66,11 +66,44 @@ function Pill({ children, tone }: { children: React.ReactNode; tone: string }) {
   );
 }
 
+interface BoardPackRecord {
+  meeting: string;
+  date: string;
+  time: string;
+  venue: string;
+  entity: string;
+  chairperson: string;
+  template: string;
+}
+
+const defaultPack: BoardPackRecord = {
+  meeting: 'Q3 2026 Board Meeting',
+  date: '2026-08-28',
+  time: '18:00 WAT',
+  venue: 'Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek',
+  entity: 'Gondwana Holdings Ltd',
+  chairperson: 'Dave Smuts',
+  template: 'Standard board meeting (9 items)',
+};
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+  });
+
+const templateOptions = [
+  'Standard board meeting (9 items)',
+  'AGM pack (12 items)',
+  'GM pack (6 items)',
+  'Committee meeting (5 items)',
+];
+
 export default function BoardPack() {
   const { showToast } = useToast();
   const { canWrite } = useUser();
   const canCompile = canWrite('A');
 
+  const [activePack, setActivePack] = useState<BoardPackRecord>(defaultPack);
   const [docs, setDocs] = useState<DocRow[]>(initialDocs);
   const [uploadFor, setUploadFor] = useState<DocRow | null>(null);
   const [newPackOpen, setNewPackOpen] = useState(false);
@@ -81,6 +114,26 @@ export default function BoardPack() {
   const [note, setNote] = useState('');
   const [recipients, setRecipients] = useState<string[]>(directors.map(d => d.initials));
   const fileRef = useRef<HTMLInputElement>(null);
+
+  // New pack form (controlled)
+  const emptyForm = { meeting: '', date: '', time: '18:00 WAT', venue: '', entity: 'Gondwana Holdings Ltd', chairperson: 'Dave Smuts', template: templateOptions[0] };
+  const [form, setForm] = useState(emptyForm);
+  const setField = (k: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    setForm(prev => ({ ...prev, [k]: e.target.value }));
+
+  const createPack = () => {
+    if (!form.meeting || !form.date) return;
+    const record: BoardPackRecord = { ...form, venue: form.venue || defaultPack.venue };
+    setActivePack(record);
+    setDocs(initialDocs.map(({ file: _file, ...d }) => d));
+    setRecipients(directors.map(d => d.initials));
+    setCompiled(false);
+    setDistributed(null);
+    setNote('');
+    setNewPackOpen(false);
+    setForm(emptyForm);
+    showToast(`${record.meeting} created · Checklist and recipients reset`);
+  };
 
   const received = docs.filter(d => d.file).length;
   const pct = Math.round((received / docs.length) * 100);
@@ -140,10 +193,10 @@ export default function BoardPack() {
         {/* Active pack */}
         <div className="bg-card border border-border rounded-lg p-4 border-l-[3px] border-l-orange">
           <div className="text-[13px] font-medium text-primary">
-            Q3 2026 Board Meeting — 28 August 2026
+            {activePack.meeting} — {formatDate(activePack.date)}
           </div>
           <div className="text-[11px] text-muted mt-0.5">
-            Gondwana Holdings Limited · Chairperson: Dave Smuts · 18:00 WAT
+            {activePack.entity} · Chairperson: {activePack.chairperson} · {activePack.time} · {activePack.template}
           </div>
           <div className="flex items-center justify-between text-[10px] text-muted mt-3 mb-1">
             <span>{received} of {docs.length} documents received</span>
@@ -265,14 +318,15 @@ export default function BoardPack() {
           <aside className="w-[220px] flex-shrink-0 flex flex-col gap-4">
             <div className="bg-card border border-border rounded-lg p-4">
               <div className="text-[10px] text-muted uppercase tracking-wider mb-2">Meeting details</div>
-              {[
-                ['Meeting', 'Q3 2026 Board Meeting'],
-                ['Date', 'Thursday 28 August 2026'],
-                ['Time', '18:00 WAT'],
-                ['Venue', 'Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek'],
-                ['Chairperson', 'Dave Smuts'],
-                ['Entity', 'Gondwana Holdings Ltd'],
-              ].map(([k, v]) => (
+              {([
+                ['Meeting', activePack.meeting],
+                ['Date', formatDate(activePack.date)],
+                ['Time', activePack.time],
+                ['Venue', activePack.venue],
+                ['Chairperson', activePack.chairperson],
+                ['Entity', activePack.entity],
+                ['Template', activePack.template],
+              ] as [string, string][]).map(([k, v]) => (
                 <div key={k} className="mb-2">
                   <div className="text-[10px] text-muted">{k}</div>
                   <div className="text-[11px] text-primary">{v}</div>
@@ -380,7 +434,7 @@ export default function BoardPack() {
         title="Distribute board pack"
         maxWidth="max-w-[440px]"
       >
-        <div className="text-[11px] text-muted mb-3">Q3 2026 Board Meeting — 28 Aug 2026</div>
+        <div className="text-[11px] text-muted mb-3">{activePack.meeting} — {formatDate(activePack.date)}</div>
         <div className="border border-border rounded-lg divide-y divide-border mb-3">
           {directors.map(d => (
             <label key={d.initials} className="flex items-center gap-2 px-3 py-2 cursor-pointer">
@@ -427,17 +481,44 @@ export default function BoardPack() {
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Meeting</label>
             <input
+              value={form.meeting}
+              onChange={setField('meeting')}
               placeholder="e.g. Q4 2026 Board Meeting"
               className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
             />
           </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-[10px] text-muted uppercase tracking-wider">Date</label>
+              <input
+                type="date"
+                value={form.date}
+                onChange={setField('date')}
+                className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
+              />
+            </div>
+            <div>
+              <label className="text-[10px] text-muted uppercase tracking-wider">Time</label>
+              <input
+                value={form.time}
+                onChange={setField('time')}
+                placeholder="18:00 WAT"
+                className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
+              />
+            </div>
+          </div>
           <div>
-            <label className="text-[10px] text-muted uppercase tracking-wider">Date</label>
-            <input type="date" className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary" />
+            <label className="text-[10px] text-muted uppercase tracking-wider">Venue</label>
+            <input
+              value={form.venue}
+              onChange={setField('venue')}
+              placeholder="Gondwana House Boardroom, Windhoek"
+              className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
+            />
           </div>
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Entity</label>
-            <select className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
+            <select value={form.entity} onChange={setField('entity')} className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
               <option>Gondwana Holdings Ltd</option>
               <option>Gondwana Collection Namibia (Pty) Ltd</option>
               <option>Gondwana Care Trust</option>
@@ -445,7 +526,7 @@ export default function BoardPack() {
           </div>
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Chairperson</label>
-            <select className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
+            <select value={form.chairperson} onChange={setField('chairperson')} className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
               {directors.slice(0, 6).map(d => (
                 <option key={d.initials}>{d.name}</option>
               ))}
@@ -453,25 +534,24 @@ export default function BoardPack() {
           </div>
           <div>
             <div className="text-[10px] text-muted uppercase tracking-wider mb-1">Pack template</div>
-            {[
-              'Standard board meeting (9 items)',
-              'AGM pack (12 items)',
-              'GM pack (6 items)',
-              'Committee meeting (5 items)',
-            ].map((t, i) => (
+            {templateOptions.map((t) => (
               <label key={t} className="flex items-center gap-2 py-1 text-[11px] text-primary cursor-pointer">
-                <input type="radio" name="template" defaultChecked={i === 0} className="accent-orange" />
+                <input
+                  type="radio"
+                  name="template"
+                  checked={form.template === t}
+                  onChange={() => setForm(prev => ({ ...prev, template: t }))}
+                  className="accent-orange"
+                />
                 {t}
               </label>
             ))}
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() => {
-                setNewPackOpen(false);
-                showToast('Board pack created');
-              }}
-              className="flex-1 h-9 rounded-lg bg-orange text-white text-[12px] font-medium hover:bg-[#B5531F]"
+              onClick={createPack}
+              disabled={!form.meeting || !form.date}
+              className="flex-1 h-9 rounded-lg bg-orange text-white text-[12px] font-medium hover:bg-[#B5531F] disabled:opacity-50"
             >
               Create pack
             </button>
