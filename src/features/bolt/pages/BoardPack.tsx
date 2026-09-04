@@ -66,11 +66,44 @@ function Pill({ children, tone }: { children: React.ReactNode; tone: string }) {
   );
 }
 
+interface BoardPackRecord {
+  meeting: string;
+  date: string;
+  time: string;
+  venue: string;
+  entity: string;
+  chairperson: string;
+  template: string;
+}
+
+const defaultPack: BoardPackRecord = {
+  meeting: 'Q3 2026 Board Meeting',
+  date: '2026-08-28',
+  time: '18:00 WAT',
+  venue: 'Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek',
+  entity: 'Gondwana Holdings Ltd',
+  chairperson: 'Dave Smuts',
+  template: 'Standard board meeting (9 items)',
+};
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+  });
+
+const templateOptions = [
+  'Standard board meeting (9 items)',
+  'AGM pack (12 items)',
+  'GM pack (6 items)',
+  'Committee meeting (5 items)',
+];
+
 export default function BoardPack() {
   const { showToast } = useToast();
   const { canWrite } = useUser();
   const canCompile = canWrite('A');
 
+  const [activePack, setActivePack] = useState<BoardPackRecord>(defaultPack);
   const [docs, setDocs] = useState<DocRow[]>(initialDocs);
   const [uploadFor, setUploadFor] = useState<DocRow | null>(null);
   const [newPackOpen, setNewPackOpen] = useState(false);
