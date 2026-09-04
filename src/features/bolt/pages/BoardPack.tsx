@@ -193,10 +193,10 @@ export default function BoardPack() {
         {/* Active pack */}
         <div className="bg-card border border-border rounded-lg p-4 border-l-[3px] border-l-orange">
           <div className="text-[13px] font-medium text-primary">
-            Q3 2026 Board Meeting — 28 August 2026
+            {activePack.meeting} — {formatDate(activePack.date)}
           </div>
           <div className="text-[11px] text-muted mt-0.5">
-            Gondwana Holdings Limited · Chairperson: Dave Smuts · 18:00 WAT
+            {activePack.entity} · Chairperson: {activePack.chairperson} · {activePack.time} · {activePack.template}
           </div>
           <div className="flex items-center justify-between text-[10px] text-muted mt-3 mb-1">
             <span>{received} of {docs.length} documents received</span>
@@ -318,14 +318,15 @@ export default function BoardPack() {
           <aside className="w-[220px] flex-shrink-0 flex flex-col gap-4">
             <div className="bg-card border border-border rounded-lg p-4">
               <div className="text-[10px] text-muted uppercase tracking-wider mb-2">Meeting details</div>
-              {[
-                ['Meeting', 'Q3 2026 Board Meeting'],
-                ['Date', 'Thursday 28 August 2026'],
-                ['Time', '18:00 WAT'],
-                ['Venue', 'Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek'],
-                ['Chairperson', 'Dave Smuts'],
-                ['Entity', 'Gondwana Holdings Ltd'],
-              ].map(([k, v]) => (
+              {([
+                ['Meeting', activePack.meeting],
+                ['Date', formatDate(activePack.date)],
+                ['Time', activePack.time],
+                ['Venue', activePack.venue],
+                ['Chairperson', activePack.chairperson],
+                ['Entity', activePack.entity],
+                ['Template', activePack.template],
+              ] as [string, string][]).map(([k, v]) => (
                 <div key={k} className="mb-2">
                   <div className="text-[10px] text-muted">{k}</div>
                   <div className="text-[11px] text-primary">{v}</div>
@@ -433,7 +434,7 @@ export default function BoardPack() {
         title="Distribute board pack"
         maxWidth="max-w-[440px]"
       >
-        <div className="text-[11px] text-muted mb-3">Q3 2026 Board Meeting — 28 Aug 2026</div>
+        <div className="text-[11px] text-muted mb-3">{activePack.meeting} — {formatDate(activePack.date)}</div>
         <div className="border border-border rounded-lg divide-y divide-border mb-3">
           {directors.map(d => (
             <label key={d.initials} className="flex items-center gap-2 px-3 py-2 cursor-pointer">
