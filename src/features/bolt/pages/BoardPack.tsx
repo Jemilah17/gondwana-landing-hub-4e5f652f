@@ -481,17 +481,44 @@ export default function BoardPack() {
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Meeting</label>
             <input
+              value={form.meeting}
+              onChange={setField('meeting')}
               placeholder="e.g. Q4 2026 Board Meeting"
               className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
             />
           </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-[10px] text-muted uppercase tracking-wider">Date</label>
+              <input
+                type="date"
+                value={form.date}
+                onChange={setField('date')}
+                className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
+              />
+            </div>
+            <div>
+              <label className="text-[10px] text-muted uppercase tracking-wider">Time</label>
+              <input
+                value={form.time}
+                onChange={setField('time')}
+                placeholder="18:00 WAT"
+                className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
+              />
+            </div>
+          </div>
           <div>
-            <label className="text-[10px] text-muted uppercase tracking-wider">Date</label>
-            <input type="date" className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary" />
+            <label className="text-[10px] text-muted uppercase tracking-wider">Venue</label>
+            <input
+              value={form.venue}
+              onChange={setField('venue')}
+              placeholder="Gondwana House Boardroom, Windhoek"
+              className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
+            />
           </div>
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Entity</label>
-            <select className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
+            <select value={form.entity} onChange={setField('entity')} className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
               <option>Gondwana Holdings Ltd</option>
               <option>Gondwana Collection Namibia (Pty) Ltd</option>
               <option>Gondwana Care Trust</option>
@@ -499,7 +526,7 @@ export default function BoardPack() {
           </div>
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Chairperson</label>
-            <select className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
+            <select value={form.chairperson} onChange={setField('chairperson')} className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
               {directors.slice(0, 6).map(d => (
                 <option key={d.initials}>{d.name}</option>
               ))}
@@ -507,25 +534,24 @@ export default function BoardPack() {
           </div>
           <div>
             <div className="text-[10px] text-muted uppercase tracking-wider mb-1">Pack template</div>
-            {[
-              'Standard board meeting (9 items)',
-              'AGM pack (12 items)',
-              'GM pack (6 items)',
-              'Committee meeting (5 items)',
-            ].map((t, i) => (
+            {templateOptions.map((t) => (
               <label key={t} className="flex items-center gap-2 py-1 text-[11px] text-primary cursor-pointer">
-                <input type="radio" name="template" defaultChecked={i === 0} className="accent-orange" />
+                <input
+                  type="radio"
+                  name="template"
+                  checked={form.template === t}
+                  onChange={() => setForm(prev => ({ ...prev, template: t }))}
+                  className="accent-orange"
+                />
                 {t}
               </label>
             ))}
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() => {
-                setNewPackOpen(false);
-                showToast('Board pack created');
-              }}
-              className="flex-1 h-9 rounded-lg bg-orange text-white text-[12px] font-medium hover:bg-[#B5531F]"
+              onClick={createPack}
+              disabled={!form.meeting || !form.date}
+              className="flex-1 h-9 rounded-lg bg-orange text-white text-[12px] font-medium hover:bg-[#B5531F] disabled:opacity-50"
             >
               Create pack
             </button>
