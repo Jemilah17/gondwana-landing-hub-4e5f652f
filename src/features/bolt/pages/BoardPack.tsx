@@ -164,7 +164,8 @@ export default function BoardPack() {
     if (!form.meeting || !form.date) return;
     const record: BoardPackRecord = { ...form, venue: form.venue || defaultPack.venue };
     setActivePack(record);
-    setDocs(initialDocs.map(({ file: _file, ...d }) => d));
+    const list = templateDocs[form.template] ?? initialDocs;
+    setDocs(list.map(({ file: _file, ...d }) => d));
     setRecipients(directors.map(d => d.initials));
     setCompiled(false);
     setDistributed(null);
