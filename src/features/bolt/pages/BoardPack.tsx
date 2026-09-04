@@ -177,7 +177,8 @@ export default function BoardPack() {
 
   const received = docs.filter(d => d.file).length;
   const pct = Math.round((received / docs.length) * 100);
-  const requiredReady = docs.slice(0, 8).every(d => d.file);
+  const requiredDocs = docs.filter(d => !d.optional);
+  const requiredReady = requiredDocs.every(d => d.file);
 
   const ringStyle = useMemo(
     () => ({ background: `conic-gradient(#D4652A ${pct * 3.6}deg, #EFECE6 0deg)` }),
