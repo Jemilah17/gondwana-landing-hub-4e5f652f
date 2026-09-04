@@ -115,6 +115,26 @@ export default function BoardPack() {
   const [recipients, setRecipients] = useState<string[]>(directors.map(d => d.initials));
   const fileRef = useRef<HTMLInputElement>(null);
 
+  // New pack form (controlled)
+  const emptyForm = { meeting: '', date: '', time: '18:00 WAT', venue: '', entity: 'Gondwana Holdings Ltd', chairperson: 'Dave Smuts', template: templateOptions[0] };
+  const [form, setForm] = useState(emptyForm);
+  const setField = (k: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    setForm(prev => ({ ...prev, [k]: e.target.value }));
+
+  const createPack = () => {
+    if (!form.meeting || !form.date) return;
+    const record: BoardPackRecord = { ...form, venue: form.venue || defaultPack.venue };
+    setActivePack(record);
+    setDocs(initialDocs.map(({ file: _file, ...d }) => d));
+    setRecipients(directors.map(d => d.initials));
+    setCompiled(false);
+    setDistributed(null);
+    setNote('');
+    setNewPackOpen(false);
+    setForm(emptyForm);
+    showToast(`${record.meeting} created · Checklist and recipients reset`);
+  };
+
   const received = docs.filter(d => d.file).length;
   const pct = Math.round((received / docs.length) * 100);
   const requiredReady = docs.slice(0, 8).every(d => d.file);
