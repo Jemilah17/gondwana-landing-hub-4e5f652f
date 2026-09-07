@@ -234,7 +234,7 @@ export default function BoardPack() {
         title="Board pack builder"
         actions={
           <button
-            onClick={() => setNewPackOpen(true)}
+            onClick={openNewPackModal}
             className="bg-orange text-white text-[12px] font-medium px-3 py-1.5 rounded hover:bg-[#B5531F]"
           >
             + New board pack
