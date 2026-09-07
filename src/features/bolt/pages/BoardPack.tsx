@@ -144,6 +144,7 @@ export default function BoardPack() {
 
   const [activePack, setActivePack] = useState<BoardPackRecord>(defaultPack);
   const [docs, setDocs] = useState<DocRow[]>(initialDocs);
+  const [preModalDocs, setPreModalDocs] = useState<DocRow[]>(initialDocs);
   const [uploadFor, setUploadFor] = useState<DocRow | null>(null);
   const [newPackOpen, setNewPackOpen] = useState(false);
   const [distributeOpen, setDistributeOpen] = useState(false);
@@ -160,12 +161,27 @@ export default function BoardPack() {
   const setField = (k: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }));
 
+  const applyTemplateDocs = (template: string) => {
+    const list = templateDocs[template] ?? initialDocs;
+    setDocs(list.map(({ file: _file, ...d }) => d));
+  };
+
+  const openNewPackModal = () => {
+    setPreModalDocs(docs);
+    setForm(emptyForm);
+    setNewPackOpen(true);
+  };
+
+  const closeNewPackModal = () => {
+    setDocs(preModalDocs);
+    setNewPackOpen(false);
+  };
+
   const createPack = () => {
     if (!form.meeting || !form.date) return;
     const record: BoardPackRecord = { ...form, venue: form.venue || defaultPack.venue };
     setActivePack(record);
-    const list = templateDocs[form.template] ?? initialDocs;
-    setDocs(list.map(({ file: _file, ...d }) => d));
+    applyTemplateDocs(form.template);
     setRecipients(directors.map(d => d.initials));
     setCompiled(false);
     setDistributed(null);
@@ -218,7 +234,7 @@ export default function BoardPack() {
         title="Board pack builder"
         actions={
           <button
-            onClick={() => setNewPackOpen(true)}
+            onClick={openNewPackModal}
             className="bg-orange text-white text-[12px] font-medium px-3 py-1.5 rounded hover:bg-[#B5531F]"
           >
             + New board pack
@@ -517,7 +533,7 @@ export default function BoardPack() {
       </Modal>
 
       {/* New pack modal */}
-      <Modal isOpen={newPackOpen} onClose={() => setNewPackOpen(false)} title="New board pack" maxWidth="max-w-[420px]">
+      <Modal isOpen={newPackOpen} onClose={closeNewPackModal} title="New board pack" maxWidth="max-w-[420px]">
         <div className="flex flex-col gap-3">
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Meeting</label>
@@ -581,7 +597,10 @@ export default function BoardPack() {
                   type="radio"
                   name="template"
                   checked={form.template === t}
-                  onChange={() => setForm(prev => ({ ...prev, template: t }))}
+                  onChange={() => {
+                    setForm(prev => ({ ...prev, template: t }));
+                    applyTemplateDocs(t);
+                  }}
                   className="accent-orange"
                 />
                 {t}
@@ -597,7 +616,7 @@ export default function BoardPack() {
               Create pack
             </button>
             <button
-              onClick={() => setNewPackOpen(false)}
+              onClick={closeNewPackModal}
               className="flex-1 h-9 rounded-lg border border-border text-[12px] text-primary hover:bg-background"
             >
               Cancel
