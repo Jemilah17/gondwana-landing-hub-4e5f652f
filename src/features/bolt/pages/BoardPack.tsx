@@ -144,6 +144,7 @@ export default function BoardPack() {
 
   const [activePack, setActivePack] = useState<BoardPackRecord>(defaultPack);
   const [docs, setDocs] = useState<DocRow[]>(initialDocs);
+  const [preModalDocs, setPreModalDocs] = useState<DocRow[]>(initialDocs);
   const [uploadFor, setUploadFor] = useState<DocRow | null>(null);
   const [newPackOpen, setNewPackOpen] = useState(false);
   const [distributeOpen, setDistributeOpen] = useState(false);
@@ -160,12 +161,27 @@ export default function BoardPack() {
   const setField = (k: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }));
 
+  const applyTemplateDocs = (template: string) => {
+    const list = templateDocs[template] ?? initialDocs;
+    setDocs(list.map(({ file: _file, ...d }) => d));
+  };
+
+  const openNewPackModal = () => {
+    setPreModalDocs(docs);
+    setForm(emptyForm);
+    setNewPackOpen(true);
+  };
+
+  const closeNewPackModal = () => {
+    setDocs(preModalDocs);
+    setNewPackOpen(false);
+  };
+
   const createPack = () => {
     if (!form.meeting || !form.date) return;
     const record: BoardPackRecord = { ...form, venue: form.venue || defaultPack.venue };
     setActivePack(record);
-    const list = templateDocs[form.template] ?? initialDocs;
-    setDocs(list.map(({ file: _file, ...d }) => d));
+    applyTemplateDocs(form.template);
     setRecipients(directors.map(d => d.initials));
     setCompiled(false);
     setDistributed(null);
