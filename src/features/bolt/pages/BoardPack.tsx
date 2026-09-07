@@ -533,7 +533,7 @@ export default function BoardPack() {
       </Modal>
 
       {/* New pack modal */}
-      <Modal isOpen={newPackOpen} onClose={() => setNewPackOpen(false)} title="New board pack" maxWidth="max-w-[420px]">
+      <Modal isOpen={newPackOpen} onClose={closeNewPackModal} title="New board pack" maxWidth="max-w-[420px]">
         <div className="flex flex-col gap-3">
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Meeting</label>
@@ -597,7 +597,10 @@ export default function BoardPack() {
                   type="radio"
                   name="template"
                   checked={form.template === t}
-                  onChange={() => setForm(prev => ({ ...prev, template: t }))}
+                  onChange={() => {
+                    setForm(prev => ({ ...prev, template: t }));
+                    applyTemplateDocs(t);
+                  }}
                   className="accent-orange"
                 />
                 {t}
@@ -613,7 +616,7 @@ export default function BoardPack() {
               Create pack
             </button>
             <button
-              onClick={() => setNewPackOpen(false)}
+              onClick={closeNewPackModal}
               className="flex-1 h-9 rounded-lg border border-border text-[12px] text-primary hover:bg-background"
             >
               Cancel
