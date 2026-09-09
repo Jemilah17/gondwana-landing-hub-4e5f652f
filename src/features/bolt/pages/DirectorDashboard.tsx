@@ -5,6 +5,29 @@ import { useUser } from '../contexts/UserContext';
 import { useDirector } from '../contexts/DirectorContext';
 import { entities } from '../data/entities';
 import { getClusterById } from '../data/clusters';
+import { useToast } from '../contexts/ToastContext';
+import { downloadBoardPack } from '../lib/boardPackDownload';
+
+const q3Pack = {
+  meeting: 'Q3 2026 Board Meeting',
+  date: '2026-08-28',
+  time: '18:00 WAT',
+  venue: 'Gondwana House Boardroom, Windhoek',
+  entity: 'Gondwana Holdings Limited',
+  chairperson: 'Dave Smuts',
+};
+
+const q3PackDocs = [
+  { name: 'Meeting notice and agenda', description: 'Formal notice per AoA Art. 14', file: 'Notice_BoardMeeting_28Aug2026.pdf' },
+  { name: 'Previous meeting minutes', description: 'Minutes of last meeting for adoption', file: 'Minutes_BoardMeeting_May2026.pdf' },
+  { name: 'Management accounts', description: 'Latest financial report — J. Visser', file: 'ManagementAccounts_Jun2026.pdf' },
+  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
+  { name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
+  { name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
+  { name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws', file: 'Sustainability_Q2_2026.pdf' },
+  { name: 'Risk register update', description: 'Updated enterprise risk register', file: 'RiskRegister_Aug2026.pdf' },
+  { name: 'Any other business papers', description: 'Supporting papers for specific agenda items', file: 'AOB_Papers_Aug2026.pdf' },
+];
 
 // Baseline outstanding items per director (FY2025/26 cycle)
 const DIRECTOR_FLAGS: Record<string, { minutes: boolean; rsvp: boolean; coi: boolean }> = {
@@ -81,6 +104,20 @@ export default function DirectorDashboard() {
   const navigate = useNavigate();
   const { minutes, rsvp, declarations } = useDirector();
   const [unread, setUnread] = useState<string[]>(['n1', 'n2']);
+  const { showToast } = useToast();
+  const [downloadingPack, setDownloadingPack] = useState(false);
+
+  const handleDownloadPack = async () => {
+    setDownloadingPack(true);
+    try {
+      const name = await downloadBoardPack(q3Pack, q3PackDocs);
+      showToast(`${name} downloaded`);
+    } catch {
+      showToast('Could not generate the board pack file');
+    } finally {
+      setDownloadingPack(false);
+    }
+  };
 
   const isDirector = activeUser.type === 'director';
   useEffect(() => {
