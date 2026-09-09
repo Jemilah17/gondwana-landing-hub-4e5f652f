@@ -3,12 +3,34 @@ import { Check, Smartphone, X, Download } from 'lucide-react';
 import { DirectorHeader, Card, Pill } from '../components/director/DirectorShared';
 import { useDirector, type RsvpChoice } from '../contexts/DirectorContext';
 import { useToast } from '../contexts/ToastContext';
+import { downloadBoardPack } from '../lib/boardPackDownload';
 
 const labels: Record<RsvpChoice, string> = {
   'in-person': 'Attending in person',
   remote: 'Attending remotely',
   apologies: 'Sending apologies',
 };
+
+const q3Pack = {
+  meeting: 'Q3 2026 Board Meeting',
+  date: '2026-08-28',
+  time: '18:00 WAT',
+  venue: 'Gondwana House Boardroom, Windhoek',
+  entity: 'Gondwana Holdings Limited',
+  chairperson: 'Dave Smuts',
+};
+
+const q3PackDocs = [
+  { name: 'Meeting notice and agenda', description: 'Formal notice per AoA Art. 14', file: 'Notice_BoardMeeting_28Aug2026.pdf' },
+  { name: 'Previous meeting minutes', description: 'Minutes of last meeting for adoption', file: 'Minutes_BoardMeeting_May2026.pdf' },
+  { name: 'Management accounts', description: 'Latest financial report — J. Visser', file: 'ManagementAccounts_Jun2026.pdf' },
+  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
+  { name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
+  { name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
+  { name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws', file: 'Sustainability_Q2_2026.pdf' },
+  { name: 'Risk register update', description: 'Updated enterprise risk register', file: 'RiskRegister_Aug2026.pdf' },
+  { name: 'Any other business papers', description: 'Supporting papers for specific agenda items', file: 'AOB_Papers_Aug2026.pdf' },
+];
 
 const pastMeetings = [
   ['February 2026 General Meeting', '26 Feb 2026', 'Attended'],
@@ -24,6 +46,19 @@ export default function DirectorMeetings() {
   const [location, setLocation] = useState('');
   const [reason, setReason] = useState('');
   const [changing, setChanging] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const downloadPack = async () => {
+    setDownloading(true);
+    try {
+      const name = await downloadBoardPack(q3Pack, q3PackDocs);
+      showToast(`${name} downloaded`);
+    } catch {
+      showToast('Could not generate the board pack file');
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   const confirmed = rsvp.status === 'confirmed' && !changing && rsvp.choice;
 
@@ -78,8 +113,12 @@ export default function DirectorMeetings() {
 
             <div className="mt-4 rounded-md px-3 py-2 flex items-center justify-between" style={{ background: '#EAF5EE' }}>
               <span className="text-[11px] font-medium" style={{ color: '#2D7A4F' }}>✓ Board pack available</span>
-              <button className="flex items-center gap-1 px-2.5 py-1.5 border border-orange text-orange rounded-md text-[11px] font-medium hover:bg-orange-tint">
-                <Download className="w-3 h-3" /> Download board pack (9 documents)
+              <button
+                onClick={downloadPack}
+                disabled={downloading}
+                className="flex items-center gap-1 px-2.5 py-1.5 border border-orange text-orange rounded-md text-[11px] font-medium hover:bg-orange-tint disabled:opacity-50"
+              >
+                <Download className="w-3 h-3" /> {downloading ? 'Preparing…' : 'Download board pack (9 documents)'}
               </button>
             </div>
 
