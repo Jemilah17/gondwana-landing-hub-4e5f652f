@@ -5,6 +5,28 @@ import { useDirector, type RsvpChoice } from '../../contexts/DirectorContext';
 import { useUser } from '../../contexts/UserContext';
 import { useToast } from '../../contexts/ToastContext';
 import { directors } from '../../data/users';
+import { downloadBoardPack } from '../../lib/boardPackDownload';
+
+const q3Pack = {
+  meeting: 'Q3 2026 Board Meeting',
+  date: '2026-08-28',
+  time: '18:00 WAT',
+  venue: 'Gondwana House Boardroom, Windhoek',
+  entity: 'Gondwana Holdings Limited',
+  chairperson: 'Dave Smuts',
+};
+
+const q3PackDocs = [
+  { name: 'Meeting notice and agenda', description: 'Formal notice per AoA Art. 14', file: 'Notice_BoardMeeting_28Aug2026.pdf' },
+  { name: 'Previous meeting minutes', description: 'Minutes of last meeting for adoption', file: 'Minutes_BoardMeeting_May2026.pdf' },
+  { name: 'Management accounts', description: 'Latest financial report — J. Visser', file: 'ManagementAccounts_Jun2026.pdf' },
+  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
+  { name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
+  { name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
+  { name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws', file: 'Sustainability_Q2_2026.pdf' },
+  { name: 'Risk register update', description: 'Updated enterprise risk register', file: 'RiskRegister_Aug2026.pdf' },
+  { name: 'Any other business papers', description: 'Supporting papers for specific agenda items', file: 'AOB_Papers_Aug2026.pdf' },
+];
 
 const labels: Record<RsvpChoice, string> = {
   'in-person': 'Attending in person',
@@ -22,6 +44,19 @@ export default function BoardMeetingCard() {
   const [reason, setReason] = useState('');
   const [alternate, setAlternate] = useState('');
   const [changing, setChanging] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const downloadPack = async () => {
+    setDownloading(true);
+    try {
+      const name = await downloadBoardPack(q3Pack, q3PackDocs);
+      showToast(`${name} downloaded`);
+    } catch {
+      showToast('Could not generate the board pack file');
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   const confirmed = rsvp.status === 'confirmed' && !changing;
 
@@ -69,8 +104,12 @@ export default function BoardMeetingCard() {
           {packDistributed ? (
             <>
               <Pill tone="green">Board pack available</Pill>
-              <button className="flex items-center gap-1 px-2 py-1 border border-border rounded-md text-[11px] text-primary hover:bg-black/[0.03]">
-                <Download className="w-3 h-3" /> Download board pack
+              <button
+                onClick={downloadPack}
+                disabled={downloading}
+                className="flex items-center gap-1 px-2 py-1 border border-border rounded-md text-[11px] text-primary hover:bg-black/[0.03] disabled:opacity-50"
+              >
+                <Download className="w-3 h-3" /> {downloading ? 'Preparing…' : 'Download board pack'}
               </button>
             </>
           ) : (
