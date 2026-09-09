@@ -120,6 +120,9 @@ async function buildCoverDoc(pack: PackMeta, docs: PackDoc[]) {
   return pdf;
 }
 
+const pdfBlob = (bytes: Uint8Array) =>
+  new Blob([bytes.slice().buffer as ArrayBuffer], { type: 'application/pdf' });
+
 function triggerDownload(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -142,7 +145,7 @@ export async function downloadBoardPack(pack: PackMeta, docs: PackDoc[]): Promis
   const attached = docs.filter(d => d.blob);
 
   if (attached.length === 0) {
-    triggerDownload(new Blob([await cover.save()], { type: 'application/pdf' }), `${base}.pdf`);
+    triggerDownload(pdfBlob(await cover.save()), `${base}.pdf`);
     return `${base}.pdf`;
   }
 
@@ -154,7 +157,7 @@ export async function downloadBoardPack(pack: PackMeta, docs: PackDoc[]): Promis
       const pages = await cover.copyPages(src, src.getPageIndices());
       pages.forEach(p => cover.addPage(p));
     }
-    triggerDownload(new Blob([await cover.save()], { type: 'application/pdf' }), `${base}.pdf`);
+    triggerDownload(pdfBlob(await cover.save()), `${base}.pdf`);
     return `${base}.pdf`;
   } catch {
     // Fallback: zip the cover page with the original attachments.
