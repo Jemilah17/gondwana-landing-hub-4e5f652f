@@ -214,8 +214,12 @@ export default function DirectorDashboard() {
                 <div className="text-[10px] text-muted">Chairperson: Dave Smuts</div>
                 <div className="bg-green-tint rounded-md px-3 py-2 flex items-center justify-between">
                   <span className="text-[10px] text-green">✓ Board pack available — 9 documents</span>
-                  <button className="px-3 py-1 rounded border border-border bg-card text-[10px] text-primary hover:bg-black/5">
-                    ⬇ Download board pack
+                  <button
+                    onClick={handleDownloadPack}
+                    disabled={downloadingPack}
+                    className="px-3 py-1 rounded border border-border bg-card text-[10px] text-primary hover:bg-black/5 disabled:opacity-50"
+                  >
+                    {downloadingPack ? 'Preparing…' : '⬇ Download board pack'}
                   </button>
                 </div>
                 <div className="border-t border-border pt-2 flex items-center justify-between">
