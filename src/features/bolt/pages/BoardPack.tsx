@@ -5,6 +5,7 @@ import {
 import Topbar from '../components/layout/Topbar';
 import Modal from '../components/ui/Modal';
 import { useToast } from '../contexts/ToastContext';
+import { downloadBoardPack } from '../lib/boardPackDownload';
 import { useUser } from '../contexts/UserContext';
 
 interface DocRow {
@@ -13,6 +14,7 @@ interface DocRow {
   description: string;
   optional?: boolean;
   file?: string;
+  blob?: File;
 }
 
 const initialDocs: DocRow[] = [
@@ -163,7 +165,7 @@ export default function BoardPack() {
 
   const applyTemplateDocs = (template: string) => {
     const list = templateDocs[template] ?? initialDocs;
-    setDocs(list.map(({ file: _file, ...d }) => d));
+    setDocs(list.map(({ file: _file, blob: _blob, ...d }) => d));
   };
 
   const openNewPackModal = () => {
@@ -204,10 +206,24 @@ export default function BoardPack() {
   const handleFile = (file: File) => {
     if (!uploadFor) return;
     const doc = uploadFor;
-    const next = docs.map(d => (d.id === doc.id ? { ...d, file: file.name } : d));
+    const next = docs.map(d => (d.id === doc.id ? { ...d, file: file.name, blob: file } : d));
     setDocs(next);
     setUploadFor(null);
     showToast(`${doc.name} uploaded · Pack is ${next.filter(d => d.file).length} of ${next.length} complete`);
+  };
+
+  const [downloading, setDownloading] = useState(false);
+
+  const download = async () => {
+    setDownloading(true);
+    try {
+      const name = await downloadBoardPack(activePack, docs);
+      showToast(`${name} downloaded`);
+    } catch {
+      showToast('Could not generate the board pack file');
+    } finally {
+      setDownloading(false);
+    }
   };
 
   const compile = () => {
@@ -270,8 +286,12 @@ export default function BoardPack() {
               ✓ Board pack compiled — {docs.length} documents · Ready for distribution
             </span>
             <div className="flex items-center gap-2">
-              <button className="text-[11px] border border-border bg-card px-3 py-1.5 rounded text-primary hover:bg-background">
-                <Download className="w-3 h-3 inline mr-1" /> Download board pack
+              <button
+                onClick={download}
+                disabled={downloading}
+                className="text-[11px] border border-border bg-card px-3 py-1.5 rounded text-primary hover:bg-background disabled:opacity-50"
+              >
+                <Download className="w-3 h-3 inline mr-1" /> {downloading ? 'Preparing…' : 'Download board pack'}
               </button>
               <button
                 onClick={() => setDistributeOpen(true)}
@@ -454,8 +474,12 @@ export default function BoardPack() {
               <button className="w-full h-9 rounded-lg border border-border text-[11px] text-primary hover:bg-background">
                 Save progress
               </button>
-              <button className="w-full h-9 rounded-lg border border-border text-[11px] text-primary hover:bg-background">
-                Preview pack
+              <button
+                onClick={download}
+                disabled={downloading}
+                className="w-full h-9 rounded-lg border border-border text-[11px] text-primary hover:bg-background disabled:opacity-50"
+              >
+                {downloading ? 'Preparing…' : 'Download pack'}
               </button>
             </div>
           </aside>
