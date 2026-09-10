@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { defaultPack, defaultRecipients, standardDocs } from '../data/boardPacks';
 
 /**
  * STOPGAP PERSISTENCE — localStorage only.
