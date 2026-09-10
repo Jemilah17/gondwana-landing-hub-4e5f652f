@@ -149,6 +149,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <UserProvider>
         <DirectorProvider>
+          <BoardPackProvider>
           <ToastProvider>
             {bare ? (
               <Outlet />
