@@ -1,33 +1,14 @@
 import { useMemo, useRef, useState } from 'react';
 import {
-  Plus, Download, Send, Loader2, Check, Clock, UploadCloud,
+  Download, Send, Loader2, Check, UploadCloud,
 } from 'lucide-react';
 import Topbar from '../components/layout/Topbar';
 import Modal from '../components/ui/Modal';
 import { useToast } from '../contexts/ToastContext';
 import { downloadBoardPack } from '../lib/boardPackDownload';
 import { useUser } from '../contexts/UserContext';
-
-interface DocRow {
-  id: number;
-  name: string;
-  description: string;
-  optional?: boolean;
-  file?: string;
-  blob?: File;
-}
-
-const initialDocs: DocRow[] = [
-  { id: 1, name: 'Meeting notice and agenda', description: 'Formal notice per AoA Art. 14', file: 'Notice_BoardMeeting_28Aug2026.pdf' },
-  { id: 2, name: 'Previous meeting minutes', description: 'Minutes of last meeting for adoption at this meeting', file: 'Minutes_BoardMeeting_May2026.pdf' },
-  { id: 3, name: 'Management accounts', description: 'Latest financial report — J. Visser', file: 'ManagementAccounts_Jun2026.pdf' },
-  { id: 4, name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
-  { id: 5, name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
-  { id: 6, name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
-  { id: 7, name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws' },
-  { id: 8, name: 'Risk register update', description: 'Updated enterprise risk register for board review' },
-  { id: 9, name: 'Any other business papers', description: 'Supporting papers for specific agenda items (optional)', optional: true },
-];
+import { useBoardPack, type BoardPackRecord, type DocRow } from '../contexts/BoardPackContext';
+import { defaultPack, standardDocs, templateDocs, templateOptions } from '../data/boardPacks';
 
 interface Director {
   initials: string;
@@ -68,94 +49,32 @@ function Pill({ children, tone }: { children: React.ReactNode; tone: string }) {
   );
 }
 
-interface BoardPackRecord {
-  meeting: string;
-  date: string;
-  time: string;
-  venue: string;
-  entity: string;
-  chairperson: string;
-  template: string;
-}
-
-const defaultPack: BoardPackRecord = {
-  meeting: 'Q3 2026 Board Meeting',
-  date: '2026-08-28',
-  time: '18:00 WAT',
-  venue: 'Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek',
-  entity: 'Gondwana Holdings Ltd',
-  chairperson: 'Dave Smuts',
-  template: 'Standard board meeting (9 items)',
-};
-
 const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
   });
-
-const templateOptions = [
-  'Standard board meeting (9 items)',
-  'AGM pack (12 items)',
-  'GM pack (6 items)',
-  'Committee meeting (5 items)',
-];
-
-const agmDocs: DocRow[] = [
-  { id: 1, name: 'Notice of AGM', description: 'Formal notice per AoA Art. 14 — 21 clear days' },
-  { id: 2, name: 'Previous AGM minutes', description: 'Minutes of last AGM for adoption' },
-  { id: 3, name: 'Annual Financial Statements', description: 'Audited AFS for the financial year — J. Visser' },
-  { id: 4, name: "Auditor's report", description: 'Independent auditor opinion — external auditors' },
-  { id: 5, name: "Directors' report", description: 'Report of the board to members' },
-  { id: 6, name: 'MD operational report', description: 'Group operational update — G. Joubert' },
-  { id: 7, name: 'Audit Risk & Opportunity Committee report', description: 'Annual committee report — J. Mnyupe' },
-  { id: 8, name: 'People Committee report', description: 'HR and remuneration report — D. Namalenga' },
-  { id: 9, name: 'Sustainability Committee report', description: 'ESG and conservation report — H. Gouws' },
-  { id: 10, name: 'Director rotation and re-election resolutions', description: 'Directors retiring by rotation per AoA Art. 24' },
-  { id: 11, name: 'Special resolutions', description: 'Special resolutions tabled for member approval' },
-  { id: 12, name: 'Proxy forms and voting papers', description: 'Supporting papers for specific agenda items (optional)', optional: true },
-];
-
-const gmDocs: DocRow[] = [
-  { id: 1, name: 'Notice of General Meeting', description: 'Formal notice per AoA Art. 14' },
-  { id: 2, name: 'Previous meeting minutes', description: 'Minutes of last GM for adoption' },
-  { id: 3, name: 'Management accounts', description: 'Latest financial report — J. Visser' },
-  { id: 4, name: 'MD operational report', description: 'Group operational update — G. Joubert' },
-  { id: 5, name: 'Resolutions for consideration', description: 'Ordinary resolutions tabled for member approval' },
-  { id: 6, name: 'Proxy forms', description: 'Supporting papers for specific agenda items (optional)', optional: true },
-];
-
-const committeeDocs: DocRow[] = [
-  { id: 1, name: 'Meeting notice and agenda', description: 'Committee notice and agenda' },
-  { id: 2, name: 'Previous committee minutes', description: 'Minutes of last committee meeting for adoption' },
-  { id: 3, name: 'Committee report', description: 'Standing report for the period under review' },
-  { id: 4, name: 'Matters arising schedule', description: 'Action tracker from previous meeting' },
-  { id: 5, name: 'Supporting papers', description: 'Supporting papers for specific agenda items (optional)', optional: true },
-];
-
-const templateDocs: Record<string, DocRow[]> = {
-  'Standard board meeting (9 items)': initialDocs,
-  'AGM pack (12 items)': agmDocs,
-  'GM pack (6 items)': gmDocs,
-  'Committee meeting (5 items)': committeeDocs,
-};
 
 export default function BoardPack() {
   const { showToast } = useToast();
   const { canWrite } = useUser();
   const canCompile = canWrite('A');
 
-  const [activePack, setActivePack] = useState<BoardPackRecord>(defaultPack);
-  const [docs, setDocs] = useState<DocRow[]>(initialDocs);
-  const [preModalDocs, setPreModalDocs] = useState<DocRow[]>(initialDocs);
+  // Pack progress lives in BoardPackContext, mirrored to localStorage per pack ID.
+  // STOPGAP: per-browser only — see the note in BoardPackContext.tsx. Adding
+  // Supabase (Lovable Cloud) would make this shared across the CoSec team.
+  const { state, update, startPack, saveProgress } = useBoardPack();
+  const { pack: activePack, docs, recipients, note, compiled, distributed, savedAt } = state;
+
+  const [preModalDocs, setPreModalDocs] = useState<DocRow[]>(docs);
   const [uploadFor, setUploadFor] = useState<DocRow | null>(null);
   const [newPackOpen, setNewPackOpen] = useState(false);
   const [distributeOpen, setDistributeOpen] = useState(false);
   const [compiling, setCompiling] = useState(false);
-  const [compiled, setCompiled] = useState(false);
-  const [distributed, setDistributed] = useState<string | null>(null);
-  const [note, setNote] = useState('');
-  const [recipients, setRecipients] = useState<string[]>(directors.map(d => d.initials));
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const setRecipients = (fn: (prev: string[]) => string[]) =>
+    update(prev => ({ recipients: fn(prev.recipients) }));
+  const setNote = (value: string) => update({ note: value });
 
   // New pack form (controlled)
   const emptyForm = { meeting: '', date: '', time: '18:00 WAT', venue: '', entity: 'Gondwana Holdings Ltd', chairperson: 'Dave Smuts', template: templateOptions[0] };
@@ -163,10 +82,8 @@ export default function BoardPack() {
   const setField = (k: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }));
 
-  const applyTemplateDocs = (template: string) => {
-    const list = templateDocs[template] ?? initialDocs;
-    setDocs(list.map(({ file: _file, blob: _blob, ...d }) => d));
-  };
+  const templateDocList = (template: string) =>
+    (templateDocs[template] ?? standardDocs).map(({ file: _file, blob: _blob, ...d }) => d);
 
   const openNewPackModal = () => {
     setPreModalDocs(docs);
@@ -175,19 +92,18 @@ export default function BoardPack() {
   };
 
   const closeNewPackModal = () => {
-    setDocs(preModalDocs);
+    update({ docs: preModalDocs });
     setNewPackOpen(false);
   };
 
   const createPack = () => {
     if (!form.meeting || !form.date) return;
-    const record: BoardPackRecord = { ...form, venue: form.venue || defaultPack.venue };
-    setActivePack(record);
-    applyTemplateDocs(form.template);
-    setRecipients(directors.map(d => d.initials));
-    setCompiled(false);
-    setDistributed(null);
-    setNote('');
+    const record: BoardPackRecord = {
+      ...form,
+      venue: form.venue || defaultPack.venue,
+      id: `pack-${form.date}-${form.meeting.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    };
+    startPack(record, templateDocList(form.template), directors.map(d => d.initials));
     setNewPackOpen(false);
     setForm(emptyForm);
     showToast(`${record.meeting} created · Checklist and recipients reset`);
@@ -207,7 +123,7 @@ export default function BoardPack() {
     if (!uploadFor) return;
     const doc = uploadFor;
     const next = docs.map(d => (d.id === doc.id ? { ...d, file: file.name, blob: file } : d));
-    setDocs(next);
+    update({ docs: next });
     setUploadFor(null);
     showToast(`${doc.name} uploaded · Pack is ${next.filter(d => d.file).length} of ${next.length} complete`);
   };
@@ -230,16 +146,25 @@ export default function BoardPack() {
     setCompiling(true);
     setTimeout(() => {
       setCompiling(false);
-      setCompiled(true);
+      update({ compiled: true });
       showToast('Board pack compiled · Ready for distribution');
     }, 1500);
   };
+
+  const handleSaveProgress = () => {
+    saveProgress();
+    showToast('Progress saved · Uploads, template, recipients and note kept on this device');
+  };
+
+  const savedLabel = savedAt
+    ? new Date(savedAt).toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+    : null;
 
   const confirmDistribution = () => {
     const now = new Date();
     const date = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
     const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-    setDistributed(`${date} at ${time}`);
+    update({ distributed: `${date} at ${time}` });
     setDistributeOpen(false);
     showToast(`Board pack distributed · ${recipients.length} directors notified · Audit trail entry created`);
   };
