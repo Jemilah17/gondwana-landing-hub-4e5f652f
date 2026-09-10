@@ -150,16 +150,17 @@ function RootComponent() {
       <UserProvider>
         <DirectorProvider>
           <BoardPackProvider>
-          <ToastProvider>
-            {bare ? (
-              <Outlet />
-            ) : (
-              <Layout>
-                {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <ToastProvider>
+              {bare ? (
                 <Outlet />
-              </Layout>
-            )}
-          </ToastProvider>
+              ) : (
+                <Layout>
+                  {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+                  <Outlet />
+                </Layout>
+              )}
+            </ToastProvider>
+          </BoardPackProvider>
         </DirectorProvider>
       </UserProvider>
     </QueryClientProvider>
