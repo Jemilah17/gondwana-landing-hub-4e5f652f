@@ -396,9 +396,15 @@ export default function BoardPack() {
                 {compiling && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                 {compiling ? 'Compiling...' : 'Compile pack'}
               </button>
-              <button className="w-full h-9 rounded-lg border border-border text-[11px] text-primary hover:bg-background">
+              <button
+                onClick={handleSaveProgress}
+                className="w-full h-9 rounded-lg border border-border text-[11px] text-primary hover:bg-background"
+              >
                 Save progress
               </button>
+              <div className="text-[10px] text-muted text-center">
+                {savedLabel ? `Last saved ${savedLabel}` : 'Progress is kept as you work'}
+              </div>
               <button
                 onClick={download}
                 disabled={downloading}
