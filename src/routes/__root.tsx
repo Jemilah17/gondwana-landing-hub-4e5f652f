@@ -16,6 +16,7 @@ import Layout from "@/features/bolt/components/layout/Layout";
 import { UserProvider } from "@/features/bolt/contexts/UserContext";
 import { ToastProvider } from "@/features/bolt/contexts/ToastContext";
 import { DirectorProvider } from "@/features/bolt/contexts/DirectorContext";
+import { BoardPackProvider } from "@/features/bolt/contexts/BoardPackContext";
 
 function NotFoundComponent() {
   return (
