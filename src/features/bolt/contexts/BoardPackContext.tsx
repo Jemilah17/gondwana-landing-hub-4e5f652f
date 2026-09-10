@@ -88,13 +88,17 @@ function writeStore(store: Record<string, BoardPackState>) {
   }
 }
 
-export function BoardPackProvider({
-  initialState,
-  children,
-}: {
-  initialState: BoardPackState;
-  children: ReactNode;
-}) {
+const initialState: BoardPackState = {
+  pack: defaultPack,
+  docs: standardDocs,
+  recipients: defaultRecipients,
+  note: '',
+  compiled: false,
+  distributed: null,
+  savedAt: null,
+};
+
+export function BoardPackProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<BoardPackState>(initialState);
   const hydrated = useRef(false);
 
