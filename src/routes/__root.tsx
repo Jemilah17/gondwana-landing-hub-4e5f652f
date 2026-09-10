@@ -16,6 +16,7 @@ import Layout from "@/features/bolt/components/layout/Layout";
 import { UserProvider } from "@/features/bolt/contexts/UserContext";
 import { ToastProvider } from "@/features/bolt/contexts/ToastContext";
 import { DirectorProvider } from "@/features/bolt/contexts/DirectorContext";
+import { BoardPackProvider } from "@/features/bolt/contexts/BoardPackContext";
 
 function NotFoundComponent() {
   return (
@@ -148,16 +149,18 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <UserProvider>
         <DirectorProvider>
-          <ToastProvider>
-            {bare ? (
-              <Outlet />
-            ) : (
-              <Layout>
-                {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <BoardPackProvider>
+            <ToastProvider>
+              {bare ? (
                 <Outlet />
-              </Layout>
-            )}
-          </ToastProvider>
+              ) : (
+                <Layout>
+                  {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+                  <Outlet />
+                </Layout>
+              )}
+            </ToastProvider>
+          </BoardPackProvider>
         </DirectorProvider>
       </UserProvider>
     </QueryClientProvider>
