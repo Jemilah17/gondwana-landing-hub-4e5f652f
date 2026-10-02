@@ -21,16 +21,23 @@ export interface Filing {
 // data below stays unchanged.
 type FilingRow = Omit<Filing, 'assignedTo' | 'handoffStage' | 'handedOffDate' | 'proofReceiptNumber'>;
 
-const withHandoffDefaults = (f: FilingRow): Filing => ({
-  ...f,
-  assignedTo: 'internal',
-  handoffStage:
+const withHandoffDefaults = (f: FilingRow): Filing => {
+  const assignedTo: Filing['assignedTo'] =
+    f.type === 'BIPA Annual Return' || f.type === 'NTB Statutory Levy' ? 'consultant' : 'internal';
+
+  const handoffStage: Filing['handoffStage'] =
     f.status === 'filed' ? 'confirmed_filed'
-    : f.status === 'overdue' ? 'overdue_unconfirmed'
-    : 'not_due',
-  handedOffDate: null,
-  proofReceiptNumber: f.receiptNumber,
-});
+    : f.status === 'overdue' && assignedTo === 'consultant' ? 'overdue_unconfirmed'
+    : 'not_due';
+
+  return {
+    ...f,
+    assignedTo,
+    handoffStage,
+    handedOffDate: null,
+    proofReceiptNumber: f.receiptNumber,
+  };
+};
 
 const filingRows: FilingRow[] = [
   // Cluster A - Overdue
