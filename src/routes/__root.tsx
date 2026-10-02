@@ -151,19 +151,20 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <UserProvider>
         <DirectorProvider>
-          <BoardPackProvider>
-            <ToastProvider>
-              {bare ? (
-                <Outlet />
-              ) : (
-                <Layout>
-                  {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-                  <Outlet />
-                </Layout>
-              )}
-            </ToastProvider>
-          </BoardPackProvider>
           <FilingsProvider>
+            <BoardPackProvider>
+              <ToastProvider>
+                {bare ? (
+                  <Outlet />
+                ) : (
+                  <Layout>
+                    {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+                    <Outlet />
+                  </Layout>
+                )}
+              </ToastProvider>
+            </BoardPackProvider>
+          </FilingsProvider>
         </DirectorProvider>
       </UserProvider>
     </QueryClientProvider>
