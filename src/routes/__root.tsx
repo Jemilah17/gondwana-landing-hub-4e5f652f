@@ -18,6 +18,7 @@ import { UserProvider } from "@/features/bolt/contexts/UserContext";
 import { ToastProvider } from "@/features/bolt/contexts/ToastContext";
 import { DirectorProvider } from "@/features/bolt/contexts/DirectorContext";
 import { BoardPackProvider } from "@/features/bolt/contexts/BoardPackContext";
+import { FilingsProvider } from "@/features/bolt/contexts/FilingsContext";
 
 function NotFoundComponent() {
   return (
@@ -162,6 +163,7 @@ function RootComponent() {
               )}
             </ToastProvider>
           </BoardPackProvider>
+          <FilingsProvider>
         </DirectorProvider>
       </UserProvider>
     </QueryClientProvider>
