@@ -554,7 +554,7 @@ export default function BoardPack() {
                   checked={form.template === t}
                   onChange={() => {
                     setForm(prev => ({ ...prev, template: t }));
-                    applyTemplateDocs(t);
+                    update({ docs: templateDocList(t) });
                   }}
                   className="accent-orange"
                 />
