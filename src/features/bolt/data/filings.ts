@@ -100,6 +100,8 @@ const filingRows: FilingRow[] = [
   { id: 'fil-040', entityId: 'gcn-029', entityName: 'Chobe River Camp', cluster: 'E', type: 'FIC Compliance Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
 ];
 
+export const filings: Filing[] = filingRows.map(withHandoffDefaults);
+
 export const getFilingsByEntity = (entityId: string): Filing[] => {
   return filings.filter(filing => filing.entityId === entityId);
 };
