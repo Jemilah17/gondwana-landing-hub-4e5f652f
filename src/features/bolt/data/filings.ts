@@ -10,9 +10,29 @@ export interface Filing {
   status: 'compliant' | 'due soon' | 'overdue' | 'filed' | 'pending';
   assignee: string;
   isFlagged?: boolean;
+  // Consultant handoff tracking
+  assignedTo: 'internal' | 'consultant';
+  handoffStage: 'not_due' | 'handed_to_consultant' | 'filed_awaiting_proof' | 'confirmed_filed' | 'overdue_unconfirmed';
+  handedOffDate: string | null;
+  proofReceiptNumber: string | null; // reuses the receipt-capture pattern from Deadlines.tsx's modal
 }
 
-export const filings: Filing[] = [
+// Existing rows predate handoff tracking — derive sensible defaults so the
+// data below stays unchanged.
+type FilingRow = Omit<Filing, 'assignedTo' | 'handoffStage' | 'handedOffDate' | 'proofReceiptNumber'>;
+
+const withHandoffDefaults = (f: FilingRow): Filing => ({
+  ...f,
+  assignedTo: 'internal',
+  handoffStage:
+    f.status === 'filed' ? 'confirmed_filed'
+    : f.status === 'overdue' ? 'overdue_unconfirmed'
+    : 'not_due',
+  handedOffDate: null,
+  proofReceiptNumber: f.receiptNumber,
+});
+
+const filingRows: FilingRow[] = [
   // Cluster A - Overdue
   { id: 'fil-001', entityId: 'gcn-003', entityName: 'Gondwana Travel Centre', cluster: 'A', type: 'BIPA Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'fabiola', isFlagged: true },
   { id: 'fil-002', entityId: 'gcn-001', entityName: 'Gondwana Holdings Ltd', cluster: 'A', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'fabiola' },
@@ -79,6 +99,8 @@ export const filings: Filing[] = [
   { id: 'fil-039', entityId: 'gcn-028', entityName: 'Zambezi Mubala Lodge', cluster: 'E', type: 'BIPA Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
   { id: 'fil-040', entityId: 'gcn-029', entityName: 'Chobe River Camp', cluster: 'E', type: 'FIC Compliance Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
 ];
+
+export const filings: Filing[] = filingRows.map(withHandoffDefaults);
 
 export const getFilingsByEntity = (entityId: string): Filing[] => {
   return filings.filter(filing => filing.entityId === entityId);
