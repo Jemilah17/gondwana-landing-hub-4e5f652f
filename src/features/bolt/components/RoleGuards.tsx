@@ -20,10 +20,27 @@ export function RequireCoSec({ children }: { children: ReactNode }) {
   const { activeUser } = useUser();
   const navigate = useNavigate();
   const ok = activeUser.type === 'cosec';
+  // Consultants have no pages yet — bounce to sign-in rather than into the
+  // director portal, which would redirect straight back (redirect loop).
+  const awayTo = activeUser.type === 'consultant' ? '/sign-in' : '/director-dashboard';
 
   useEffect(() => {
-    if (!ok) navigate({ to: '/director-dashboard', replace: true });
-  }, [ok, navigate]);
+    if (!ok) navigate({ to: awayTo, replace: true });
+  }, [ok, awayTo, navigate]);
+
+  if (!ok) return null;
+  return <>{children}</>;
+}
+
+export function RequireDirector({ children }: { children: ReactNode }) {
+  const { activeUser } = useUser();
+  const navigate = useNavigate();
+  const ok = activeUser.type === 'director';
+  const awayTo = activeUser.type === 'consultant' ? '/sign-in' : '/dashboard';
+
+  useEffect(() => {
+    if (!ok) navigate({ to: awayTo, replace: true });
+  }, [ok, awayTo, navigate]);
 
   if (!ok) return null;
   return <>{children}</>;
