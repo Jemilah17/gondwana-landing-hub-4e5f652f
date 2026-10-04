@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
-import { filings } from '../data/filings';
+import { useFilings } from '../contexts/FilingsContext';
+import type { Filing } from '../data/filings';
 import { users } from '../data/users';
 import Topbar from '../components/layout/Topbar';
 import StatusPill from '../components/ui/StatusPills';
 import { Search } from 'lucide-react';
 
 export default function Filings() {
-  const { activeUser, canRead, canWrite } = useUser();
+  const { canRead, canWrite } = useUser();
+  const { filings, handOff } = useFilings();
   const [searchTerm, setSearchTerm] = useState('');
   const [clusterFilter, setClusterFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
@@ -120,11 +122,13 @@ export default function Filings() {
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">#</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Entity</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Cluster</th>
+                  <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Assigned to</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Type</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Due date</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Filed date</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Receipt</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Status</th>
+                  <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Handoff</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Admin</th>
                   <th className="px-4 py-3 text-left text-[10px] font-medium text-muted uppercase">Action</th>
                 </tr>
@@ -144,6 +148,11 @@ export default function Filings() {
                       <td className="px-4 py-3 text-[11px] text-muted">{idx + 1}</td>
                       <td className="px-4 py-3 text-[11px] text-primary font-medium">{filing.entityName}</td>
                       <td className="px-4 py-3 text-[11px] text-muted">{filing.cluster}</td>
+                      <td className="px-4 py-3">
+                        <span className={`px-2 py-1 rounded text-[10px] font-medium ${filing.assignedTo === 'consultant' ? 'bg-blue/10 text-blue' : 'bg-muted/10 text-muted'}`}>
+                          {filing.assignedTo === 'consultant' ? 'Consultant' : 'Internal'}
+                        </span>
+                      </td>
                       <td className="px-4 py-3 text-[11px] text-muted">{filing.type}</td>
                       <td className="px-4 py-3 text-[11px] text-muted">
                         {new Date(filing.dueDate).toLocaleDateString('en-NA')}
@@ -155,8 +164,15 @@ export default function Filings() {
                       <td className="px-4 py-3">
                         <StatusPill status={filing.status} />
                       </td>
+                      <td className="px-4 py-3"><HandoffPill stage={filing.handoffStage} /></td>
                       <td className="px-4 py-3 text-[11px] text-muted">{assignee?.name.split(' ')[0]}</td>
                       <td className="px-4 py-3">
+                        <div className="flex gap-1">
+                        {filing.assignedTo === 'consultant' && filing.handoffStage === 'not_due' && canEdit && (
+                          <button onClick={() => handOff(filing.id)} className="px-3 py-1 bg-blue text-white rounded text-[10px] font-medium">
+                            Hand off
+                          </button>
+                        )}
                         {canEdit && (filing.status === 'overdue' || filing.status === 'pending') ? (
                           <button className="px-3 py-1 bg-orange text-white rounded text-[10px] font-medium">
                             Log filing
@@ -166,6 +182,7 @@ export default function Filings() {
                             View
                           </button>
                         )}
+                        </div>
                       </td>
                     </tr>
                   );
@@ -177,4 +194,17 @@ export default function Filings() {
       </div>
     </div>
   );
+}
+
+const HANDOFF: Record<Filing['handoffStage'], [string, string]> = {
+  not_due: ['Not due', 'bg-muted/10 text-muted'],
+  handed_to_consultant: ['With consultant', 'bg-blue/10 text-blue'],
+  filed_awaiting_proof: ['Awaiting proof', 'bg-amber/10 text-amber'],
+  confirmed_filed: ['Confirmed filed', 'bg-green/10 text-green'],
+  overdue_unconfirmed: ['Overdue · unconfirmed', 'bg-red/10 text-red'],
+};
+
+function HandoffPill({ stage }: { stage: Filing['handoffStage'] }) {
+  const [label, cls] = HANDOFF[stage];
+  return <span className={`px-2 py-1 rounded text-[10px] font-medium whitespace-nowrap ${cls}`}>{label}</span>;
 }
