@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useUser } from '../../contexts/UserContext';
-import { users } from '../../data/users';
+import { users, consultants } from '../../data/users';
 import { useState } from 'react';
 
 const navSections = [
@@ -125,7 +125,7 @@ export default function Sidebar() {
         {expanded && (
           <div className="text-[9px] text-white/40 uppercase px-2 mb-2">Active session</div>
         )}
-        {users.map((user) => (
+        {[...users, ...consultants].map((user) => (
           <button
             key={user.id}
             onClick={() => setActiveUserById(user.id)}

@@ -8,7 +8,7 @@ export interface User {
   writeAccess: string[];
   readOnly: string[];
   disabled: string[];
-  type: 'cosec' | 'director';
+  type: 'cosec' | 'director' | 'consultant';
 }
 
 export const users: User[] = [
@@ -79,7 +79,22 @@ export const directors: User[] = [
   director('jaco', 'Jaco Visser', 'JV', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
 ];
 
-export const allUsers: User[] = [...users, ...directors];
+export const consultants: User[] = [
+  {
+    id: 'consultant-1',
+    name: 'Namibia CoSec Services',
+    initials: 'CS',
+    role: 'Company Secretarial Consultant',
+    avatarColor: 'bg-slate',
+    clusters: ['A', 'B', 'C', 'D', 'E'],
+    writeAccess: [],
+    readOnly: [],
+    disabled: [],
+    type: 'consultant',
+  },
+];
+
+export const allUsers: User[] = [...users, ...directors, ...consultants];
 
 export const getUserById = (id: string): User | undefined => {
   return allUsers.find(user => user.id === id);
