@@ -28,3 +28,16 @@ export function RequireCoSec({ children }: { children: ReactNode }) {
   if (!ok) return null;
   return <>{children}</>;
 }
+
+export function RequireConsultant({ children }: { children: ReactNode }) {
+  const { activeUser } = useUser();
+  const navigate = useNavigate();
+  const ok = activeUser.type === 'consultant';
+
+  useEffect(() => {
+    if (!ok) navigate({ to: '/dashboard', replace: true });
+  }, [ok, navigate]);
+
+  if (!ok) return null;
+  return <>{children}</>;
+}
