@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react';
 import { AlertTriangle, Clock, ClipboardList, UploadCloud } from 'lucide-react';
 import { useUser } from '../contexts/UserContext';
 import { useToast } from '../contexts/ToastContext';
-import { filings as allFilings, Filing } from '../data/filings';
+import { Filing } from '../data/filings';
+import { useFilings } from '../contexts/FilingsContext';
 import { users } from '../data/users';
 import Topbar from '../components/layout/Topbar';
 import Modal from '../components/ui/Modal';
@@ -113,6 +114,8 @@ function SectionLabel({ tint, text, label, count }: { tint: string; text: string
 export default function Deadlines() {
   const { canRead } = useUser();
   const { showToast } = useToast();
+  const { filings: allFilings, overdueUnconfirmed, confirmFiled } = useFilings();
+  const [onlyUnconfirmed, setOnlyUnconfirmed] = useState(false);
 
   const [logged, setLogged] = useState<string[]>([]);
   const [cluster, setCluster] = useState('all');
@@ -126,10 +129,11 @@ export default function Deadlines() {
 
   const visible = useMemo(
     () => allFilings.filter(f => canRead(f.cluster) && !logged.includes(f.id)),
-    [canRead, logged]
+    [allFilings, canRead, logged]
   );
 
   const filtered = visible.filter(f => {
+    if (onlyUnconfirmed && f.handoffStage !== 'overdue_unconfirmed') return false;
     if (cluster !== 'all' && f.cluster !== cluster) return false;
     if (admin !== 'all' && f.assignee !== admin) return false;
     if (type !== 'all' && f.type !== TYPE_GROUPS[type]) return false;
@@ -159,6 +163,7 @@ export default function Deadlines() {
 
   const confirmLog = () => {
     if (!modalFiling) return;
+    confirmFiled(modalFiling.id, receipt.trim() || 'not supplied', filingDate);
     setLogged(prev => [...prev, modalFiling.id]);
     setModalFiling(null);
     showToast('Filing logged · Audit trail updated');
@@ -197,6 +202,15 @@ export default function Deadlines() {
               <option value="pending">Upcoming</option>
             </select>
           </div>
+
+          <button
+            type="button"
+            onClick={() => setOnlyUnconfirmed(v => !v)}
+            className={`w-full text-left rounded-lg ${onlyUnconfirmed ? 'ring-2 ring-red' : ''}`}
+            title="Show only filings overdue and unconfirmed at the consultant"
+          >
+            <SectionLabel tint="bg-red-tint" text="text-red" label={`Overdue & unconfirmed (with consultant)${onlyUnconfirmed ? ' · filtered — click to clear' : ''}`} count={overdueUnconfirmed.length} />
+          </button>
 
           {showOverdue && (
             <section className="space-y-2">

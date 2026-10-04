@@ -1,4 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useAuditTrail } from './AuditTrailContext';
+import { useUser } from './UserContext';
+import { entities } from '../data/entities';
 import { filings as seedFilings, type Filing } from '../data/filings';
 
 /**
@@ -63,6 +66,22 @@ const hydrate = (): Filing[] => {
 export function FilingsProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<Filing[]>(() => seedFilings);
   const hydrated = useRef(false);
+  const { addEvent } = useAuditTrail();
+  const { activeUser } = useUser();
+  const stateRef = useRef(state);
+  stateRef.current = state;
+  const log = (filingId: string, action: (f: Filing) => string) => {
+    const f = stateRef.current.find(x => x.id === filingId);
+    if (!f) return;
+    addEvent({
+      actor: activeUser.name,
+      entity: f.entityName,
+      action: action(f),
+      type: 'Filing',
+      severity: 'info',
+      cluster: f.cluster ?? entities.find(e => e.name === f.entityName)?.cluster ?? '—',
+    });
+  };
 
   // Hydrate after mount (SSR-safe): overlay saved edits onto the seed data.
   useEffect(() => {
@@ -77,12 +96,13 @@ export function FilingsProvider({ children }: { children: ReactNode }) {
   }, [state]);
 
   const handOff = useCallback((filingId: string) => {
+    log(filingId, f => `${f.entityName} ${f.type} handed to consultant`);
     setState(prev => prev.map(f =>
       f.id === filingId
         ? { ...f, assignedTo: 'consultant', handoffStage: 'handed_to_consultant', handedOffDate: today() }
         : f,
     ));
-  }, []);
+  }, [addEvent, activeUser]);
 
   const markFiledAwaitingProof = useCallback((filingId: string) => {
     setState(prev => prev.map(f =>
@@ -93,6 +113,7 @@ export function FilingsProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const confirmFiled = useCallback((filingId: string, receiptNumber: string, filedDate: string) => {
+    log(filingId, f => `${f.entityName} ${f.type} confirmed filed · receipt ${receiptNumber}`);
     setState(prev => prev.map(f =>
       f.id === filingId
         ? {
@@ -105,7 +126,7 @@ export function FilingsProvider({ children }: { children: ReactNode }) {
           }
         : f,
     ));
-  }, []);
+  }, [addEvent, activeUser]);
 
   const overdueUnconfirmed = state.filter(f => f.handoffStage === 'overdue_unconfirmed');
 
