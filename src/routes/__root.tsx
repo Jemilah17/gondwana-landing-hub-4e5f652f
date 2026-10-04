@@ -18,6 +18,7 @@ import { UserProvider } from "@/features/bolt/contexts/UserContext";
 import { ToastProvider } from "@/features/bolt/contexts/ToastContext";
 import { DirectorProvider } from "@/features/bolt/contexts/DirectorContext";
 import { BoardPackProvider } from "@/features/bolt/contexts/BoardPackContext";
+import { AuditTrailProvider } from "@/features/bolt/contexts/AuditTrailContext";
 import { FilingsProvider } from "@/features/bolt/contexts/FilingsContext";
 
 function NotFoundComponent() {
@@ -151,6 +152,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <UserProvider>
         <DirectorProvider>
+          <AuditTrailProvider>
           <FilingsProvider>
             <BoardPackProvider>
               <ToastProvider>
@@ -165,6 +167,7 @@ function RootComponent() {
               </ToastProvider>
             </BoardPackProvider>
           </FilingsProvider>
+          </AuditTrailProvider>
         </DirectorProvider>
       </UserProvider>
     </QueryClientProvider>

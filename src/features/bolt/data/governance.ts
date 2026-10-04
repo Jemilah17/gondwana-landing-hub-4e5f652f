@@ -132,6 +132,8 @@ export interface AuditEvent {
   type: string;
   severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
   cluster: string;
+  /** ISO time for events created in-app (used for notification 'last seen'). */
+  createdAt?: string;
 }
 
 export const auditEvents: AuditEvent[] = [

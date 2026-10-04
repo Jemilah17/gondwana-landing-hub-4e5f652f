@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import Topbar from '../components/layout/Topbar';
-import { auditEvents } from '../data/governance';
+import { useAuditTrail } from '../contexts/AuditTrailContext';
 import { Search, Download } from 'lucide-react';
 
 export default function AuditTrail() {
+  const { events: auditEvents } = useAuditTrail();
   const [searchTerm, setSearchTerm] = useState('');
   const [actorFilter, setActorFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
@@ -85,6 +86,7 @@ export default function AuditTrail() {
             <option value="Compliance">Compliance</option>
             <option value="Resolution">Resolution</option>
             <option value="Entity">Entity</option>
+            <option value="Filing">Filing</option>
           </select>
           <button className="px-4 py-2 bg-card border border-border rounded-lg text-[12px] text-muted">
             Clear
@@ -110,7 +112,7 @@ export default function AuditTrail() {
             </thead>
             <tbody className="divide-y divide-border">
               {filteredEvents.map((event) => (
-                <>
+                <Fragment key={event.id}>
                   <tr
                     key={event.id}
                     onClick={() => setExpandedRow(expandedRow === event.id ? null : event.id)}
@@ -149,7 +151,7 @@ export default function AuditTrail() {
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               ))}
             </tbody>
           </table>
