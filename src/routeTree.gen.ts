@@ -18,6 +18,7 @@ import { Route as BoardPackRouteImport } from './routes/board-pack'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as ConsultantDashboardRouteImport } from './routes/consultant-dashboard'
+import { Route as ConsultantFilingsRouteImport } from './routes/consultant-filings'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DeadlinesRouteImport } from './routes/deadlines'
 import { Route as DirectorDashboardRouteImport } from './routes/director-dashboard'
@@ -86,6 +87,11 @@ const ComplianceRoute = ComplianceRouteImport.update({
 const ConsultantDashboardRoute = ConsultantDashboardRouteImport.update({
   id: '/consultant-dashboard',
   path: '/consultant-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultantFilingsRoute = ConsultantFilingsRouteImport.update({
+  id: '/consultant-filings',
+  path: '/consultant-filings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -219,6 +225,7 @@ export interface FileRoutesByFullPath {
   '/calendar': typeof CalendarRoute
   '/compliance': typeof ComplianceRoute
   '/consultant-dashboard': typeof ConsultantDashboardRoute
+  '/consultant-filings': typeof ConsultantFilingsRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/director-dashboard': typeof DirectorDashboardRoute
@@ -254,6 +261,7 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarRoute
   '/compliance': typeof ComplianceRoute
   '/consultant-dashboard': typeof ConsultantDashboardRoute
+  '/consultant-filings': typeof ConsultantFilingsRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/director-dashboard': typeof DirectorDashboardRoute
@@ -290,6 +298,7 @@ export interface FileRoutesById {
   '/calendar': typeof CalendarRoute
   '/compliance': typeof ComplianceRoute
   '/consultant-dashboard': typeof ConsultantDashboardRoute
+  '/consultant-filings': typeof ConsultantFilingsRoute
   '/dashboard': typeof DashboardRoute
   '/deadlines': typeof DeadlinesRoute
   '/director-dashboard': typeof DirectorDashboardRoute
@@ -327,6 +336,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/compliance'
     | '/consultant-dashboard'
+    | '/consultant-filings'
     | '/dashboard'
     | '/deadlines'
     | '/director-dashboard'
@@ -362,6 +372,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/compliance'
     | '/consultant-dashboard'
+    | '/consultant-filings'
     | '/dashboard'
     | '/deadlines'
     | '/director-dashboard'
@@ -397,6 +408,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/compliance'
     | '/consultant-dashboard'
+    | '/consultant-filings'
     | '/dashboard'
     | '/deadlines'
     | '/director-dashboard'
@@ -433,6 +445,7 @@ export interface RootRouteChildren {
   CalendarRoute: typeof CalendarRoute
   ComplianceRoute: typeof ComplianceRoute
   ConsultantDashboardRoute: typeof ConsultantDashboardRoute
+  ConsultantFilingsRoute: typeof ConsultantFilingsRoute
   DashboardRoute: typeof DashboardRoute
   DeadlinesRoute: typeof DeadlinesRoute
   DirectorDashboardRoute: typeof DirectorDashboardRoute
@@ -522,6 +535,13 @@ declare module '@tanstack/react-router' {
       path: '/consultant-dashboard'
       fullPath: '/consultant-dashboard'
       preLoaderRoute: typeof ConsultantDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consultant-filings': {
+      id: '/consultant-filings'
+      path: '/consultant-filings'
+      fullPath: '/consultant-filings'
+      preLoaderRoute: typeof ConsultantFilingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -705,6 +725,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarRoute: CalendarRoute,
   ComplianceRoute: ComplianceRoute,
   ConsultantDashboardRoute: ConsultantDashboardRoute,
+  ConsultantFilingsRoute: ConsultantFilingsRoute,
   DashboardRoute: DashboardRoute,
   DeadlinesRoute: DeadlinesRoute,
   DirectorDashboardRoute: DirectorDashboardRoute,
