@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
-import { AlertTriangle, Clock, ClipboardList, UploadCloud } from 'lucide-react';
+import { AlertTriangle, Clock, ClipboardList } from 'lucide-react';
 import { useUser } from '../contexts/UserContext';
 import { useToast } from '../contexts/ToastContext';
 import { Filing } from '../data/filings';
 import { useFilings } from '../contexts/FilingsContext';
 import { users } from '../data/users';
 import Topbar from '../components/layout/Topbar';
-import Modal from '../components/ui/Modal';
+import LogFilingModal from '../components/ui/LogFilingModal';
 
 const TODAY = new Date('2026-08-04T00:00:00Z');
 
@@ -124,8 +124,6 @@ export default function Deadlines() {
   const [status, setStatus] = useState('all');
 
   const [modalFiling, setModalFiling] = useState<Filing | null>(null);
-  const [receipt, setReceipt] = useState('');
-  const [filingDate, setFilingDate] = useState('2026-08-04');
 
   const visible = useMemo(
     () => allFilings.filter(f => canRead(f.cluster) && !logged.includes(f.id)),
