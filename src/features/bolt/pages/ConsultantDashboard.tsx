@@ -124,7 +124,7 @@ export default function ConsultantDashboard() {
 
         {/* Filings list lives on its own page */}
         <Link
-          to="/filings"
+          to="/consultant-filings"
           className="inline-flex items-center gap-2 px-4 py-2 bg-orange text-white rounded-lg text-[12px] font-medium hover:opacity-90"
         >
           View all assigned filings
