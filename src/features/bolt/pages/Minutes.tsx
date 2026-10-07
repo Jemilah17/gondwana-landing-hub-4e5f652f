@@ -1406,6 +1406,7 @@ export default function Minutes() {
                       Stage {stages.indexOf(row.stage) + 1} of 5
                     </td>
                     <td className="px-4 py-3"><StageBadge stage={row.stage} /></td>
+                    <td className="px-4 py-3"><DirectorResponseCell response={responseFor(row.title)} /></td>
                     <td className="px-4 py-3 text-right">
                       {isSigned ? (
                         <button
