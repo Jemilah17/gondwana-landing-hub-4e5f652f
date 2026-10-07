@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
-import { Shield, Briefcase, ArrowRight } from 'lucide-react';
+import { Shield, Briefcase, Building2, ArrowRight } from 'lucide-react';
 import { useUser } from '../contexts/UserContext';
 
-type Level = 'secretariat' | 'director';
+type Level = 'secretariat' | 'director' | 'consultant';
 
 interface Person {
   id: string;
@@ -34,7 +34,13 @@ const descriptions: Record<Level, string> = {
     'Full group access to all governance records, statutory registers, compliance filings, and reporting across all 33 Gondwana entities.',
   director:
     'Access to your assigned entities, board meeting documents, minutes for review, and RSVP management.',
+  consultant:
+    'Access to filings assigned to your firm, with handoff status, proof upload, and overdue items across all Gondwana entities.',
 };
+
+const consultants: Person[] = [
+  { id: 'consultant-1', name: 'Namibia CoSec Services', role: 'Company Secretarial Consultant', initials: 'CS', bg: '#EEF1F4', fg: '#4A5560' },
+];
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -42,15 +48,30 @@ export default function SignIn() {
   const [level, setLevel] = useState<Level>('secretariat');
   const [secretarySel, setSecretarySel] = useState('fabiola');
   const [directorSel, setDirectorSel] = useState('dave');
+  const [consultantSel, setConsultantSel] = useState('consultant-1');
 
-  const people = level === 'secretariat' ? secretariat : directors;
-  const selectedId = level === 'secretariat' ? secretarySel : directorSel;
+  const people =
+    level === 'secretariat' ? secretariat : level === 'director' ? directors : consultants;
+  const selectedId =
+    level === 'secretariat' ? secretarySel : level === 'director' ? directorSel : consultantSel;
   const selected = people.find((p) => p.id === selectedId)!;
-  const setSelected = level === 'secretariat' ? setSecretarySel : setDirectorSel;
+  const setSelected =
+    level === 'secretariat'
+      ? setSecretarySel
+      : level === 'director'
+        ? setDirectorSel
+        : setConsultantSel;
 
   const handleSignIn = () => {
     setActiveUserById(selectedId);
-    navigate({ to: level === 'director' ? '/director-dashboard' : '/dashboard' });
+    navigate({
+      to:
+        level === 'director'
+          ? '/director-dashboard'
+          : level === 'consultant'
+            ? '/consultant-dashboard'
+            : '/dashboard',
+    });
   };
 
   return (
@@ -87,6 +108,7 @@ export default function SignIn() {
           {([
             { key: 'secretariat' as Level, label: 'Secretariat', Icon: Shield },
             { key: 'director' as Level, label: 'Director', Icon: Briefcase },
+            { key: 'consultant' as Level, label: 'Consultant', Icon: Building2 },
           ]).map(({ key, label, Icon }) => {
             const active = level === key;
             return (
@@ -119,7 +141,11 @@ export default function SignIn() {
         <div style={{ height: 16 }} />
 
         <div style={{ fontSize: 10, color: '#6B6F68', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
-          {level === 'secretariat' ? 'Select administrator' : 'Select director'}
+          {level === 'secretariat'
+            ? 'Select administrator'
+            : level === 'director'
+              ? 'Select director'
+              : 'Select consultant'}
         </div>
 
         <div className="flex flex-col gap-2">
