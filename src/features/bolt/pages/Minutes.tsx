@@ -28,6 +28,7 @@ import {
 import { saveAs } from 'file-saver';
 import Topbar from '../components/layout/Topbar';
 import { useToast } from '../contexts/ToastContext';
+import { useDirector, type MinutesReview } from '../contexts/DirectorContext';
 import Modal from '../components/ui/Modal';
 import { directors as boardDirectors } from '../data/governance';
 
@@ -136,6 +137,36 @@ function StageBadge({ stage }: { stage: Stage }) {
   };
   return (
     <span className={`inline-flex px-2 py-[2px] rounded-lg text-[10px] font-medium ${map[stage]}`}>{stage}</span>
+  );
+}
+
+const RESPONSE_PILL: Record<MinutesReview['choice'] & string, { cls: string; label: string }> = {
+  approve: { cls: 'bg-green-tint text-green', label: 'Approved' },
+  corrections: { cls: 'bg-amber-tint text-amber', label: 'Approved with corrections' },
+  comment: { cls: 'bg-blue-500/10 text-blue-600', label: 'Has comments' },
+};
+
+function DirectorResponseCell({ response }: { response?: MinutesReview }) {
+  if (!response) return <span className="text-[12px] text-muted">—</span>;
+  if (response.status === 'pending') {
+    return (
+      <span className="inline-flex px-2 py-[2px] rounded-lg text-[10px] font-medium bg-background text-muted border border-border">
+        Awaiting director response
+      </span>
+    );
+  }
+  const pill = response.choice ? RESPONSE_PILL[response.choice] : null;
+  return (
+    <div className="space-y-1">
+      {pill && (
+        <span className={`inline-flex px-2 py-[2px] rounded-lg text-[10px] font-medium ${pill.cls}`}>
+          {pill.label}
+        </span>
+      )}
+      {response.note && (
+        <div className="text-[10px] text-muted leading-snug max-w-[220px]">&ldquo;{response.note}&rdquo;</div>
+      )}
+    </div>
   );
 }
 
@@ -1271,7 +1302,10 @@ export default function Minutes() {
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
   const [panelRowId, setPanelRowId] = useState<string | null>(null);
   const { showToast } = useToast();
+  const { minutes: directorMinutes } = useDirector();
   const [noticeOpen, setNoticeOpen] = useState(false);
+
+  const responseFor = (title: string) => directorMinutes.find((m) => m.title === title);
 
   const activeRow = rows.find((r) => r.id === panelRowId) ?? null;
 
@@ -1344,6 +1378,7 @@ export default function Minutes() {
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Chairperson</th>
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Stage</th>
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Status</th>
+                <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Director response</th>
                 <th className="px-4 py-2 w-36"></th>
               </tr>
             </thead>
@@ -1371,6 +1406,7 @@ export default function Minutes() {
                       Stage {stages.indexOf(row.stage) + 1} of 5
                     </td>
                     <td className="px-4 py-3"><StageBadge stage={row.stage} /></td>
+                    <td className="px-4 py-3"><DirectorResponseCell response={responseFor(row.title)} /></td>
                     <td className="px-4 py-3 text-right">
                       {isSigned ? (
                         <button
@@ -1399,6 +1435,7 @@ export default function Minutes() {
       {activeRow && (
         <WorkflowPanel
           row={activeRow}
+          dirResponse={responseFor(activeRow.title)}
           onClose={() => setPanelRowId(null)}
           onAdvance={advance}
           onOpenSetup={() => setView('setup')}
@@ -1410,11 +1447,13 @@ export default function Minutes() {
 
 function WorkflowPanel({
   row,
+  dirResponse,
   onClose,
   onAdvance,
   onOpenSetup,
 }: {
   row: MinuteRow;
+  dirResponse?: MinutesReview;
   onClose: () => void;
   onAdvance: (id: string, next: Stage, toastMsg: string, extra?: Partial<MinuteRow>) => void;
   onOpenSetup: () => void;
@@ -1466,6 +1505,13 @@ function WorkflowPanel({
               );
             })}
           </ol>
+
+          {dirResponse && (
+            <div className="rounded-lg border border-border bg-background p-3">
+              <div className="text-[10px] uppercase tracking-wider text-muted mb-2 font-medium">Director response</div>
+              <DirectorResponseCell response={dirResponse} />
+            </div>
+          )}
 
           {row.stage === 'Draft' && (
             <div className="space-y-3">
