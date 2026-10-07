@@ -1378,6 +1378,7 @@ export default function Minutes() {
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Chairperson</th>
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Stage</th>
                 <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Status</th>
+                <th className="text-left px-4 py-2 text-[10px] font-medium text-muted uppercase tracking-wider">Director response</th>
                 <th className="px-4 py-2 w-36"></th>
               </tr>
             </thead>
