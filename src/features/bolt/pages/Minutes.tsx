@@ -1302,7 +1302,10 @@ export default function Minutes() {
   const [rows, setRows] = useState<MinuteRow[]>(initialRows);
   const [panelRowId, setPanelRowId] = useState<string | null>(null);
   const { showToast } = useToast();
+  const { minutes: directorMinutes } = useDirector();
   const [noticeOpen, setNoticeOpen] = useState(false);
+
+  const responseFor = (title: string) => directorMinutes.find((m) => m.title === title);
 
   const activeRow = rows.find((r) => r.id === panelRowId) ?? null;
 
