@@ -1435,6 +1435,7 @@ export default function Minutes() {
       {activeRow && (
         <WorkflowPanel
           row={activeRow}
+          dirResponse={responseFor(activeRow.title)}
           onClose={() => setPanelRowId(null)}
           onAdvance={advance}
           onOpenSetup={() => setView('setup')}
