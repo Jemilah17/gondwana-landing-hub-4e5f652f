@@ -1506,6 +1506,13 @@ function WorkflowPanel({
             })}
           </ol>
 
+          {dirResponse && (
+            <div className="rounded-lg border border-border bg-background p-3">
+              <div className="text-[10px] uppercase tracking-wider text-muted mb-2 font-medium">Director response</div>
+              <DirectorResponseCell response={dirResponse} />
+            </div>
+          )}
+
           {row.stage === 'Draft' && (
             <div className="space-y-3">
               <div className="text-[12px] text-primary">
