@@ -140,6 +140,36 @@ function StageBadge({ stage }: { stage: Stage }) {
   );
 }
 
+const RESPONSE_PILL: Record<MinutesReview['choice'] & string, { cls: string; label: string }> = {
+  approve: { cls: 'bg-green-tint text-green', label: 'Approved' },
+  corrections: { cls: 'bg-amber-tint text-amber', label: 'Approved with corrections' },
+  comment: { cls: 'bg-blue-500/10 text-blue-600', label: 'Has comments' },
+};
+
+function DirectorResponseCell({ response }: { response?: MinutesReview }) {
+  if (!response) return <span className="text-[12px] text-muted">—</span>;
+  if (response.status === 'pending') {
+    return (
+      <span className="inline-flex px-2 py-[2px] rounded-lg text-[10px] font-medium bg-background text-muted border border-border">
+        Awaiting director response
+      </span>
+    );
+  }
+  const pill = response.choice ? RESPONSE_PILL[response.choice] : null;
+  return (
+    <div className="space-y-1">
+      {pill && (
+        <span className={`inline-flex px-2 py-[2px] rounded-lg text-[10px] font-medium ${pill.cls}`}>
+          {pill.label}
+        </span>
+      )}
+      {response.note && (
+        <div className="text-[10px] text-muted leading-snug max-w-[220px]">&ldquo;{response.note}&rdquo;</div>
+      )}
+    </div>
+  );
+}
+
 const COMPANY = {
   name: 'Gondwana Holdings Limited',
   reg: '2017/1055',
