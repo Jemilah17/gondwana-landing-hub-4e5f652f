@@ -1447,11 +1447,13 @@ export default function Minutes() {
 
 function WorkflowPanel({
   row,
+  dirResponse,
   onClose,
   onAdvance,
   onOpenSetup,
 }: {
   row: MinuteRow;
+  dirResponse?: MinutesReview;
   onClose: () => void;
   onAdvance: (id: string, next: Stage, toastMsg: string, extra?: Partial<MinuteRow>) => void;
   onOpenSetup: () => void;
