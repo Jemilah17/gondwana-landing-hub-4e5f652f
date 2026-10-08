@@ -15,7 +15,7 @@ export const users: User[] = [
   {
     id: 'alex',
     name: 'Alex Reyes',
-    initials: 'FS',
+    initials: 'AR',
     role: 'Group Company Secretary',
     avatarColor: 'bg-orange',
     clusters: ['A', 'B', 'C', 'D', 'E'],
@@ -27,7 +27,7 @@ export const users: User[] = [
   {
     id: 'jordan',
     name: 'Jordan Lee',
-    initials: 'HA',
+    initials: 'JL',
     role: 'Assistant CoSec',
     avatarColor: 'bg-green',
     clusters: ['C', 'D'],
@@ -39,7 +39,7 @@ export const users: User[] = [
   {
     id: 'taylor',
     name: 'Taylor Morgan',
-    initials: 'JM',
+    initials: 'TM',
     role: 'Assistant CoSec',
     avatarColor: 'bg-blue',
     clusters: ['B', 'E'],
@@ -83,7 +83,7 @@ export const consultants: User[] = [
   {
     id: 'consultant-1',
     name: 'External CoSec Services',
-    initials: 'CS',
+    initials: 'EC',
     role: 'Company Secretarial Consultant',
     avatarColor: 'bg-slate',
     clusters: ['A', 'B', 'C', 'D', 'E'],

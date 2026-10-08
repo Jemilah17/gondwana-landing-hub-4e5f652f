@@ -69,4 +69,4 @@ export const defaultPack: BoardPackRecord = {
   template: 'Standard board meeting (9 items)',
 };
 
-export const defaultRecipients = ['DS', 'GJ', 'JM', 'DN', 'HG', 'JV', 'FS'];
+export const defaultRecipients = ['RC', 'MR', 'CB', 'AP', 'QH', 'DB', 'AR'];

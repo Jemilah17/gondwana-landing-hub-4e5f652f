@@ -20,13 +20,13 @@ interface Director {
 }
 
 const directors: Director[] = [
-  { initials: 'DS', name: 'Riley Chen', rsvp: 'Attending', tone: 'green', bg: '#FBF3E3', fg: '#9A6E1A' },
-  { initials: 'GJ', name: 'Morgan Reed', rsvp: 'Attending', tone: 'green', bg: '#E8F1FB', fg: '#1A5FA5' },
-  { initials: 'JM', name: 'Casey Brooks', rsvp: 'Attending', tone: 'green', bg: '#EAF5EE', fg: '#2D7A4F' },
-  { initials: 'DN', name: 'Avery Patel', rsvp: 'Awaiting', tone: 'amber', bg: '#F0EBF8', fg: '#5B3D9A' },
-  { initials: 'HG', name: 'Quinn Harper', rsvp: 'Attending', tone: 'green', bg: '#FBF0EA', fg: '#D4652A' },
-  { initials: 'JV', name: 'Drew Bennett', rsvp: 'Remote', tone: 'blue', bg: '#E1F5EE', fg: '#0F6E56' },
-  { initials: 'FS', name: 'Alex Reyes', rsvp: 'CoSec', tone: 'gray', bg: '#FBF0EA', fg: '#D4652A' },
+  { initials: 'RC', name: 'Riley Chen', rsvp: 'Attending', tone: 'green', bg: '#FBF3E3', fg: '#9A6E1A' },
+  { initials: 'MR', name: 'Morgan Reed', rsvp: 'Attending', tone: 'green', bg: '#E8F1FB', fg: '#1A5FA5' },
+  { initials: 'CB', name: 'Casey Brooks', rsvp: 'Attending', tone: 'green', bg: '#EAF5EE', fg: '#2D7A4F' },
+  { initials: 'AP', name: 'Avery Patel', rsvp: 'Awaiting', tone: 'amber', bg: '#F0EBF8', fg: '#5B3D9A' },
+  { initials: 'QH', name: 'Quinn Harper', rsvp: 'Attending', tone: 'green', bg: '#FBF0EA', fg: '#D4652A' },
+  { initials: 'DB', name: 'Drew Bennett', rsvp: 'Remote', tone: 'blue', bg: '#E1F5EE', fg: '#0F6E56' },
+  { initials: 'AR', name: 'Alex Reyes', rsvp: 'CoSec', tone: 'gray', bg: '#FBF0EA', fg: '#D4652A' },
 ];
 
 const toneClass: Record<string, string> = {
