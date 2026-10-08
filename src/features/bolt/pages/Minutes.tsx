@@ -1070,7 +1070,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
 
           <Section n={13} title="Brand and marketing report">
             <p>
-              Ms M. Goldbeck presented the brand and marketing update. The Meridian Card
+              Ms K. Wells presented the brand and marketing update. The Meridian Card
               loyalty programme had grown to more than 100,000 registered members, providing
               a strong direct-to-consumer platform to support the group's domestic market
               recovery strategy.

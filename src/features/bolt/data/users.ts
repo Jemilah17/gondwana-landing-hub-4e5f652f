@@ -71,12 +71,12 @@ const director = (
 });
 
 export const directors: User[] = [
-  director('riley', 'Riley Chen', 'DS', 'Chairperson', 'bg-amber', ['A', 'B']),
-  director('morgan', 'Morgan Reed', 'GJ', 'Managing Director', 'bg-blue', ['A', 'B', 'C', 'D', 'E']),
-  director('casey', 'Casey Brooks', 'JM', 'Audit Risk & Opp Cttee', 'bg-green', ['A', 'C']),
-  director('avery', 'Avery Patel', 'DN', 'Independent NED', 'bg-purple', ['A', 'D']),
-  director('quinn', 'Quinn Harper', 'HG', 'Non-Executive Director', 'bg-orange', ['A', 'E']),
-  director('drew', 'Drew Bennett', 'JV', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
+  director('riley', 'Riley Chen', 'RC', 'Chairperson', 'bg-amber', ['A', 'B']),
+  director('morgan', 'Morgan Reed', 'MR', 'Managing Director', 'bg-blue', ['A', 'B', 'C', 'D', 'E']),
+  director('casey', 'Casey Brooks', 'CB', 'Audit Risk & Opp Cttee', 'bg-green', ['A', 'C']),
+  director('avery', 'Avery Patel', 'AP', 'Independent NED', 'bg-purple', ['A', 'D']),
+  director('quinn', 'Quinn Harper', 'QH', 'Non-Executive Director', 'bg-orange', ['A', 'E']),
+  director('drew', 'Drew Bennett', 'DB', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
 ];
 
 export const consultants: User[] = [

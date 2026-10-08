@@ -15,18 +15,18 @@ interface Person {
 }
 
 const secretariat: Person[] = [
-  { id: 'alex', name: 'Alex Reyes', role: 'Group Company Secretary', initials: 'FS', bg: '#FBF0EA', fg: '#D4652A' },
-  { id: 'jordan', name: 'Jordan Lee', role: 'Assistant CoSec — Clusters C & D', initials: 'HA', bg: '#EAF5EE', fg: '#2D7A4F' },
-  { id: 'taylor', name: 'Taylor Morgan', role: 'Assistant CoSec — Clusters B & E · Incoming', initials: 'JM', bg: '#E8F1FB', fg: '#1A5FA5' },
+  { id: 'alex', name: 'Alex Reyes', role: 'Group Company Secretary', initials: 'AR', bg: '#FBF0EA', fg: '#D4652A' },
+  { id: 'jordan', name: 'Jordan Lee', role: 'Assistant CoSec — Clusters C & D', initials: 'JL', bg: '#EAF5EE', fg: '#2D7A4F' },
+  { id: 'taylor', name: 'Taylor Morgan', role: 'Assistant CoSec — Clusters B & E · Incoming', initials: 'TM', bg: '#E8F1FB', fg: '#1A5FA5' },
 ];
 
 const directors: Person[] = [
-  { id: 'riley', name: 'Riley Chen', role: 'Chairperson', initials: 'DS', bg: '#FBF3E3', fg: '#9A6E1A' },
-  { id: 'morgan', name: 'Morgan Reed', role: 'Managing Director', initials: 'GJ', bg: '#E8F1FB', fg: '#1A5FA5' },
-  { id: 'casey', name: 'Casey Brooks', role: 'Audit Risk & Opp Cttee', initials: 'JM', bg: '#EAF5EE', fg: '#2D7A4F' },
-  { id: 'avery', name: 'Avery Patel', role: 'Independent NED', initials: 'DN', bg: '#F0EBF8', fg: '#5B3D9A' },
-  { id: 'quinn', name: 'Quinn Harper', role: 'Non-Executive Director', initials: 'HG', bg: '#FBF0EA', fg: '#D4652A' },
-  { id: 'drew', name: 'Drew Bennett', role: 'Chief Financial Officer', initials: 'JV', bg: '#E1F5EE', fg: '#0F6E56' },
+  { id: 'riley', name: 'Riley Chen', role: 'Chairperson', initials: 'RC', bg: '#FBF3E3', fg: '#9A6E1A' },
+  { id: 'morgan', name: 'Morgan Reed', role: 'Managing Director', initials: 'MR', bg: '#E8F1FB', fg: '#1A5FA5' },
+  { id: 'casey', name: 'Casey Brooks', role: 'Audit Risk & Opp Cttee', initials: 'CB', bg: '#EAF5EE', fg: '#2D7A4F' },
+  { id: 'avery', name: 'Avery Patel', role: 'Independent NED', initials: 'AP', bg: '#F0EBF8', fg: '#5B3D9A' },
+  { id: 'quinn', name: 'Quinn Harper', role: 'Non-Executive Director', initials: 'QH', bg: '#FBF0EA', fg: '#D4652A' },
+  { id: 'drew', name: 'Drew Bennett', role: 'Chief Financial Officer', initials: 'DB', bg: '#E1F5EE', fg: '#0F6E56' },
 ];
 
 const descriptions: Record<Level, string> = {
@@ -39,7 +39,7 @@ const descriptions: Record<Level, string> = {
 };
 
 const consultants: Person[] = [
-  { id: 'consultant-1', name: 'External CoSec Services', role: 'Company Secretarial Consultant', initials: 'CS', bg: '#EEF1F4', fg: '#4A5560' },
+  { id: 'consultant-1', name: 'External CoSec Services', role: 'Company Secretarial Consultant', initials: 'EC', bg: '#EEF1F4', fg: '#4A5560' },
 ];
 
 export default function SignIn() {
