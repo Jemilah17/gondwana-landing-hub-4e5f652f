@@ -221,7 +221,7 @@ const beneficialOwners = [
   },
   {
     entity: 'Meridian Financial Services Ltd',
-    entitySub: 'Cluster A · DNFBP',
+    entitySub: 'Cluster A · Regulated',
     bo: 'Morgan Reed',
     basis: 'Effective control',
     receipt: 'BO/2026/GTC/0018',
