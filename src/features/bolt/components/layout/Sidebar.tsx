@@ -78,8 +78,8 @@ export default function Sidebar() {
         </div>
         {expanded && (
           <div>
-            <div className="text-white text-[13px] font-medium">Gondwana</div>
-            <div className="text-white/40 text-[10px]">Collection Namibia</div>
+            <div className="text-white text-[13px] font-medium">Meridian</div>
+            <div className="text-white/40 text-[10px]">Group Holdings</div>
           </div>
         )}
       </div>

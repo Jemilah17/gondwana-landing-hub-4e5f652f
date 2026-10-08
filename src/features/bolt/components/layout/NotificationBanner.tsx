@@ -10,15 +10,15 @@ export default function NotificationBanner() {
   const userFilings = filings.filter(f => canWrite(f.cluster));
 
   const workloads = [
-    { userId: 'fabiola', name: 'Fabiola', cluster: 'A', entities: 5, overdue: 3 },
-    { userId: 'hilma', name: 'Hilma', cluster: 'C & D', entities: 11, due: '2 BIPA' },
-    { userId: 'jemilah', name: 'Jemilah', cluster: 'B & E', entities: 13, flag: '1 BO declaration pending' },
+    { userId: 'alex', name: 'Alex', cluster: 'A', entities: 5, overdue: 3 },
+    { userId: 'jordan', name: 'Jordan', cluster: 'C & D', entities: 11, due: '2 Companies Registry' },
+    { userId: 'taylor', name: 'Taylor Morgan', cluster: 'B & E', entities: 13, flag: '1 BO declaration pending' },
   ];
 
   return (
     <div className="bg-orange text-white px-4 py-2 flex items-center justify-between text-[12px]">
       <div className="flex items-center gap-4">
-        <span className="font-medium">Active workloads — Gondwana Holdings Ltd</span>
+        <span className="font-medium">Active workloads — Meridian Holdings Ltd</span>
         <div className="flex gap-2">
           {workloads.map((w) => (
             <span

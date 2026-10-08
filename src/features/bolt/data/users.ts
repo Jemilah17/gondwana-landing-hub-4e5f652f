@@ -13,9 +13,9 @@ export interface User {
 
 export const users: User[] = [
   {
-    id: 'fabiola',
-    name: 'Fabiola Schrywer',
-    initials: 'FS',
+    id: 'alex',
+    name: 'Alex Reyes',
+    initials: 'AR',
     role: 'Group Company Secretary',
     avatarColor: 'bg-orange',
     clusters: ['A', 'B', 'C', 'D', 'E'],
@@ -25,9 +25,9 @@ export const users: User[] = [
     type: 'cosec',
   },
   {
-    id: 'hilma',
-    name: 'Hilma Antinda',
-    initials: 'HA',
+    id: 'jordan',
+    name: 'Jordan Lee',
+    initials: 'JL',
     role: 'Assistant CoSec',
     avatarColor: 'bg-green',
     clusters: ['C', 'D'],
@@ -37,9 +37,9 @@ export const users: User[] = [
     type: 'cosec',
   },
   {
-    id: 'jemilah',
-    name: 'Jemilah',
-    initials: 'JM',
+    id: 'taylor',
+    name: 'Taylor Morgan',
+    initials: 'TM',
     role: 'Assistant CoSec',
     avatarColor: 'bg-blue',
     clusters: ['B', 'E'],
@@ -71,19 +71,19 @@ const director = (
 });
 
 export const directors: User[] = [
-  director('dave', 'Dave Smuts', 'DS', 'Chairperson', 'bg-amber', ['A', 'B']),
-  director('gys', 'Gys Joubert', 'GJ', 'Managing Director', 'bg-blue', ['A', 'B', 'C', 'D', 'E']),
-  director('james', 'James Mnyupe', 'JM', 'Audit Risk & Opp Cttee', 'bg-green', ['A', 'C']),
-  director('davidn', 'David Namalenga', 'DN', 'Independent NED', 'bg-purple', ['A', 'D']),
-  director('hannes', 'Hannes Gouws', 'HG', 'Non-Executive Director', 'bg-orange', ['A', 'E']),
-  director('jaco', 'Jaco Visser', 'JV', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
+  director('riley', 'Riley Chen', 'RC', 'Chairperson', 'bg-amber', ['A', 'B']),
+  director('morgan', 'Morgan Reed', 'MR', 'Managing Director', 'bg-blue', ['A', 'B', 'C', 'D', 'E']),
+  director('casey', 'Casey Brooks', 'CB', 'Audit Risk & Opp Cttee', 'bg-green', ['A', 'C']),
+  director('avery', 'Avery Patel', 'AP', 'Independent NED', 'bg-purple', ['A', 'D']),
+  director('quinn', 'Quinn Harper', 'QH', 'Non-Executive Director', 'bg-orange', ['A', 'E']),
+  director('drew', 'Drew Bennett', 'DB', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
 ];
 
 export const consultants: User[] = [
   {
     id: 'consultant-1',
-    name: 'Namibia CoSec Services',
-    initials: 'CS',
+    name: 'External CoSec Services',
+    initials: 'EC',
     role: 'Company Secretarial Consultant',
     avatarColor: 'bg-slate',
     clusters: ['A', 'B', 'C', 'D', 'E'],

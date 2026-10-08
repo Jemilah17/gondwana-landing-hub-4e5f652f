@@ -1,22 +1,22 @@
 import { Info } from 'lucide-react';
 
 const kingVPrinciples = [
-  { code: 'I', principle: 'Ethical leadership and good corporate citizenship', status: 'applied', evidence: 'Code of Ethics approved Oct 2025', director: 'Dave Smuts', reviewDate: '2026-03-15' },
-  { code: 'II', principle: 'Board composition and effectiveness', status: 'applied', evidence: 'Board charter and skills matrix', director: 'Gys Joubert', reviewDate: '2026-03-15' },
-  { code: 'III', principle: 'Board committees and oversight functions', status: 'applied', evidence: 'Committee terms of reference', director: 'James Mnyupe', reviewDate: '2026-03-15' },
-  { code: 'IV', principle: 'Appointments, performance and conflict management', status: 'partial', evidence: 'Performance evaluation framework pending', director: 'Fabiola Schrywer', reviewDate: '2026-06-30' },
-  { code: 'V', principle: 'Risk governance and internal audit', status: 'applied', evidence: 'Risk register and audit charter', director: 'James Mnyupe', reviewDate: '2026-03-15' },
-  { code: 'VI', principle: 'Remuneration governance', status: 'applied', evidence: 'Remuneration policy approved', director: 'Fabiola Schrywer', reviewDate: '2026-03-15' },
-  { code: 'VII', principle: 'Technology and information governance', status: 'partial', evidence: 'IT policy approved, AI framework pending', director: 'Jaco Visser', reviewDate: '2026-09-30' },
-  { code: 'VIII', principle: 'Compliance governance', status: 'applied', evidence: 'Compliance monitoring framework', director: 'Dave Smuts', reviewDate: '2026-03-15' },
-  { code: 'IX', principle: 'Stakeholder relationships', status: 'applied', evidence: 'Stakeholder register maintained', director: 'Hannes Gouws', reviewDate: '2026-03-15' },
-  { code: 'X', principle: 'Integrated reporting and disclosure', status: 'partial', evidence: 'Annual report in development', director: 'Gys Joubert', reviewDate: '2026-12-31' },
-  { code: 'XI', principle: 'ESE performance and sustainability reporting', status: 'not yet', evidence: 'Sustainability framework under development', director: 'James Mnyupe', reviewDate: '2026-12-31' },
-  { code: 'XII', principle: 'Assurance and external audit', status: 'applied', evidence: 'External auditor engagement letter', director: 'James Mnyupe', reviewDate: '2026-03-15' },
-  { code: 'XIII', principle: 'Board meetings and procedures', status: 'applied', evidence: 'Board meeting schedule and minutes', director: 'Dave Smuts', reviewDate: '2026-03-15' },
-  { code: 'XIV', principle: 'Shareholder relations', status: 'applied', evidence: 'Shareholder communication policy', director: 'David Namalenga', reviewDate: '2026-03-15' },
-  { code: 'XV', principle: 'Corporate disclosure', status: 'applied', evidence: 'NSX listing requirements compliance', director: 'Gys Joubert', reviewDate: '2026-03-15' },
-  { code: 'XVI', principle: 'Organisational integrity and whistleblowing', status: 'applied', evidence: 'Whistleblower policy approved', director: 'Dave Smuts', reviewDate: '2026-03-15' },
+  { code: 'I', principle: 'Ethical leadership and good corporate citizenship', status: 'applied', evidence: 'Code of Ethics approved Oct 2025', director: 'Riley Chen', reviewDate: '2026-03-15' },
+  { code: 'II', principle: 'Board composition and effectiveness', status: 'applied', evidence: 'Board charter and skills matrix', director: 'Morgan Reed', reviewDate: '2026-03-15' },
+  { code: 'III', principle: 'Board committees and oversight functions', status: 'applied', evidence: 'Committee terms of reference', director: 'Casey Brooks', reviewDate: '2026-03-15' },
+  { code: 'IV', principle: 'Appointments, performance and conflict management', status: 'partial', evidence: 'Performance evaluation framework pending', director: 'Alex Reyes', reviewDate: '2026-06-30' },
+  { code: 'V', principle: 'Risk governance and internal audit', status: 'applied', evidence: 'Risk register and audit charter', director: 'Casey Brooks', reviewDate: '2026-03-15' },
+  { code: 'VI', principle: 'Remuneration governance', status: 'applied', evidence: 'Remuneration policy approved', director: 'Alex Reyes', reviewDate: '2026-03-15' },
+  { code: 'VII', principle: 'Technology and information governance', status: 'partial', evidence: 'IT policy approved, AI framework pending', director: 'Drew Bennett', reviewDate: '2026-09-30' },
+  { code: 'VIII', principle: 'Compliance governance', status: 'applied', evidence: 'Compliance monitoring framework', director: 'Riley Chen', reviewDate: '2026-03-15' },
+  { code: 'IX', principle: 'Stakeholder relationships', status: 'applied', evidence: 'Stakeholder register maintained', director: 'Quinn Harper', reviewDate: '2026-03-15' },
+  { code: 'X', principle: 'Integrated reporting and disclosure', status: 'partial', evidence: 'Annual report in development', director: 'Morgan Reed', reviewDate: '2026-12-31' },
+  { code: 'XI', principle: 'ESE performance and sustainability reporting', status: 'not yet', evidence: 'Sustainability framework under development', director: 'Casey Brooks', reviewDate: '2026-12-31' },
+  { code: 'XII', principle: 'Assurance and external audit', status: 'applied', evidence: 'External auditor engagement letter', director: 'Casey Brooks', reviewDate: '2026-03-15' },
+  { code: 'XIII', principle: 'Board meetings and procedures', status: 'applied', evidence: 'Board meeting schedule and minutes', director: 'Riley Chen', reviewDate: '2026-03-15' },
+  { code: 'XIV', principle: 'Shareholder relations', status: 'applied', evidence: 'Shareholder communication policy', director: 'Avery Patel', reviewDate: '2026-03-15' },
+  { code: 'XV', principle: 'Corporate disclosure', status: 'applied', evidence: 'Exchange listing requirements compliance', director: 'Morgan Reed', reviewDate: '2026-03-15' },
+  { code: 'XVI', principle: 'Organisational integrity and whistleblowing', status: 'applied', evidence: 'Whistleblower policy approved', director: 'Riley Chen', reviewDate: '2026-03-15' },
 ];
 
 const statusConfig = {
@@ -34,7 +34,7 @@ export default function KingVDisclosure() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div>
-          <h2 className="text-lg font-medium text-primary">King V Disclosure Framework</h2>
+          <h2 className="text-lg font-medium text-primary">Governance Code Disclosure Framework</h2>
           <p className="text-sm text-muted mt-1">King IV Report on Corporate Governance for South Africa, effective 1 January 2026</p>
         </div>
         <div className="flex items-center gap-1 text-orange">

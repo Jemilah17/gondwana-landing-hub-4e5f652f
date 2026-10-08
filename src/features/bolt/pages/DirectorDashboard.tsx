@@ -12,75 +12,75 @@ const q3Pack = {
   meeting: 'Q3 2026 Board Meeting',
   date: '2026-08-28',
   time: '18:00 WAT',
-  venue: 'Gondwana House Boardroom, Windhoek',
-  entity: 'Gondwana Holdings Limited',
-  chairperson: 'Dave Smuts',
+  venue: 'Meridian House Boardroom, City A',
+  entity: 'Meridian Holdings Limited',
+  chairperson: 'Riley Chen',
 };
 
 const q3PackDocs = [
   { name: 'Meeting notice and agenda', description: 'Formal notice per AoA Art. 14', file: 'Notice_BoardMeeting_28Aug2026.pdf' },
   { name: 'Previous meeting minutes', description: 'Minutes of last meeting for adoption', file: 'Minutes_BoardMeeting_May2026.pdf' },
-  { name: 'Management accounts', description: 'Latest financial report — J. Visser', file: 'ManagementAccounts_Jun2026.pdf' },
-  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
-  { name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
-  { name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
-  { name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws', file: 'Sustainability_Q2_2026.pdf' },
+  { name: 'Management accounts', description: 'Latest financial report — D. Bennett', file: 'ManagementAccounts_Jun2026.pdf' },
+  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — C. Brooks', file: 'AROCReport_Q2_2026.pdf' },
+  { name: 'MD operational report', description: 'Group operational update — G. Reed', file: 'MDReport_Jul2026.pdf' },
+  { name: 'People Committee report', description: 'HR and remuneration update — D. Patel', file: 'PeopleCommittee_Q2_2026.pdf' },
+  { name: 'Sustainability Committee report', description: 'ESG and emissions update — Q. Harper', file: 'Sustainability_Q2_2026.pdf' },
   { name: 'Risk register update', description: 'Updated enterprise risk register', file: 'RiskRegister_Aug2026.pdf' },
   { name: 'Any other business papers', description: 'Supporting papers for specific agenda items', file: 'AOB_Papers_Aug2026.pdf' },
 ];
 
 // Baseline outstanding items per director (FY2025/26 cycle)
 const DIRECTOR_FLAGS: Record<string, { minutes: boolean; rsvp: boolean; coi: boolean }> = {
-  dave: { minutes: true, rsvp: true, coi: false },
-  gys: { minutes: false, rsvp: true, coi: false },
-  james: { minutes: false, rsvp: true, coi: false },
-  davidn: { minutes: true, rsvp: true, coi: true },
-  hannes: { minutes: true, rsvp: true, coi: true },
-  jaco: { minutes: false, rsvp: true, coi: false },
+  riley: { minutes: true, rsvp: true, coi: false },
+  morgan: { minutes: false, rsvp: true, coi: false },
+  casey: { minutes: false, rsvp: true, coi: false },
+  avery: { minutes: true, rsvp: true, coi: true },
+  quinn: { minutes: true, rsvp: true, coi: true },
+  drew: { minutes: false, rsvp: true, coi: false },
 };
 
 // Board appointment dates
 const APPOINTMENTS: Record<string, string> = {
-  dave: 'Appointed 2025',
-  gys: 'Appointed pre-2018',
-  james: 'Appointed pre-2021',
-  davidn: 'Appointed pre-2021',
-  hannes: 'Appointed pre-2021',
-  jaco: 'Appointed pre-2021',
+  riley: 'Appointed 2025',
+  morgan: 'Appointed pre-2018',
+  casey: 'Appointed pre-2021',
+  avery: 'Appointed pre-2021',
+  quinn: 'Appointed pre-2021',
+  drew: 'Appointed pre-2021',
 };
 
 // Entity portfolio per director (by entity name)
 const DIRECTOR_ENTITIES: Record<string, string[]> = {
-  dave: ['Gondwana Holdings Ltd', 'Swakopmund Guesthouse & Spa', 'The Delight Swakopmund', 'Palmwag Lodge'],
-  james: [
-    'Gondwana Holdings Ltd',
-    'Etosha King Nehale',
-    'Etosha Safari Lodge',
-    'Etosha Safari Camp',
-    'Okapuka Safari Lodge',
-    'Etosha Aoba Lodge',
+  riley: ['Meridian Holdings Ltd', 'Harbour Freight Ltd', 'Meridian Logistics Ltd', 'Apex Warehousing Ltd'],
+  casey: [
+    'Meridian Holdings Ltd',
+    'Keystone Retail Ltd',
+    'Westbrook Developments Ltd',
+    'Keystone Stores Ltd',
+    'Unity Retail Centres Ltd',
+    'Cityline Property Fund Ltd',
   ],
-  davidn: [
-    'Canyon Lodge',
-    'Kalahari Anib Lodge',
-    'Sossusvlei Dune Lodge',
-    'The Desert Grace',
-    'Etosha King Nehale',
-    'Etosha Safari Lodge',
+  avery: [
+    'Northgate Manufacturing (Pty) Ltd',
+    'Summit Engineering Ltd',
+    'Ironbridge Fabrication Ltd',
+    'Precision Components Ltd',
+    'Keystone Retail Ltd',
+    'Westbrook Developments Ltd',
   ],
-  hannes: [
-    'Gondwana Holdings Ltd',
-    'Swakopmund Guesthouse & Spa',
-    'Hakusembe River Lodge',
-    'Namushasha River Lodge',
-    'Chobe River Camp',
+  quinn: [
+    'Meridian Holdings Ltd',
+    'Harbour Freight Ltd',
+    'Lumen Technology Ltd',
+    'Vertex Consulting Ltd',
+    'Beacon Facilities Services Ltd',
   ],
-  jaco: [
-    'Canyon Lodge',
-    'Kalahari Anib Lodge',
-    'Swakopmund Guesthouse & Spa',
-    'Hakusembe River Lodge',
-    'Chobe River Camp',
+  drew: [
+    'Northgate Manufacturing (Pty) Ltd',
+    'Summit Engineering Ltd',
+    'Harbour Freight Ltd',
+    'Lumen Technology Ltd',
+    'Beacon Facilities Services Ltd',
   ],
 };
 
@@ -93,9 +93,9 @@ const CLUSTER_PILL: Record<string, string> = {
 };
 
 const NOTIFICATIONS = [
-  { id: 'n1', icon: '📄', text: 'Minutes for review — Feb 2026 GM', meta: 'Fabiola Schrywer · 2 days ago' },
+  { id: 'n1', icon: '📄', text: 'Minutes for review — Feb 2026 GM', meta: 'Alex Reyes · 2 days ago' },
   { id: 'n2', icon: '📅', text: 'Board meeting — 28 Aug 2026', meta: 'RSVP required by 21 Aug · 5 days ago' },
-  { id: 'n3', icon: '✅', text: 'Board pack available — 9 documents', meta: 'Fabiola Schrywer · 1 day ago' },
+  { id: 'n3', icon: '✅', text: 'Board pack available — 9 documents', meta: 'Alex Reyes · 1 day ago' },
   { id: 'n4', icon: '💬', text: 'COI declaration reminder — FY2025', meta: 'Annual declaration due · 1 week ago' },
 ];
 
@@ -135,7 +135,7 @@ export default function DirectorDashboard() {
   const coiPending = flags.coi && !coiSubmitted;
   const total = (minutesPending ? 1 : 0) + (rsvpPending ? 1 : 0) + (coiPending ? 1 : 0);
 
-  const isGys = activeUser.id === 'gys';
+  const isGys = activeUser.id === 'morgan';
   const names = DIRECTOR_ENTITIES[activeUser.id] ?? [];
   const mine = isGys
     ? entities.filter((e) => !e.isIncoming).slice(0, 6)
@@ -229,7 +229,7 @@ export default function DirectorDashboard() {
                   <div className="text-[11px] text-green font-medium">
                     ✓ February 2026 GM — Response submitted
                   </div>
-                  <div className="text-[10px] text-muted">Fabiola Schrywer has been notified</div>
+                  <div className="text-[10px] text-muted">Alex Reyes has been notified</div>
                 </div>
               )}
             </Card>
@@ -241,14 +241,14 @@ export default function DirectorDashboard() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-[12px] font-medium text-primary">Q3 2026 Board Meeting</div>
-                    <div className="text-[10px] text-muted">Gondwana Holdings Limited</div>
+                    <div className="text-[10px] text-muted">Meridian Holdings Limited</div>
                   </div>
                   <Pill tone="orange">28 August 2026</Pill>
                 </div>
                 <div className="text-[10px] text-muted">
-                  28 August 2026 · 18:00 WAT · Gondwana House Boardroom
+                  28 August 2026 · 18:00 WAT · Meridian House Boardroom
                 </div>
-                <div className="text-[10px] text-muted">Chairperson: Dave Smuts</div>
+                <div className="text-[10px] text-muted">Chairperson: Riley Chen</div>
                 <div className="bg-green-tint rounded-md px-3 py-2 flex items-center justify-between">
                   <span className="text-[10px] text-green">✓ Board pack available — 9 documents</span>
                   <button

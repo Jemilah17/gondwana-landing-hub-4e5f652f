@@ -3,11 +3,11 @@ import Topbar from '../components/layout/Topbar';
 import { Search, Upload, Folder, FileText, Eye, Download } from 'lucide-react';
 
 const documents = [
-  { id: 1, name: 'MOI Gondwana Holdings', type: 'MOI & AoA', entity: 'Gondwana Holdings', version: 'v4.0', date: '15 Feb 2025', uploadedBy: 'Fabiola' },
-  { id: 2, name: 'Annual Return 2025', type: 'Annual returns', entity: 'Gondwana Holdings', version: 'Final', date: '30 Oct 2025', uploadedBy: 'Fabiola' },
-  { id: 3, name: 'Board Resolution OR-2026-001', type: 'Board resolutions', entity: 'Gondwana Holdings', version: 'Signed', date: '24 Jun 2026', uploadedBy: 'Gys Joubert' },
-  { id: 4, name: 'AGM Minutes 2022', type: 'AGM docs', entity: 'Gondwana Holdings', version: 'Final', date: '2 Jun 2022', uploadedBy: 'Fabiola' },
-  { id: 5, name: 'BIPA Confirmation Q1 2026', type: 'Regulatory', entity: 'Canyon Lodge', version: 'Filed', date: '31 Mar 2026', uploadedBy: 'Jemilah' },
+  { id: 1, name: 'MOI Meridian Holdings', type: 'MOI & AoA', entity: 'Meridian Holdings', version: 'v4.0', date: '15 Feb 2025', uploadedBy: 'Alex' },
+  { id: 2, name: 'Annual Return 2025', type: 'Annual returns', entity: 'Meridian Holdings', version: 'Final', date: '30 Oct 2025', uploadedBy: 'Alex' },
+  { id: 3, name: 'Board Resolution OR-2026-001', type: 'Board resolutions', entity: 'Meridian Holdings', version: 'Signed', date: '24 Jun 2026', uploadedBy: 'Morgan Reed' },
+  { id: 4, name: 'AGM Minutes 2022', type: 'AGM docs', entity: 'Meridian Holdings', version: 'Final', date: '2 Jun 2022', uploadedBy: 'Alex' },
+  { id: 5, name: 'Companies Registry Confirmation Q1 2026', type: 'Regulatory', entity: 'Northgate Manufacturing (Pty) Ltd', version: 'Filed', date: '31 Mar 2026', uploadedBy: 'Taylor Morgan' },
 ];
 
 const typeColors: Record<string, string> = {

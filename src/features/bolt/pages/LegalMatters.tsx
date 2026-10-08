@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 
 const legalMatters = [
-  { ref: 'BI-2021-001', entity: 'Gondwana Holdings', type: 'Litigation', counterparty: 'Hollard Insurance', counsel: 'External counsel', opened: '01 Mar 2021', nextAction: 'Court date TBC', exposure: 'Undetermined', status: 'active', lead: 'Hannes Gouws' },
+  { ref: 'BI-2021-001', entity: 'Meridian Holdings', type: 'Litigation', counterparty: 'Apex Insurance', counsel: 'External counsel', opened: '01 Mar 2021', nextAction: 'Court date TBC', exposure: 'Undetermined', status: 'active', lead: 'Quinn Harper' },
 ];
 
 const agreements = [
-  { ref: 'AGR-001', type: 'Lease', parties: 'Gondwana Holdings / Landlord', entity: 'Gondwana Holdings', effective: '01 Jan 2023', expiry: '31 Dec 2026', notice: '6 months', status: 'active' },
-  { ref: 'AGR-002', type: 'Conservation', parties: 'GCN / Ministry', entity: 'Canyon Lodge', effective: '01 Jun 2024', expiry: '31 Aug 2026', notice: '3 months', status: 'expiring soon' },
-  { ref: 'AGR-003', type: 'NSX bond', parties: 'GHL / NSX', entity: 'Gondwana Holdings', effective: '01 Mar 2021', expiry: '01 Mar 2026', notice: '6 months', status: 'expiring soon' },
+  { ref: 'AGR-001', type: 'Lease', parties: 'Meridian Holdings / Landlord', entity: 'Meridian Holdings', effective: '01 Jan 2023', expiry: '31 Dec 2026', notice: '6 months', status: 'active' },
+  { ref: 'AGR-002', type: 'Supply', parties: 'MGH / Key supplier', entity: 'Northgate Manufacturing (Pty) Ltd', effective: '01 Jun 2024', expiry: '31 Aug 2026', notice: '3 months', status: 'expiring soon' },
+  { ref: 'AGR-003', type: 'Exchange bond', parties: 'GHL / Exchange', entity: 'Meridian Holdings', effective: '01 Mar 2021', expiry: '01 Mar 2026', notice: '6 months', status: 'expiring soon' },
 ];
 
 export default function LegalMatters() {
@@ -26,7 +26,7 @@ export default function LegalMatters() {
           <AlertTriangle className="w-5 h-5 text-orange flex-shrink-0" />
           <div className="text-[11px] text-primary">
             <strong className="text-orange">1 material legal matter active</strong>
-            <span className="text-muted"> — Business Interruption claim v Hollard. Lead: Hannes Gouws. External counsel engaged.</span>
+            <span className="text-muted"> — Business Interruption claim v Apex Insurance. Lead: Quinn Harper. External counsel engaged.</span>
           </div>
         </div>
 

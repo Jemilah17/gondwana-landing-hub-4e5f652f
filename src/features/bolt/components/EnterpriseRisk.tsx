@@ -4,8 +4,8 @@ const risks = [
   {
     id: 1,
     category: 'Regulatory',
-    description: 'FATF grey-listing impact on Namibian financial services',
-    owner: 'James Mnyupe',
+    description: 'Regulatory change impacting financial services',
+    owner: 'Casey Brooks',
     likelihood: 4,
     impact: 5,
     inherentScore: 20,
@@ -18,8 +18,8 @@ const risks = [
   {
     id: 2,
     category: 'Financial',
-    description: 'Hollard business interruption claim dispute',
-    owner: 'Dave Smuts',
+    description: 'Apex Insurance business interruption claim dispute',
+    owner: 'Riley Chen',
     likelihood: 3,
     impact: 5,
     inherentScore: 15,
@@ -32,8 +32,8 @@ const risks = [
   {
     id: 3,
     category: 'Financial',
-    description: 'NSX bond maturity November 2026',
-    owner: 'Dave Smuts',
+    description: 'Exchange bond maturity November 2026',
+    owner: 'Riley Chen',
     likelihood: 4,
     impact: 4,
     inherentScore: 16,
@@ -46,8 +46,8 @@ const risks = [
   {
     id: 4,
     category: 'Operational',
-    description: 'Cross-border Chobe/Zambezi operational risks',
-    owner: 'Gys Joubert',
+    description: 'Supply chain disruption risk',
+    owner: 'Morgan Reed',
     likelihood: 3,
     impact: 3,
     inherentScore: 9,
@@ -60,8 +60,8 @@ const risks = [
   {
     id: 5,
     category: 'People',
-    description: 'Key person risk - Gys Joubert succession',
-    owner: 'Fabiola Schrywer',
+    description: 'Key person risk - Morgan Reed succession',
+    owner: 'Alex Reyes',
     likelihood: 3,
     impact: 3,
     inherentScore: 9,
@@ -108,7 +108,7 @@ export default function EnterpriseRisk() {
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-lg font-medium text-primary">Enterprise Risk Register</h2>
-          <p className="text-sm text-muted mt-1">Risk identification and assessment for Gondwana Holdings Limited</p>
+          <p className="text-sm text-muted mt-1">Risk identification and assessment for Meridian Holdings Limited</p>
         </div>
         <div className="flex gap-3">
           <div className="bg-red/10 border border-red/30 rounded-lg px-4 py-2">

@@ -4,8 +4,8 @@ const committees = [
   {
     id: 1,
     name: 'Audit, Risk & Opportunity Committee',
-    chair: 'James Mnyupe',
-    members: ['James Mnyupe', 'Dave Smuts', 'David Namalenga', 'Hannes Gouws', 'Jaco Visser'],
+    chair: 'Casey Brooks',
+    members: ['Casey Brooks', 'Riley Chen', 'Avery Patel', 'Quinn Harper', 'Drew Bennett'],
     termsOfReference: 'Approved',
     nextMeeting: '2026-08-28',
     quorum: 3,
@@ -18,8 +18,8 @@ const committees = [
   {
     id: 2,
     name: 'People Committee',
-    chair: 'Fabiola Schrywer',
-    members: ['Fabiola Schrywer', 'Gys Joubert', 'Hannes Gouws', 'David Namalenga'],
+    chair: 'Alex Reyes',
+    members: ['Alex Reyes', 'Morgan Reed', 'Quinn Harper', 'Avery Patel'],
     termsOfReference: 'Approved',
     nextMeeting: '2026-11-15',
     quorum: 2,
@@ -32,8 +32,8 @@ const committees = [
   {
     id: 3,
     name: 'Sustainability Committee',
-    chair: 'Hannes Gouws',
-    members: ['Hannes Gouws', 'James Mnyupe', 'Fabiola Schrywer', 'Gys Joubert'],
+    chair: 'Quinn Harper',
+    members: ['Quinn Harper', 'Casey Brooks', 'Alex Reyes', 'Morgan Reed'],
     termsOfReference: 'Review due 2026-09-30',
     nextMeeting: '2026-09-25',
     quorum: 2,
@@ -50,7 +50,7 @@ export default function BoardCommitteesTab() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Board Committees</h2>
-        <p className="text-sm text-muted mt-1">Governance oversight committees for Gondwana Holdings Limited (33 entities)</p>
+        <p className="text-sm text-muted mt-1">Governance oversight committees for Meridian Holdings Limited (33 entities)</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

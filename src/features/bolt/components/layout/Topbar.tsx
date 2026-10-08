@@ -9,7 +9,7 @@ interface TopbarProps {
 }
 
 // STOPGAP: "last seen" stored per user id in localStorage (per-browser).
-const seenKey = (userId: string) => `gondwana.filingNotifSeen.${userId}`;
+const seenKey = (userId: string) => `meridian.filingNotifSeen.${userId}`;
 
 function FilingBell() {
   const { activeUser } = useUser();

@@ -1,13 +1,13 @@
 import { DollarSign, Users, Calendar } from 'lucide-react';
 
 const directors = [
-  'Dave Smuts',
-  'Gys Joubert',
-  'James Mnyupe',
-  'David Namalenga',
-  'Hannes Gouws',
-  'Jaco Visser',
-  'Fabiola Schrywer',
+  'Riley Chen',
+  'Morgan Reed',
+  'Casey Brooks',
+  'Avery Patel',
+  'Quinn Harper',
+  'Drew Bennett',
+  'Alex Reyes',
 ];
 
 const shareholderVotes = [
@@ -74,13 +74,13 @@ export default function RemunerationGovernance() {
             <tbody className="divide-y divide-border">
               <tr className="hover:bg-background">
                 <td className="px-4 py-3 text-sm text-primary">Board Meeting</td>
-                <td className="px-4 py-3 text-sm text-primary font-medium">N$ 10,000</td>
+                <td className="px-4 py-3 text-sm text-primary font-medium">$ 10,000</td>
                 <td className="px-4 py-3 text-sm text-muted">OR-2022-004</td>
                 <td className="px-4 py-3 text-sm text-muted">1 April 2022</td>
               </tr>
               <tr className="hover:bg-background">
                 <td className="px-4 py-3 text-sm text-primary">Committee Meeting (per committee)</td>
-                <td className="px-4 py-3 text-sm text-primary font-medium">N$ 5,000</td>
+                <td className="px-4 py-3 text-sm text-primary font-medium">$ 5,000</td>
                 <td className="px-4 py-3 text-sm text-muted">OR-2022-004</td>
                 <td className="px-4 py-3 text-sm text-muted">1 April 2022</td>
               </tr>

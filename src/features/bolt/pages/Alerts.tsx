@@ -19,27 +19,27 @@ interface Alert {
 
 const alertsData: Alert[] = [
   // CRITICAL (red)
-  { id: 'alt-001', severity: 'critical', category: 'Sanctions', title: 'UN Consolidated List match', detail: 'Canyon Lodge — Potential beneficial owner name match identified', dateRaised: '2026-06-15', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
-  { id: 'alt-002', severity: 'critical', category: 'Sanctions', title: 'OFAC SDN match', detail: 'Gondwana Travel Centre — Entity name similarity detected', dateRaised: '2026-06-12', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
-  { id: 'alt-003', severity: 'critical', category: 'BO Declaration', title: 'Beneficial owner declarations overdue', detail: 'Canyon Lodge, Swakopmund Guesthouse & Spa, Hakusembe River Lodge — 3 entities require immediate filing', dateRaised: '2026-06-01', assignee: { name: 'Jemilah', initials: 'JM', color: 'bg-blue' }, resolved: false },
+  { id: 'alt-001', severity: 'critical', category: 'Sanctions', title: 'UN Consolidated List match', detail: 'Northgate Manufacturing (Pty) Ltd — Potential beneficial owner name match identified', dateRaised: '2026-06-15', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-002', severity: 'critical', category: 'Sanctions', title: 'OFAC SDN match', detail: 'Meridian Financial Services Ltd — Entity name similarity detected', dateRaised: '2026-06-12', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-003', severity: 'critical', category: 'BO Declaration', title: 'Beneficial owner declarations overdue', detail: 'Northgate Manufacturing (Pty) Ltd, Harbour Freight Ltd, Lumen Technology Ltd — 3 entities require immediate filing', dateRaised: '2026-06-01', assignee: { name: 'Taylor Morgan', initials: 'TM', color: 'bg-blue' }, resolved: false },
 
   // HIGH (orange)
-  { id: 'alt-004', severity: 'high', category: 'BIPA', title: 'Annual return overdue 175 days', detail: 'Kalahari Anib Lodge — Immediate remediation required', dateRaised: '2026-01-06', assignee: { name: 'Jemilah', initials: 'JM', color: 'bg-blue' }, resolved: false },
-  { id: 'alt-005', severity: 'high', category: 'BIPA', title: 'Annual return overdue', detail: 'Swakopmund Guesthouse & Spa — Filing outstanding since Dec 2025', dateRaised: '2026-01-15', assignee: { name: 'Hilma Antinda', initials: 'HA', color: 'bg-green' }, resolved: false },
-  { id: 'alt-006', severity: 'high', category: 'COI', title: 'Conflict of interest declaration outstanding', detail: 'Directors Namalenga and Gouws have not submitted COI declarations for FY2026', dateRaised: '2026-06-01', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
-  { id: 'alt-007', severity: 'high', category: 'Minutes', title: 'GM minutes draft status', detail: 'February 2026 General Meeting minutes remain in draft — board approval pending', dateRaised: '2026-04-01', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-004', severity: 'high', category: 'Companies Registry', title: 'Annual return overdue 175 days', detail: 'Summit Engineering Ltd — Immediate remediation required', dateRaised: '2026-01-06', assignee: { name: 'Taylor Morgan', initials: 'TM', color: 'bg-blue' }, resolved: false },
+  { id: 'alt-005', severity: 'high', category: 'Companies Registry', title: 'Annual return overdue', detail: 'Harbour Freight Ltd — Filing outstanding since Dec 2025', dateRaised: '2026-01-15', assignee: { name: 'Jordan Lee', initials: 'JL', color: 'bg-green' }, resolved: false },
+  { id: 'alt-006', severity: 'high', category: 'COI', title: 'Conflict of interest declaration outstanding', detail: 'Directors Patel and Harper have not submitted COI declarations for FY2026', dateRaised: '2026-06-01', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-007', severity: 'high', category: 'Minutes', title: 'GM minutes draft status', detail: 'February 2026 General Meeting minutes remain in draft — board approval pending', dateRaised: '2026-04-01', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
 
   // MEDIUM (amber)
-  { id: 'alt-008', severity: 'medium', category: 'Policy', title: 'Policy review due', detail: 'Conflict of Interest policy — Annual review cycle overdue by 30 days', dateRaised: '2026-06-08', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
-  { id: 'alt-009', severity: 'medium', category: 'Policy', title: 'Policy review due', detail: 'Data Privacy policy — Annual review cycle due this quarter', dateRaised: '2026-06-15', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
-  { id: 'alt-010', severity: 'medium', category: 'NTB', title: 'Statutory levy due soon', detail: 'Hakusembe River Lodge — NTB levy payment due within 30 days', dateRaised: '2026-07-01', assignee: { name: 'Jemilah', initials: 'JM', color: 'bg-blue' }, resolved: false },
+  { id: 'alt-008', severity: 'medium', category: 'Policy', title: 'Policy review due', detail: 'Conflict of Interest policy — Annual review cycle overdue by 30 days', dateRaised: '2026-06-08', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-009', severity: 'medium', category: 'Policy', title: 'Policy review due', detail: 'Data Privacy policy — Annual review cycle due this quarter', dateRaised: '2026-06-15', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-010', severity: 'medium', category: 'Industry Regulator', title: 'Statutory levy due soon', detail: 'Lumen Technology Ltd — Industry Regulator levy payment due within 30 days', dateRaised: '2026-07-01', assignee: { name: 'Taylor Morgan', initials: 'TM', color: 'bg-blue' }, resolved: false },
 
   // LOW (blue)
-  { id: 'alt-011', severity: 'low', category: 'Board', title: 'Director skills matrix incomplete', detail: 'Annual skills assessment not completed for 2 directors', dateRaised: '2026-06-20', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
-  { id: 'alt-012', severity: 'low', category: 'Policy', title: 'IT & AI governance policy not drafted', detail: 'King IV recommendation — Policy framework pending development', dateRaised: '2026-05-15', assignee: { name: 'Fabiola Schrywer', initials: 'FS', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-011', severity: 'low', category: 'Board', title: 'Director skills matrix incomplete', detail: 'Annual skills assessment not completed for 2 directors', dateRaised: '2026-06-20', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-012', severity: 'low', category: 'Policy', title: 'IT & AI governance policy not drafted', detail: 'Governance Code recommendation — Policy framework pending development', dateRaised: '2026-05-15', assignee: { name: 'Alex Reyes', initials: 'AR', color: 'bg-orange' }, resolved: false },
 
   // INFO (gray)
-  { id: 'alt-013', severity: 'info', category: 'Onboarding', title: 'New entity opening July 2026', detail: 'Luna Namib Collection — Onboarding in progress, compliance setup underway', dateRaised: '2026-06-01', assignee: { name: 'Jemilah', initials: 'JM', color: 'bg-blue' }, resolved: false },
+  { id: 'alt-013', severity: 'info', category: 'Onboarding', title: 'New entity opening July 2026', detail: 'Meridian Energy Ltd — Onboarding in progress, compliance setup underway', dateRaised: '2026-06-01', assignee: { name: 'Taylor Morgan', initials: 'TM', color: 'bg-blue' }, resolved: false },
 ];
 
 const severityConfig: Record<Severity, { label: string; headerBg: string; headerText: string; dotColor: string }> = {

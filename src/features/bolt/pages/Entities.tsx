@@ -20,11 +20,11 @@ export default function Entities() {
   const { showToast } = useToast();
 
   const [onboarding, setOnboarding] = useState({
-    luna: {
+    energy: {
       incorporation: [
-        { label: 'BIPA company registration', done: true },
-        { label: 'Tax registration — NamRA', done: true },
-        { label: 'NTB tourism registration', done: false },
+        { label: 'Companies Registry company registration', done: true },
+        { label: 'Tax registration', done: true },
+        { label: 'Industry Regulator registration', done: false },
       ],
       governance: [
         { label: 'First directors appointed', done: true },
@@ -37,11 +37,11 @@ export default function Entities() {
         { label: 'First board meeting held', done: false },
       ],
     },
-    admiral: {
+    datasvc: {
       incorporation: [
-        { label: 'BIPA company registration', done: true },
+        { label: 'Companies Registry company registration', done: true },
         { label: 'Tax registration', done: false },
-        { label: 'NTB tourism registration', done: false },
+        { label: 'Industry Regulator registration', done: false },
       ],
       governance: [
         { label: 'First directors appointed', done: false },
@@ -56,7 +56,7 @@ export default function Entities() {
     },
   });
 
-  const toggleStep = (card: 'luna' | 'admiral', group: 'incorporation' | 'governance' | 'operations', index: number) => {
+  const toggleStep = (card: 'energy' | 'datasvc', group: 'incorporation' | 'governance' | 'operations', index: number) => {
     setOnboarding(prev => {
       const next = { ...prev, [card]: { ...prev[card], [group]: [...prev[card][group]] } };
       const item = next[card][group][index];
@@ -68,14 +68,14 @@ export default function Entities() {
     });
   };
 
-  const getProgress = (card: 'luna' | 'admiral') => {
+  const getProgress = (card: 'energy' | 'datasvc') => {
     const groups = Object.values(onboarding[card]);
     const total = groups.reduce((sum, g) => sum + g.length, 0);
     const done = groups.reduce((sum, g) => sum + g.filter(i => i.done).length, 0);
     return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
   };
 
-  const renderGroup = (card: 'luna' | 'admiral', group: 'incorporation' | 'governance' | 'operations') => (
+  const renderGroup = (card: 'energy' | 'datasvc', group: 'incorporation' | 'governance' | 'operations') => (
     <div>
       <div className="text-[10px] font-medium text-primary mb-1.5 capitalize">{group}</div>
       <div className="space-y-1.5">
@@ -108,13 +108,12 @@ export default function Entities() {
     const colors: Record<string, string> = {
       Holding: 'bg-purple-tint text-purple',
       Operating: 'bg-blue-tint text-blue',
-      Lodge: 'bg-green-tint text-green',
-      Hotel: 'bg-blue-tint text-blue',
-      Camp: 'bg-teal-tint text-teal',
-      DNFBP: 'bg-amber-tint text-amber',
+      Subsidiary: 'bg-green-tint text-green',
+      Property: 'bg-blue-tint text-blue',
+      Regulated: 'bg-amber-tint text-amber',
       Trust: 'bg-red-tint text-red',
-      'Car rental': 'bg-orange-tint text-orange',
-      Pods: 'bg-green-tint text-green',
+      'Logistics': 'bg-orange-tint text-orange',
+      'Joint venture': 'bg-green-tint text-green',
     };
     return colors[type] || 'bg-muted/10 text-muted';
   };
@@ -154,9 +153,9 @@ export default function Entities() {
             className="border border-border rounded-lg px-3 py-2 text-[12px] bg-card"
           >
             <option value="all">All admins</option>
-            <option value="fabiola">Fabiola</option>
-            <option value="hilma">Hilma</option>
-            <option value="jemilah">Jemilah</option>
+            <option value="alex">Alex</option>
+            <option value="jordan">Jordan</option>
+            <option value="taylor">Taylor Morgan</option>
           </select>
           <select
             value={statusFilter}
@@ -177,46 +176,46 @@ export default function Entities() {
             <span className="px-2 py-0.5 rounded-full bg-orange-tint text-orange text-[10px] font-medium">2 properties in onboarding</span>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {/* Luna Namib Collection */}
+            {/* Meridian Energy Ltd */}
             <div className="bg-[#FBF0EA] border-2 border-dashed border-orange rounded-lg p-4">
-              <div className="text-[12px] font-medium text-orange mb-0.5">Luna Namib Collection</div>
-              <div className="text-[10px] text-muted mb-3">LUNA-001 · Cluster B · Hardap</div>
+              <div className="text-[12px] font-medium text-orange mb-0.5">Meridian Energy Ltd</div>
+              <div className="text-[10px] text-muted mb-3">MGH-033 · Cluster B · Region 3</div>
               <div className="grid grid-cols-2 gap-2 mb-3 text-[10px] text-muted">
-                <div>CoSec: Jemilah</div>
+                <div>CoSec: Taylor Morgan</div>
                 <div>Expected opening: July 2026</div>
               </div>
               <span className="inline-block px-2 py-0.5 rounded bg-red-tint text-red text-[9px] font-medium mb-3">OPENING THIS MONTH</span>
               <div className="mb-1">
                 <div className="h-1.5 bg-white rounded-full overflow-hidden">
-                  <div className="h-full bg-orange rounded-full" style={{ width: `${getProgress('luna').pct}%` }} />
+                  <div className="h-full bg-orange rounded-full" style={{ width: `${getProgress('energy').pct}%` }} />
                 </div>
               </div>
-              <div className="text-[10px] text-muted mb-3">{getProgress('luna').done} of {getProgress('luna').total} steps complete</div>
+              <div className="text-[10px] text-muted mb-3">{getProgress('energy').done} of {getProgress('energy').total} steps complete</div>
               <div className="space-y-3">
-                {renderGroup('luna', 'incorporation')}
-                {renderGroup('luna', 'governance')}
-                {renderGroup('luna', 'operations')}
+                {renderGroup('energy', 'incorporation')}
+                {renderGroup('energy', 'governance')}
+                {renderGroup('energy', 'operations')}
               </div>
             </div>
 
-            {/* The Admiral, Walvis Bay */}
+            {/* Meridian Data Services Ltd */}
             <div className="bg-[#FBF0EA] border-2 border-dashed border-orange rounded-lg p-4">
-              <div className="text-[12px] font-medium text-orange mb-0.5">The Admiral, Walvis Bay</div>
-              <div className="text-[10px] text-muted mb-3">ADM-001 · Cluster C · Erongo</div>
+              <div className="text-[12px] font-medium text-orange mb-0.5">Meridian Data Services Ltd</div>
+              <div className="text-[10px] text-muted mb-3">MGH-034 · Cluster C · Region 4</div>
               <div className="grid grid-cols-2 gap-2 mb-3 text-[10px] text-muted">
-                <div>CoSec: Hilma</div>
+                <div>CoSec: Jordan</div>
                 <div>Expected opening: December 2027</div>
               </div>
               <div className="mb-1">
                 <div className="h-1.5 bg-white rounded-full overflow-hidden">
-                  <div className="h-full bg-orange rounded-full" style={{ width: `${getProgress('admiral').pct}%` }} />
+                  <div className="h-full bg-orange rounded-full" style={{ width: `${getProgress('datasvc').pct}%` }} />
                 </div>
               </div>
-              <div className="text-[10px] text-muted mb-3">{getProgress('admiral').done} of {getProgress('admiral').total} steps complete</div>
+              <div className="text-[10px] text-muted mb-3">{getProgress('datasvc').done} of {getProgress('datasvc').total} steps complete</div>
               <div className="space-y-3">
-                {renderGroup('admiral', 'incorporation')}
-                {renderGroup('admiral', 'governance')}
-                {renderGroup('admiral', 'operations')}
+                {renderGroup('datasvc', 'incorporation')}
+                {renderGroup('datasvc', 'governance')}
+                {renderGroup('datasvc', 'operations')}
               </div>
             </div>
           </div>

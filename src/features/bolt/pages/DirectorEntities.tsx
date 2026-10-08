@@ -31,7 +31,7 @@ export default function DirectorEntities() {
     <div>
       <DirectorHeader
         title="My entities"
-        subtitle={`Read-only view of the Gondwana entities within your remit · Cluster ${activeUser.clusters.join(', ')}`}
+        subtitle={`Read-only view of the Meridian entities within your remit · Cluster ${activeUser.clusters.join(', ')}`}
         right={<span className="text-[10px] text-muted">{mine.length} entities</span>}
       />
 

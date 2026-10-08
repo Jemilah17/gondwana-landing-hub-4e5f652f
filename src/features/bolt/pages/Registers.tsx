@@ -72,7 +72,7 @@ const tabs = [
 const members = [
   {
     n: '001',
-    name: 'Gys Joubert',
+    name: 'Morgan Reed',
     sub: 'MD · Executive',
     shares: '4,200,000',
     pct: '7.6%',
@@ -85,7 +85,7 @@ const members = [
   },
   {
     n: '002',
-    name: 'GCN Employee Share Scheme',
+    name: 'MGH Employee Share Scheme',
     sub: '7% cap · OR-2021-005',
     shares: '3,850,000',
     pct: '7.0%',
@@ -99,7 +99,7 @@ const members = [
   {
     n: '003',
     name: 'Feb 2026 GM placement',
-    sub: '10.4M shares · N$10.00 · OR-2026-001',
+    sub: '10.4M shares · $10.00 · OR-2026-001',
     shares: '10,400,000',
     pct: '18.9%',
     classTone: 'orange' as PillTone,
@@ -127,7 +127,7 @@ const members = [
 
 const directors = [
   {
-    name: 'Dave Smuts',
+    name: 'Riley Chen',
     role: 'Chairperson · NED Independent',
     appointed: '2025',
     basis: 'Board resolution',
@@ -137,7 +137,7 @@ const directors = [
     statusTone: 'green' as PillTone,
   },
   {
-    name: 'Gys Joubert',
+    name: 'Morgan Reed',
     role: 'Managing Director · Executive',
     appointed: 'Pre-2018',
     basis: 'Board resolution',
@@ -147,7 +147,7 @@ const directors = [
     statusTone: 'green' as PillTone,
   },
   {
-    name: 'James Mnyupe',
+    name: 'Casey Brooks',
     role: 'Audit Risk Opp Cttee Chair · NED Independent',
     appointed: 'Pre-2021 · re-elected 02 Jun 2022',
     basis: 'AGM election',
@@ -157,7 +157,7 @@ const directors = [
     statusTone: 'green' as PillTone,
   },
   {
-    name: 'David Namalenga',
+    name: 'Avery Patel',
     role: 'Independent NED',
     appointed: 'Pre-2021 · re-elected 24 Jun 2021',
     basis: 'AGM election',
@@ -167,7 +167,7 @@ const directors = [
     statusTone: 'green' as PillTone,
   },
   {
-    name: 'Hannes Gouws',
+    name: 'Quinn Harper',
     role: 'NED · BI litigation lead',
     appointed: 'Pre-2021',
     basis: 'Board resolution',
@@ -177,7 +177,7 @@ const directors = [
     statusTone: 'green' as PillTone,
   },
   {
-    name: 'Jaco Visser',
+    name: 'Drew Bennett',
     role: 'Chief Financial Officer · Executive',
     appointed: 'Pre-2021',
     basis: 'Board resolution',
@@ -197,7 +197,7 @@ const directors = [
     statusTone: 'gray' as PillTone,
   },
   {
-    name: 'Fabiola Schrywer',
+    name: 'Alex Reyes',
     role: 'Company Secretary · Officer',
     appointed: 'Pre-2021',
     basis: 'Board appointment',
@@ -210,38 +210,38 @@ const directors = [
 
 const beneficialOwners = [
   {
-    entity: 'Gondwana Holdings Ltd',
-    entitySub: 'Cluster A · Fabiola',
-    bo: 'Gys Joubert',
+    entity: 'Meridian Holdings Ltd',
+    entitySub: 'Cluster A · Alex',
+    bo: 'Morgan Reed',
     basis: '7.6%',
     receipt: 'BO/2026/GHL/001',
-    filedBy: 'Fabiola',
+    filedBy: 'Alex',
     status: 'Filed',
     statusTone: 'green' as PillTone,
   },
   {
-    entity: 'Gondwana Travel Centre',
-    entitySub: 'Cluster A · DNFBP',
-    bo: 'Gys Joubert',
+    entity: 'Meridian Financial Services Ltd',
+    entitySub: 'Cluster A · Regulated',
+    bo: 'Morgan Reed',
     basis: 'Effective control',
     receipt: 'BO/2026/GTC/0018',
-    filedBy: 'Fabiola',
+    filedBy: 'Alex',
     status: 'Filed',
     statusTone: 'green' as PillTone,
   },
   {
-    entity: 'Sossusvlei Dune Lodge',
+    entity: 'Ironbridge Fabrication Ltd',
     entitySub: 'Cluster B',
-    bo: 'Gys Joubert',
+    bo: 'Morgan Reed',
     basis: 'Effective control',
     receipt: 'BO/2026/SDL/004',
-    filedBy: 'Jemilah',
+    filedBy: 'Taylor Morgan',
     status: 'Filed',
     statusTone: 'green' as PillTone,
   },
   {
-    entity: 'Canyon Lodge',
-    entitySub: 'Cluster B · Jemilah',
+    entity: 'Northgate Manufacturing (Pty) Ltd',
+    entitySub: 'Cluster B · Taylor Morgan',
     bo: '—',
     basis: '—',
     receipt: '—',
@@ -251,8 +251,8 @@ const beneficialOwners = [
     flagged: true,
   },
   {
-    entity: 'Swakopmund Guesthouse',
-    entitySub: 'Cluster C · Hilma',
+    entity: 'Harbour Freight',
+    entitySub: 'Cluster C · Jordan',
     bo: '—',
     basis: '—',
     receipt: '—',
@@ -262,8 +262,8 @@ const beneficialOwners = [
     flagged: true,
   },
   {
-    entity: 'Hakusembe River Lodge',
-    entitySub: 'Cluster E · Jemilah',
+    entity: 'Lumen Technology Ltd',
+    entitySub: 'Cluster E · Taylor Morgan',
     bo: '—',
     basis: '—',
     receipt: '—',
@@ -293,7 +293,7 @@ const resolutionSections: { label: string; rows: Resolution[] }[] = [
     rows: [
       {
         ref: 'OR-2026-001',
-        text: 'Issue 10,400,000 shares at N$10.00',
+        text: 'Issue 10,400,000 shares at $10.00',
         meeting: 'GM 26 Feb 2026',
         type: 'Ordinary',
         typeTone: 'blue',
@@ -309,9 +309,9 @@ const resolutionSections: { label: string; rows: Resolution[] }[] = [
     label: '4th AGM — 24 June 2021',
     rows: [
       { ref: 'OR-2021-001', text: 'Approval of AFS FY Oct 2020', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.6%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2021-002', text: 'Re-appoint Ernst & Young Namibia', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '99.6%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2021-003', text: 'Re-election Galloway and Namalenga', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.9%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2021-004', text: 'Directors fees N$10,000 pending reinstatement', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.3%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2021-002', text: 'Re-appoint Sterling & Co Auditors', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '99.6%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2021-003', text: 'Re-election Galloway and Patel', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.9%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2021-004', text: 'Directors fees $10,000 pending reinstatement', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.3%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2021-005', text: 'Employee share scheme amended', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '98.9%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2021-006', text: 'Directors borrowing powers', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '98.3%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
     ],
@@ -320,23 +320,23 @@ const resolutionSections: { label: string; rows: Resolution[] }[] = [
     label: '5th AGM — 2 June 2022',
     rows: [
       { ref: 'OR-2022-001', text: 'Approval AFS FY Oct 2021', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2022-002', text: 'Re-appoint EY Namibia', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2022-003', text: 'Re-election James Mnyupe', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2022-004', text: 'Directors fees reinstated N$10,000 board N$5,000 committee', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2022-005', text: 'Shareholder discount converted to Gondwana Card', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '31 Oct 2022', status: 'Done', statusTone: 'green' },
-      { ref: 'SR-2022-001', text: 'MoA alteration — broadened company objects', meeting: '5th AGM', type: 'Special', typeTone: 'purple', vote: 'Passed', effective: '02 Jun 2022', status: 'Registered BIPA', statusTone: 'green' },
+      { ref: 'OR-2022-002', text: 'Re-appoint Sterling & Co Auditors', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2022-003', text: 'Re-election Casey Brooks', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2022-004', text: 'Directors fees reinstated $10,000 board $5,000 committee', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2022-005', text: 'Shareholder discount converted to Meridian Card', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '31 Oct 2022', status: 'Done', statusTone: 'green' },
+      { ref: 'SR-2022-001', text: 'MoA alteration — broadened company objects', meeting: '5th AGM', type: 'Special', typeTone: 'purple', vote: 'Passed', effective: '02 Jun 2022', status: 'Registered Companies Registry', statusTone: 'green' },
     ],
   },
 ];
 
 const coiRows = [
-  { director: 'Dave Smuts', fy: 'FY2025', declared: 'None', received: '2026-03-10', filedBy: 'Fabiola', status: 'Filed', tone: 'green' as PillTone },
-  { director: 'Gys Joubert', fy: 'FY2025', declared: 'None', received: '2026-03-10', filedBy: 'Fabiola', status: 'Filed', tone: 'green' as PillTone },
-  { director: 'James Mnyupe', fy: 'FY2025', declared: 'None', received: '2026-03-12', filedBy: 'Fabiola', status: 'Filed', tone: 'green' as PillTone },
-  { director: 'Jaco Visser', fy: 'FY2025', declared: 'None', received: '2026-06-20', filedBy: 'Hilma', status: 'Filed', tone: 'green' as PillTone },
-  { director: 'Fabiola Schrywer', fy: 'FY2025', declared: 'None', received: '2026-03-01', filedBy: 'Fabiola (self)', status: 'Filed', tone: 'green' as PillTone },
-  { director: 'David Namalenga', fy: 'FY2025', declared: '—', received: '—', filedBy: '—', status: 'Outstanding', tone: 'amber' as PillTone, flagged: true },
-  { director: 'Hannes Gouws', fy: 'FY2025', declared: '—', received: '—', filedBy: '—', status: 'Outstanding', tone: 'amber' as PillTone, flagged: true },
+  { director: 'Riley Chen', fy: 'FY2025', declared: 'None', received: '2026-03-10', filedBy: 'Alex', status: 'Filed', tone: 'green' as PillTone },
+  { director: 'Morgan Reed', fy: 'FY2025', declared: 'None', received: '2026-03-10', filedBy: 'Alex', status: 'Filed', tone: 'green' as PillTone },
+  { director: 'Casey Brooks', fy: 'FY2025', declared: 'None', received: '2026-03-12', filedBy: 'Alex', status: 'Filed', tone: 'green' as PillTone },
+  { director: 'Drew Bennett', fy: 'FY2025', declared: 'None', received: '2026-06-20', filedBy: 'Jordan', status: 'Filed', tone: 'green' as PillTone },
+  { director: 'Alex Reyes', fy: 'FY2025', declared: 'None', received: '2026-03-01', filedBy: 'Alex (self)', status: 'Filed', tone: 'green' as PillTone },
+  { director: 'Avery Patel', fy: 'FY2025', declared: '—', received: '—', filedBy: '—', status: 'Outstanding', tone: 'amber' as PillTone, flagged: true },
+  { director: 'Quinn Harper', fy: 'FY2025', declared: '—', received: '—', filedBy: '—', status: 'Outstanding', tone: 'amber' as PillTone, flagged: true },
 ];
 
 const minutesRows = [
@@ -346,7 +346,7 @@ const minutesRows = [
     date: '26 Feb 2026',
     type: 'GM',
     typeTone: 'orange' as PillTone,
-    chair: 'Dave Smuts',
+    chair: 'Riley Chen',
     approved: 'Pending',
     status: 'Draft',
     statusTone: 'amber' as PillTone,
@@ -359,7 +359,7 @@ const minutesRows = [
     date: '02 Jun 2022',
     type: 'AGM',
     typeTone: 'blue' as PillTone,
-    chair: 'S. Galloway',
+    chair: 'R. Chen',
     approved: 'Next AGM',
     status: 'Final',
     statusTone: 'green' as PillTone,
@@ -371,7 +371,7 @@ const minutesRows = [
     date: '24 Jun 2021',
     type: 'AGM',
     typeTone: 'blue' as PillTone,
-    chair: 'S. Galloway',
+    chair: 'R. Chen',
     approved: '5th AGM',
     status: 'Final',
     statusTone: 'green' as PillTone,
@@ -383,7 +383,7 @@ const minutesRows = [
     date: '08 Apr 2020',
     type: 'AGM',
     typeTone: 'blue' as PillTone,
-    chair: 'S. Galloway',
+    chair: 'R. Chen',
     approved: '4th AGM',
     status: 'Final',
     statusTone: 'green' as PillTone,
@@ -392,14 +392,14 @@ const minutesRows = [
 ];
 
 const debentures = [
-  { ref: 'GHL-BOND-001', holder: 'Institutional holder A', value: 'N$25,000,000', issue: '2021-03-01', maturity: '2026-03-01', status: 'Maturing', tone: 'amber' as PillTone },
-  { ref: 'GHL-BOND-002', holder: 'Institutional holder B', value: 'N$15,000,000', issue: '2021-06-15', maturity: '2026-06-15', status: 'Active', tone: 'green' as PillTone },
+  { ref: 'GHL-BOND-001', holder: 'Institutional holder A', value: '$25,000,000', issue: '2021-03-01', maturity: '2026-03-01', status: 'Maturing', tone: 'amber' as PillTone },
+  { ref: 'GHL-BOND-002', holder: 'Institutional holder B', value: '$15,000,000', issue: '2021-06-15', maturity: '2026-06-15', status: 'Active', tone: 'green' as PillTone },
 ];
 
 const auditors = [
-  { period: 'FY ending Oct 2022', auditor: 'Ernst & Young Namibia (re-appointed 5th AGM 02 June 2022)', resolution: 'OR-2022-002', recommended: 'James Mnyupe · Audit Risk Cttee', status: 'Completed', tone: 'green' as PillTone },
-  { period: 'FY ending Oct 2021', auditor: 'Ernst & Young Namibia (re-appointed 4th AGM 24 June 2021)', resolution: 'OR-2021-002', recommended: 'Arne Stier · Stier Vente', status: 'Completed', tone: 'green' as PillTone },
-  { period: 'FY ending Oct 2023', auditor: 'Ernst & Young Namibia', resolution: 'Pending next AGM', recommended: 'Pending Cttee recommendation', status: 'Pending AGM', tone: 'amber' as PillTone, flagged: true },
+  { period: 'FY ending Oct 2022', auditor: 'Sterling & Co Auditors (re-appointed 5th AGM 02 June 2022)', resolution: 'OR-2022-002', recommended: 'Casey Brooks · Audit Risk Cttee', status: 'Completed', tone: 'green' as PillTone },
+  { period: 'FY ending Oct 2021', auditor: 'Sterling & Co Auditors (re-appointed 4th AGM 24 June 2021)', resolution: 'OR-2021-002', recommended: 'Arne Stier · Stier Vente', status: 'Completed', tone: 'green' as PillTone },
+  { period: 'FY ending Oct 2023', auditor: 'Sterling & Co Auditors', resolution: 'Pending next AGM', recommended: 'Pending Cttee recommendation', status: 'Pending AGM', tone: 'amber' as PillTone, flagged: true },
 ];
 
 // ---------------- Layout helpers ----------------
@@ -447,10 +447,10 @@ function UrgentItem({
 
 function RightRail() {
   const jumps = [
-    { name: 'Canyon Lodge', sub: 'Cluster B · BO pending', alert: 'red' as const },
-    { name: 'Gondwana Holdings', sub: 'Cluster A' },
-    { name: 'Hakusembe River', sub: 'Cluster E · BO pending', alert: 'red' as const },
-    { name: 'Swakopmund Guesthouse', sub: 'Cluster C', alert: 'amber' as const },
+    { name: 'Northgate Manufacturing (Pty) Ltd', sub: 'Cluster B · BO pending', alert: 'red' as const },
+    { name: 'Meridian Holdings', sub: 'Cluster A' },
+    { name: 'Lumen Technology', sub: 'Cluster E · BO pending', alert: 'red' as const },
+    { name: 'Harbour Freight', sub: 'Cluster C', alert: 'amber' as const },
   ];
 
   return (
@@ -516,7 +516,7 @@ function MembersTab() {
       <div className="bg-orange-tint border border-orange-border rounded-lg p-3 flex items-start gap-2">
         <AlertTriangle className="w-4 h-4 text-orange flex-shrink-0 mt-0.5" />
         <div className="text-[11px] text-primary">
-          <strong>February 2026 GM issued 10,400,000 new shares at N$10.00.</strong>{' '}
+          <strong>February 2026 GM issued 10,400,000 new shares at $10.00.</strong>{' '}
           <span className="text-muted">Members register update pending.</span>
         </div>
       </div>
@@ -613,7 +613,7 @@ function DirectorsTab() {
 
       <GreenFooter>
         Director appointed → New entry → name, ID, date, basis, cluster. Retiring
-        by rotation → mark Retired → link AGM resolution → BIPA notification
+        by rotation → mark Retired → link AGM resolution → Companies Registry notification
         triggered.
       </GreenFooter>
     </div>
@@ -627,9 +627,9 @@ function BeneficialOwnersTab() {
         <AlertTriangle className="w-4 h-4 text-red flex-shrink-0 mt-0.5" />
         <div className="text-[11px] text-primary">
           <strong className="text-red">FATF grey-listing remediation — urgent:</strong>{' '}
-          3 entities have no beneficial ownership declaration filed with BIPA.
-          Canyon Lodge (Cluster B), Swakopmund Guesthouse (Cluster C), Hakusembe
-          River Lodge (Cluster E).
+          3 entities have no beneficial ownership declaration filed with Companies Registry.
+          Northgate Manufacturing (Pty) Ltd (Cluster B), Harbour Freight (Cluster C), Lumen
+          Technology Ltd (Cluster E).
         </div>
       </div>
 
@@ -639,7 +639,7 @@ function BeneficialOwnersTab() {
             <th className={thBase}>Entity</th>
             <th className={thBase}>Beneficial owner</th>
             <th className={thBase}>% basis</th>
-            <th className={thBase}>BIPA receipt</th>
+            <th className={thBase}>Companies Registry receipt</th>
             <th className={thBase}>Filed by</th>
             <th className={thBase}>Status</th>
             <th className={thBase}>Action</th>
@@ -739,8 +739,8 @@ function CoiTab() {
       <div className="bg-orange-tint border border-orange-border rounded-lg p-3 flex items-start gap-2">
         <AlertTriangle className="w-4 h-4 text-orange flex-shrink-0 mt-0.5" />
         <div className="text-[11px] text-primary">
-          <strong>2 declarations outstanding:</strong> David Namalenga and Hannes
-          Gouws have not returned FY2025 COI declarations. Must be received before
+          <strong>2 declarations outstanding:</strong> Avery Patel and Quinn Harper
+          Harper have not returned FY2025 COI declarations. Must be received before
           next board meeting.
         </div>
       </div>
@@ -848,8 +848,8 @@ function DebenturesTab() {
       <div className="bg-blue-tint border border-blue/20 rounded-lg p-3 flex items-start gap-2">
         <FileText className="w-4 h-4 text-blue flex-shrink-0 mt-0.5" />
         <div className="text-[11px] text-primary">
-          NSX listed bond programme approved December 2020. Register must be
-          current and available for NSX inspection at all times.
+          Exchange listed bond programme approved December 2020. Register must be
+          current and available for Exchange inspection at all times.
         </div>
       </div>
 
@@ -936,7 +936,7 @@ export default function Registers() {
             Company registers
           </h1>
           <p className="text-[11px] text-muted mt-0.5">
-            Gondwana Holdings Ltd · Reg. 2017/1055 · All statutory and governance
+            Meridian Holdings Ltd · Reg. 2017/1055 · All statutory and governance
             registers
           </p>
         </div>

@@ -1,15 +1,15 @@
 import Topbar from '../components/layout/Topbar';
 
 const stakeholders = [
-  { group: 'Shareholders', contact: 'Fabiola', method: 'AGM, circulars, NSX', frequency: 'Annual', last: 'Feb 2026 GM', issues: 'Share placement', response: 'Approved', next: 'AGM 2027', responsible: 'Fabiola' },
-  { group: 'FIC Namibia', contact: 'Fabiola', method: 'Formal correspondence', frequency: 'As required', last: 'June 2026', issues: 'Remediation', response: 'Ongoing', next: 'As required', responsible: 'Fabiola' },
-  { group: 'BIPA', contact: 'Fabiola', method: 'Portal submissions', frequency: 'Annual', last: 'Ongoing', issues: 'Filings', response: 'On track', next: 'Ongoing', responsible: 'Fabiola' },
-  { group: 'NTB', contact: 'Hilma/Jemilah', method: 'Levy payments, returns', frequency: 'Annual', last: 'Ongoing', issues: 'Compliance', response: 'Filed', next: 'Ongoing', responsible: 'Hilma/Jemilah' },
-  { group: 'NSX', contact: 'Fabiola', method: 'Bond disclosures', frequency: 'Per listing req.', last: 'Q1 2026', issues: 'Bond maturity', response: 'Refinancing', next: 'Q3 2026', responsible: 'Fabiola' },
-  { group: 'Ernst & Young', contact: 'James Mnyupe', method: 'Audit engagement', frequency: 'Annual', last: 'FY close', issues: 'Audit', response: 'Completed', next: 'FY 2026', responsible: 'James Mnyupe' },
-  { group: 'Conservation partners', contact: 'Gys Joubert', method: 'Meetings, reports', frequency: 'Quarterly', last: 'Q2 2026', issues: 'Projects', response: 'On track', next: 'Q3 2026', responsible: 'Gys Joubert' },
-  { group: 'Gondwana Care Trust', contact: 'Gys Joubert', method: 'Trustee meetings', frequency: 'Bi-annual', last: 'Mar 2026', issues: 'Trust business', response: 'Completed', next: 'Sep 2026', responsible: 'Gys Joubert' },
-  { group: 'Staff', contact: 'Gys Joubert', method: 'Town halls, comms', frequency: 'Ongoing', last: 'Monthly', issues: 'Updates', response: 'Ongoing', next: 'Monthly', responsible: 'Gys Joubert' },
+  { group: 'Shareholders', contact: 'Alex', method: 'AGM, circulars, Exchange', frequency: 'Annual', last: 'Feb 2026 GM', issues: 'Share placement', response: 'Approved', next: 'AGM 2027', responsible: 'Alex' },
+  { group: 'AML Authority', contact: 'Alex', method: 'Formal correspondence', frequency: 'As required', last: 'June 2026', issues: 'Remediation', response: 'Ongoing', next: 'As required', responsible: 'Alex' },
+  { group: 'Companies Registry', contact: 'Alex', method: 'Portal submissions', frequency: 'Annual', last: 'Ongoing', issues: 'Filings', response: 'On track', next: 'Ongoing', responsible: 'Alex' },
+  { group: 'Industry Regulator', contact: 'Jordan/Taylor Morgan', method: 'Levy payments, returns', frequency: 'Annual', last: 'Ongoing', issues: 'Compliance', response: 'Filed', next: 'Ongoing', responsible: 'Jordan/Taylor Morgan' },
+  { group: 'Exchange', contact: 'Alex', method: 'Bond disclosures', frequency: 'Per listing req.', last: 'Q1 2026', issues: 'Bond maturity', response: 'Refinancing', next: 'Q3 2026', responsible: 'Alex' },
+  { group: 'Ernst & Young', contact: 'Casey Brooks', method: 'Audit engagement', frequency: 'Annual', last: 'FY close', issues: 'Audit', response: 'Completed', next: 'FY 2026', responsible: 'Casey Brooks' },
+  { group: 'Lenders', contact: 'Morgan Reed', method: 'Meetings, reports', frequency: 'Quarterly', last: 'Q2 2026', issues: 'Projects', response: 'On track', next: 'Q3 2026', responsible: 'Morgan Reed' },
+  { group: 'Meridian Foundation Trust', contact: 'Morgan Reed', method: 'Trustee meetings', frequency: 'Bi-annual', last: 'Mar 2026', issues: 'Trust business', response: 'Completed', next: 'Sep 2026', responsible: 'Morgan Reed' },
+  { group: 'Staff', contact: 'Morgan Reed', method: 'Town halls, comms', frequency: 'Ongoing', last: 'Monthly', issues: 'Updates', response: 'Ongoing', next: 'Monthly', responsible: 'Morgan Reed' },
 ];
 
 export default function StakeholderRegister() {

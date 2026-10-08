@@ -12,7 +12,7 @@ import DirectorRotationTab from '../tabs/DirectorRotationTab';
 
 const tabs = [
   { id: 'committees', label: 'Board committees' },
-  { id: 'kingv', label: 'King V Disclosure' },
+  { id: 'kingv', label: 'Governance Code Disclosure' },
   { id: 'skills', label: 'Director skills matrix' },
   { id: 'policies', label: 'Policy register' },
   { id: 'risk', label: 'Enterprise risk register' },

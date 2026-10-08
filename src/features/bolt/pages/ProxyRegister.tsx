@@ -24,9 +24,9 @@ interface ProxyRow {
 }
 
 const INITIAL_ROWS: ProxyRow[] = [
-  { no: '001', shareholder: 'Gys Joubert', meta: 'MD · Executive', shares: 4_200_000, formReceived: 'Yes', instruction: 'For all', dateLodged: '20 Feb 2026', lodgedWith: 'Fabiola', status: 'filed' },
-  { no: '002', shareholder: 'GCN Employee Share Scheme', shares: 3_850_000, formReceived: 'Yes', instruction: 'For all', dateLodged: '21 Feb 2026', lodgedWith: 'Fabiola', status: 'filed' },
-  { no: '003', shareholder: 'Institutional shareholders (960+ combined)', shares: 35_070_000, formReceived: 'Yes', instruction: 'For all', dateLodged: '22 Feb 2026', lodgedWith: 'Fabiola', status: 'filed' },
+  { no: '001', shareholder: 'Morgan Reed', meta: 'MD · Executive', shares: 4_200_000, formReceived: 'Yes', instruction: 'For all', dateLodged: '20 Feb 2026', lodgedWith: 'Alex', status: 'filed' },
+  { no: '002', shareholder: 'MGH Employee Share Scheme', shares: 3_850_000, formReceived: 'Yes', instruction: 'For all', dateLodged: '21 Feb 2026', lodgedWith: 'Alex', status: 'filed' },
+  { no: '003', shareholder: 'Institutional shareholders (960+ combined)', shares: 35_070_000, formReceived: 'Yes', instruction: 'For all', dateLodged: '22 Feb 2026', lodgedWith: 'Alex', status: 'filed' },
 ];
 
 const num = (n: number) => n.toLocaleString('en-US');
@@ -50,7 +50,7 @@ export default function ProxyRegister() {
   const [meeting, setMeeting] = useState(MEETINGS[0].id);
   const [rows, setRows] = useState<ProxyRow[]>(INITIAL_ROWS);
   const [modalOpen, setModalOpen] = useState(false);
-  const [form, setForm] = useState({ shareholder: '', shares: '', date: '', instruction: 'For all', lodgedBy: 'Fabiola' });
+  const [form, setForm] = useState({ shareholder: '', shares: '', date: '', instruction: 'For all', lodgedBy: 'Alex' });
 
   const active = MEETINGS.find((m) => m.id === meeting)!;
   const represented = rows.reduce((s, r) => s + r.shares, 0);
@@ -74,7 +74,7 @@ export default function ProxyRegister() {
       },
     ]);
     setModalOpen(false);
-    setForm({ shareholder: '', shares: '', date: '', instruction: 'For all', lodgedBy: 'Fabiola' });
+    setForm({ shareholder: '', shares: '', date: '', instruction: 'For all', lodgedBy: 'Alex' });
     showToast('Proxy form added to register');
   };
 
@@ -98,7 +98,7 @@ export default function ProxyRegister() {
       <div className="flex gap-4 p-6 items-start">
         <div className="flex-1 min-w-0 space-y-4">
           <div className="text-[11px] text-muted -mt-2">
-            Shareholder proxy submissions and voting instructions — Gondwana Holdings Ltd
+            Shareholder proxy submissions and voting instructions — Meridian Holdings Ltd
           </div>
 
           {/* Meeting selector */}
@@ -155,13 +155,13 @@ export default function ProxyRegister() {
           {/* Proxy table */}
           <Card className="overflow-hidden">
             <div className="px-4 py-3 border-b border-border text-[12px] font-medium text-primary">
-              Proxy forms lodged
+              Proxy forms received
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
                   <tr className="text-[10px] uppercase tracking-wider text-muted border-b border-border">
-                    {['#', 'Shareholder', 'Shares', '%', 'Form received', 'Voting instruction', 'Date lodged', 'Lodged with', 'Status'].map((h) => (
+                    {['#', 'Shareholder', 'Shares', '%', 'Form received', 'Voting instruction', 'Date received', 'Submitted to', 'Status'].map((h) => (
                       <th key={h} className="text-left font-normal px-3 py-2 whitespace-nowrap">{h}</th>
                     ))}
                   </tr>
@@ -210,7 +210,7 @@ export default function ProxyRegister() {
           <Card className="p-4">
             <div className="text-[12px] font-medium text-primary mb-3">Resolution outcomes — Feb 2026 GM</div>
             <div className="text-[11px] font-medium text-primary">
-              OR-2026-001 — Issue 10,400,000 shares at N$10.00
+              OR-2026-001 — Issue 10,400,000 shares at $10.00
             </div>
             <div className="mt-2 flex h-2.5 w-full rounded-full overflow-hidden">
               <div className="bg-green" style={{ width: '78.4%' }} />
@@ -249,9 +249,9 @@ export default function ProxyRegister() {
           <SideCard title="Submission details">
             {[
               ['Proxy deadline', '23 Feb 2026'],
-              ['Submission to', 'Fabiola Schrywer'],
-              ['Email', 'fabiola.s@gcnam.com'],
-              ['Tel', '+264 61 427 200'],
+              ['Submission to', 'Alex Reyes'],
+              ['Email', 'alex.r@meridiangroup.example'],
+              ['Tel', '+00 100 427 200'],
             ].map(([k, v]) => (
               <div key={k} className="py-1">
                 <div className="text-[10px] text-muted">{k}</div>
@@ -293,7 +293,7 @@ export default function ProxyRegister() {
             </select>
           </div>
           <div>
-            <label className={labelCls}>Lodged by</label>
+            <label className={labelCls}>Submitted by</label>
             <input className={inputCls} value={form.lodgedBy} onChange={(e) => setForm({ ...form, lodgedBy: e.target.value })} />
           </div>
           <div className="flex justify-end gap-2 pt-1">

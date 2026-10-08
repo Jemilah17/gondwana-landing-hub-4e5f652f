@@ -11,19 +11,19 @@ const q3Pack = {
   meeting: 'Q3 2026 Board Meeting',
   date: '2026-08-28',
   time: '18:00 WAT',
-  venue: 'Gondwana House Boardroom, Windhoek',
-  entity: 'Gondwana Holdings Limited',
-  chairperson: 'Dave Smuts',
+  venue: 'Meridian House Boardroom, City A',
+  entity: 'Meridian Holdings Limited',
+  chairperson: 'Riley Chen',
 };
 
 const q3PackDocs = [
   { name: 'Meeting notice and agenda', description: 'Formal notice per AoA Art. 14', file: 'Notice_BoardMeeting_28Aug2026.pdf' },
   { name: 'Previous meeting minutes', description: 'Minutes of last meeting for adoption', file: 'Minutes_BoardMeeting_May2026.pdf' },
-  { name: 'Management accounts', description: 'Latest financial report — J. Visser', file: 'ManagementAccounts_Jun2026.pdf' },
-  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
-  { name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
-  { name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
-  { name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws', file: 'Sustainability_Q2_2026.pdf' },
+  { name: 'Management accounts', description: 'Latest financial report — D. Bennett', file: 'ManagementAccounts_Jun2026.pdf' },
+  { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — C. Brooks', file: 'AROCReport_Q2_2026.pdf' },
+  { name: 'MD operational report', description: 'Group operational update — G. Reed', file: 'MDReport_Jul2026.pdf' },
+  { name: 'People Committee report', description: 'HR and remuneration update — D. Patel', file: 'PeopleCommittee_Q2_2026.pdf' },
+  { name: 'Sustainability Committee report', description: 'ESG and emissions update — Q. Harper', file: 'Sustainability_Q2_2026.pdf' },
   { name: 'Risk register update', description: 'Updated enterprise risk register', file: 'RiskRegister_Aug2026.pdf' },
   { name: 'Any other business papers', description: 'Supporting papers for specific agenda items', file: 'AOB_Papers_Aug2026.pdf' },
 ];
@@ -70,7 +70,7 @@ export default function BoardMeetingCard() {
           : '';
     setRsvp({ status: 'confirmed', choice, detail });
     setChanging(false);
-    showToast('RSVP confirmed · Fabiola Schrywer notified');
+    showToast('RSVP confirmed · Alex Reyes notified');
     setTimeout(
       () => showToast(`${activeUser.name} RSVP: ${labels[choice]} — 28 Aug 2026 board meeting`),
       600,
@@ -83,14 +83,14 @@ export default function BoardMeetingCard() {
 
       <div className="border border-border rounded-md p-4">
         <div className="text-[12px] font-medium text-primary">Q3 2026 Board Meeting</div>
-        <div className="text-[10px] text-muted">Gondwana Holdings Limited</div>
+        <div className="text-[10px] text-muted">Meridian Holdings Limited</div>
 
         <div className="grid grid-cols-2 gap-y-1 gap-x-4 mt-3 text-[10px]">
           {[
             ['Date', 'Thursday 28 August 2026'],
             ['Time', '18:00 WAT'],
-            ['Venue', 'Gondwana House Boardroom, Windhoek'],
-            ['Chairperson', 'Dave Smuts'],
+            ['Venue', 'Meridian House Boardroom, City A'],
+            ['Chairperson', 'Riley Chen'],
             ['Format', 'In person'],
           ].map(([k, v]) => (
             <div key={k}>

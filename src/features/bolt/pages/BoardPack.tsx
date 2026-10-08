@@ -20,13 +20,13 @@ interface Director {
 }
 
 const directors: Director[] = [
-  { initials: 'DS', name: 'Dave Smuts', rsvp: 'Attending', tone: 'green', bg: '#FBF3E3', fg: '#9A6E1A' },
-  { initials: 'GJ', name: 'Gys Joubert', rsvp: 'Attending', tone: 'green', bg: '#E8F1FB', fg: '#1A5FA5' },
-  { initials: 'JM', name: 'James Mnyupe', rsvp: 'Attending', tone: 'green', bg: '#EAF5EE', fg: '#2D7A4F' },
-  { initials: 'DN', name: 'David Namalenga', rsvp: 'Awaiting', tone: 'amber', bg: '#F0EBF8', fg: '#5B3D9A' },
-  { initials: 'HG', name: 'Hannes Gouws', rsvp: 'Attending', tone: 'green', bg: '#FBF0EA', fg: '#D4652A' },
-  { initials: 'JV', name: 'Jaco Visser', rsvp: 'Remote', tone: 'blue', bg: '#E1F5EE', fg: '#0F6E56' },
-  { initials: 'FS', name: 'Fabiola Schrywer', rsvp: 'CoSec', tone: 'gray', bg: '#FBF0EA', fg: '#D4652A' },
+  { initials: 'RC', name: 'Riley Chen', rsvp: 'Attending', tone: 'green', bg: '#FBF3E3', fg: '#9A6E1A' },
+  { initials: 'MR', name: 'Morgan Reed', rsvp: 'Attending', tone: 'green', bg: '#E8F1FB', fg: '#1A5FA5' },
+  { initials: 'CB', name: 'Casey Brooks', rsvp: 'Attending', tone: 'green', bg: '#EAF5EE', fg: '#2D7A4F' },
+  { initials: 'AP', name: 'Avery Patel', rsvp: 'Awaiting', tone: 'amber', bg: '#F0EBF8', fg: '#5B3D9A' },
+  { initials: 'QH', name: 'Quinn Harper', rsvp: 'Attending', tone: 'green', bg: '#FBF0EA', fg: '#D4652A' },
+  { initials: 'DB', name: 'Drew Bennett', rsvp: 'Remote', tone: 'blue', bg: '#E1F5EE', fg: '#0F6E56' },
+  { initials: 'AR', name: 'Alex Reyes', rsvp: 'CoSec', tone: 'gray', bg: '#FBF0EA', fg: '#D4652A' },
 ];
 
 const toneClass: Record<string, string> = {
@@ -37,10 +37,10 @@ const toneClass: Record<string, string> = {
 };
 
 const history = [
-  { meeting: 'Q2 2026 Board Meeting', date: '28 May 2026', docs: '8 docs', by: 'Fabiola' },
-  { meeting: '5th AGM', date: '02 Jun 2022', docs: '12 docs', by: 'Fabiola' },
-  { meeting: '4th AGM', date: '24 Jun 2021', docs: '10 docs', by: 'Fabiola' },
-  { meeting: 'Feb 2026 GM', date: '26 Feb 2026', docs: '5 docs', by: 'Fabiola' },
+  { meeting: 'Q2 2026 Board Meeting', date: '28 May 2026', docs: '8 docs', by: 'Alex' },
+  { meeting: '5th AGM', date: '02 Jun 2022', docs: '12 docs', by: 'Alex' },
+  { meeting: '4th AGM', date: '24 Jun 2021', docs: '10 docs', by: 'Alex' },
+  { meeting: 'Feb 2026 GM', date: '26 Feb 2026', docs: '5 docs', by: 'Alex' },
 ];
 
 function Pill({ children, tone }: { children: React.ReactNode; tone: string }) {
@@ -77,7 +77,7 @@ export default function BoardPack() {
   const setNote = (value: string) => update({ note: value });
 
   // New pack form (controlled)
-  const emptyForm = { meeting: '', date: '', time: '18:00 WAT', venue: '', entity: 'Gondwana Holdings Ltd', chairperson: 'Dave Smuts', template: templateOptions[0] };
+  const emptyForm = { meeting: '', date: '', time: '18:00 WAT', venue: '', entity: 'Meridian Holdings Ltd', chairperson: 'Riley Chen', template: templateOptions[0] };
   const [form, setForm] = useState(emptyForm);
   const setField = (k: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }));
@@ -185,7 +185,7 @@ export default function BoardPack() {
 
       <div className="p-6">
         <p className="text-[11px] text-muted -mt-2 mb-4">
-          Compile and distribute board packs for Gondwana Holdings Ltd meetings
+          Compile and distribute board packs for Meridian Holdings Ltd meetings
         </p>
 
         {/* Active pack */}
@@ -524,16 +524,16 @@ export default function BoardPack() {
             <input
               value={form.venue}
               onChange={setField('venue')}
-              placeholder="Gondwana House Boardroom, Windhoek"
+              placeholder="Meridian House Boardroom, City A"
               className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary"
             />
           </div>
           <div>
             <label className="text-[10px] text-muted uppercase tracking-wider">Entity</label>
             <select value={form.entity} onChange={setField('entity')} className="w-full border border-border rounded-lg px-2 py-1.5 text-[12px] mt-1 bg-card text-primary">
-              <option>Gondwana Holdings Ltd</option>
-              <option>Gondwana Collection Namibia (Pty) Ltd</option>
-              <option>Gondwana Care Trust</option>
+              <option>Meridian Holdings Ltd</option>
+              <option>Meridian Group Holdings (Pty) Ltd</option>
+              <option>Meridian Foundation Trust</option>
             </select>
           </div>
           <div>

@@ -4,21 +4,21 @@ import StatusPill from '../components/ui/StatusPills';
 import { AlertTriangle } from 'lucide-react';
 
 const kingVPrinciples = [
-  { code: '1.1', title: 'Ethical and effective leadership', category: 'Ethical leadership', status: 'applied', evidence: 'Code of Ethics', responsible: 'Dave Smuts', reviewDate: 'Mar 2026' },
-  { code: '1.2', title: 'Governance of ethics', category: 'Ethical leadership', status: 'applying', evidence: 'Ethics programme in development', responsible: 'Fabiola', reviewDate: 'Jun 2026' },
-  { code: '2.1', title: 'Board composition', category: 'Governance structures', status: 'applied', evidence: 'Skills matrix maintained', responsible: 'Dave Smuts', reviewDate: 'Mar 2026' },
-  { code: '3.1', title: 'Director development', category: 'Governance structures', status: 'not yet addressed', evidence: '—', responsible: 'Fabiola', reviewDate: 'Sep 2026' },
-  { code: '4.1', title: 'Delegation and committees', category: 'Governance structures', status: 'applying', evidence: 'TOR under review', responsible: 'Fabiola', reviewDate: 'Jun 2026' },
-  { code: '5.1', title: 'Risk governance', category: 'Risk', status: 'applying', evidence: 'Risk register active', responsible: 'James Mnyupe', reviewDate: 'Jun 2026' },
-  { code: '6.1', title: 'Technology governance', category: 'Technology & AI', status: 'not yet addressed', evidence: 'IT policy draft', responsible: 'Gys Joubert', reviewDate: 'Sep 2026' },
-  { code: '6.2', title: 'AI governance', category: 'Technology & AI', status: 'not yet addressed', evidence: '—', responsible: 'Fabiola', reviewDate: 'Dec 2026' },
-  { code: '7.1', title: 'Compliance', category: 'Compliance', status: 'applied', evidence: 'Compliance framework', responsible: 'Fabiola', reviewDate: 'Mar 2026' },
-  { code: '8.1', title: 'Remuneration', category: 'Remuneration', status: 'applying', evidence: 'Policy review pending', responsible: 'David Namalenga', reviewDate: 'Jun 2026' },
-  { code: '9.1', title: 'Assurance', category: 'Audit', status: 'applied', evidence: 'External audit engagement', responsible: 'James Mnyupe', reviewDate: 'Mar 2026' },
-  { code: '10.1', title: 'Stakeholder relations', category: 'Stakeholder', status: 'not yet addressed', evidence: 'Register maintained', responsible: 'Fabiola', reviewDate: 'Sep 2026' },
-  { code: '11.1', title: 'Sustainability', category: 'Sustainability', status: 'applying', evidence: 'ESG framework in development', responsible: 'Hannes Gouws', reviewDate: 'Jun 2026' },
-  { code: '12.1', title: 'Integrated reporting', category: 'Reporting', status: 'applying', evidence: 'Annual report', responsible: 'Fabiola', reviewDate: 'Jun 2026' },
-  { code: '—', title: 'Double materiality', category: 'Sustainability', status: 'not yet addressed', evidence: '—', responsible: 'Fabiola', reviewDate: 'Dec 2026' },
+  { code: '1.1', title: 'Ethical and effective leadership', category: 'Ethical leadership', status: 'applied', evidence: 'Code of Ethics', responsible: 'Riley Chen', reviewDate: 'Mar 2026' },
+  { code: '1.2', title: 'Governance of ethics', category: 'Ethical leadership', status: 'applying', evidence: 'Ethics programme in development', responsible: 'Alex', reviewDate: 'Jun 2026' },
+  { code: '2.1', title: 'Board composition', category: 'Governance structures', status: 'applied', evidence: 'Skills matrix maintained', responsible: 'Riley Chen', reviewDate: 'Mar 2026' },
+  { code: '3.1', title: 'Director development', category: 'Governance structures', status: 'not yet addressed', evidence: '—', responsible: 'Alex', reviewDate: 'Sep 2026' },
+  { code: '4.1', title: 'Delegation and committees', category: 'Governance structures', status: 'applying', evidence: 'TOR under review', responsible: 'Alex', reviewDate: 'Jun 2026' },
+  { code: '5.1', title: 'Risk governance', category: 'Risk', status: 'applying', evidence: 'Risk register active', responsible: 'Casey Brooks', reviewDate: 'Jun 2026' },
+  { code: '6.1', title: 'Technology governance', category: 'Technology & AI', status: 'not yet addressed', evidence: 'IT policy draft', responsible: 'Morgan Reed', reviewDate: 'Sep 2026' },
+  { code: '6.2', title: 'AI governance', category: 'Technology & AI', status: 'not yet addressed', evidence: '—', responsible: 'Alex', reviewDate: 'Dec 2026' },
+  { code: '7.1', title: 'Compliance', category: 'Compliance', status: 'applied', evidence: 'Compliance framework', responsible: 'Alex', reviewDate: 'Mar 2026' },
+  { code: '8.1', title: 'Remuneration', category: 'Remuneration', status: 'applying', evidence: 'Policy review pending', responsible: 'Avery Patel', reviewDate: 'Jun 2026' },
+  { code: '9.1', title: 'Assurance', category: 'Audit', status: 'applied', evidence: 'External audit engagement', responsible: 'Casey Brooks', reviewDate: 'Mar 2026' },
+  { code: '10.1', title: 'Stakeholder relations', category: 'Stakeholder', status: 'not yet addressed', evidence: 'Register maintained', responsible: 'Alex', reviewDate: 'Sep 2026' },
+  { code: '11.1', title: 'Sustainability', category: 'Sustainability', status: 'applying', evidence: 'ESG framework in development', responsible: 'Quinn Harper', reviewDate: 'Jun 2026' },
+  { code: '12.1', title: 'Integrated reporting', category: 'Reporting', status: 'applying', evidence: 'Annual report', responsible: 'Alex', reviewDate: 'Jun 2026' },
+  { code: '—', title: 'Double materiality', category: 'Sustainability', status: 'not yet addressed', evidence: '—', responsible: 'Alex', reviewDate: 'Dec 2026' },
 ];
 
 export default function KingVFramework() {
@@ -28,14 +28,14 @@ export default function KingVFramework() {
 
   return (
     <div>
-      <Topbar title="King V disclosure framework" />
+      <Topbar title="Governance Code disclosure framework" />
 
       <div className="p-6">
         {/* Alert */}
         <div className="bg-orange-tint border border-orange-border rounded-lg p-4 mb-6 flex items-start gap-3">
           <AlertTriangle className="w-5 h-5 text-orange flex-shrink-0" />
           <div className="text-[11px] text-primary">
-            <strong className="text-orange">King V effective 1 January 2026</strong>
+            <strong className="text-orange">Governance Code effective 1 January 2026</strong>
             <span className="text-muted"> — current financial year. Apply and explain regime. Outcomes evidence required.</span>
           </div>
         </div>

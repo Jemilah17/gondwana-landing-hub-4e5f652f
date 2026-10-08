@@ -74,7 +74,7 @@ export default function ConsultantDashboard() {
 
       <div className="p-6 space-y-5 max-w-3xl">
         <p className="text-[11px] text-muted">
-          Assigned filings across all Gondwana entities — Namibia CoSec Services
+          Assigned filings across all Meridian entities — External CoSec Services
         </p>
 
         {/* Overdue filings first — same red treatment as the internal side */}

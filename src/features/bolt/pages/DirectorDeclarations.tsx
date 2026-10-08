@@ -4,7 +4,7 @@ import { DirectorHeader, Card, Pill } from '../components/director/DirectorShare
 import { useUser } from '../contexts/UserContext';
 import { useToast } from '../contexts/ToastContext';
 
-const PENDING_IDS = ['davidn', 'hannes'];
+const PENDING_IDS = ['avery', 'quinn'];
 
 const pastDeclarations = [
   ['FY2024', 'None declared', 'Mar 2025'],
@@ -25,7 +25,7 @@ export default function DirectorDeclarations() {
 
   const submit = () => {
     setSubmitted(true);
-    showToast('Submitted · Fabiola Schrywer notified');
+    showToast('Submitted · Alex Reyes notified');
   };
 
   const showForm = isPending && !submitted;
@@ -34,7 +34,7 @@ export default function DirectorDeclarations() {
     <div>
       <DirectorHeader
         title="My declarations"
-        subtitle="Conflict of interest declarations under King V and the Companies Act"
+        subtitle="Conflict of interest declarations under Governance Code and the Companies Act"
       />
 
       <div className="p-6 flex flex-col gap-5">

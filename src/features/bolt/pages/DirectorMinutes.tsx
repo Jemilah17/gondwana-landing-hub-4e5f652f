@@ -22,21 +22,21 @@ function FullMinutesPanel({ onClose }: { onClose: () => void }) {
         </div>
         <div className="p-6 text-[11px] text-primary leading-relaxed">
           <div className="text-center mb-6">
-            <div className="text-[14px] font-medium">Gondwana Holdings Limited</div>
-            <div className="text-[10px] text-muted">Registration No. 2017/1055 · Gondwana House, Windhoek, Namibia</div>
+            <div className="text-[14px] font-medium">Meridian Holdings Limited</div>
+            <div className="text-[10px] text-muted">Registration No. 2017/1055 · Meridian House, Head Office</div>
           </div>
           <div className="text-[13px] font-medium mb-1">Minutes of the General Meeting</div>
-          <div className="text-muted mb-4">Held on Thursday 26 February 2026 at 18:00 WAT · Gondwana House Boardroom, Windhoek</div>
+          <div className="text-muted mb-4">Held on Thursday 26 February 2026 at 18:00 WAT · Meridian House Boardroom, City A</div>
 
           {[
-            ['1. Welcome and constitution of meeting', 'The Chairperson, Dave Smuts, welcomed all members present and confirmed that a quorum was constituted in accordance with the Articles of Association. The meeting was declared duly convened.'],
-            ['2. Attendance and apologies', 'Present: Dave Smuts (Chairperson), Jemilah Nujoma, Andries van Wyk, Sophia Kaluwa. Apologies received from Hilma Amutenya. The Company Secretary, Fabiola Schrywer, was in attendance.'],
+            ['1. Welcome and constitution of meeting', 'The Chairperson, Riley Chen, welcomed all members present and confirmed that a quorum was constituted in accordance with the Articles of Association. The meeting was declared duly convened.'],
+            ['2. Attendance and apologies', 'Present: Riley Chen (Chairperson), Taylor Morgan, Andries van Wyk, Sophia Kaluwa. Apologies received from Jordan Lee. The Company Secretary, Alex Reyes, was in attendance.'],
             ['3. Confirmation of previous minutes', 'The minutes of the Annual General Meeting held on 02 June 2022 were taken as read and confirmed as a correct record of the proceedings.'],
             ['4. Matters arising', 'There were no matters arising from the previous minutes that were not covered by the agenda.'],
             ['5. Directors\' report', 'The directors\' report for the period under review was tabled and noted. The Chairperson highlighted continued performance across the hospitality portfolio and progress on compliance remediation in Cluster A.'],
             ['6. Financial statements', 'The annual financial statements for the year ended 31 December 2025 were presented. The meeting noted the statements and the auditor\'s unqualified opinion thereon.'],
             ['7. Ordinary resolution — adoption of financial statements', 'RESOLVED as an ordinary resolution that the annual financial statements for the year ended 31 December 2025, together with the reports of the directors and auditors, be and are hereby adopted. Carried unanimously.'],
-            ['8. Ordinary resolution — re-election of directors', 'RESOLVED as an ordinary resolution that Jemilah Nujoma, who retires by rotation in terms of the Articles, be and is hereby re-elected as a director of the Company. Carried unanimously.'],
+            ['8. Ordinary resolution — re-election of directors', 'RESOLVED as an ordinary resolution that Taylor Morgan, who retires by rotation in terms of the Articles, be and is hereby re-elected as a director of the Company. Carried unanimously.'],
             ['9. Appointment of auditors', 'RESOLVED that the incumbent auditors be re-appointed for the ensuing financial year at a remuneration to be agreed by the directors. Carried unanimously.'],
             ['10. General business', 'No further business was raised by the members present.'],
             ['11. Closure', 'There being no further business, the Chairperson declared the meeting closed at 19:15.'],
@@ -50,11 +50,11 @@ function FullMinutesPanel({ onClose }: { onClose: () => void }) {
           <div className="mt-8 pt-4 border-t border-border grid grid-cols-2 gap-6">
             <div>
               <div className="border-b border-border h-8" />
-              <div className="text-muted mt-1">Dave Smuts — Chairperson</div>
+              <div className="text-muted mt-1">Riley Chen — Chairperson</div>
             </div>
             <div>
               <div className="border-b border-border h-8" />
-              <div className="text-muted mt-1">Fabiola Schrywer — Company Secretary</div>
+              <div className="text-muted mt-1">Alex Reyes — Company Secretary</div>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function DirectorMinutes() {
               {!pending && review.status === 'submitted' ? (
                 <div className="rounded-md px-3 py-2.5" style={{ background: '#EAF5EE' }}>
                   <div className="text-[11px] font-medium" style={{ color: '#2D7A4F' }}>Response submitted ✓</div>
-                  <div className="text-[10px] text-muted">Fabiola Schrywer has been notified</div>
+                  <div className="text-[10px] text-muted">Alex Reyes has been notified</div>
                   {review.note && <div className="text-[10px] text-muted mt-1">"{review.note}"</div>}
                 </div>
               ) : (

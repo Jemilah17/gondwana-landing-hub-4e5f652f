@@ -15,7 +15,7 @@ interface RotationRow {
 
 const rotationRows: RotationRow[] = [
   {
-    director: 'Dave Smuts',
+    director: 'Riley Chen',
     role: 'Chairperson',
     appointed: '2025',
     lastElected: '2025',
@@ -25,7 +25,7 @@ const rotationRows: RotationRow[] = [
     flagged: false,
   },
   {
-    director: 'Gys Joubert',
+    director: 'Morgan Reed',
     role: 'Managing Director',
     appointed: 'Pre-2018',
     lastElected: 'N/A — Executive',
@@ -35,7 +35,7 @@ const rotationRows: RotationRow[] = [
     flagged: false,
   },
   {
-    director: 'James Mnyupe',
+    director: 'Casey Brooks',
     role: 'NED Independent',
     appointed: 'Pre-2021',
     lastElected: '02 Jun 2022',
@@ -45,7 +45,7 @@ const rotationRows: RotationRow[] = [
     flagged: true,
   },
   {
-    director: 'David Namalenga',
+    director: 'Avery Patel',
     role: 'NED Independent',
     appointed: 'Pre-2021',
     lastElected: '24 Jun 2021',
@@ -55,7 +55,7 @@ const rotationRows: RotationRow[] = [
     flagged: true,
   },
   {
-    director: 'Hannes Gouws',
+    director: 'Quinn Harper',
     role: 'NED',
     appointed: 'Pre-2021',
     lastElected: 'Jun 2022',
@@ -65,7 +65,7 @@ const rotationRows: RotationRow[] = [
     flagged: true,
   },
   {
-    director: 'Jaco Visser',
+    director: 'Drew Bennett',
     role: 'CFO · Executive',
     appointed: 'Pre-2021',
     lastElected: 'N/A — Executive',
@@ -75,7 +75,7 @@ const rotationRows: RotationRow[] = [
     flagged: false,
   },
   {
-    director: 'Fabiola Schrywer',
+    director: 'Alex Reyes',
     role: 'Company Secretary',
     appointed: 'Pre-2021',
     lastElected: 'N/A — Officer',
@@ -87,9 +87,9 @@ const rotationRows: RotationRow[] = [
 ];
 
 const historyRows = [
-  { director: 'S. Galloway', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
-  { director: 'D. Namalenga', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
-  { director: 'J. Mnyupe', retiredAt: '5th AGM Jun 2022', reElected: 'Yes', votePct: 'Passed' },
+  { director: 'R. Chen', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
+  { director: 'D. Patel', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
+  { director: 'C. Brooks', retiredAt: '5th AGM Jun 2022', reElected: 'Yes', votePct: 'Passed' },
 ];
 
 const statusConfig = {
@@ -118,7 +118,7 @@ export default function DirectorRotationTab() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Director Rotation Tracker</h2>
-        <p className="text-sm text-muted mt-1">Retirement by rotation tracking for Gondwana Holdings Limited</p>
+        <p className="text-sm text-muted mt-1">Retirement by rotation tracking for Meridian Holdings Limited</p>
       </div>
 
       {/* Alert */}

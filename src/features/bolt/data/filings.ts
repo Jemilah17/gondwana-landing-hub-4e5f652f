@@ -3,7 +3,7 @@ export interface Filing {
   entityId: string;
   entityName: string;
   cluster: string;
-  type: 'BIPA Annual Return' | 'NTB Statutory Levy' | 'MoF Report' | 'FIC Compliance Return' | 'BO Declaration' | 'AGM' | 'Board Meeting' | 'Audit';
+  type: 'Companies Registry Annual Return' | 'Industry Statutory Levy' | 'Regulator Filing' | 'AML Compliance Return' | 'BO Declaration' | 'AGM' | 'Board Meeting' | 'Audit';
   dueDate: string;
   filedDate: string | null;
   receiptNumber: string | null;
@@ -23,7 +23,7 @@ type FilingRow = Omit<Filing, 'assignedTo' | 'handoffStage' | 'handedOffDate' | 
 
 const withHandoffDefaults = (f: FilingRow): Filing => {
   const assignedTo: Filing['assignedTo'] =
-    f.type === 'BIPA Annual Return' || f.type === 'NTB Statutory Levy' ? 'consultant' : 'internal';
+    f.type === 'Companies Registry Annual Return' || f.type === 'Industry Statutory Levy' ? 'consultant' : 'internal';
 
   const handoffStage: Filing['handoffStage'] =
     f.status === 'filed' ? 'confirmed_filed'
@@ -41,70 +41,70 @@ const withHandoffDefaults = (f: FilingRow): Filing => {
 
 const filingRows: FilingRow[] = [
   // Cluster A - Overdue
-  { id: 'fil-001', entityId: 'gcn-003', entityName: 'Gondwana Travel Centre', cluster: 'A', type: 'BIPA Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'fabiola', isFlagged: true },
-  { id: 'fil-002', entityId: 'gcn-001', entityName: 'Gondwana Holdings Ltd', cluster: 'A', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'fabiola' },
-  { id: 'fil-003', entityId: 'gcn-002', entityName: 'Gondwana Collection Namibia', cluster: 'A', type: 'BO Declaration', dueDate: '2026-02-28', filedDate: '2026-02-20', receiptNumber: 'BO-2026-0234', status: 'filed', assignee: 'fabiola' },
-  { id: 'fil-p1', entityId: 'gcn-015', entityName: 'Gondwana Properties (Pty) Ltd', cluster: 'A', type: 'BIPA Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'fabiola' },
-  { id: 'fil-p2', entityId: 'gcn-015', entityName: 'Gondwana Properties (Pty) Ltd', cluster: 'A', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'fabiola' },
+  { id: 'fil-001', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', type: 'Companies Registry Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'alex', isFlagged: true },
+  { id: 'fil-002', entityId: 'mgh-001', entityName: 'Meridian Holdings Ltd', cluster: 'A', type: 'Industry Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'alex' },
+  { id: 'fil-003', entityId: 'mgh-002', entityName: 'Meridian Group Holdings', cluster: 'A', type: 'BO Declaration', dueDate: '2026-02-28', filedDate: '2026-02-20', receiptNumber: 'BO-2026-0234', status: 'filed', assignee: 'alex' },
+  { id: 'fil-p1', entityId: 'mgh-015', entityName: 'Crestview Properties (Pty) Ltd', cluster: 'A', type: 'Companies Registry Annual Return', dueDate: '2026-03-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'alex' },
+  { id: 'fil-p2', entityId: 'mgh-015', entityName: 'Crestview Properties (Pty) Ltd', cluster: 'A', type: 'Industry Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'alex' },
 
   // Cluster B - Overdue and flagged
-  { id: 'fil-004', entityId: 'gcn-008', entityName: 'Kalahari Anib Lodge', cluster: 'B', type: 'BIPA Annual Return', dueDate: '2026-01-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'jemilah', isFlagged: true },
-  { id: 'fil-005', entityId: 'gcn-005', entityName: 'Canyon Lodge', cluster: 'B', type: 'BO Declaration', dueDate: '2026-06-30', filedDate: '2026-06-15', receiptNumber: 'BO-2026-0567', status: 'filed', assignee: 'jemilah' },
-  { id: 'fil-006', entityId: 'gcn-004', entityName: 'Sossusvlei Dune Lodge', cluster: 'B', type: 'NTB Statutory Levy', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jemilah' },
+  { id: 'fil-004', entityId: 'mgh-008', entityName: 'Summit Engineering Ltd', cluster: 'B', type: 'Companies Registry Annual Return', dueDate: '2026-01-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'taylor', isFlagged: true },
+  { id: 'fil-005', entityId: 'mgh-005', entityName: 'Northgate Manufacturing (Pty) Ltd', cluster: 'B', type: 'BO Declaration', dueDate: '2026-06-30', filedDate: '2026-06-15', receiptNumber: 'BO-2026-0567', status: 'filed', assignee: 'taylor' },
+  { id: 'fil-006', entityId: 'mgh-004', entityName: 'Ironbridge Fabrication Ltd', cluster: 'B', type: 'Industry Statutory Levy', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'taylor' },
 
   // Cluster C - Overdue
-  { id: 'fil-007', entityId: 'gcn-013', entityName: 'Swakopmund Guesthouse & Spa', cluster: 'C', type: 'BIPA Annual Return', dueDate: '2025-12-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'hilma', isFlagged: true },
-  { id: 'fil-008', entityId: 'gcn-021', entityName: 'Palmwag Lodge', cluster: 'C', type: 'FIC Compliance Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'hilma' },
-  { id: 'fil-009', entityId: 'gcn-019', entityName: 'The Delight Swakopmund', cluster: 'C', type: 'BO Declaration', dueDate: '2026-05-31', filedDate: '2026-05-20', receiptNumber: 'BO-2026-0890', status: 'filed', assignee: 'hilma' },
+  { id: 'fil-007', entityId: 'mgh-013', entityName: 'Harbour Freight Ltd', cluster: 'C', type: 'Companies Registry Annual Return', dueDate: '2025-12-31', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'jordan', isFlagged: true },
+  { id: 'fil-008', entityId: 'mgh-021', entityName: 'Apex Warehousing Ltd', cluster: 'C', type: 'AML Compliance Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jordan' },
+  { id: 'fil-009', entityId: 'mgh-019', entityName: 'Meridian Logistics Ltd', cluster: 'C', type: 'BO Declaration', dueDate: '2026-05-31', filedDate: '2026-05-20', receiptNumber: 'BO-2026-0890', status: 'filed', assignee: 'jordan' },
 
   // Cluster D
-  { id: 'fil-010', entityId: 'gcn-025', entityName: 'Etosha Safari Camp', cluster: 'D', type: 'NTB Statutory Levy', dueDate: '2026-09-15', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'hilma' },
-  { id: 'fil-011', entityId: 'gcn-009', entityName: 'Etosha King Nehale', cluster: 'D', type: 'BO Declaration', dueDate: '2026-04-30', filedDate: '2026-04-25', receiptNumber: 'BO-2026-1012', status: 'filed', assignee: 'hilma' },
+  { id: 'fil-010', entityId: 'mgh-025', entityName: 'Keystone Stores Ltd', cluster: 'D', type: 'Industry Statutory Levy', dueDate: '2026-09-15', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jordan' },
+  { id: 'fil-011', entityId: 'mgh-009', entityName: 'Keystone Retail Ltd', cluster: 'D', type: 'BO Declaration', dueDate: '2026-04-30', filedDate: '2026-04-25', receiptNumber: 'BO-2026-1012', status: 'filed', assignee: 'jordan' },
 
   // Cluster E
-  { id: 'fil-012', entityId: 'gcn-029', entityName: 'Chobe River Camp', cluster: 'E', type: 'BIPA Annual Return', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jemilah' },
-  { id: 'fil-013', entityId: 'gcn-007', entityName: 'Hakusembe River Lodge', cluster: 'E', type: 'BO Declaration', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
+  { id: 'fil-012', entityId: 'mgh-029', entityName: 'Beacon Facilities Services Ltd', cluster: 'E', type: 'Companies Registry Annual Return', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'taylor' },
+  { id: 'fil-013', entityId: 'mgh-007', entityName: 'Lumen Technology Ltd', cluster: 'E', type: 'BO Declaration', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
 
   // Additional filings for complexity
-  { id: 'fil-014', entityId: 'gcn-012', entityName: 'The Desert Grace', cluster: 'B', type: 'AGM', dueDate: '2026-06-30', filedDate: '2026-06-24', receiptNumber: 'AGM-2026-003', status: 'filed', assignee: 'jemilah' },
-  { id: 'fil-015', entityId: 'gcn-024', entityName: 'Etosha Safari Lodge', cluster: 'D', type: 'Audit', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
-  { id: 'fil-016', entityId: 'gcn-t01', entityName: 'GCN Retirement Fund Trust', cluster: 'A', type: 'MoF Report', dueDate: '2026-12-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'fabiola' },
-  { id: 'fil-017', entityId: 'gcn-027', entityName: 'Namushasha River Lodge', cluster: 'E', type: 'BIPA Annual Return', dueDate: '2026-11-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
+  { id: 'fil-014', entityId: 'mgh-012', entityName: 'Precision Components Ltd', cluster: 'B', type: 'AGM', dueDate: '2026-06-30', filedDate: '2026-06-24', receiptNumber: 'AGM-2026-003', status: 'filed', assignee: 'taylor' },
+  { id: 'fil-015', entityId: 'mgh-024', entityName: 'Westbrook Developments Ltd', cluster: 'D', type: 'Audit', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
+  { id: 'fil-016', entityId: 'mgh-t01', entityName: 'Meridian Retirement Fund Trust', cluster: 'A', type: 'Regulator Filing', dueDate: '2026-12-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'alex' },
+  { id: 'fil-017', entityId: 'mgh-027', entityName: 'Vertex Consulting Ltd', cluster: 'E', type: 'Companies Registry Annual Return', dueDate: '2026-11-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
 
   // Cluster A additional filings
-  { id: 'fil-018', entityId: 'gcn-001', entityName: 'Gondwana Holdings Ltd', cluster: 'A', type: 'BIPA Annual Return', dueDate: '2026-06-30', filedDate: '2026-06-28', receiptNumber: 'GHL-BIPA-2026', status: 'filed', assignee: 'fabiola' },
-  { id: 'fil-019', entityId: 'gcn-002', entityName: 'Gondwana Collection Namibia', cluster: 'A', type: 'Board Meeting', dueDate: '2026-08-28', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'fabiola' },
+  { id: 'fil-018', entityId: 'mgh-001', entityName: 'Meridian Holdings Ltd', cluster: 'A', type: 'Companies Registry Annual Return', dueDate: '2026-06-30', filedDate: '2026-06-28', receiptNumber: 'GHL-Companies Registry-2026', status: 'filed', assignee: 'alex' },
+  { id: 'fil-019', entityId: 'mgh-002', entityName: 'Meridian Group Holdings', cluster: 'A', type: 'Board Meeting', dueDate: '2026-08-28', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'alex' },
 
   // Cluster B additional filings
-  { id: 'fil-020', entityId: 'gcn-005', entityName: 'Canyon Lodge', cluster: 'B', type: 'BIPA Annual Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jemilah' },
-  { id: 'fil-021', entityId: 'gcn-004', entityName: 'Sossusvlei Dune Lodge', cluster: 'B', type: 'BIPA Annual Return', dueDate: '2026-06-15', filedDate: '2026-06-12', receiptNumber: 'SDL-BIPA-2026', status: 'filed', assignee: 'jemilah' },
-  { id: 'fil-022', entityId: 'gcn-012', entityName: 'The Desert Grace', cluster: 'B', type: 'NTB Statutory Levy', dueDate: '2026-07-25', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jemilah' },
-  { id: 'fil-023', entityId: 'gcn-017', entityName: 'Canyon Village', cluster: 'B', type: 'BIPA Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
-  { id: 'fil-024', entityId: 'gcn-018', entityName: 'Canyon Roadhouse', cluster: 'B', type: 'NTB Statutory Levy', dueDate: '2026-08-15', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
-  { id: 'fil-025', entityId: 'gcn-006', entityName: 'Namib Desert Lodge', cluster: 'B', type: 'BIPA Annual Return', dueDate: '2025-12-31', filedDate: '2025-12-28', receiptNumber: 'NDL-BIPA-2025', status: 'filed', assignee: 'jemilah' },
-  { id: 'fil-026', entityId: 'gcn-008', entityName: 'Kalahari Anib Lodge', cluster: 'B', type: 'NTB Statutory Levy', dueDate: '2026-04-30', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'jemilah' },
-  { id: 'fil-027', entityId: 'gcn-005', entityName: 'Canyon Lodge', cluster: 'B', type: 'Board Meeting', dueDate: '2026-08-28', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
+  { id: 'fil-020', entityId: 'mgh-005', entityName: 'Northgate Manufacturing (Pty) Ltd', cluster: 'B', type: 'Companies Registry Annual Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'taylor' },
+  { id: 'fil-021', entityId: 'mgh-004', entityName: 'Ironbridge Fabrication Ltd', cluster: 'B', type: 'Companies Registry Annual Return', dueDate: '2026-06-15', filedDate: '2026-06-12', receiptNumber: 'SDL-Companies Registry-2026', status: 'filed', assignee: 'taylor' },
+  { id: 'fil-022', entityId: 'mgh-012', entityName: 'Precision Components Ltd', cluster: 'B', type: 'Industry Statutory Levy', dueDate: '2026-07-25', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'taylor' },
+  { id: 'fil-023', entityId: 'mgh-017', entityName: 'Northgate Plastics Ltd', cluster: 'B', type: 'Companies Registry Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
+  { id: 'fil-024', entityId: 'mgh-018', entityName: 'Northgate Packaging Ltd', cluster: 'B', type: 'Industry Statutory Levy', dueDate: '2026-08-15', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
+  { id: 'fil-025', entityId: 'mgh-006', entityName: 'Cornerstone Materials Ltd', cluster: 'B', type: 'Companies Registry Annual Return', dueDate: '2025-12-31', filedDate: '2025-12-28', receiptNumber: 'NDL-Companies Registry-2025', status: 'filed', assignee: 'taylor' },
+  { id: 'fil-026', entityId: 'mgh-008', entityName: 'Summit Engineering Ltd', cluster: 'B', type: 'Industry Statutory Levy', dueDate: '2026-04-30', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'taylor' },
+  { id: 'fil-027', entityId: 'mgh-005', entityName: 'Northgate Manufacturing (Pty) Ltd', cluster: 'B', type: 'Board Meeting', dueDate: '2026-08-28', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
 
   // Cluster C additional filings
-  { id: 'fil-028', entityId: 'gcn-019', entityName: 'The Delight Swakopmund', cluster: 'C', type: 'BIPA Annual Return', dueDate: '2026-03-31', filedDate: '2026-03-28', receiptNumber: 'TDS-BIPA-2026', status: 'filed', assignee: 'hilma' },
-  { id: 'fil-029', entityId: 'gcn-020', entityName: 'The Pearls', cluster: 'C', type: 'NTB Statutory Levy', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
-  { id: 'fil-030', entityId: 'gcn-021', entityName: 'Palmwag Lodge', cluster: 'C', type: 'BIPA Annual Return', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
-  { id: 'fil-031', entityId: 'gcn-022', entityName: 'Damara Mopane Lodge', cluster: 'C', type: 'BIPA Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
-  { id: 'fil-032', entityId: 'gcn-023', entityName: 'Omarunga Epupa Falls Camp', cluster: 'C', type: 'FIC Compliance Return', dueDate: '2026-12-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
+  { id: 'fil-028', entityId: 'mgh-019', entityName: 'Meridian Logistics Ltd', cluster: 'C', type: 'Companies Registry Annual Return', dueDate: '2026-03-31', filedDate: '2026-03-28', receiptNumber: 'TDS-Companies Registry-2026', status: 'filed', assignee: 'jordan' },
+  { id: 'fil-029', entityId: 'mgh-020', entityName: 'Crossdock Partners JV', cluster: 'C', type: 'Industry Statutory Levy', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
+  { id: 'fil-030', entityId: 'mgh-021', entityName: 'Apex Warehousing Ltd', cluster: 'C', type: 'Companies Registry Annual Return', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
+  { id: 'fil-031', entityId: 'mgh-022', entityName: 'Swiftline Transport Ltd', cluster: 'C', type: 'Companies Registry Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
+  { id: 'fil-032', entityId: 'mgh-023', entityName: 'Linkway Couriers Ltd', cluster: 'C', type: 'AML Compliance Return', dueDate: '2026-12-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
 
   // Cluster D additional filings
-  { id: 'fil-033', entityId: 'gcn-009', entityName: 'Etosha King Nehale', cluster: 'D', type: 'BIPA Annual Return', dueDate: '2026-06-24', filedDate: '2026-06-20', receiptNumber: 'EKN-BIPA-2026', status: 'filed', assignee: 'hilma' },
-  { id: 'fil-034', entityId: 'gcn-024', entityName: 'Etosha Safari Lodge', cluster: 'D', type: 'BIPA Annual Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'hilma' },
-  { id: 'fil-035', entityId: 'gcn-026', entityName: 'Okapuka Safari Lodge', cluster: 'D', type: 'NTB Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'hilma' },
-  { id: 'fil-036', entityId: 'gcn-009', entityName: 'Etosha King Nehale', cluster: 'D', type: 'Board Meeting', dueDate: '2026-09-15', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
-  { id: 'fil-e1', entityId: 'gcn-032', entityName: 'Etosha Aoba Lodge', cluster: 'D', type: 'BIPA Annual Return', dueDate: '2026-04-15', filedDate: '2026-04-10', receiptNumber: 'BIPA/2026/EAL/0091', status: 'filed', assignee: 'hilma' },
-  { id: 'fil-e2', entityId: 'gcn-032', entityName: 'Etosha Aoba Lodge', cluster: 'D', type: 'NTB Statutory Levy', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'hilma' },
+  { id: 'fil-033', entityId: 'mgh-009', entityName: 'Keystone Retail Ltd', cluster: 'D', type: 'Companies Registry Annual Return', dueDate: '2026-06-24', filedDate: '2026-06-20', receiptNumber: 'EKN-Companies Registry-2026', status: 'filed', assignee: 'jordan' },
+  { id: 'fil-034', entityId: 'mgh-024', entityName: 'Westbrook Developments Ltd', cluster: 'D', type: 'Companies Registry Annual Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jordan' },
+  { id: 'fil-035', entityId: 'mgh-026', entityName: 'Unity Retail Centres Ltd', cluster: 'D', type: 'Industry Statutory Levy', dueDate: '2026-07-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jordan' },
+  { id: 'fil-036', entityId: 'mgh-009', entityName: 'Keystone Retail Ltd', cluster: 'D', type: 'Board Meeting', dueDate: '2026-09-15', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
+  { id: 'fil-e1', entityId: 'mgh-032', entityName: 'Cityline Property Fund Ltd', cluster: 'D', type: 'Companies Registry Annual Return', dueDate: '2026-04-15', filedDate: '2026-04-10', receiptNumber: 'Companies Registry/2026/EAL/0091', status: 'filed', assignee: 'jordan' },
+  { id: 'fil-e2', entityId: 'mgh-032', entityName: 'Cityline Property Fund Ltd', cluster: 'D', type: 'Industry Statutory Levy', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jordan' },
 
   // Cluster E additional filings
-  { id: 'fil-037', entityId: 'gcn-007', entityName: 'Hakusembe River Lodge', cluster: 'E', type: 'BIPA Annual Return', dueDate: '2026-06-30', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'jemilah' },
-  { id: 'fil-038', entityId: 'gcn-027', entityName: 'Namushasha River Lodge', cluster: 'E', type: 'NTB Statutory Levy', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'jemilah' },
-  { id: 'fil-039', entityId: 'gcn-028', entityName: 'Zambezi Mubala Lodge', cluster: 'E', type: 'BIPA Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
-  { id: 'fil-040', entityId: 'gcn-029', entityName: 'Chobe River Camp', cluster: 'E', type: 'FIC Compliance Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'jemilah' },
+  { id: 'fil-037', entityId: 'mgh-007', entityName: 'Lumen Technology Ltd', cluster: 'E', type: 'Companies Registry Annual Return', dueDate: '2026-06-30', filedDate: null, receiptNumber: null, status: 'overdue', assignee: 'taylor' },
+  { id: 'fil-038', entityId: 'mgh-027', entityName: 'Vertex Consulting Ltd', cluster: 'E', type: 'Industry Statutory Levy', dueDate: '2026-08-31', filedDate: null, receiptNumber: null, status: 'due soon', assignee: 'taylor' },
+  { id: 'fil-039', entityId: 'mgh-028', entityName: 'Clearpath Software Ltd', cluster: 'E', type: 'Companies Registry Annual Return', dueDate: '2026-10-31', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
+  { id: 'fil-040', entityId: 'mgh-029', entityName: 'Beacon Facilities Services Ltd', cluster: 'E', type: 'AML Compliance Return', dueDate: '2026-09-30', filedDate: null, receiptNumber: null, status: 'pending', assignee: 'taylor' },
 ];
 
 export const filings: Filing[] = filingRows.map(withHandoffDefaults);
