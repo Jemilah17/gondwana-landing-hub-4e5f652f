@@ -22,10 +22,10 @@ function fmt(dateStr: string) {
 }
 
 const TYPE_GROUPS: Record<string, string> = {
-  Companies Registry: 'Companies Registry Annual Return',
-  Industry Regulator: 'Industry Statutory Levy',
+  'Companies Registry': 'Companies Registry Annual Return',
+  'Industry Regulator': 'Industry Statutory Levy',
   Regulator: 'Regulator Filing',
-  AML Authority: 'AML Compliance Return',
+  'AML Authority': 'AML Compliance Return',
   BO: 'BO Declaration',
 };
 
