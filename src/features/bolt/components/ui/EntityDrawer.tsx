@@ -18,13 +18,13 @@ const entityTypePill = (type: string) => {
   const colors: Record<string, string> = {
     Holding: 'bg-purple-tint text-purple',
     Operating: 'bg-blue-tint text-blue',
-    Lodge: 'bg-green-tint text-green',
-    Hotel: 'bg-blue-tint text-blue',
-    Camp: 'bg-teal-tint text-teal',
-    DNFBP: 'bg-amber-tint text-amber',
+    Subsidiary: 'bg-green-tint text-green',
+    Property: 'bg-blue-tint text-blue',
+    Operating: 'bg-teal-tint text-teal',
+    Regulated: 'bg-amber-tint text-amber',
     Trust: 'bg-red-tint text-red',
     'Logistics': 'bg-orange-tint text-orange',
-    Pods: 'bg-green-tint text-green',
+    'Joint venture': 'bg-green-tint text-green',
   };
   return colors[type] || 'bg-muted/10 text-muted';
 };

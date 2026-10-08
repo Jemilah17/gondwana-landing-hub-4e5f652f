@@ -155,13 +155,13 @@ export default function ProxyRegister() {
           {/* Proxy table */}
           <Card className="overflow-hidden">
             <div className="px-4 py-3 border-b border-border text-[12px] font-medium text-primary">
-              Proxy forms lodged
+              Proxy forms received
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
                   <tr className="text-[10px] uppercase tracking-wider text-muted border-b border-border">
-                    {['#', 'Shareholder', 'Shares', '%', 'Form received', 'Voting instruction', 'Date lodged', 'Lodged with', 'Status'].map((h) => (
+                    {['#', 'Shareholder', 'Shares', '%', 'Form received', 'Voting instruction', 'Date received', 'Submitted to', 'Status'].map((h) => (
                       <th key={h} className="text-left font-normal px-3 py-2 whitespace-nowrap">{h}</th>
                     ))}
                   </tr>
@@ -250,7 +250,7 @@ export default function ProxyRegister() {
             {[
               ['Proxy deadline', '23 Feb 2026'],
               ['Submission to', 'Alex Reyes'],
-              ['Email', 'fabiola.s@gcnam.com'],
+              ['Email', 'alex.r@meridiangroup.example'],
               ['Tel', '+264 61 427 200'],
             ].map(([k, v]) => (
               <div key={k} className="py-1">
@@ -293,7 +293,7 @@ export default function ProxyRegister() {
             </select>
           </div>
           <div>
-            <label className={labelCls}>Lodged by</label>
+            <label className={labelCls}>Submitted by</label>
             <input className={inputCls} value={form.lodgedBy} onChange={(e) => setForm({ ...form, lodgedBy: e.target.value })} />
           </div>
           <div className="flex justify-end gap-2 pt-1">

@@ -7,7 +7,7 @@ const stakeholders = [
   { group: 'Industry Regulator', contact: 'Jordan/Taylor Morgan', method: 'Levy payments, returns', frequency: 'Annual', last: 'Ongoing', issues: 'Compliance', response: 'Filed', next: 'Ongoing', responsible: 'Jordan/Taylor Morgan' },
   { group: 'Exchange', contact: 'Alex', method: 'Bond disclosures', frequency: 'Per listing req.', last: 'Q1 2026', issues: 'Bond maturity', response: 'Refinancing', next: 'Q3 2026', responsible: 'Alex' },
   { group: 'Ernst & Young', contact: 'Casey Brooks', method: 'Audit engagement', frequency: 'Annual', last: 'FY close', issues: 'Audit', response: 'Completed', next: 'FY 2026', responsible: 'Casey Brooks' },
-  { group: 'Conservation partners', contact: 'Morgan Reed', method: 'Meetings, reports', frequency: 'Quarterly', last: 'Q2 2026', issues: 'Projects', response: 'On track', next: 'Q3 2026', responsible: 'Morgan Reed' },
+  { group: 'Lenders', contact: 'Morgan Reed', method: 'Meetings, reports', frequency: 'Quarterly', last: 'Q2 2026', issues: 'Projects', response: 'On track', next: 'Q3 2026', responsible: 'Morgan Reed' },
   { group: 'Meridian Foundation Trust', contact: 'Morgan Reed', method: 'Trustee meetings', frequency: 'Bi-annual', last: 'Mar 2026', issues: 'Trust business', response: 'Completed', next: 'Sep 2026', responsible: 'Morgan Reed' },
   { group: 'Staff', contact: 'Morgan Reed', method: 'Town halls, comms', frequency: 'Ongoing', last: 'Monthly', issues: 'Updates', response: 'Ongoing', next: 'Monthly', responsible: 'Morgan Reed' },
 ];

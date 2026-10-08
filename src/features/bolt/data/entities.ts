@@ -23,7 +23,7 @@ export const entities: Entity[] = [
   { id: 'mgh-015', code: 'MGH-015', name: 'Crestview Properties (Pty) Ltd', type: 'Operating', cluster: 'A', region: 'Region 1', complianceScore: 53, status: 'overdue', assignee: 'alex', incorporationDate: '2005-03-15', registrationNumber: 'CC/2005/00891', isFlagged: true },
   { id: 'mgh-t01', code: 'MGH-T01', name: 'Meridian Retirement Fund Trust', type: 'Trust', cluster: 'A', region: 'Region 1', complianceScore: 100, status: 'compliant', assignee: 'alex', incorporationDate: '2015-11-30', registrationNumber: 'T2015/001' },
 
-  // Cluster B - Southern Desert (Taylor Morgan)
+  // Cluster B - Manufacturing (Taylor Morgan)
   { id: 'mgh-005', code: 'MGH-005', name: 'Northgate Manufacturing (Pty) Ltd', type: 'Subsidiary', cluster: 'B', region: 'Region 2', complianceScore: 88, status: 'compliant', assignee: 'taylor', incorporationDate: '2008-04-12', registrationNumber: '2008/0111' },
   { id: 'mgh-008', code: 'MGH-008', name: 'Summit Engineering Ltd', type: 'Subsidiary', cluster: 'B', region: 'Region 3', complianceScore: 34, status: 'overdue', assignee: 'taylor', incorporationDate: '2014-07-08', registrationNumber: '2014/0222', isFlagged: true },
   { id: 'mgh-004', code: 'MGH-004', name: 'Ironbridge Fabrication Ltd', type: 'Subsidiary', cluster: 'B', region: 'Region 3', complianceScore: 96, status: 'compliant', assignee: 'taylor', incorporationDate: '2006-09-01', registrationNumber: '2006/0089' },
@@ -34,7 +34,7 @@ export const entities: Entity[] = [
   { id: 'mgh-006', code: 'MGH-006', name: 'Cornerstone Materials Ltd', type: 'Subsidiary', cluster: 'B', region: 'Region 3', complianceScore: 82, status: 'compliant', assignee: 'taylor', incorporationDate: '2007-02-28', registrationNumber: '2007/0067' },
   { id: 'energy-001', code: 'MGH-033', name: 'Meridian Energy Ltd', type: 'Subsidiary', cluster: 'B', region: 'Region 3', complianceScore: 0, status: 'due soon', assignee: 'taylor', incorporationDate: '2026-07-01', registrationNumber: '2026/0001', isIncoming: true },
 
-  // Cluster C - Coastal & West (Jordan)
+  // Cluster C - Logistics & Distribution (Jordan)
   { id: 'mgh-013', code: 'MGH-013', name: 'Harbour Freight Ltd', type: 'Subsidiary', cluster: 'C', region: 'Region 4', complianceScore: 41, status: 'overdue', assignee: 'jordan', incorporationDate: '2013-04-10', registrationNumber: '2013/0189', isFlagged: true },
   { id: 'mgh-019', code: 'MGH-019', name: 'Meridian Logistics Ltd', type: 'Property', cluster: 'C', region: 'Region 4', complianceScore: 78, status: 'compliant', assignee: 'jordan', incorporationDate: '2016-06-18', registrationNumber: '2016/0234' },
   { id: 'mgh-020', code: 'MGH-020', name: 'Crossdock Partners JV', type: 'Joint venture', cluster: 'C', region: 'Region 4', complianceScore: 90, status: 'compliant', assignee: 'jordan', incorporationDate: '2019-09-05', registrationNumber: '2019/0289' },
@@ -43,14 +43,14 @@ export const entities: Entity[] = [
   { id: 'mgh-023', code: 'MGH-023', name: 'Linkway Couriers Ltd', type: 'Operating', cluster: 'C', region: 'Region 5', complianceScore: 58, status: 'due soon', assignee: 'jordan', incorporationDate: '2014-02-28', registrationNumber: '2014/0890' },
   { id: 'datasvc-001', code: 'MGH-034', name: 'Meridian Data Services Ltd', type: 'Property', cluster: 'C', region: 'Region 4', complianceScore: 0, status: 'due soon', assignee: 'jordan', incorporationDate: '2027-12-01', registrationNumber: '2027/0001', isIncoming: true },
 
-  // Cluster D - Etosha & Northern (Jordan)
+  // Cluster D - Property & Retail (Jordan)
   { id: 'mgh-009', code: 'MGH-009', name: 'Keystone Retail Ltd', type: 'Subsidiary', cluster: 'D', region: 'Region 6', complianceScore: 78, status: 'compliant', assignee: 'jordan', incorporationDate: '2015-05-10', registrationNumber: '2015/0112' },
   { id: 'mgh-024', code: 'MGH-024', name: 'Westbrook Developments Ltd', type: 'Subsidiary', cluster: 'D', region: 'Region 6', complianceScore: 88, status: 'compliant', assignee: 'jordan', incorporationDate: '2011-08-22', registrationNumber: '2011/0156' },
   { id: 'mgh-025', code: 'MGH-025', name: 'Keystone Stores Ltd', type: 'Operating', cluster: 'D', region: 'Region 6', complianceScore: 65, status: 'due soon', assignee: 'jordan', incorporationDate: '2013-06-15', registrationNumber: '2013/0178' },
   { id: 'mgh-026', code: 'MGH-026', name: 'Unity Retail Centres Ltd', type: 'Subsidiary', cluster: 'D', region: 'Region 1', complianceScore: 71, status: 'due soon', assignee: 'jordan', incorporationDate: '2016-04-20', registrationNumber: '2016/0201' },
   { id: 'mgh-032', code: 'MGH-032', name: 'Cityline Property Fund Ltd', type: 'Subsidiary', cluster: 'D', region: 'Region 6', complianceScore: 83, status: 'compliant', assignee: 'jordan', incorporationDate: '2019-04-15', registrationNumber: '2019/0178' },
 
-  // Cluster E - Waterways (Taylor Morgan)
+  // Cluster E - Services & Technology (Taylor Morgan)
   { id: 'mgh-007', code: 'MGH-007', name: 'Lumen Technology Ltd', type: 'Subsidiary', cluster: 'E', region: 'Region 7', complianceScore: 62, status: 'due soon', assignee: 'taylor', incorporationDate: '2009-05-18', registrationNumber: '2009/0078' },
   { id: 'mgh-027', code: 'MGH-027', name: 'Vertex Consulting Ltd', type: 'Subsidiary', cluster: 'E', region: 'Region 8', complianceScore: 77, status: 'compliant', assignee: 'taylor', incorporationDate: '2014-10-05', registrationNumber: '2014/0234' },
   { id: 'mgh-028', code: 'MGH-028', name: 'Clearpath Software Ltd', type: 'Subsidiary', cluster: 'E', region: 'Region 8', complianceScore: 71, status: 'due soon', assignee: 'taylor', incorporationDate: '2017-07-12', registrationNumber: '2017/0267' },

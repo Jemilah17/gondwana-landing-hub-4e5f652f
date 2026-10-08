@@ -9,7 +9,7 @@ const legalMatters = [
 
 const agreements = [
   { ref: 'AGR-001', type: 'Lease', parties: 'Meridian Holdings / Landlord', entity: 'Meridian Holdings', effective: '01 Jan 2023', expiry: '31 Dec 2026', notice: '6 months', status: 'active' },
-  { ref: 'AGR-002', type: 'Conservation', parties: 'MGH / Ministry', entity: 'Northgate Manufacturing (Pty) Ltd', effective: '01 Jun 2024', expiry: '31 Aug 2026', notice: '3 months', status: 'expiring soon' },
+  { ref: 'AGR-002', type: 'Supply', parties: 'MGH / Ministry', entity: 'Northgate Manufacturing (Pty) Ltd', effective: '01 Jun 2024', expiry: '31 Aug 2026', notice: '3 months', status: 'expiring soon' },
   { ref: 'AGR-003', type: 'Exchange bond', parties: 'GHL / Exchange', entity: 'Meridian Holdings', effective: '01 Mar 2021', expiry: '01 Mar 2026', notice: '6 months', status: 'expiring soon' },
 ];
 

@@ -320,7 +320,7 @@ const resolutionSections: { label: string; rows: Resolution[] }[] = [
     label: '5th AGM — 2 June 2022',
     rows: [
       { ref: 'OR-2022-001', text: 'Approval AFS FY Oct 2021', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2022-002', text: 'Re-appoint EY Namibia', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2022-002', text: 'Re-appoint Sterling & Co Auditors', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2022-003', text: 'Re-election Casey Brooks', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2022-004', text: 'Directors fees reinstated $10,000 board $5,000 committee', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '02 Jun 2022', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2022-005', text: 'Shareholder discount converted to Meridian Card', meeting: '5th AGM', type: 'Ordinary', typeTone: 'blue', vote: 'Passed', effective: '31 Oct 2022', status: 'Done', statusTone: 'green' },
@@ -449,7 +449,7 @@ function RightRail() {
   const jumps = [
     { name: 'Northgate Manufacturing (Pty) Ltd', sub: 'Cluster B · BO pending', alert: 'red' as const },
     { name: 'Meridian Holdings', sub: 'Cluster A' },
-    { name: 'Hakusembe River', sub: 'Cluster E · BO pending', alert: 'red' as const },
+    { name: 'Lumen Technology', sub: 'Cluster E · BO pending', alert: 'red' as const },
     { name: 'Harbour Freight', sub: 'Cluster C', alert: 'amber' as const },
   ];
 
@@ -739,7 +739,7 @@ function CoiTab() {
       <div className="bg-orange-tint border border-orange-border rounded-lg p-3 flex items-start gap-2">
         <AlertTriangle className="w-4 h-4 text-orange flex-shrink-0 mt-0.5" />
         <div className="text-[11px] text-primary">
-          <strong>2 declarations outstanding:</strong> Avery Patel and Hannes
+          <strong>2 declarations outstanding:</strong> Avery Patel and Quinn Harper
           Gouws have not returned FY2025 COI declarations. Must be received before
           next board meeting.
         </div>

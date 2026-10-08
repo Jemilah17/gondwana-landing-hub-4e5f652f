@@ -24,35 +24,35 @@ const q3PackDocs = [
   { name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
   { name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
   { name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
-  { name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws', file: 'Sustainability_Q2_2026.pdf' },
+  { name: 'Sustainability Committee report', description: 'ESG and emissions update — Q. Harper', file: 'Sustainability_Q2_2026.pdf' },
   { name: 'Risk register update', description: 'Updated enterprise risk register', file: 'RiskRegister_Aug2026.pdf' },
   { name: 'Any other business papers', description: 'Supporting papers for specific agenda items', file: 'AOB_Papers_Aug2026.pdf' },
 ];
 
 // Baseline outstanding items per director (FY2025/26 cycle)
 const DIRECTOR_FLAGS: Record<string, { minutes: boolean; rsvp: boolean; coi: boolean }> = {
-  dave: { minutes: true, rsvp: true, coi: false },
-  gys: { minutes: false, rsvp: true, coi: false },
-  james: { minutes: false, rsvp: true, coi: false },
-  davidn: { minutes: true, rsvp: true, coi: true },
-  hannes: { minutes: true, rsvp: true, coi: true },
-  jaco: { minutes: false, rsvp: true, coi: false },
+  riley: { minutes: true, rsvp: true, coi: false },
+  morgan: { minutes: false, rsvp: true, coi: false },
+  casey: { minutes: false, rsvp: true, coi: false },
+  avery: { minutes: true, rsvp: true, coi: true },
+  quinn: { minutes: true, rsvp: true, coi: true },
+  drew: { minutes: false, rsvp: true, coi: false },
 };
 
 // Board appointment dates
 const APPOINTMENTS: Record<string, string> = {
-  dave: 'Appointed 2025',
-  gys: 'Appointed pre-2018',
-  james: 'Appointed pre-2021',
-  davidn: 'Appointed pre-2021',
-  hannes: 'Appointed pre-2021',
-  jaco: 'Appointed pre-2021',
+  riley: 'Appointed 2025',
+  morgan: 'Appointed pre-2018',
+  casey: 'Appointed pre-2021',
+  avery: 'Appointed pre-2021',
+  quinn: 'Appointed pre-2021',
+  drew: 'Appointed pre-2021',
 };
 
 // Entity portfolio per director (by entity name)
 const DIRECTOR_ENTITIES: Record<string, string[]> = {
-  dave: ['Meridian Holdings Ltd', 'Harbour Freight Ltd', 'Meridian Logistics Ltd', 'Apex Warehousing Ltd'],
-  james: [
+  riley: ['Meridian Holdings Ltd', 'Harbour Freight Ltd', 'Meridian Logistics Ltd', 'Apex Warehousing Ltd'],
+  casey: [
     'Meridian Holdings Ltd',
     'Keystone Retail Ltd',
     'Westbrook Developments Ltd',
@@ -60,7 +60,7 @@ const DIRECTOR_ENTITIES: Record<string, string[]> = {
     'Unity Retail Centres Ltd',
     'Cityline Property Fund Ltd',
   ],
-  davidn: [
+  avery: [
     'Northgate Manufacturing (Pty) Ltd',
     'Summit Engineering Ltd',
     'Ironbridge Fabrication Ltd',
@@ -68,14 +68,14 @@ const DIRECTOR_ENTITIES: Record<string, string[]> = {
     'Keystone Retail Ltd',
     'Westbrook Developments Ltd',
   ],
-  hannes: [
+  quinn: [
     'Meridian Holdings Ltd',
     'Harbour Freight Ltd',
     'Lumen Technology Ltd',
     'Vertex Consulting Ltd',
     'Beacon Facilities Services Ltd',
   ],
-  jaco: [
+  drew: [
     'Northgate Manufacturing (Pty) Ltd',
     'Summit Engineering Ltd',
     'Harbour Freight Ltd',

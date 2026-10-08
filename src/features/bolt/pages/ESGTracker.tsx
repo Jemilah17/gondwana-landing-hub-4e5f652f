@@ -7,7 +7,7 @@ const capitals = [
   { name: 'Intellectual', status: 'strong', kpis: ['Brand value +8%', 'IP portfolio current', 'Systems upgraded'] },
   { name: 'Human', status: 'adequate', kpis: ['Staff turnover 14%', 'Training 32 hrs avg', 'Engagement 72%'] },
   { name: 'Social & Relationship', status: 'concern', kpis: ['Community investment $2.1m', 'Partner satisfaction 78%', 'Stakeholder relations stable'] },
-  { name: 'Natural', status: 'adequate', kpis: ['Carbon intensity -5%', 'Water usage -8%', 'Biodiversity monitoring active'] },
+  { name: 'Natural', status: 'adequate', kpis: ['Carbon intensity -5%', 'Water usage -8%', 'Supplier code of conduct rolled out'] },
 ];
 
 const statusConfig: Record<string, { color: string; bg: string }> = {
@@ -84,7 +84,7 @@ export default function ESGTracker() {
             <span className="flex items-center gap-1"><span className="w-2 h-2 bg-red rounded-full" /> 1. FATF compliance</span>
             <span className="flex items-center gap-1"><span className="w-2 h-2 bg-orange rounded-full" /> 2. Climate risk</span>
             <span className="flex items-center gap-1"><span className="w-2 h-2 bg-green rounded-full" /> 3. Employee wellbeing</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 bg-amber rounded-full" /> 4. Conservation</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 bg-amber rounded-full" /> 4. Intellectual</span>
             <span className="flex items-center gap-1"><span className="w-2 h-2 bg-teal rounded-full" /> 5. Community</span>
           </div>
         </div>

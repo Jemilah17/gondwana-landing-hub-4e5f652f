@@ -30,19 +30,19 @@ interface Task {
 }
 
 const TASKS: Record<string, Task[]> = {
-  fabiola: [
+  alex: [
     { id: 't-f1', kind: 'overdue', type: 'Companies Registry Annual Return', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', dueLabel: 'Due 31 Mar 2026' },
     { id: 't-f2', kind: 'overdue', type: 'AML Compliance Return', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', dueLabel: 'Due 30 Jun 2026' },
     { id: 't-f3', kind: 'due soon', type: 'Industry Statutory Levy', entityId: 'mgh-001', entityName: 'Meridian Holdings Ltd', cluster: 'A', dueLabel: 'Due 31 Jul 2026' },
     { id: 't-f4', kind: 'due soon', type: 'BO Declaration', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', dueLabel: 'Outstanding' },
   ],
-  hilma: [
+  jordan: [
     { id: 't-h1', kind: 'overdue', type: 'Companies Registry Annual Return', entityId: 'mgh-013', entityName: 'Harbour Freight Ltd', cluster: 'C', dueLabel: 'Due 31 Dec 2025' },
     { id: 't-h2', kind: 'overdue', type: 'Industry Statutory Levy', entityId: 'mgh-013', entityName: 'Harbour Freight Ltd', cluster: 'C', dueLabel: 'Due 15 Jan 2026' },
     { id: 't-h3', kind: 'due soon', type: 'Companies Registry Annual Return', entityId: 'mgh-025', entityName: 'Keystone Stores Ltd', cluster: 'D', dueLabel: 'Due 31 Aug 2026' },
     { id: 't-h4', kind: 'due soon', type: 'Industry Statutory Levy', entityId: 'mgh-025', entityName: 'Keystone Stores Ltd', cluster: 'D', dueLabel: 'Due 20 Jul 2026' },
   ],
-  jemilah: [
+  taylor: [
     { id: 't-j1', kind: 'overdue', type: 'Companies Registry Annual Return', entityId: 'mgh-008', entityName: 'Summit Engineering Ltd', cluster: 'B', dueLabel: 'Due 31 Jan 2026' },
     { id: 't-j2', kind: 'due soon', type: 'Industry Statutory Levy', entityId: 'mgh-007', entityName: 'Lumen Technology Ltd', cluster: 'E', dueLabel: 'Due 15 Jul 2026' },
     { id: 't-j3', kind: 'due soon', type: 'BO Declaration', entityId: 'mgh-005', entityName: 'Northgate Manufacturing (Pty) Ltd', cluster: 'B', dueLabel: 'Outstanding' },

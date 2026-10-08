@@ -7,7 +7,7 @@ export const standardDocs: DocRow[] = [
   { id: 4, name: 'Audit Risk & Opportunity Committee report', description: 'Quarterly committee report — J. Mnyupe', file: 'AROCReport_Q2_2026.pdf' },
   { id: 5, name: 'MD operational report', description: 'Group operational update — G. Joubert', file: 'MDReport_Jul2026.pdf' },
   { id: 6, name: 'People Committee report', description: 'HR and remuneration update — D. Namalenga', file: 'PeopleCommittee_Q2_2026.pdf' },
-  { id: 7, name: 'Sustainability Committee report', description: 'ESG and conservation update — H. Gouws' },
+  { id: 7, name: 'Sustainability Committee report', description: 'ESG and emissions update — Q. Harper' },
   { id: 8, name: 'Risk register update', description: 'Updated enterprise risk register for board review' },
   { id: 9, name: 'Any other business papers', description: 'Supporting papers for specific agenda items (optional)', optional: true },
 ];
@@ -21,7 +21,7 @@ export const agmDocs: DocRow[] = [
   { id: 6, name: 'MD operational report', description: 'Group operational update — G. Joubert' },
   { id: 7, name: 'Audit Risk & Opportunity Committee report', description: 'Annual committee report — J. Mnyupe' },
   { id: 8, name: 'People Committee report', description: 'HR and remuneration report — D. Namalenga' },
-  { id: 9, name: 'Sustainability Committee report', description: 'ESG and conservation report — H. Gouws' },
+  { id: 9, name: 'Sustainability Committee report', description: 'ESG and emissions report — Q. Harper' },
   { id: 10, name: 'Director rotation and re-election resolutions', description: 'Directors retiring by rotation per AoA Art. 24' },
   { id: 11, name: 'Special resolutions', description: 'Special resolutions tabled for member approval' },
   { id: 12, name: 'Proxy forms and voting papers', description: 'Supporting papers for specific agenda items (optional)', optional: true },

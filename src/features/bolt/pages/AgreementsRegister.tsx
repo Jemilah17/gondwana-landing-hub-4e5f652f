@@ -45,7 +45,7 @@ const agreements: Agreement[] = [
   },
   {
     ref: 'CONS-003',
-    type: 'Conservation agreement',
+    type: 'Supply agreement',
     parties: 'MET & Keystone Retail Ltd',
     entity: 'Keystone Retail Ltd',
     entityCode: 'MGH-009',
@@ -97,7 +97,7 @@ const agreements: Agreement[] = [
 const categoryBreakdown = [
   { type: 'Lease', count: 1 },
   { type: 'Service', count: 1 },
-  { type: 'Conservation', count: 1 },
+  { type: 'Supply', count: 1 },
   { type: 'Insurance', count: 1 },
   { type: 'Bond', count: 1 },
   { type: 'IP', count: 1 },
@@ -257,7 +257,7 @@ export default function AgreementsRegister() {
             <h4 className="text-[10px] font-medium text-primary mb-2">External counsel</h4>
             <div className="text-[10px] text-muted space-y-1">
               <div className="font-medium text-primary">Stier Vente and Associates</div>
-              <div>City A, Namibia</div>
+              <div>Head Office</div>
               <div className="flex items-center gap-1 text-orange">
                 <ExternalLink className="w-3 h-3" />
                 <span>Contact details</span>

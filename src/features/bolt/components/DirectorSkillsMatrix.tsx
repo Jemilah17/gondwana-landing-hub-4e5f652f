@@ -15,7 +15,7 @@ const competencies = [
   { key: 'legal', label: 'Legal' },
   { key: 'risk', label: 'Risk' },
   { key: 'sustainability', label: 'Sustainability' },
-  { key: 'tourism', label: 'Tourism Operations' },
+  { key: 'ops', label: 'Industry Operations' },
   { key: 'hr', label: 'HR' },
   { key: 'it', label: 'IT' },
   { key: 'strategy', label: 'Strategy' },
@@ -24,13 +24,13 @@ const competencies = [
 
 // Skills data: 'full' (green), 'partial' (amber), 'gap' (gray outline)
 const skillsMatrix: Record<string, Record<string, 'full' | 'partial' | 'gap'>> = {
-  'Riley Chen': { finance: 'full', legal: 'partial', risk: 'partial', sustainability: 'gap', tourism: 'gap', hr: 'gap', it: 'gap', strategy: 'full', governance: 'full' },
-  'Morgan Reed': { finance: 'partial', legal: 'full', risk: 'partial', sustainability: 'gap', tourism: 'full', hr: 'gap', it: 'gap', strategy: 'full', governance: 'full' },
-  'Casey Brooks': { finance: 'full', legal: 'gap', risk: 'full', sustainability: 'full', tourism: 'partial', hr: 'gap', it: 'partial', strategy: 'full', governance: 'full' },
-  'Avery Patel': { finance: 'full', legal: 'partial', risk: 'partial', sustainability: 'partial', tourism: 'gap', hr: 'full', it: 'gap', strategy: 'partial', governance: 'full' },
-  'Quinn Harper': { finance: 'partial', legal: 'gap', risk: 'partial', sustainability: 'full', tourism: 'full', hr: 'partial', it: 'gap', strategy: 'full', governance: 'partial' },
-  'Drew Bennett': { finance: 'partial', legal: 'gap', risk: 'gap', sustainability: 'partial', tourism: 'full', hr: 'gap', it: 'full', strategy: 'full', governance: 'partial' },
-  'Alex Reyes': { finance: 'partial', legal: 'partial', risk: 'gap', sustainability: 'full', tourism: 'gap', hr: 'full', it: 'partial', strategy: 'partial', governance: 'full' },
+  'Riley Chen': { finance: 'full', legal: 'partial', risk: 'partial', sustainability: 'gap', ops: 'gap', hr: 'gap', it: 'gap', strategy: 'full', governance: 'full' },
+  'Morgan Reed': { finance: 'partial', legal: 'full', risk: 'partial', sustainability: 'gap', ops: 'full', hr: 'gap', it: 'gap', strategy: 'full', governance: 'full' },
+  'Casey Brooks': { finance: 'full', legal: 'gap', risk: 'full', sustainability: 'full', ops: 'partial', hr: 'gap', it: 'partial', strategy: 'full', governance: 'full' },
+  'Avery Patel': { finance: 'full', legal: 'partial', risk: 'partial', sustainability: 'partial', ops: 'gap', hr: 'full', it: 'gap', strategy: 'partial', governance: 'full' },
+  'Quinn Harper': { finance: 'partial', legal: 'gap', risk: 'partial', sustainability: 'full', ops: 'full', hr: 'partial', it: 'gap', strategy: 'full', governance: 'partial' },
+  'Drew Bennett': { finance: 'partial', legal: 'gap', risk: 'gap', sustainability: 'partial', ops: 'full', hr: 'gap', it: 'full', strategy: 'full', governance: 'partial' },
+  'Alex Reyes': { finance: 'partial', legal: 'partial', risk: 'gap', sustainability: 'full', ops: 'gap', hr: 'full', it: 'partial', strategy: 'partial', governance: 'full' },
 };
 
 const skillLegend = {

@@ -8,12 +8,12 @@ import { users } from '../data/users';
 
 type Access = 'write' | 'read' | 'none';
 
-const MATRIX: { cluster: string; fabiola: Access; hilma: Access; jemilah: Access }[] = [
-  { cluster: 'A', fabiola: 'write', hilma: 'read', jemilah: 'read' },
-  { cluster: 'B', fabiola: 'read', hilma: 'none', jemilah: 'write' },
-  { cluster: 'C', fabiola: 'read', hilma: 'write', jemilah: 'none' },
-  { cluster: 'D', fabiola: 'read', hilma: 'write', jemilah: 'none' },
-  { cluster: 'E', fabiola: 'read', hilma: 'none', jemilah: 'write' },
+const MATRIX: { cluster: string; alex: Access; jordan: Access; taylor: Access }[] = [
+  { cluster: 'A', alex: 'write', jordan: 'read', taylor: 'read' },
+  { cluster: 'B', alex: 'read', jordan: 'none', taylor: 'write' },
+  { cluster: 'C', alex: 'read', jordan: 'write', taylor: 'none' },
+  { cluster: 'D', alex: 'read', jordan: 'write', taylor: 'none' },
+  { cluster: 'E', alex: 'read', jordan: 'none', taylor: 'write' },
 ];
 
 const ACCESS_PILL: Record<Access, { label: string; cls: string }> = {
@@ -153,9 +153,9 @@ export default function Settings() {
                   {MATRIX.map(row => (
                     <tr key={row.cluster} className="border-b border-border last:border-0">
                       <td className="px-4 py-2 text-[11px] font-medium text-primary">{row.cluster}</td>
-                      <td className="px-4 py-2"><AccessPill access={row.fabiola} /></td>
-                      <td className="px-4 py-2"><AccessPill access={row.hilma} /></td>
-                      <td className="px-4 py-2"><AccessPill access={row.jemilah} /></td>
+                      <td className="px-4 py-2"><AccessPill access={row.alex} /></td>
+                      <td className="px-4 py-2"><AccessPill access={row.jordan} /></td>
+                      <td className="px-4 py-2"><AccessPill access={row.taylor} /></td>
                     </tr>
                   ))}
                 </tbody>

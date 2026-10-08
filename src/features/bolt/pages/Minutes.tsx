@@ -201,7 +201,7 @@ function LetterheadLogo() {
           style={{ color: '#6B6F68', letterSpacing: '0.3em' }}
           className="text-[9px] font-medium mt-1"
         >
-          NAMIBIA
+          HEAD OFFICE
         </div>
       </div>
     );
@@ -232,7 +232,7 @@ function Letterhead({ title }: { title: string }) {
         className="text-center"
         style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
       >
-        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Nelson Mandela Avenue&nbsp;&nbsp;|&nbsp;&nbsp;City A, Namibia&nbsp;&nbsp;|&nbsp;&nbsp;info@meridian-collection.com
+        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Nelson Mandela Avenue&nbsp;&nbsp;|&nbsp;&nbsp;Head Office&nbsp;&nbsp;|&nbsp;&nbsp;info@meridian-collection.com
       </div>
       <div
         className="text-center"
@@ -332,7 +332,7 @@ async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
     new Paragraph({ children: [new TextRun('')] }),
     docxCentered('Tel: +264 61 427 200  |  Fax: +264 61 251 863', { size: 18 }),
     docxCentered(
-      'PO Box 80205  |  42 Nelson Mandela Avenue  |  City A, Namibia  |  info@meridian-collection.com',
+      'PO Box 80205  |  42 Nelson Mandela Avenue  |  Head Office  |  info@meridian-collection.com',
       { size: 16 },
     ),
     docxCentered('www.meridian-collection.com', { size: 16 }),
@@ -924,7 +924,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
       />
       <div className="p-6">
         <article className="bg-card border border-border rounded-lg mx-auto p-10" style={{ maxWidth: 760 }}>
-          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT MERIDIAN HOUSE BOARDROOM, 42 NELSON MANDELA AVENUE, CITY A, NAMIBIA" />
+          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT MERIDIAN HOUSE BOARDROOM, 42 NELSON MANDELA AVENUE, CITY A, HEAD OFFICE" />
 
           <Section n={1} title="Welcome and opening">
             <p>
@@ -1129,7 +1129,7 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
   const [time, setTime] = useState('18:00');
   const [venue, setVenue] = useState('Meridian House Boardroom, 42 Nelson Mandela Avenue, City A');
   const [deadline, setDeadline] = useState('2026-06-22');
-  const [proxyAddress, setProxyAddress] = useState('fabiola.s@gcnam.com');
+  const [proxyAddress, setProxyAddress] = useState('alex.r@meridiangroup.example');
   const [chair, setChair] = useState('Riley Chen');
   const [items, setItems] = useState<string[]>([
     'Welcome and confirmation of quorum',

@@ -7,7 +7,7 @@ const stakeholderGroups = [
   {
     ring: 'second',
     name: 'Shareholders',
-    members: ['960+ Shareholders', 'Custodian Bank (custodian)', 'GEPF (via asset managers)'],
+    members: ['960+ Shareholders', 'Custodian Bank', 'Pension funds (via asset managers)'],
   },
   {
     ring: 'third',
@@ -16,8 +16,8 @@ const stakeholderGroups = [
   },
   {
     ring: 'outer',
-    name: 'Community & Conservation',
-    members: ['Local Communities', 'Conservation Organizations', 'Tourism Associations', 'Local SME Partners'],
+    name: 'Community & Environment',
+    members: ['Local Communities', 'Employees', 'Industry Associations', 'Local SME Partners'],
   },
 ];
 
@@ -27,7 +27,7 @@ const engagementLog = [
   { stakeholder: 'Industry Regulator', contact: 'Registration Division', method: 'License renewal coordination', frequency: 'Annual', lastEngagement: '2026-03-15', issues: 'None', response: 'All licenses current', nextDate: '2027-03-31' },
   { stakeholder: 'Shareholders', contact: 'Company Secretary', method: 'AGM and circulars', frequency: 'Annual + as needed', lastEngagement: '2026-04-28', issues: 'Remuneration policy questions', response: 'Detailed response provided', nextDate: '2027-04-30' },
   { stakeholder: 'Community - Region 4', contact: 'Regional Coordinator', method: 'Community liaison meeting', frequency: 'Quarterly', lastEngagement: '2026-05-20', issues: 'Employment opportunities', response: 'Local hiring initiative launched', nextDate: '2026-08-20' },
-  { stakeholder: 'Conservation Orgs', contact: 'Industry Association', method: 'Partnership review', frequency: 'Bi-annual', lastEngagement: '2026-04-10', issues: 'Wildlife corridor concerns', response: 'Environmental assessment commissioned', nextDate: '2026-10-10' },
+  { stakeholder: 'Suppliers', contact: 'Industry Association', method: 'Partnership review', frequency: 'Bi-annual', lastEngagement: '2026-04-10', issues: 'Supplier code of conduct compliance', response: 'Environmental assessment commissioned', nextDate: '2026-10-10' },
   { stakeholder: 'Companies Registry', contact: 'Registrar of Companies', method: 'Annual return filing', frequency: 'Annual', lastEngagement: '2026-02-28', issues: 'None', response: 'All 33 entities filed', nextDate: '2027-02-28' },
 ];
 

@@ -151,7 +151,7 @@ export default function Deadlines() {
     count: visible.filter(f => f.assignee === u.id && f.status === 'overdue').length,
   }));
   const maxAdmin = Math.max(1, ...adminStats.map(a => a.count));
-  const barColors: Record<string, string> = { fabiola: 'bg-orange', hilma: 'bg-green', jemilah: 'bg-blue' };
+  const barColors: Record<string, string> = { alex: 'bg-orange', jordan: 'bg-green', taylor: 'bg-blue' };
 
   const openModal = (f: Filing) => {
     setModalFiling(f);

@@ -4,7 +4,7 @@ const risks = [
   {
     id: 1,
     category: 'Regulatory',
-    description: 'FATF grey-listing risk — Namibia placed on FATF grey list Feb 2024, enhanced AML/CFT scrutiny',
+    description: 'Regulatory change risk — enhanced AML/CFT scrutiny since Feb 2024, enhanced AML/CFT scrutiny',
     owner: 'Casey Brooks',
     likelihood: 4,
     impact: 5,
@@ -46,7 +46,7 @@ const risks = [
   {
     id: 4,
     category: 'Operations',
-    description: 'Cross-border Chobe/Zambezi regulatory divergence — varying tourism regs across borders',
+    description: 'Cross-border regulatory divergence — varying industry regulations across markets',
     owner: 'Quinn Harper',
     likelihood: 3,
     impact: 3,

@@ -14,7 +14,7 @@ const directorFees = [
   { type: 'Committee Meeting Attendance', amount: '$5,000', frequency: 'Per meeting', notes: 'Audit, People, Sustainability committees' },
   { type: 'Chair Premium (Board)', amount: '$15,000', frequency: 'Per meeting', notes: 'Chair of the Board' },
   { type: 'Chair Premium (Committee)', amount: '$7,500', frequency: 'Per meeting', notes: 'Chairs of Board committees' },
-  { type: 'Travel Allowance', amount: 'Reimbursed', frequency: 'Actual costs', notes: 'Directors based outside City A' },
+  { type: 'Expense Allowance', amount: 'Reimbursed', frequency: 'Actual costs', notes: 'Directors based outside City A' },
 ];
 
 const advisoryVotes = [

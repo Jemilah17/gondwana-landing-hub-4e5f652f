@@ -90,7 +90,7 @@ export default function SignIn() {
         <div className="text-center">
           <div style={{ color: '#3D2B1F', fontSize: 22, fontWeight: 500, letterSpacing: '0.18em' }}>MERIDIAN</div>
           <div style={{ color: '#D4652A', fontSize: 12, letterSpacing: '0.22em', marginTop: 2 }}>HOLDINGS LIMITED</div>
-          <div style={{ color: '#6B6F68', fontSize: 10, letterSpacing: '0.12em', marginTop: 2 }}>NAMIBIA</div>
+          <div style={{ color: '#6B6F68', fontSize: 10, letterSpacing: '0.12em', marginTop: 2 }}>HEAD OFFICE</div>
         </div>
 
         <div style={{ height: 24 }} />

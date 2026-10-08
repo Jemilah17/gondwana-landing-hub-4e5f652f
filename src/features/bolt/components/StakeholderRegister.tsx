@@ -5,8 +5,8 @@ const stakeholderEngagements = [
   { group: 'Companies Registry (Business Intellectual Property Authority)', contact: 'Legal Counsel', method: 'Filings / Updates', frequency: 'Annual', lastEngagement: '2025-12-10', issues: 'IP registrations', response: 'Renewals completed', nextDate: '2026-12-10' },
   { group: 'Industry Regulator', contact: 'Operations Director', method: 'Licencing meetings', frequency: 'Semi-annual', lastEngagement: '2026-03-20', issues: 'License renewals', response: 'All licenses current', nextDate: '2026-09-20' },
   { group: 'Stock Exchange', contact: 'CFO', method: 'Regulatory filings', frequency: 'Quarterly', lastEngagement: '2026-06-30', issues: 'Quarterly reporting', response: 'Submitted on time', nextDate: '2026-09-30' },
-  { group: 'Conservation Partners', contact: 'Sustainability Manager', method: 'Partnership meetings', frequency: 'Quarterly', lastEngagement: '2026-05-10', issues: 'Chobe conservation project', response: 'MOU renewed', nextDate: '2026-08-10' },
-  { group: 'Community Leaders (Zambezi)', contact: 'Community Liaison', method: 'Community forums', frequency: 'Monthly', lastEngagement: '2026-06-25', issues: 'Employment opportunities', response: 'Recruitment plan shared', nextDate: '2026-07-25' },
+  { group: 'Lenders', contact: 'Sustainability Manager', method: 'Partnership meetings', frequency: 'Quarterly', lastEngagement: '2026-05-10', issues: 'Facility covenant review', response: 'MOU renewed', nextDate: '2026-08-10' },
+  { group: 'Customers', contact: 'Community Liaison', method: 'Community forums', frequency: 'Monthly', lastEngagement: '2026-06-25', issues: 'Employment opportunities', response: 'Recruitment plan shared', nextDate: '2026-07-25' },
 ];
 
 const stakeholderGroups = [
@@ -19,9 +19,9 @@ const stakeholderGroups = [
 export default function StakeholderRegister() {
   const stakeholderLevels = [
     { label: 'Board', description: '7 directors providing strategic oversight', size: 'w-24 h-24', color: 'bg-orange' },
-    { label: 'Shareholders', description: '960+ shareholders across Namibia', size: 'w-40 h-40', color: 'bg-blue/20 border-blue' },
+    { label: 'Shareholders', description: '960+ shareholders', size: 'w-40 h-40', color: 'bg-blue/20 border-blue' },
     { label: 'Regulators', description: 'AML Authority, Companies Registry, Industry Regulator, Exchange', size: 'w-56 h-56', color: 'bg-green/10 border-green' },
-    { label: 'Community', description: 'Conservation & local communities', size: 'w-72 h-72', color: 'bg-amber/10 border-amber' },
+    { label: 'Community', description: 'Employees & local communities', size: 'w-72 h-72', color: 'bg-amber/10 border-amber' },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function StakeholderRegister() {
           <div className="relative flex items-center justify-center">
             {/* Outer: Community */}
             <div className="w-72 h-72 rounded-full border-2 border-amber border-dashed flex items-center justify-center relative">
-              <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-xs text-amber font-medium bg-card px-2">Community & Conservation</span>
+              <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-xs text-amber font-medium bg-card px-2">Community & Environment</span>
 
               {/* Third: Regulators */}
               <div className="w-56 h-56 rounded-full border-2 border-green flex items-center justify-center relative">

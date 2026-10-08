@@ -23,7 +23,7 @@ function FullMinutesPanel({ onClose }: { onClose: () => void }) {
         <div className="p-6 text-[11px] text-primary leading-relaxed">
           <div className="text-center mb-6">
             <div className="text-[14px] font-medium">Meridian Holdings Limited</div>
-            <div className="text-[10px] text-muted">Registration No. 2017/1055 · Meridian House, City A, Namibia</div>
+            <div className="text-[10px] text-muted">Registration No. 2017/1055 · Meridian House, Head Office</div>
           </div>
           <div className="text-[13px] font-medium mb-1">Minutes of the General Meeting</div>
           <div className="text-muted mb-4">Held on Thursday 26 February 2026 at 18:00 WAT · Meridian House Boardroom, City A</div>

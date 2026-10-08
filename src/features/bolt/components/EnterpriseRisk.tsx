@@ -4,7 +4,7 @@ const risks = [
   {
     id: 1,
     category: 'Regulatory',
-    description: 'FATF grey-listing impact on Namibian financial services',
+    description: 'Regulatory change impacting financial services',
     owner: 'Casey Brooks',
     likelihood: 4,
     impact: 5,
@@ -46,7 +46,7 @@ const risks = [
   {
     id: 4,
     category: 'Operational',
-    description: 'Cross-border Chobe/Zambezi operational risks',
+    description: 'Supply chain disruption risk',
     owner: 'Morgan Reed',
     likelihood: 3,
     impact: 3,
