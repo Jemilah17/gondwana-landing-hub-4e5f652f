@@ -22,7 +22,7 @@ const agreements: Agreement[] = [
   {
     ref: 'LEASE-001',
     type: 'Lease agreement',
-    parties: 'NamPark Authority & Northgate Manufacturing (Pty) Ltd',
+    parties: 'Apex Distribution Ltd & Northgate Manufacturing (Pty) Ltd',
     entity: 'Northgate Manufacturing (Pty) Ltd',
     entityCode: 'MGH-005',
     effectiveDate: '2015-01-01',

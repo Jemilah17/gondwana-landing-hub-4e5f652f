@@ -26,7 +26,7 @@ const alertsData: Alert[] = [
   // HIGH (orange)
   { id: 'alt-004', severity: 'high', category: 'Companies Registry', title: 'Annual return overdue 175 days', detail: 'Summit Engineering Ltd — Immediate remediation required', dateRaised: '2026-01-06', assignee: { name: 'Taylor Morgan', initials: 'JM', color: 'bg-blue' }, resolved: false },
   { id: 'alt-005', severity: 'high', category: 'Companies Registry', title: 'Annual return overdue', detail: 'Harbour Freight Ltd — Filing outstanding since Dec 2025', dateRaised: '2026-01-15', assignee: { name: 'Jordan Lee', initials: 'HA', color: 'bg-green' }, resolved: false },
-  { id: 'alt-006', severity: 'high', category: 'COI', title: 'Conflict of interest declaration outstanding', detail: 'Directors Namalenga and Gouws have not submitted COI declarations for FY2026', dateRaised: '2026-06-01', assignee: { name: 'Alex Reyes', initials: 'FS', color: 'bg-orange' }, resolved: false },
+  { id: 'alt-006', severity: 'high', category: 'COI', title: 'Conflict of interest declaration outstanding', detail: 'Directors Patel and Harper have not submitted COI declarations for FY2026', dateRaised: '2026-06-01', assignee: { name: 'Alex Reyes', initials: 'FS', color: 'bg-orange' }, resolved: false },
   { id: 'alt-007', severity: 'high', category: 'Minutes', title: 'GM minutes draft status', detail: 'February 2026 General Meeting minutes remain in draft — board approval pending', dateRaised: '2026-04-01', assignee: { name: 'Alex Reyes', initials: 'FS', color: 'bg-orange' }, resolved: false },
 
   // MEDIUM (amber)

@@ -251,7 +251,7 @@ export default function ProxyRegister() {
               ['Proxy deadline', '23 Feb 2026'],
               ['Submission to', 'Alex Reyes'],
               ['Email', 'alex.r@meridiangroup.example'],
-              ['Tel', '+264 61 427 200'],
+              ['Tel', '+00 100 427 200'],
             ].map(([k, v]) => (
               <div key={k} className="py-1">
                 <div className="text-[10px] text-muted">{k}</div>

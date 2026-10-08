@@ -89,7 +89,7 @@ export interface Risk {
 
 export const risks: Risk[] = [
   { id: 1, category: 'Compliance', description: 'Regulatory change - enhanced AML scrutiny since Feb 2024', owner: 'Alex', likelihood: 4, impact: 4, inherentScore: 16, mitigation: 'AML Authority remediation 8/12 done', residualScore: 8, committee: 'Audit Risk Opp', status: 'critical' },
-  { id: 2, category: 'Financial', description: 'Apex Insurance BI claim - Business interruption litigation', owner: 'Quinn Harper', likelihood: 3, impact: 4, inherentScore: 12, mitigation: 'Legal team + Gouws', residualScore: 6, committee: 'Audit Risk Opp', status: 'high' },
+  { id: 2, category: 'Financial', description: 'Apex Insurance BI claim - Business interruption litigation', owner: 'Quinn Harper', likelihood: 3, impact: 4, inherentScore: 12, mitigation: 'Legal team + Harper', residualScore: 6, committee: 'Audit Risk Opp', status: 'high' },
   { id: 3, category: 'Financial', description: 'Exchange bond maturing 2026', owner: 'Drew Bennett', likelihood: 3, impact: 3, inherentScore: 9, mitigation: 'Refinancing plan', residualScore: 4, committee: 'Audit Risk Opp', status: 'high' },
   { id: 4, category: 'Compliance', description: 'Cross-border trade regulations', owner: 'Taylor Morgan', likelihood: 2, impact: 3, inherentScore: 6, mitigation: 'Bi-annual review', residualScore: 3, committee: 'Audit Risk Opp', status: 'medium' },
   { id: 5, category: 'Operational', description: 'Key person risk - Morgan Reed MD dependency', owner: 'Riley Chen', likelihood: 2, impact: 3, inherentScore: 6, mitigation: 'Succession planning', residualScore: 4, committee: 'Full board', status: 'medium' },

@@ -87,9 +87,9 @@ const rotationRows: RotationRow[] = [
 ];
 
 const historyRows = [
-  { director: 'S. Galloway', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
-  { director: 'D. Namalenga', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
-  { director: 'J. Mnyupe', retiredAt: '5th AGM Jun 2022', reElected: 'Yes', votePct: 'Passed' },
+  { director: 'R. Chen', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
+  { director: 'D. Patel', retiredAt: '4th AGM Jun 2021', reElected: 'Yes', votePct: '95.9%' },
+  { director: 'C. Brooks', retiredAt: '5th AGM Jun 2022', reElected: 'Yes', votePct: 'Passed' },
 ];
 
 const statusConfig = {

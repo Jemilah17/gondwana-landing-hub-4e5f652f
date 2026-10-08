@@ -25,13 +25,13 @@ const POLICIES: Policy[] = [
     buttons: [{ label: 'View claim →', variant: 'primary' }, { label: 'View policy', variant: 'outline' }],
   },
   {
-    insurer: 'Old Mutual', name: 'Directors & Officers', border: 'border-l-blue',
+    insurer: 'Harbourline Insurance', name: 'Directors & Officers', border: 'border-l-blue',
     ref: 'OM-DO-2025', from: '2025-01-01', to: '2026-01-01', coverage: '$20,000,000',
     status: { label: 'Renewal due', cls: 'bg-amber-tint text-amber' },
     buttons: [{ label: 'Renew', variant: 'primary' }, { label: 'View', variant: 'outline' }],
   },
   {
-    insurer: 'Santam', name: 'Group property', border: 'border-l-green',
+    insurer: 'Crestmark Insurance', name: 'Group property', border: 'border-l-green',
     ref: 'SAN-PROP-2026', from: '2026-01-01', to: '2027-01-01', coverage: '$120,000,000',
     status: { label: 'Active', cls: 'bg-green-tint text-green' },
     buttons: [{ label: 'View', variant: 'outline' }, { label: 'View', variant: 'outline' }],
@@ -43,7 +43,7 @@ const POLICIES: Policy[] = [
     buttons: [{ label: 'View', variant: 'outline' }, { label: 'View', variant: 'outline' }],
   },
   {
-    insurer: 'Mutual & Federal', name: 'Motor fleet', border: 'border-l-amber',
+    insurer: 'Northstar Underwriters', name: 'Motor fleet', border: 'border-l-amber',
     ref: 'MF-MOT-2026', from: '2026-01-01', to: '2027-01-01', coverage: '$5,000,000',
     status: { label: 'Active', cls: 'bg-green-tint text-green' },
     buttons: [{ label: 'View', variant: 'outline' }, { label: 'View', variant: 'outline' }],
@@ -55,17 +55,17 @@ function fmt(d: string) {
 }
 
 const TIMELINE = [
-  { period: 'Mar 2021', text: 'Claim lodged with Apex Insurance' },
+  { period: 'Mar 2021', text: 'Claim submitted to Apex Insurance' },
   { period: 'Mid 2021', text: 'Apex Insurance objected to urgent court proceedings' },
   { period: 'Late 2021', text: 'Matter proceeding on normal time periods' },
   { period: '2022 — 2026', text: 'Active litigation, millions in legal costs' },
 ];
 
 const CONTACTS = [
-  { name: 'Apex Insurance Namibia Insurance', phone: '+264 61 371 300' },
-  { name: 'Old Mutual Namibia', phone: '+264 61 299 3000' },
-  { name: 'Santam Namibia', phone: '+264 61 292 8000' },
-  { name: 'Mutual & Federal', phone: '+264 61 297 1000' },
+  { name: 'Apex Insurance', phone: '+00 100 371 300' },
+  { name: 'Harbourline Insurance', phone: '+00 100 299 3000' },
+  { name: 'Crestmark Insurance', phone: '+00 100 292 8000' },
+  { name: 'Northstar Underwriters', phone: '+00 100 297 1000' },
 ];
 
 function PolicyCard({ p }: { p: Policy }) {

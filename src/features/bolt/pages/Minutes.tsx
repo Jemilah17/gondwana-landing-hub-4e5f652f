@@ -61,7 +61,7 @@ const initialRows: MinuteRow[] = [
     title: '4th Annual General Meeting',
     date: '24 Jun 2021',
     type: 'AGM',
-    chairperson: 'S. Galloway',
+    chairperson: 'R. Chen',
     stage: 'Signed',
     signedDate: '24 Jun 2021',
     signedFile: '4th-AGM-signed.pdf',
@@ -71,7 +71,7 @@ const initialRows: MinuteRow[] = [
     title: '5th Annual General Meeting',
     date: '02 Jun 2022',
     type: 'AGM',
-    chairperson: 'S. Galloway',
+    chairperson: 'R. Chen',
     stage: 'Signed',
     signedDate: '02 Jun 2022',
     signedFile: '5th-AGM-signed.pdf',
@@ -81,7 +81,7 @@ const initialRows: MinuteRow[] = [
     title: '3rd Annual General Meeting',
     date: '08 Apr 2020',
     type: 'AGM',
-    chairperson: 'S. Galloway',
+    chairperson: 'R. Chen',
     stage: 'Signed',
     signedDate: '08 Apr 2020',
     signedFile: '3rd-AGM-signed.pdf',
@@ -173,12 +173,12 @@ function DirectorResponseCell({ response }: { response?: MinutesReview }) {
 const COMPANY = {
   name: 'Meridian Holdings Limited',
   reg: '2017/1055',
-  address: '42 Nelson Mandela Avenue, City A',
-  phone: '+264 61 427 200',
-  web: 'www.meridian-collection.com',
+  address: '42 Commerce Street, City A',
+  phone: '+00 100 427 200',
+  web: 'www.meridiangroup.example',
 };
 
-const LOGO_URL = 'https://www.meridian-collection.com/images/meridian-logo.png';
+const LOGO_URL = 'https://www.meridiangroup.example/images/meridian-logo.png';
 
 function LetterheadLogo() {
   const [failed, setFailed] = useState(false);
@@ -226,19 +226,19 @@ function Letterhead({ title }: { title: string }) {
         className="text-center"
         style={{ color: '#6B6F68', fontSize: 11, lineHeight: 1.5 }}
       >
-        Tel: +264 61 427 200&nbsp;&nbsp;|&nbsp;&nbsp;Fax: +264 61 251 863
+        Tel: +00 100 427 200&nbsp;&nbsp;|&nbsp;&nbsp;Fax: +00 100 251 863
       </div>
       <div
         className="text-center"
         style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
       >
-        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Nelson Mandela Avenue&nbsp;&nbsp;|&nbsp;&nbsp;Head Office&nbsp;&nbsp;|&nbsp;&nbsp;info@meridian-collection.com
+        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Commerce Street&nbsp;&nbsp;|&nbsp;&nbsp;Head Office&nbsp;&nbsp;|&nbsp;&nbsp;info@meridiangroup.example
       </div>
       <div
         className="text-center"
         style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
       >
-        www.meridian-collection.com
+        www.meridiangroup.example
       </div>
       <div style={{ height: '0.5px', background: '#EFECE6', margin: '14px 0' }} />
       <h2
@@ -330,12 +330,12 @@ async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
   }
   paras.push(
     new Paragraph({ children: [new TextRun('')] }),
-    docxCentered('Tel: +264 61 427 200  |  Fax: +264 61 251 863', { size: 18 }),
+    docxCentered('Tel: +00 100 427 200  |  Fax: +00 100 251 863', { size: 18 }),
     docxCentered(
-      'PO Box 80205  |  42 Nelson Mandela Avenue  |  Head Office  |  info@meridian-collection.com',
+      'PO Box 80205  |  42 Commerce Street  |  Head Office  |  info@meridiangroup.example',
       { size: 16 },
     ),
-    docxCentered('www.meridian-collection.com', { size: 16 }),
+    docxCentered('www.meridiangroup.example', { size: 16 }),
     docxDivider(),
     new Paragraph({
       alignment: AlignmentType.CENTER,
@@ -924,15 +924,15 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
       />
       <div className="p-6">
         <article className="bg-card border border-border rounded-lg mx-auto p-10" style={{ maxWidth: 760 }}>
-          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT MERIDIAN HOUSE BOARDROOM, 42 NELSON MANDELA AVENUE, CITY A, HEAD OFFICE" />
+          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT MERIDIAN HOUSE BOARDROOM, 42 COMMERCE STREET, CITY A, HEAD OFFICE" />
 
           <Section n={1} title="Welcome and opening">
             <p>
-              The Chairperson, Mr S. Galloway, welcomed shareholders, directors and invited
-              guests to the 4th Annual General Meeting of Meridian Holdings Limited. He
+              The Chairperson, Mr R. Chen, welcomed shareholders, directors and invited
+              attendees to the 4th Annual General Meeting of Meridian Holdings Limited. He
               acknowledged the extraordinary context in which the meeting was being held, with
-              the COVID-19 pandemic having profoundly affected the tourism industry, the
-              Namibian economy and the personal lives of many stakeholders.
+              the COVID-19 pandemic having profoundly affected trading conditions, the
+              wider economy and the personal lives of many stakeholders.
             </p>
             <p>
               A moment of silence was observed in memory of colleagues, family members and
@@ -960,24 +960,24 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
 
           <Section n={4} title="Chairperson's overview">
             <p>
-              Mr Galloway reflected on the 25-year history of Meridian Group Holdings,
+              Mr Chen reflected on the 25-year history of Meridian Group Holdings,
               highlighting the group's resilience through multiple economic cycles. He noted
               with pride that despite the severe impact of COVID-19, no retrenchments had been
               carried out and that all permanent staff had been retained throughout the crisis.
             </p>
             <p>
               The Chairperson formally announced the appointment of Ms Alex Reyes as
-              co-custodian of the group's cultural and heritage stewardship function, in
+              Group Company Secretary, in
               recognition of her long-standing contribution to the organisation.
             </p>
           </Section>
 
           <Section n={5} title="Finance report">
             <p>
-              The Chief Financial Officer, Mr J. Visser, presented the finance report for the
+              The Chief Financial Officer, Mr D. Bennett, presented the finance report for the
               year under review. He reported a revenue decline of approximately 66% year-on-year,
               driven by border closures and the near-complete suspension of international
-              tourism. Cost containment measures, debt restructuring and support from lenders
+              trade. Cost containment measures, debt restructuring and support from lenders
               had preserved the group's liquidity position and going-concern status.
             </p>
           </Section>
@@ -1060,8 +1060,8 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
 
           <Section n={12} title="Managing Director's report">
             <p>
-              The Managing Director, Mr G. Joubert, reported on operational matters. He
-              confirmed that the Business Interruption insurance claim had been lodged and
+              The Managing Director, Mr M. Reed, reported on operational matters. He
+              confirmed that the Business Interruption insurance claim had been submitted and
               was progressing through the insurers' assessment process. He further reported
               on the successful placement of a bond on the Stock Exchange (Exchange),
               which had strengthened the group's medium-term funding base.
@@ -1072,7 +1072,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
             <p>
               Ms M. Goldbeck presented the brand and marketing update. The Meridian Card
               loyalty programme had grown to more than 100,000 registered members, providing
-              a strong direct-to-consumer platform to support the group's domestic tourism
+              a strong direct-to-consumer platform to support the group's domestic market
               recovery strategy.
             </p>
           </Section>
@@ -1080,8 +1080,8 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
           <Section n={14} title="Questions and answers">
             <p>
               A shareholder enquired about the group's approach to COVID-19 vaccination for
-              staff and guests. The Chairperson responded that the group was following official
-              guidance from the Ministry of Health and Social Services, was actively supporting
+              staff and customers. The Chairperson responded that the group was following official
+              guidance from the public health authorities, was actively supporting
               staff access to vaccination, and would continue to review protocols as public
               health guidance evolved.
             </p>
@@ -1091,8 +1091,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
             <p>
               The Chairperson thanked shareholders for their continued support, and the
               directors, management and staff for their commitment through an exceptionally
-              difficult year. He expressed cautious optimism for the recovery of the tourism
-              sector and the group's outlook.
+              difficult year. He expressed cautious optimism for the recovery of its markets and the group's outlook.
             </p>
           </Section>
 
@@ -1107,7 +1106,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
           <div className="mt-10 pt-6 border-t border-border grid grid-cols-2 gap-8">
             <div>
               <div className="h-10 border-b border-primary" />
-              <div className="text-[11px] text-muted mt-2">S. Galloway</div>
+              <div className="text-[11px] text-muted mt-2">R. Chen</div>
               <div className="text-[10px] text-muted">Chairperson</div>
             </div>
             <div>
@@ -1127,7 +1126,7 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
   const [meetingNumber, setMeetingNumber] = useState('6th');
   const [date, setDate] = useState('2026-06-25');
   const [time, setTime] = useState('18:00');
-  const [venue, setVenue] = useState('Meridian House Boardroom, 42 Nelson Mandela Avenue, City A');
+  const [venue, setVenue] = useState('Meridian House Boardroom, 42 Commerce Street, City A');
   const [deadline, setDeadline] = useState('2026-06-22');
   const [proxyAddress, setProxyAddress] = useState('alex.r@meridiangroup.example');
   const [chair, setChair] = useState('Riley Chen');
@@ -1181,7 +1180,7 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
               .filter((x): x is Paragraph => x !== null),
             new Paragraph({ children: [new TextRun('')] }),
             p(
-              `A member entitled to attend and vote is entitled to appoint a proxy. Proxy forms must be lodged with the Company Secretary no later than ${fmtDate(deadline)} at ${proxyAddress}.`,
+              `A member entitled to attend and vote is entitled to appoint a proxy. Proxy forms must be submitted with the Company Secretary no later than ${fmtDate(deadline)} at ${proxyAddress}.`,
             ),
             new Paragraph({ children: [new TextRun('')] }),
             p('By order of the Board'),

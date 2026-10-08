@@ -20,10 +20,10 @@ export default function Entities() {
   const { showToast } = useToast();
 
   const [onboarding, setOnboarding] = useState({
-    luna: {
+    energy: {
       incorporation: [
         { label: 'Companies Registry company registration', done: true },
-        { label: 'Tax registration — NamRA', done: true },
+        { label: 'Tax registration', done: true },
         { label: 'Industry Regulator registration', done: false },
       ],
       governance: [
@@ -37,7 +37,7 @@ export default function Entities() {
         { label: 'First board meeting held', done: false },
       ],
     },
-    admiral: {
+    datasvc: {
       incorporation: [
         { label: 'Companies Registry company registration', done: true },
         { label: 'Tax registration', done: false },

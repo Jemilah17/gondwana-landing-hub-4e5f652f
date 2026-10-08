@@ -310,7 +310,7 @@ const resolutionSections: { label: string; rows: Resolution[] }[] = [
     rows: [
       { ref: 'OR-2021-001', text: 'Approval of AFS FY Oct 2020', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.6%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2021-002', text: 'Re-appoint Sterling & Co Auditors', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '99.6%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
-      { ref: 'OR-2021-003', text: 'Re-election Galloway and Namalenga', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.9%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
+      { ref: 'OR-2021-003', text: 'Re-election Galloway and Patel', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.9%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2021-004', text: 'Directors fees $10,000 pending reinstatement', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '95.3%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2021-005', text: 'Employee share scheme amended', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '98.9%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
       { ref: 'OR-2021-006', text: 'Directors borrowing powers', meeting: '4th AGM', type: 'Ordinary', typeTone: 'blue', vote: '98.3%', effective: '24 Jun 2021', status: 'Done', statusTone: 'green' },
@@ -359,7 +359,7 @@ const minutesRows = [
     date: '02 Jun 2022',
     type: 'AGM',
     typeTone: 'blue' as PillTone,
-    chair: 'S. Galloway',
+    chair: 'R. Chen',
     approved: 'Next AGM',
     status: 'Final',
     statusTone: 'green' as PillTone,
@@ -371,7 +371,7 @@ const minutesRows = [
     date: '24 Jun 2021',
     type: 'AGM',
     typeTone: 'blue' as PillTone,
-    chair: 'S. Galloway',
+    chair: 'R. Chen',
     approved: '5th AGM',
     status: 'Final',
     statusTone: 'green' as PillTone,
@@ -383,7 +383,7 @@ const minutesRows = [
     date: '08 Apr 2020',
     type: 'AGM',
     typeTone: 'blue' as PillTone,
-    chair: 'S. Galloway',
+    chair: 'R. Chen',
     approved: '4th AGM',
     status: 'Final',
     statusTone: 'green' as PillTone,
@@ -628,8 +628,8 @@ function BeneficialOwnersTab() {
         <div className="text-[11px] text-primary">
           <strong className="text-red">FATF grey-listing remediation — urgent:</strong>{' '}
           3 entities have no beneficial ownership declaration filed with Companies Registry.
-          Northgate Manufacturing (Pty) Ltd (Cluster B), Harbour Freight (Cluster C), Hakusembe
-          River Lodge (Cluster E).
+          Northgate Manufacturing (Pty) Ltd (Cluster B), Harbour Freight (Cluster C), Lumen
+          Technology Ltd (Cluster E).
         </div>
       </div>
 
@@ -740,7 +740,7 @@ function CoiTab() {
         <AlertTriangle className="w-4 h-4 text-orange flex-shrink-0 mt-0.5" />
         <div className="text-[11px] text-primary">
           <strong>2 declarations outstanding:</strong> Avery Patel and Quinn Harper
-          Gouws have not returned FY2025 COI declarations. Must be received before
+          Harper have not returned FY2025 COI declarations. Must be received before
           next board meeting.
         </div>
       </div>

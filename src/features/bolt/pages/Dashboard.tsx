@@ -113,7 +113,7 @@ export default function Dashboard() {
 
   const alerts = [
     { color: '#B53A2F', title: `BO declaration overdue — ${myEntities[0]?.name ?? 'Meridian Holdings Ltd'}` },
-    { color: '#9A6E1A', title: 'COI declaration outstanding — Namalenga' },
+    { color: '#9A6E1A', title: 'COI declaration outstanding — Patel' },
     { color: '#9A6E1A', title: 'Minutes in draft — Feb 2026 GM' },
   ];
 
