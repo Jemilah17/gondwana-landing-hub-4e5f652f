@@ -110,7 +110,6 @@ export default function Entities() {
       Operating: 'bg-blue-tint text-blue',
       Subsidiary: 'bg-green-tint text-green',
       Property: 'bg-blue-tint text-blue',
-      Operating: 'bg-teal-tint text-teal',
       Regulated: 'bg-amber-tint text-amber',
       Trust: 'bg-red-tint text-red',
       'Logistics': 'bg-orange-tint text-orange',
