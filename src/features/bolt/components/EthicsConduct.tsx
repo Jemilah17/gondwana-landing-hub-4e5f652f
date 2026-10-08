@@ -1,13 +1,13 @@
 import { CheckCircle, AlertCircle, FileCheck } from 'lucide-react';
 
 const directors = [
-  'Dave Smuts',
-  'Gys Joubert',
-  'James Mnyupe',
-  'David Namalenga',
-  'Hannes Gouws',
-  'Jaco Visser',
-  'Fabiola Schrywer',
+  'Riley Chen',
+  'Morgan Reed',
+  'Casey Brooks',
+  'Avery Patel',
+  'Quinn Harper',
+  'Drew Bennett',
+  'Alex Reyes',
 ];
 
 const declarationTracker = directors.map((director, idx) => ({
@@ -39,7 +39,7 @@ export default function EthicsConduct() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Ethics & Conduct</h2>
-        <p className="text-sm text-muted mt-1">Ethics compliance and declaration tracking for Gondwana Holdings Limited</p>
+        <p className="text-sm text-muted mt-1">Ethics compliance and declaration tracking for Meridian Holdings Limited</p>
       </div>
 
       {/* Code of Ethics Status Card */}

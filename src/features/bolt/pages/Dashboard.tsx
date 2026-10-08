@@ -31,22 +31,22 @@ interface Task {
 
 const TASKS: Record<string, Task[]> = {
   fabiola: [
-    { id: 't-f1', kind: 'overdue', type: 'BIPA Annual Return', entityId: 'gcn-003', entityName: 'Gondwana Travel Centre', cluster: 'A', dueLabel: 'Due 31 Mar 2026' },
-    { id: 't-f2', kind: 'overdue', type: 'FIC Compliance Return', entityId: 'gcn-003', entityName: 'Gondwana Travel Centre', cluster: 'A', dueLabel: 'Due 30 Jun 2026' },
-    { id: 't-f3', kind: 'due soon', type: 'NTB Statutory Levy', entityId: 'gcn-001', entityName: 'Gondwana Holdings Ltd', cluster: 'A', dueLabel: 'Due 31 Jul 2026' },
-    { id: 't-f4', kind: 'due soon', type: 'BO Declaration', entityId: 'gcn-003', entityName: 'Gondwana Travel Centre', cluster: 'A', dueLabel: 'Outstanding' },
+    { id: 't-f1', kind: 'overdue', type: 'Companies Registry Annual Return', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', dueLabel: 'Due 31 Mar 2026' },
+    { id: 't-f2', kind: 'overdue', type: 'AML Compliance Return', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', dueLabel: 'Due 30 Jun 2026' },
+    { id: 't-f3', kind: 'due soon', type: 'Industry Statutory Levy', entityId: 'mgh-001', entityName: 'Meridian Holdings Ltd', cluster: 'A', dueLabel: 'Due 31 Jul 2026' },
+    { id: 't-f4', kind: 'due soon', type: 'BO Declaration', entityId: 'mgh-003', entityName: 'Meridian Financial Services Ltd', cluster: 'A', dueLabel: 'Outstanding' },
   ],
   hilma: [
-    { id: 't-h1', kind: 'overdue', type: 'BIPA Annual Return', entityId: 'gcn-013', entityName: 'Swakopmund Guesthouse & Spa', cluster: 'C', dueLabel: 'Due 31 Dec 2025' },
-    { id: 't-h2', kind: 'overdue', type: 'NTB Statutory Levy', entityId: 'gcn-013', entityName: 'Swakopmund Guesthouse & Spa', cluster: 'C', dueLabel: 'Due 15 Jan 2026' },
-    { id: 't-h3', kind: 'due soon', type: 'BIPA Annual Return', entityId: 'gcn-025', entityName: 'Etosha Safari Camp', cluster: 'D', dueLabel: 'Due 31 Aug 2026' },
-    { id: 't-h4', kind: 'due soon', type: 'NTB Statutory Levy', entityId: 'gcn-025', entityName: 'Etosha Safari Camp', cluster: 'D', dueLabel: 'Due 20 Jul 2026' },
+    { id: 't-h1', kind: 'overdue', type: 'Companies Registry Annual Return', entityId: 'mgh-013', entityName: 'Harbour Freight Ltd', cluster: 'C', dueLabel: 'Due 31 Dec 2025' },
+    { id: 't-h2', kind: 'overdue', type: 'Industry Statutory Levy', entityId: 'mgh-013', entityName: 'Harbour Freight Ltd', cluster: 'C', dueLabel: 'Due 15 Jan 2026' },
+    { id: 't-h3', kind: 'due soon', type: 'Companies Registry Annual Return', entityId: 'mgh-025', entityName: 'Keystone Stores Ltd', cluster: 'D', dueLabel: 'Due 31 Aug 2026' },
+    { id: 't-h4', kind: 'due soon', type: 'Industry Statutory Levy', entityId: 'mgh-025', entityName: 'Keystone Stores Ltd', cluster: 'D', dueLabel: 'Due 20 Jul 2026' },
   ],
   jemilah: [
-    { id: 't-j1', kind: 'overdue', type: 'BIPA Annual Return', entityId: 'gcn-008', entityName: 'Kalahari Anib Lodge', cluster: 'B', dueLabel: 'Due 31 Jan 2026' },
-    { id: 't-j2', kind: 'due soon', type: 'NTB Statutory Levy', entityId: 'gcn-007', entityName: 'Hakusembe River Lodge', cluster: 'E', dueLabel: 'Due 15 Jul 2026' },
-    { id: 't-j3', kind: 'due soon', type: 'BO Declaration', entityId: 'gcn-005', entityName: 'Canyon Lodge', cluster: 'B', dueLabel: 'Outstanding' },
-    { id: 't-j4', kind: 'due soon', type: 'BO Declaration', entityId: 'gcn-007', entityName: 'Hakusembe River Lodge', cluster: 'E', dueLabel: 'Outstanding' },
+    { id: 't-j1', kind: 'overdue', type: 'Companies Registry Annual Return', entityId: 'mgh-008', entityName: 'Summit Engineering Ltd', cluster: 'B', dueLabel: 'Due 31 Jan 2026' },
+    { id: 't-j2', kind: 'due soon', type: 'Industry Statutory Levy', entityId: 'mgh-007', entityName: 'Lumen Technology Ltd', cluster: 'E', dueLabel: 'Due 15 Jul 2026' },
+    { id: 't-j3', kind: 'due soon', type: 'BO Declaration', entityId: 'mgh-005', entityName: 'Northgate Manufacturing (Pty) Ltd', cluster: 'B', dueLabel: 'Outstanding' },
+    { id: 't-j4', kind: 'due soon', type: 'BO Declaration', entityId: 'mgh-007', entityName: 'Lumen Technology Ltd', cluster: 'E', dueLabel: 'Outstanding' },
   ],
 };
 
@@ -112,17 +112,17 @@ export default function Dashboard() {
   );
 
   const alerts = [
-    { color: '#B53A2F', title: `BO declaration overdue — ${myEntities[0]?.name ?? 'Gondwana Holdings Ltd'}` },
+    { color: '#B53A2F', title: `BO declaration overdue — ${myEntities[0]?.name ?? 'Meridian Holdings Ltd'}` },
     { color: '#9A6E1A', title: 'COI declaration outstanding — Namalenga' },
     { color: '#9A6E1A', title: 'Minutes in draft — Feb 2026 GM' },
   ];
 
   const activity = [
-    { user: 'fabiola', text: 'Logged BIPA filing · Canyon Lodge', time: '2 hours ago' },
+    { user: 'alex', text: 'Logged Companies Registry filing · Northgate Manufacturing (Pty) Ltd', time: '2 hours ago' },
     { user: 'system', text: 'Compliance calendar updated · 33 entities', time: 'Today 06:00' },
-    { user: 'jemilah', text: 'Board pack compiled · Q3 2026', time: 'Yesterday' },
-    { user: 'hilma', text: 'COI declaration filed · Jaco Visser', time: '2 days ago' },
-    { user: 'fabiola', text: 'Minutes circulated · Feb 2026 GM', time: '3 days ago' },
+    { user: 'taylor', text: 'Board pack compiled · Q3 2026', time: 'Yesterday' },
+    { user: 'jordan', text: 'COI declaration filed · Drew Bennett', time: '2 days ago' },
+    { user: 'alex', text: 'Minutes circulated · Feb 2026 GM', time: '3 days ago' },
   ];
 
   const confirmLog = () => {
@@ -362,7 +362,7 @@ export default function Dashboard() {
                 <input
                   value={receipt}
                   onChange={e => setReceipt(e.target.value)}
-                  placeholder="e.g. BIPA/2026/CLB/0218"
+                  placeholder="e.g. Companies Registry/2026/CLB/0218"
                   className="w-full mt-1 px-2 py-2 border border-border rounded-lg text-[11px]"
                 />
               </div>

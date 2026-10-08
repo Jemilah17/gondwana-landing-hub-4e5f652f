@@ -12,9 +12,9 @@ const q3Pack = {
   meeting: 'Q3 2026 Board Meeting',
   date: '2026-08-28',
   time: '18:00 WAT',
-  venue: 'Gondwana House Boardroom, Windhoek',
-  entity: 'Gondwana Holdings Limited',
-  chairperson: 'Dave Smuts',
+  venue: 'Meridian House Boardroom, City A',
+  entity: 'Meridian Holdings Limited',
+  chairperson: 'Riley Chen',
 };
 
 const q3PackDocs = [
@@ -51,36 +51,36 @@ const APPOINTMENTS: Record<string, string> = {
 
 // Entity portfolio per director (by entity name)
 const DIRECTOR_ENTITIES: Record<string, string[]> = {
-  dave: ['Gondwana Holdings Ltd', 'Swakopmund Guesthouse & Spa', 'The Delight Swakopmund', 'Palmwag Lodge'],
+  dave: ['Meridian Holdings Ltd', 'Harbour Freight Ltd', 'Meridian Logistics Ltd', 'Apex Warehousing Ltd'],
   james: [
-    'Gondwana Holdings Ltd',
-    'Etosha King Nehale',
-    'Etosha Safari Lodge',
-    'Etosha Safari Camp',
-    'Okapuka Safari Lodge',
-    'Etosha Aoba Lodge',
+    'Meridian Holdings Ltd',
+    'Keystone Retail Ltd',
+    'Westbrook Developments Ltd',
+    'Keystone Stores Ltd',
+    'Unity Retail Centres Ltd',
+    'Cityline Property Fund Ltd',
   ],
   davidn: [
-    'Canyon Lodge',
-    'Kalahari Anib Lodge',
-    'Sossusvlei Dune Lodge',
-    'The Desert Grace',
-    'Etosha King Nehale',
-    'Etosha Safari Lodge',
+    'Northgate Manufacturing (Pty) Ltd',
+    'Summit Engineering Ltd',
+    'Ironbridge Fabrication Ltd',
+    'Precision Components Ltd',
+    'Keystone Retail Ltd',
+    'Westbrook Developments Ltd',
   ],
   hannes: [
-    'Gondwana Holdings Ltd',
-    'Swakopmund Guesthouse & Spa',
-    'Hakusembe River Lodge',
-    'Namushasha River Lodge',
-    'Chobe River Camp',
+    'Meridian Holdings Ltd',
+    'Harbour Freight Ltd',
+    'Lumen Technology Ltd',
+    'Vertex Consulting Ltd',
+    'Beacon Facilities Services Ltd',
   ],
   jaco: [
-    'Canyon Lodge',
-    'Kalahari Anib Lodge',
-    'Swakopmund Guesthouse & Spa',
-    'Hakusembe River Lodge',
-    'Chobe River Camp',
+    'Northgate Manufacturing (Pty) Ltd',
+    'Summit Engineering Ltd',
+    'Harbour Freight Ltd',
+    'Lumen Technology Ltd',
+    'Beacon Facilities Services Ltd',
   ],
 };
 
@@ -93,9 +93,9 @@ const CLUSTER_PILL: Record<string, string> = {
 };
 
 const NOTIFICATIONS = [
-  { id: 'n1', icon: '📄', text: 'Minutes for review — Feb 2026 GM', meta: 'Fabiola Schrywer · 2 days ago' },
+  { id: 'n1', icon: '📄', text: 'Minutes for review — Feb 2026 GM', meta: 'Alex Reyes · 2 days ago' },
   { id: 'n2', icon: '📅', text: 'Board meeting — 28 Aug 2026', meta: 'RSVP required by 21 Aug · 5 days ago' },
-  { id: 'n3', icon: '✅', text: 'Board pack available — 9 documents', meta: 'Fabiola Schrywer · 1 day ago' },
+  { id: 'n3', icon: '✅', text: 'Board pack available — 9 documents', meta: 'Alex Reyes · 1 day ago' },
   { id: 'n4', icon: '💬', text: 'COI declaration reminder — FY2025', meta: 'Annual declaration due · 1 week ago' },
 ];
 
@@ -135,7 +135,7 @@ export default function DirectorDashboard() {
   const coiPending = flags.coi && !coiSubmitted;
   const total = (minutesPending ? 1 : 0) + (rsvpPending ? 1 : 0) + (coiPending ? 1 : 0);
 
-  const isGys = activeUser.id === 'gys';
+  const isGys = activeUser.id === 'morgan';
   const names = DIRECTOR_ENTITIES[activeUser.id] ?? [];
   const mine = isGys
     ? entities.filter((e) => !e.isIncoming).slice(0, 6)
@@ -229,7 +229,7 @@ export default function DirectorDashboard() {
                   <div className="text-[11px] text-green font-medium">
                     ✓ February 2026 GM — Response submitted
                   </div>
-                  <div className="text-[10px] text-muted">Fabiola Schrywer has been notified</div>
+                  <div className="text-[10px] text-muted">Alex Reyes has been notified</div>
                 </div>
               )}
             </Card>
@@ -241,14 +241,14 @@ export default function DirectorDashboard() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-[12px] font-medium text-primary">Q3 2026 Board Meeting</div>
-                    <div className="text-[10px] text-muted">Gondwana Holdings Limited</div>
+                    <div className="text-[10px] text-muted">Meridian Holdings Limited</div>
                   </div>
                   <Pill tone="orange">28 August 2026</Pill>
                 </div>
                 <div className="text-[10px] text-muted">
-                  28 August 2026 · 18:00 WAT · Gondwana House Boardroom
+                  28 August 2026 · 18:00 WAT · Meridian House Boardroom
                 </div>
-                <div className="text-[10px] text-muted">Chairperson: Dave Smuts</div>
+                <div className="text-[10px] text-muted">Chairperson: Riley Chen</div>
                 <div className="bg-green-tint rounded-md px-3 py-2 flex items-center justify-between">
                   <span className="text-[10px] text-green">✓ Board pack available — 9 documents</span>
                   <button

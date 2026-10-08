@@ -77,7 +77,7 @@ export default function Settings() {
     ['Clusters', '5'],
     ['CoSec users', '3'],
     ['Director users', '6'],
-    ['Built for', 'Gondwana Holdings Ltd'],
+    ['Built for', 'Meridian Holdings Ltd'],
     ['Registration', '2017/1055'],
     ['Last sync', lastSync],
   ];
@@ -113,7 +113,7 @@ export default function Settings() {
                       <div className="min-w-0 flex-1">
                         <div className="text-[12px] font-medium text-primary">
                           {u.name}
-                          {u.id === 'jemilah' && <span className="text-muted font-normal"> · Incoming</span>}
+                          {u.id === 'taylor' && <span className="text-muted font-normal"> · Incoming</span>}
                         </div>
                         <div className="text-[10px] text-muted">{u.role}</div>
                         <div className="text-[10px] text-muted">{scopeText(u.id)}</div>
@@ -144,7 +144,7 @@ export default function Settings() {
               <table className="w-full text-left">
                 <thead>
                   <tr className="text-[10px] text-muted">
-                    {['Cluster', 'Fabiola', 'Hilma', 'Jemilah'].map(h => (
+                    {['Cluster', 'Alex', 'Jordan', 'Taylor Morgan'].map(h => (
                       <th key={h} className="px-4 py-2 font-medium border-b border-border">{h}</th>
                     ))}
                   </tr>

@@ -36,13 +36,13 @@ function ReviewDrawer({ item, onClose }: { item: MinutesReview; onClose: () => v
       {showDoc && (
         <div className="mt-3 border border-border rounded-md p-4 bg-background text-[11px] text-primary leading-relaxed max-h-[280px] overflow-y-auto">
           <div className="text-center">
-            <div className="text-[13px] font-medium tracking-[0.18em]">GONDWANA</div>
+            <div className="text-[13px] font-medium tracking-[0.18em]">MERIDIAN</div>
             <div className="text-orange text-[9px] tracking-[0.22em]">HOLDINGS LIMITED</div>
           </div>
           <div className="text-center text-[11px] font-medium mt-3 uppercase">
             Minutes of the February 2026 General Meeting
           </div>
-          <p className="mt-3"><span className="font-medium">1. Opening and welcome.</span> The Chairperson, Mr Dave Smuts, opened the meeting at 18:00 WAT and welcomed those present.</p>
+          <p className="mt-3"><span className="font-medium">1. Opening and welcome.</span> The Chairperson, Mr Riley Chen, opened the meeting at 18:00 WAT and welcomed those present.</p>
           <p className="mt-2"><span className="font-medium">2. Quorum.</span> The Company Secretary confirmed that a quorum was present in terms of the Articles of Association.</p>
           <p className="mt-2"><span className="font-medium">3. Notice of meeting.</span> The notice was taken as read.</p>
           <p className="mt-2"><span className="font-medium">4. Resolutions.</span> The resolutions tabled were carried by the required majority.</p>

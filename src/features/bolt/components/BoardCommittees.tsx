@@ -4,8 +4,8 @@ const committees = [
   {
     id: 1,
     name: 'Audit, Risk & Opportunity Committee',
-    chair: 'James Mnyupe',
-    members: ['James Mnyupe', 'Dave Smuts', 'David Namalenga'],
+    chair: 'Casey Brooks',
+    members: ['Casey Brooks', 'Riley Chen', 'Avery Patel'],
     termsOfReference: 'Approved',
     nextMeeting: '2026-07-15',
     quorum: 3,
@@ -18,8 +18,8 @@ const committees = [
   {
     id: 2,
     name: 'People Committee',
-    chair: 'Fabiola Schrywer',
-    members: ['Fabiola Schrywer', 'Gys Joubert', 'Hannes Gouws'],
+    chair: 'Alex Reyes',
+    members: ['Alex Reyes', 'Morgan Reed', 'Quinn Harper'],
     termsOfReference: 'Approved',
     nextMeeting: '2026-07-22',
     quorum: 2,
@@ -32,8 +32,8 @@ const committees = [
   {
     id: 3,
     name: 'Sustainability Committee',
-    chair: 'James Mnyupe',
-    members: ['James Mnyupe', 'Jaco Visser', 'Fabiola Schrywer'],
+    chair: 'Casey Brooks',
+    members: ['Casey Brooks', 'Drew Bennett', 'Alex Reyes'],
     termsOfReference: 'Under Review',
     nextMeeting: '2026-07-28',
     quorum: 2,
@@ -51,7 +51,7 @@ export default function BoardCommittees() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-medium text-primary">Board Committees</h2>
-          <p className="text-sm text-muted mt-1">Governance oversight committees for Gondwana Holdings Limited</p>
+          <p className="text-sm text-muted mt-1">Governance oversight committees for Meridian Holdings Limited</p>
         </div>
       </div>
 

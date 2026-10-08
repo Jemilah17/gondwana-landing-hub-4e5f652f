@@ -15,39 +15,39 @@ interface Person {
 }
 
 const secretariat: Person[] = [
-  { id: 'fabiola', name: 'Fabiola Schrywer', role: 'Group Company Secretary', initials: 'FS', bg: '#FBF0EA', fg: '#D4652A' },
-  { id: 'hilma', name: 'Hilma Antinda', role: 'Assistant CoSec — Clusters C & D', initials: 'HA', bg: '#EAF5EE', fg: '#2D7A4F' },
-  { id: 'jemilah', name: 'Jemilah', role: 'Assistant CoSec — Clusters B & E · Incoming', initials: 'JM', bg: '#E8F1FB', fg: '#1A5FA5' },
+  { id: 'alex', name: 'Alex Reyes', role: 'Group Company Secretary', initials: 'FS', bg: '#FBF0EA', fg: '#D4652A' },
+  { id: 'jordan', name: 'Jordan Lee', role: 'Assistant CoSec — Clusters C & D', initials: 'HA', bg: '#EAF5EE', fg: '#2D7A4F' },
+  { id: 'taylor', name: 'Taylor Morgan', role: 'Assistant CoSec — Clusters B & E · Incoming', initials: 'JM', bg: '#E8F1FB', fg: '#1A5FA5' },
 ];
 
 const directors: Person[] = [
-  { id: 'dave', name: 'Dave Smuts', role: 'Chairperson', initials: 'DS', bg: '#FBF3E3', fg: '#9A6E1A' },
-  { id: 'gys', name: 'Gys Joubert', role: 'Managing Director', initials: 'GJ', bg: '#E8F1FB', fg: '#1A5FA5' },
-  { id: 'james', name: 'James Mnyupe', role: 'Audit Risk & Opp Cttee', initials: 'JM', bg: '#EAF5EE', fg: '#2D7A4F' },
-  { id: 'davidn', name: 'David Namalenga', role: 'Independent NED', initials: 'DN', bg: '#F0EBF8', fg: '#5B3D9A' },
-  { id: 'hannes', name: 'Hannes Gouws', role: 'Non-Executive Director', initials: 'HG', bg: '#FBF0EA', fg: '#D4652A' },
-  { id: 'jaco', name: 'Jaco Visser', role: 'Chief Financial Officer', initials: 'JV', bg: '#E1F5EE', fg: '#0F6E56' },
+  { id: 'riley', name: 'Riley Chen', role: 'Chairperson', initials: 'DS', bg: '#FBF3E3', fg: '#9A6E1A' },
+  { id: 'morgan', name: 'Morgan Reed', role: 'Managing Director', initials: 'GJ', bg: '#E8F1FB', fg: '#1A5FA5' },
+  { id: 'casey', name: 'Casey Brooks', role: 'Audit Risk & Opp Cttee', initials: 'JM', bg: '#EAF5EE', fg: '#2D7A4F' },
+  { id: 'avery', name: 'Avery Patel', role: 'Independent NED', initials: 'DN', bg: '#F0EBF8', fg: '#5B3D9A' },
+  { id: 'quinn', name: 'Quinn Harper', role: 'Non-Executive Director', initials: 'HG', bg: '#FBF0EA', fg: '#D4652A' },
+  { id: 'drew', name: 'Drew Bennett', role: 'Chief Financial Officer', initials: 'JV', bg: '#E1F5EE', fg: '#0F6E56' },
 ];
 
 const descriptions: Record<Level, string> = {
   secretariat:
-    'Full group access to all governance records, statutory registers, compliance filings, and reporting across all 33 Gondwana entities.',
+    'Full group access to all governance records, statutory registers, compliance filings, and reporting across all 33 Meridian entities.',
   director:
     'Access to your assigned entities, board meeting documents, minutes for review, and RSVP management.',
   consultant:
-    'Access to filings assigned to your firm, with handoff status, proof upload, and overdue items across all Gondwana entities.',
+    'Access to filings assigned to your firm, with handoff status, proof upload, and overdue items across all Meridian entities.',
 };
 
 const consultants: Person[] = [
-  { id: 'consultant-1', name: 'Namibia CoSec Services', role: 'Company Secretarial Consultant', initials: 'CS', bg: '#EEF1F4', fg: '#4A5560' },
+  { id: 'consultant-1', name: 'External CoSec Services', role: 'Company Secretarial Consultant', initials: 'CS', bg: '#EEF1F4', fg: '#4A5560' },
 ];
 
 export default function SignIn() {
   const navigate = useNavigate();
   const { setActiveUserById } = useUser();
   const [level, setLevel] = useState<Level>('secretariat');
-  const [secretarySel, setSecretarySel] = useState('fabiola');
-  const [directorSel, setDirectorSel] = useState('dave');
+  const [secretarySel, setSecretarySel] = useState('alex');
+  const [directorSel, setDirectorSel] = useState('riley');
   const [consultantSel, setConsultantSel] = useState('consultant-1');
 
   const people =
@@ -88,7 +88,7 @@ export default function SignIn() {
       >
         {/* Logo */}
         <div className="text-center">
-          <div style={{ color: '#3D2B1F', fontSize: 22, fontWeight: 500, letterSpacing: '0.18em' }}>GONDWANA</div>
+          <div style={{ color: '#3D2B1F', fontSize: 22, fontWeight: 500, letterSpacing: '0.18em' }}>MERIDIAN</div>
           <div style={{ color: '#D4652A', fontSize: 12, letterSpacing: '0.22em', marginTop: 2 }}>HOLDINGS LIMITED</div>
           <div style={{ color: '#6B6F68', fontSize: 10, letterSpacing: '0.12em', marginTop: 2 }}>NAMIBIA</div>
         </div>
@@ -201,7 +201,7 @@ export default function SignIn() {
       </div>
 
       <div className="text-center" style={{ marginTop: 16 }}>
-        <div style={{ fontSize: 10, color: '#6B6F68' }}>Gondwana Holdings Limited · Reg. 2017/1055</div>
+        <div style={{ fontSize: 10, color: '#6B6F68' }}>Meridian Holdings Limited · Reg. 2017/1055</div>
         <div style={{ fontSize: 10, color: '#6B6F68' }}>Confidential — authorised personnel only</div>
       </div>
     </div>

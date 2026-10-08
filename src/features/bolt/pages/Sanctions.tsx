@@ -4,18 +4,18 @@ import StatusPill from '../components/ui/StatusPills';
 import { AlertTriangle } from 'lucide-react';
 
 const screeningResults = [
-  { entity: 'Gondwana Holdings', date: '25 Jun 2026', database: 'FIC', result: 'clear' },
-  { entity: 'Canyon Lodge', date: '25 Jun 2026', database: 'UN', result: 'flag', flagged: true },
-  { entity: 'Gondwana Travel Centre', date: '25 Jun 2026', database: 'OFAC', result: 'flag', flagged: true },
-  { entity: 'Swakopmund Guesthouse', date: '25 Jun 2026', database: 'PEP', result: 'flag', flagged: true },
-  { entity: 'Namib Desert Lodge', date: '25 Jun 2026', database: 'UN', result: 'clear' },
+  { entity: 'Meridian Holdings', date: '25 Jun 2026', database: 'AML Authority', result: 'clear' },
+  { entity: 'Northgate Manufacturing (Pty) Ltd', date: '25 Jun 2026', database: 'UN', result: 'flag', flagged: true },
+  { entity: 'Meridian Financial Services Ltd', date: '25 Jun 2026', database: 'OFAC', result: 'flag', flagged: true },
+  { entity: 'Harbour Freight', date: '25 Jun 2026', database: 'PEP', result: 'flag', flagged: true },
+  { entity: 'Cornerstone Materials Ltd', date: '25 Jun 2026', database: 'UN', result: 'clear' },
 ];
 
 const escalationSteps = [
   { step: 1, title: 'Initial flag detected', detail: 'Automated screening', status: 'done' },
-  { step: 2, title: 'CoSec preliminary review', detail: 'Fabiola confirmed match', status: 'done' },
+  { step: 2, title: 'CoSec preliminary review', detail: 'Alex confirmed match', status: 'done' },
   { step: 3, title: 'MLCO referral', detail: 'EDD package being compiled', status: 'active' },
-  { step: 4, title: 'STR submission to FIC', detail: 'Pending', status: 'pending' },
+  { step: 4, title: 'STR submission to AML Authority', detail: 'Pending', status: 'pending' },
   { step: 5, title: 'Board notification', detail: 'Pending resolution', status: 'pending' },
   { step: 6, title: 'Regulatory close-out', detail: 'Record retention', status: 'pending' },
 ];
@@ -44,10 +44,10 @@ export default function Sanctions() {
           <div className="space-y-4">
             <div className="bg-card border border-border rounded-lg">
               <div className="px-4 py-3 border-b border-border bg-background">
-                <h3 className="text-[12px] font-medium text-primary">FIC Namibia & UN screening</h3>
+                <h3 className="text-[12px] font-medium text-primary">AML Authority & UN screening</h3>
               </div>
               <div className="divide-y divide-border">
-                {screeningResults.filter(s => ['FIC', 'UN'].includes(s.database)).map((s, idx) => (
+                {screeningResults.filter(s => ['AML Authority', 'UN'].includes(s.database)).map((s, idx) => (
                   <div key={idx} className={`px-4 py-3 flex items-center justify-between ${s.flagged ? 'bg-orange-tint' : ''}`}>
                     <div>
                       <div className="text-[11px] text-primary">{s.entity}</div>
@@ -80,9 +80,9 @@ export default function Sanctions() {
             <div className="bg-red-tint border border-red/30 rounded-lg p-4">
               <h4 className="text-[11px] font-medium text-red mb-2">Flags detail</h4>
               <div className="space-y-2 text-[10px] text-primary">
-                <div><span className="text-red font-medium">1.</span> Director name match — UN Consolidated List · Canyon Lodge</div>
-                <div><span className="text-red font-medium">2.</span> Beneficial owner — OFAC SDN partial match · Gondwana Travel Centre</div>
-                <div><span className="text-red font-medium">3.</span> PEP exposure — associate · Swakopmund Guesthouse</div>
+                <div><span className="text-red font-medium">1.</span> Director name match — UN Consolidated List · Northgate Manufacturing (Pty) Ltd</div>
+                <div><span className="text-red font-medium">2.</span> Beneficial owner — OFAC SDN partial match · Meridian Financial Services Ltd</div>
+                <div><span className="text-red font-medium">3.</span> PEP exposure — associate · Harbour Freight</div>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Sanctions() {
           {/* Right column - Escalation path */}
           <div className="bg-card border border-border rounded-lg">
             <div className="px-4 py-3 border-b border-border bg-background">
-              <h3 className="text-[12px] font-medium text-primary">Escalation path (FIC Act s.27)</h3>
+              <h3 className="text-[12px] font-medium text-primary">Escalation path (AML Act s.27)</h3>
             </div>
             <div className="p-4">
               <div className="relative">

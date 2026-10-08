@@ -2,33 +2,33 @@ const stakeholderGroups = [
   {
     ring: 'inner',
     name: 'Board of Directors',
-    members: ['Dave Smuts', 'Gys Joubert', 'James Mnyupe', 'David Namalenga', 'Hannes Gouws', 'Jaco Visser', 'Fabiola Schrywer'],
+    members: ['Riley Chen', 'Morgan Reed', 'Casey Brooks', 'Avery Patel', 'Quinn Harper', 'Drew Bennett', 'Alex Reyes'],
   },
   {
     ring: 'second',
     name: 'Shareholders',
-    members: ['960+ Shareholders', 'Nedbank Namibia (custodian)', 'GEPF (via asset managers)'],
+    members: ['960+ Shareholders', 'Custodian Bank (custodian)', 'GEPF (via asset managers)'],
   },
   {
     ring: 'third',
     name: 'Regulators',
-    members: ['FIC (Financial Intelligence Centre)', 'BIPA (Business and Intellectual Property Authority)', 'NTB (Namibia Tourism Board)', 'NSX (Namibian Stock Exchange)'],
+    members: ['AML Authority', 'Companies Registry', 'Industry Regulator', 'Stock Exchange'],
   },
   {
     ring: 'outer',
     name: 'Community & Conservation',
-    members: ['Namibian Communities', 'Conservation Organizations', 'Tourism Associations', 'Local SME Partners'],
+    members: ['Local Communities', 'Conservation Organizations', 'Tourism Associations', 'Local SME Partners'],
   },
 ];
 
 const engagementLog = [
-  { stakeholder: 'NSX', contact: 'Listings Department', method: 'Quarterly compliance call', frequency: 'Quarterly', lastEngagement: '2026-06-30', issues: 'None', response: 'Compliant', nextDate: '2026-09-30' },
-  { stakeholder: 'FIC', contact: 'Compliance Officer', method: 'AML reporting submission', frequency: 'Monthly', lastEngagement: '2026-06-28', issues: 'Enhanced monitoring requested', response: 'Submitted additional documentation', nextDate: '2026-07-31' },
-  { stakeholder: 'NTB', contact: 'Registration Division', method: 'License renewal coordination', frequency: 'Annual', lastEngagement: '2026-03-15', issues: 'None', response: 'All licenses current', nextDate: '2027-03-31' },
+  { stakeholder: 'Exchange', contact: 'Listings Department', method: 'Quarterly compliance call', frequency: 'Quarterly', lastEngagement: '2026-06-30', issues: 'None', response: 'Compliant', nextDate: '2026-09-30' },
+  { stakeholder: 'AML Authority', contact: 'Compliance Officer', method: 'AML reporting submission', frequency: 'Monthly', lastEngagement: '2026-06-28', issues: 'Enhanced monitoring requested', response: 'Submitted additional documentation', nextDate: '2026-07-31' },
+  { stakeholder: 'Industry Regulator', contact: 'Registration Division', method: 'License renewal coordination', frequency: 'Annual', lastEngagement: '2026-03-15', issues: 'None', response: 'All licenses current', nextDate: '2027-03-31' },
   { stakeholder: 'Shareholders', contact: 'Company Secretary', method: 'AGM and circulars', frequency: 'Annual + as needed', lastEngagement: '2026-04-28', issues: 'Remuneration policy questions', response: 'Detailed response provided', nextDate: '2027-04-30' },
-  { stakeholder: 'Community - Erongo', contact: 'Regional Coordinator', method: 'Community liaison meeting', frequency: 'Quarterly', lastEngagement: '2026-05-20', issues: 'Employment opportunities', response: 'Local hiring initiative launched', nextDate: '2026-08-20' },
-  { stakeholder: 'Conservation Orgs', contact: 'Namibia Nature Foundation', method: 'Partnership review', frequency: 'Bi-annual', lastEngagement: '2026-04-10', issues: 'Wildlife corridor concerns', response: 'Environmental assessment commissioned', nextDate: '2026-10-10' },
-  { stakeholder: 'BIPA', contact: 'Registrar of Companies', method: 'Annual return filing', frequency: 'Annual', lastEngagement: '2026-02-28', issues: 'None', response: 'All 33 entities filed', nextDate: '2027-02-28' },
+  { stakeholder: 'Community - Region 4', contact: 'Regional Coordinator', method: 'Community liaison meeting', frequency: 'Quarterly', lastEngagement: '2026-05-20', issues: 'Employment opportunities', response: 'Local hiring initiative launched', nextDate: '2026-08-20' },
+  { stakeholder: 'Conservation Orgs', contact: 'Industry Association', method: 'Partnership review', frequency: 'Bi-annual', lastEngagement: '2026-04-10', issues: 'Wildlife corridor concerns', response: 'Environmental assessment commissioned', nextDate: '2026-10-10' },
+  { stakeholder: 'Companies Registry', contact: 'Registrar of Companies', method: 'Annual return filing', frequency: 'Annual', lastEngagement: '2026-02-28', issues: 'None', response: 'All 33 entities filed', nextDate: '2027-02-28' },
 ];
 
 const ringColors = {
@@ -50,7 +50,7 @@ export default function StakeholderRegisterTab() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Stakeholder Register</h2>
-        <p className="text-sm text-muted mt-1">Stakeholder mapping and engagement tracking for Gondwana Holdings Limited</p>
+        <p className="text-sm text-muted mt-1">Stakeholder mapping and engagement tracking for Meridian Holdings Limited</p>
       </div>
 
       {/* Concentric Circle Map */}

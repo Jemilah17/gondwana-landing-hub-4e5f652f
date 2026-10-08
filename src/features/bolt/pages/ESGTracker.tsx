@@ -6,7 +6,7 @@ const capitals = [
   { name: 'Manufactured', status: 'adequate', kpis: ['Asset utilisation 76%', 'Capex program on track', 'Maintenance backlog stable'] },
   { name: 'Intellectual', status: 'strong', kpis: ['Brand value +8%', 'IP portfolio current', 'Systems upgraded'] },
   { name: 'Human', status: 'adequate', kpis: ['Staff turnover 14%', 'Training 32 hrs avg', 'Engagement 72%'] },
-  { name: 'Social & Relationship', status: 'concern', kpis: ['Community investment N$2.1m', 'Partner satisfaction 78%', 'Stakeholder relations stable'] },
+  { name: 'Social & Relationship', status: 'concern', kpis: ['Community investment $2.1m', 'Partner satisfaction 78%', 'Stakeholder relations stable'] },
   { name: 'Natural', status: 'adequate', kpis: ['Carbon intensity -5%', 'Water usage -8%', 'Biodiversity monitoring active'] },
 ];
 

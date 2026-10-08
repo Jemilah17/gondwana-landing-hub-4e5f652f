@@ -9,10 +9,10 @@ import StatusPill from '../components/ui/StatusPills';
 import { Plus } from 'lucide-react';
 
 const filingTypeColors: Record<string, string> = {
-  'BIPA Annual Return': 'bg-orange-tint text-orange',
-  'NTB Statutory Levy': 'bg-blue-tint text-blue',
-  'MoF Report': 'bg-purple-tint text-purple',
-  'FIC Compliance Return': 'bg-red-tint text-red',
+  'Companies Registry Annual Return': 'bg-orange-tint text-orange',
+  'Industry Statutory Levy': 'bg-blue-tint text-blue',
+  'Regulator Filing': 'bg-purple-tint text-purple',
+  'AML Compliance Return': 'bg-red-tint text-red',
   'AGM': 'bg-charcoal/10 text-charcoal',
   'Board Meeting': 'bg-green-tint text-green',
   'Audit': 'bg-amber-tint text-amber',
@@ -28,9 +28,9 @@ const clusterColors: Record<string, string> = {
 };
 
 const adminColors: Record<string, string> = {
-  'fabiola': 'bg-orange',
-  'hilma': 'bg-green',
-  'jemilah': 'bg-blue',
+  'alex': 'bg-orange',
+  'jordan': 'bg-green',
+  'taylor': 'bg-blue',
 };
 
 interface PopoverData {
@@ -189,9 +189,9 @@ export default function BoardCalendar() {
               className="border border-border rounded-lg px-3 py-2 text-[12px] bg-card"
             >
               <option value="all">All admins</option>
-              <option value="fabiola">Fabiola Schrywer</option>
-              <option value="hilma">Hilma Antinda</option>
-              <option value="jemilah">Jemilah</option>
+              <option value="alex">Alex Reyes</option>
+              <option value="jordan">Jordan Lee</option>
+              <option value="taylor">Taylor Morgan</option>
             </select>
           </div>
           <div className="flex gap-2">
@@ -293,10 +293,10 @@ export default function BoardCalendar() {
 
         {/* Legend */}
         <div className="flex flex-wrap gap-4 mt-4 text-[10px] text-muted">
-          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-orange-tint rounded" /> BIPA</span>
-          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-blue-tint rounded" /> NTB</span>
-          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-purple-tint rounded" /> MoF</span>
-          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-red-tint rounded" /> FIC</span>
+          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-orange-tint rounded" /> Companies Registry</span>
+          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-blue-tint rounded" /> Industry Regulator</span>
+          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-purple-tint rounded" /> Regulator</span>
+          <span className="flex items-center gap-1"><span className="w-4 h-2 bg-red-tint rounded" /> AML Authority</span>
           <span className="flex items-center gap-1"><span className="w-4 h-2 bg-teal-tint rounded" /> BO</span>
           <span className="flex items-center gap-1"><span className="w-4 h-2 bg-green-tint rounded" /> Board</span>
           <span className="flex items-center gap-1"><span className="w-4 h-2 bg-amber-tint rounded" /> Audit</span>

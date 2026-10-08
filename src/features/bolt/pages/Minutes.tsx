@@ -52,7 +52,7 @@ const initialRows: MinuteRow[] = [
     title: 'February 2026 General Meeting',
     date: '15 Feb 2026',
     type: 'General Meeting',
-    chairperson: 'Dave Smuts',
+    chairperson: 'Riley Chen',
     stage: 'Draft',
     flagged: true,
   },
@@ -171,14 +171,14 @@ function DirectorResponseCell({ response }: { response?: MinutesReview }) {
 }
 
 const COMPANY = {
-  name: 'Gondwana Holdings Limited',
+  name: 'Meridian Holdings Limited',
   reg: '2017/1055',
-  address: '42 Nelson Mandela Avenue, Windhoek',
+  address: '42 Nelson Mandela Avenue, City A',
   phone: '+264 61 427 200',
-  web: 'www.gondwana-collection.com',
+  web: 'www.meridian-collection.com',
 };
 
-const LOGO_URL = 'https://www.gondwana-collection.com/images/gondwana-logo.png';
+const LOGO_URL = 'https://www.meridian-collection.com/images/meridian-logo.png';
 
 function LetterheadLogo() {
   const [failed, setFailed] = useState(false);
@@ -189,7 +189,7 @@ function LetterheadLogo() {
           style={{ color: '#3D2B1F', letterSpacing: '0.25em' }}
           className="text-[28px] font-bold"
         >
-          GONDWANA
+          MERIDIAN
         </div>
         <div
           style={{ color: '#C4762A', letterSpacing: '0.28em' }}
@@ -209,7 +209,7 @@ function LetterheadLogo() {
   return (
     <img
       src={LOGO_URL}
-      alt="Gondwana Holdings Limited"
+      alt="Meridian Holdings Limited"
       onError={() => setFailed(true)}
       style={{ maxHeight: 84, width: 'auto' }}
     />
@@ -232,13 +232,13 @@ function Letterhead({ title }: { title: string }) {
         className="text-center"
         style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
       >
-        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Nelson Mandela Avenue&nbsp;&nbsp;|&nbsp;&nbsp;Windhoek, Namibia&nbsp;&nbsp;|&nbsp;&nbsp;info@gondwana-collection.com
+        PO Box 80205&nbsp;&nbsp;|&nbsp;&nbsp;42 Nelson Mandela Avenue&nbsp;&nbsp;|&nbsp;&nbsp;City A, Namibia&nbsp;&nbsp;|&nbsp;&nbsp;info@meridian-collection.com
       </div>
       <div
         className="text-center"
         style={{ color: '#6B6F68', fontSize: 10, lineHeight: 1.5 }}
       >
-        www.gondwana-collection.com
+        www.meridian-collection.com
       </div>
       <div style={{ height: '0.5px', background: '#EFECE6', margin: '14px 0' }} />
       <h2
@@ -298,9 +298,9 @@ async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
             data: logo,
             transformation: { width: 220, height: 90 },
             altText: {
-              title: 'Gondwana Holdings Limited',
-              description: 'Gondwana Holdings Limited logo',
-              name: 'GondwanaLogo',
+              title: 'Meridian Holdings Limited',
+              description: 'Meridian Holdings Limited logo',
+              name: 'MeridianLogo',
             },
           }),
         ],
@@ -332,10 +332,10 @@ async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
     new Paragraph({ children: [new TextRun('')] }),
     docxCentered('Tel: +264 61 427 200  |  Fax: +264 61 251 863', { size: 18 }),
     docxCentered(
-      'PO Box 80205  |  42 Nelson Mandela Avenue  |  Windhoek, Namibia  |  info@gondwana-collection.com',
+      'PO Box 80205  |  42 Nelson Mandela Avenue  |  City A, Namibia  |  info@meridian-collection.com',
       { size: 16 },
     ),
-    docxCentered('www.gondwana-collection.com', { size: 16 }),
+    docxCentered('www.meridian-collection.com', { size: 16 }),
     docxDivider(),
     new Paragraph({
       alignment: AlignmentType.CENTER,
@@ -350,11 +350,11 @@ async function buildLetterheadParagraphs(title: string): Promise<Paragraph[]> {
 }
 
 const ENTITIES = [
-  'Gondwana Holdings Limited',
-  'Gondwana Collection Namibia',
-  'Gondwana Travel Centre',
-  'Canyon Lodge',
-  'Palmwag Lodge',
+  'Meridian Holdings Limited',
+  'Meridian Group Holdings',
+  'Meridian Financial Services Ltd',
+  'Northgate Manufacturing (Pty) Ltd',
+  'Apex Warehousing Ltd',
 ];
 
 const MEETING_TYPES = ['Annual General Meeting', 'General Meeting', 'Board Meeting', 'Committee Meeting'];
@@ -367,13 +367,13 @@ interface Attendee {
 }
 
 const INITIAL_ATTENDEES: Attendee[] = [
-  { name: 'Dave Smuts', role: 'Chairperson', present: true },
-  { name: 'Gys Joubert', role: 'MD', present: true },
-  { name: 'James Mnyupe', role: 'NED', present: true },
-  { name: 'David Namalenga', role: 'NED', present: true },
-  { name: 'Hannes Gouws', role: 'NED', present: false },
-  { name: 'Jaco Visser', role: 'CFO', present: false },
-  { name: 'Fabiola Schrywer', role: 'Company Secretary', present: true, locked: true },
+  { name: 'Riley Chen', role: 'Chairperson', present: true },
+  { name: 'Morgan Reed', role: 'MD', present: true },
+  { name: 'Casey Brooks', role: 'NED', present: true },
+  { name: 'Avery Patel', role: 'NED', present: true },
+  { name: 'Quinn Harper', role: 'NED', present: false },
+  { name: 'Drew Bennett', role: 'CFO', present: false },
+  { name: 'Alex Reyes', role: 'Company Secretary', present: true, locked: true },
 ];
 
 const AGM_REFERENCE = [
@@ -482,8 +482,8 @@ function SetupView({
   const [meetingNumber, setMeetingNumber] = useState('GM-2026-02');
   const [date, setDate] = useState('2026-02-15');
   const [time, setTime] = useState('10:00');
-  const [venue, setVenue] = useState('Windhoek Head Office');
-  const [chair, setChair] = useState('Dave Smuts');
+  const [venue, setVenue] = useState('Head Office');
+  const [chair, setChair] = useState('Riley Chen');
   const [format, setFormat] = useState<'In person' | 'Virtual' | 'Hybrid'>('In person');
 
   const [attendees, setAttendees] = useState<Attendee[]>(INITIAL_ATTENDEES);
@@ -520,8 +520,8 @@ function SetupView({
 
     const docTitle =
       meetingType === 'General Meeting'
-        ? 'NOTICE OF THE GENERAL MEETING OF THE SHAREHOLDERS OF GONDWANA HOLDINGS LIMITED (REG. NO 2017/1055)'
-        : `MINUTES OF THE ${meetingType.toUpperCase()} OF GONDWANA HOLDINGS LIMITED (REG. NO 2017/1055)`;
+        ? 'NOTICE OF THE GENERAL MEETING OF THE SHAREHOLDERS OF MERIDIAN HOLDINGS LIMITED (REG. NO 2017/1055)'
+        : `MINUTES OF THE ${meetingType.toUpperCase()} OF MERIDIAN HOLDINGS LIMITED (REG. NO 2017/1055)`;
     const letterhead = await buildLetterheadParagraphs(docTitle);
 
     const doc = new Document({
@@ -924,19 +924,19 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
       />
       <div className="p-6">
         <article className="bg-card border border-border rounded-lg mx-auto p-10" style={{ maxWidth: 760 }}>
-          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT GONDWANA HOUSE BOARDROOM, 42 NELSON MANDELA AVENUE, WINDHOEK, NAMIBIA" />
+          <Letterhead title="DRAFT MINUTES OF THE ANNUAL GENERAL MEETING OF SHAREHOLDERS HOSTED BY THE BOARD OF DIRECTORS BY LIVE WEBINAR ON THURSDAY, 24 JUNE 18:00 AT MERIDIAN HOUSE BOARDROOM, 42 NELSON MANDELA AVENUE, CITY A, NAMIBIA" />
 
           <Section n={1} title="Welcome and opening">
             <p>
               The Chairperson, Mr S. Galloway, welcomed shareholders, directors and invited
-              guests to the 4th Annual General Meeting of Gondwana Holdings Limited. He
+              guests to the 4th Annual General Meeting of Meridian Holdings Limited. He
               acknowledged the extraordinary context in which the meeting was being held, with
               the COVID-19 pandemic having profoundly affected the tourism industry, the
               Namibian economy and the personal lives of many stakeholders.
             </p>
             <p>
               A moment of silence was observed in memory of colleagues, family members and
-              friends of the Gondwana community who had passed away during the preceding period.
+              friends of the Meridian community who had passed away during the preceding period.
             </p>
           </Section>
 
@@ -960,13 +960,13 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
 
           <Section n={4} title="Chairperson's overview">
             <p>
-              Mr Galloway reflected on the 25-year history of Gondwana Collection Namibia,
+              Mr Galloway reflected on the 25-year history of Meridian Group Holdings,
               highlighting the group's resilience through multiple economic cycles. He noted
               with pride that despite the severe impact of COVID-19, no retrenchments had been
               carried out and that all permanent staff had been retained throughout the crisis.
             </p>
             <p>
-              The Chairperson formally announced the appointment of Ms Fabiola Schrywer as
+              The Chairperson formally announced the appointment of Ms Alex Reyes as
               co-custodian of the group's cultural and heritage stewardship function, in
               recognition of her long-standing contribution to the organisation.
             </p>
@@ -990,7 +990,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
             <ResolutionBox
               r={{
                 code: 'OR-1',
-                text: 'RESOLVED that the Annual Financial Statements of Gondwana Holdings Limited for the year under review, together with the reports of the directors and the auditors, be and are hereby received and approved.',
+                text: 'RESOLVED that the Annual Financial Statements of Meridian Holdings Limited for the year under review, together with the reports of the directors and the auditors, be and are hereby received and approved.',
                 for: 95.6,
                 against: 3.9,
                 abstain: 0.5,
@@ -1026,7 +1026,7 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
             <ResolutionBox
               r={{
                 code: 'OR-4',
-                text: 'RESOLVED that the non-executive directors\' fees be approved at N$10,000 per meeting attended, with effect from the date of this meeting.',
+                text: 'RESOLVED that the non-executive directors\' fees be approved at $10,000 per meeting attended, with effect from the date of this meeting.',
                 for: 95.3,
                 against: 4.2,
                 abstain: 0.5,
@@ -1063,14 +1063,14 @@ function ViewFullMinutes({ onBack }: { onBack: () => void }) {
               The Managing Director, Mr G. Joubert, reported on operational matters. He
               confirmed that the Business Interruption insurance claim had been lodged and
               was progressing through the insurers' assessment process. He further reported
-              on the successful placement of a bond on the Namibian Stock Exchange (NSX),
+              on the successful placement of a bond on the Stock Exchange (Exchange),
               which had strengthened the group's medium-term funding base.
             </p>
           </Section>
 
           <Section n={13} title="Brand and marketing report">
             <p>
-              Ms M. Goldbeck presented the brand and marketing update. The Gondwana Card
+              Ms M. Goldbeck presented the brand and marketing update. The Meridian Card
               loyalty programme had grown to more than 100,000 registered members, providing
               a strong direct-to-consumer platform to support the group's domestic tourism
               recovery strategy.
@@ -1127,10 +1127,10 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
   const [meetingNumber, setMeetingNumber] = useState('6th');
   const [date, setDate] = useState('2026-06-25');
   const [time, setTime] = useState('18:00');
-  const [venue, setVenue] = useState('Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek');
+  const [venue, setVenue] = useState('Meridian House Boardroom, 42 Nelson Mandela Avenue, City A');
   const [deadline, setDeadline] = useState('2026-06-22');
   const [proxyAddress, setProxyAddress] = useState('fabiola.s@gcnam.com');
-  const [chair, setChair] = useState('Dave Smuts');
+  const [chair, setChair] = useState('Riley Chen');
   const [items, setItems] = useState<string[]>([
     'Welcome and confirmation of quorum',
     'Adoption of the annual financial statements',
@@ -1154,7 +1154,7 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
       : '—';
 
   const generateNotice = async () => {
-    const title = `NOTICE OF THE ${TYPE_LABEL[noticeType]} OF THE SHAREHOLDERS OF GONDWANA HOLDINGS LIMITED (REG. NO 2017/1055)`;
+    const title = `NOTICE OF THE ${TYPE_LABEL[noticeType]} OF THE SHAREHOLDERS OF MERIDIAN HOLDINGS LIMITED (REG. NO 2017/1055)`;
     const letterhead = await buildLetterheadParagraphs(title);
     const p = (t: string, bold = false) =>
       new Paragraph({ children: [new TextRun({ text: t, bold })], spacing: { after: 120 } });
@@ -1172,7 +1172,7 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
           children: [
             ...letterhead,
             p(
-              `Notice is hereby given that the ${meetingNumber} ${TYPE_LABEL[noticeType].toLowerCase()} of the shareholders of Gondwana Holdings Limited will be held on ${fmtDate(date)} at ${time} at ${venue}. The meeting will be chaired by ${chair}.`,
+              `Notice is hereby given that the ${meetingNumber} ${TYPE_LABEL[noticeType].toLowerCase()} of the shareholders of Meridian Holdings Limited will be held on ${fmtDate(date)} at ${time} at ${venue}. The meeting will be chaired by ${chair}.`,
             ),
             new Paragraph({ children: [new TextRun('')] }),
             p('AGENDA', true),
@@ -1186,9 +1186,9 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
             new Paragraph({ children: [new TextRun('')] }),
             p('By order of the Board'),
             new Paragraph({ children: [new TextRun('')] }),
-            p('Fabiola Schrywer'),
+            p('Alex Reyes'),
             p('Company Secretary'),
-            p('Gondwana Holdings Limited'),
+            p('Meridian Holdings Limited'),
             p('Date: _______________'),
           ],
         },
@@ -1209,7 +1209,7 @@ function NoticeModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
       <div className="space-y-3 max-h-[65vh] overflow-y-auto pr-1">
         <div className="bg-background border border-border rounded-lg p-3 space-y-1">
           <div className="flex items-center gap-1.5 text-[11px] text-muted">
-            <Lock className="w-3 h-3" /> Company: <span className="text-primary">Gondwana Holdings Limited</span>
+            <Lock className="w-3 h-3" /> Company: <span className="text-primary">Meridian Holdings Limited</span>
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-muted">
             <Lock className="w-3 h-3" /> Reg no: <span className="text-primary">2017/1055</span>
@@ -1570,7 +1570,7 @@ function WorkflowPanel({
               <div className="rounded-lg border border-blue-500/30 bg-blue-500/10 p-3 text-[11px] text-primary">
                 <div className="font-medium mb-1">Circulated to:</div>
                 <div className="text-muted leading-relaxed">
-                  Dave Smuts, Gys Joubert, James Mnyupe, David Namalenga, Hannes Gouws, Jaco Visser, Fabiola Schrywer
+                  Riley Chen, Morgan Reed, Casey Brooks, Avery Patel, Quinn Harper, Drew Bennett, Alex Reyes
                 </div>
                 <div className="mt-2 text-muted">Date circulated: {new Date().toLocaleDateString()}</div>
               </div>

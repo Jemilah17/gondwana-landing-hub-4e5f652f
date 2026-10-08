@@ -26,7 +26,7 @@ export default function PolicyRegisterTab() {
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-lg font-medium text-primary">Policy Register</h2>
-          <p className="text-sm text-muted mt-1">Governance policies and procedures for Gondwana Holdings Limited</p>
+          <p className="text-sm text-muted mt-1">Governance policies and procedures for Meridian Holdings Limited</p>
         </div>
         <div className="flex gap-3">
           <div className="bg-card border border-border rounded-lg px-4 py-2">

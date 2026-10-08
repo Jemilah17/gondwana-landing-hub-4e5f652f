@@ -46,8 +46,8 @@ export function DirectorProvider({ children }: { children: ReactNode }) {
     {
       id: 'feb-2026-gm',
       title: 'February 2026 General Meeting',
-      meta: '26 February 2026 · Dave Smuts · GM',
-      sentBy: 'Fabiola Schrywer',
+      meta: '26 February 2026 · Riley Chen · GM',
+      sentBy: 'Alex Reyes',
       sentAgo: '2 days ago',
       respondBy: '26 Jul 2026',
       status: 'pending',
@@ -58,14 +58,14 @@ export function DirectorProvider({ children }: { children: ReactNode }) {
     {
       id: 'coi-2026',
       name: 'Annual conflict of interest declaration',
-      description: 'Declaration of interests per King V and the Companies Act',
+      description: 'Declaration of interests per Governance Code and the Companies Act',
       due: '31 August 2026',
       status: 'due',
     },
     {
       id: 'bo-2026',
       name: 'Beneficial ownership confirmation',
-      description: 'Confirm your beneficial holdings across Gondwana entities',
+      description: 'Confirm your beneficial holdings across Meridian entities',
       due: '15 September 2026',
       status: 'due',
     },

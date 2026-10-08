@@ -5,11 +5,11 @@ const risks = [
     id: 1,
     category: 'Regulatory',
     description: 'FATF grey-listing risk — Namibia placed on FATF grey list Feb 2024, enhanced AML/CFT scrutiny',
-    owner: 'James Mnyupe',
+    owner: 'Casey Brooks',
     likelihood: 4,
     impact: 5,
     inherentScore: 20,
-    mitigation: 'Enhanced compliance monitoring, additional reporting to FIC, board-level oversight',
+    mitigation: 'Enhanced compliance monitoring, additional reporting to AML Authority, board-level oversight',
     residualLikelihood: 2,
     residualImpact: 4,
     residualScore: 8,
@@ -18,8 +18,8 @@ const risks = [
   {
     id: 2,
     category: 'Insurance',
-    description: 'Hollard BI claim litigation — Business interruption claim disputed, litigation ongoing',
-    owner: 'Gys Joubert',
+    description: 'Apex Insurance BI claim litigation — Business interruption claim disputed, litigation ongoing',
+    owner: 'Morgan Reed',
     likelihood: 3,
     impact: 5,
     inherentScore: 15,
@@ -32,12 +32,12 @@ const risks = [
   {
     id: 3,
     category: 'Treasury',
-    description: 'NSX bond maturity — N$50m bond matures Mar 2027, refinancing required',
-    owner: 'Dave Smuts',
+    description: 'Exchange bond maturity — $50m bond matures Mar 2027, refinancing required',
+    owner: 'Riley Chen',
     likelihood: 3,
     impact: 4,
     inherentScore: 12,
-    mitigation: 'Early engagement with bondholders, alternative facility discussions with Bank Windhoek',
+    mitigation: 'Early engagement with bondholders, alternative facility discussions with City Bank',
     residualLikelihood: 2,
     residualImpact: 3,
     residualScore: 6,
@@ -47,7 +47,7 @@ const risks = [
     id: 4,
     category: 'Operations',
     description: 'Cross-border Chobe/Zambezi regulatory divergence — varying tourism regs across borders',
-    owner: 'Hannes Gouws',
+    owner: 'Quinn Harper',
     likelihood: 3,
     impact: 3,
     inherentScore: 9,
@@ -60,8 +60,8 @@ const risks = [
   {
     id: 5,
     category: 'People',
-    description: 'Key person risk — Gys Joubert (CEO) succession not formalised',
-    owner: 'Fabiola Schrywer',
+    description: 'Key person risk — Morgan Reed (CEO) succession not formalised',
+    owner: 'Alex Reyes',
     likelihood: 2,
     impact: 4,
     inherentScore: 8,
@@ -97,7 +97,7 @@ export default function EnterpriseRiskTab() {
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-lg font-medium text-primary">Enterprise Risk Register</h2>
-          <p className="text-sm text-muted mt-1">Strategic and operational risks for Gondwana Holdings Limited</p>
+          <p className="text-sm text-muted mt-1">Strategic and operational risks for Meridian Holdings Limited</p>
         </div>
         <div className="flex gap-3">
           <div className="bg-card border border-border rounded-lg px-4 py-2">

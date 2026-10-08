@@ -42,7 +42,7 @@ export default function LogFilingModal({ filing, onClose, onConfirm }: Props) {
         </div>
         <div>
           <label className="block text-[10px] text-muted mb-1">Receipt number</label>
-          <input value={receipt} onChange={e => setReceipt(e.target.value)} placeholder="e.g. BIPA-2026-0421"
+          <input value={receipt} onChange={e => setReceipt(e.target.value)} placeholder="e.g. Companies Registry-2026-0421"
             className="w-full border border-border rounded-lg px-3 py-2 text-[12px] bg-card" />
         </div>
         <div>

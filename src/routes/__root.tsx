@@ -87,26 +87,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        title: "Gondwana Governance — Foundational Governance Advisory",
+        title: "Meridian Governance — Foundational Governance Advisory",
       },
       {
         name: "description",
         content:
-          "Gondwana Governance provides structural advisory services that help organizations build resilient, enduring governance frameworks.",
+          "Meridian Governance provides structural advisory services that help organizations build resilient, enduring governance frameworks.",
       },
-      { name: "author", content: "Gondwana Governance" },
+      { name: "author", content: "Meridian Governance" },
       {
         property: "og:title",
-        content: "Gondwana Governance — Foundational Governance Advisory",
+        content: "Meridian Governance — Foundational Governance Advisory",
       },
       {
         property: "og:description",
         content:
-          "Gondwana Governance provides structural advisory services that help organizations build resilient, enduring governance frameworks.",
+          "Meridian Governance provides structural advisory services that help organizations build resilient, enduring governance frameworks.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@GondwanaGov" },
+      { name: "twitter:site", content: "@MeridianGov" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

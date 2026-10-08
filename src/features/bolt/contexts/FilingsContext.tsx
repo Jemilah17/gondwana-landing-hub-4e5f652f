@@ -9,8 +9,8 @@ import { filings as seedFilings, type Filing } from '../data/filings';
  *
  * Handoff tracking (consultant assignment, handoff stage, proof receipts) is
  * stored in this React Context and mirrored to localStorage. That survives
- * navigation and refreshes, but it is per-browser: changes made by Fabiola
- * will NOT appear for Jemilah or Hilma.
+ * navigation and refreshes, but it is per-browser: changes made by Alex
+ * will NOT appear for Taylor Morgan or Jordan.
  *
  * RECOMMENDATION: enable Supabase (Lovable Cloud, the native integration) and
  * move filings into a table with RLS policies so the whole team shares one
@@ -30,7 +30,7 @@ export interface FilingsContextType {
   overdueUnconfirmed: Filing[];
 }
 
-const STORAGE_KEY = 'gondwana.filings.v1';
+const STORAGE_KEY = 'meridian.filings.v1';
 
 const FilingsContext = createContext<FilingsContextType | null>(null);
 

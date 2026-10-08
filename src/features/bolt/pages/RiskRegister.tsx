@@ -135,8 +135,8 @@ export default function RiskRegister() {
               <h4 className="text-[10px] font-medium text-primary mb-2">Top 5 risks</h4>
               <div className="space-y-1 text-[10px] text-muted">
                 <div className="text-red">1. FATF grey-listing</div>
-                <div className="text-orange">2. Hollard BI claim</div>
-                <div className="text-orange">3. NSX bond</div>
+                <div className="text-orange">2. Apex Insurance BI claim</div>
+                <div className="text-orange">3. Exchange bond</div>
                 <div className="text-amber">4. Cybersecurity</div>
                 <div className="text-amber">5. Cross-border</div>
               </div>

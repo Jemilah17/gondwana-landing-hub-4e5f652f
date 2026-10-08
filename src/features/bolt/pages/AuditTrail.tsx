@@ -71,9 +71,9 @@ export default function AuditTrail() {
             className="border border-border rounded-lg px-3 py-2 text-[12px] bg-card"
           >
             <option value="all">All actors</option>
-            <option value="Fabiola">Fabiola</option>
-            <option value="Hilma">Hilma</option>
-            <option value="Jemilah">Jemilah</option>
+            <option value="Alex">Alex</option>
+            <option value="Jordan">Jordan</option>
+            <option value="Taylor Morgan">Taylor Morgan</option>
             <option value="System">System</option>
           </select>
           <select

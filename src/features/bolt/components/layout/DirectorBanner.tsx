@@ -22,7 +22,7 @@ export default function DirectorBanner() {
 
   return (
     <div className="bg-orange text-white px-4 py-2 flex items-center justify-between text-[12px] relative">
-      <span className="font-medium">Director portal — Gondwana Holdings Limited</span>
+      <span className="font-medium">Director portal — Meridian Holdings Limited</span>
       <div className="flex items-center gap-3">
         <span className="px-3 py-1 rounded-full bg-white/15">
           {activeUser.name} · {activeUser.role}

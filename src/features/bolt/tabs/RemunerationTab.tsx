@@ -10,11 +10,11 @@ const remunerationPolicy = {
 };
 
 const directorFees = [
-  { type: 'Board Meeting Attendance', amount: 'N$10,000', frequency: 'Per meeting', notes: 'Ordinary and special board meetings' },
-  { type: 'Committee Meeting Attendance', amount: 'N$5,000', frequency: 'Per meeting', notes: 'Audit, People, Sustainability committees' },
-  { type: 'Chair Premium (Board)', amount: 'N$15,000', frequency: 'Per meeting', notes: 'Chair of the Board' },
-  { type: 'Chair Premium (Committee)', amount: 'N$7,500', frequency: 'Per meeting', notes: 'Chairs of Board committees' },
-  { type: 'Travel Allowance', amount: 'Reimbursed', frequency: 'Actual costs', notes: 'Directors based outside Windhoek' },
+  { type: 'Board Meeting Attendance', amount: '$10,000', frequency: 'Per meeting', notes: 'Ordinary and special board meetings' },
+  { type: 'Committee Meeting Attendance', amount: '$5,000', frequency: 'Per meeting', notes: 'Audit, People, Sustainability committees' },
+  { type: 'Chair Premium (Board)', amount: '$15,000', frequency: 'Per meeting', notes: 'Chair of the Board' },
+  { type: 'Chair Premium (Committee)', amount: '$7,500', frequency: 'Per meeting', notes: 'Chairs of Board committees' },
+  { type: 'Travel Allowance', amount: 'Reimbursed', frequency: 'Actual costs', notes: 'Directors based outside City A' },
 ];
 
 const advisoryVotes = [
@@ -34,7 +34,7 @@ export default function RemunerationTab() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Remuneration Governance</h2>
-        <p className="text-sm text-muted mt-1">Director remuneration framework for Gondwana Holdings Limited</p>
+        <p className="text-sm text-muted mt-1">Director remuneration framework for Meridian Holdings Limited</p>
       </div>
 
       {/* Remuneration Policy Card */}

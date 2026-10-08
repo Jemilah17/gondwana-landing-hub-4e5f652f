@@ -5,7 +5,7 @@ import { auditEvents as seedEvents, type AuditEvent } from '../data/governance';
  * STOPGAP PERSISTENCE — added events are mirrored to localStorage (per-browser).
  * Move to a shared Lovable Cloud table for a real team-wide, tamper-evident audit log.
  */
-const STORAGE_KEY = 'gondwana.audit.v1';
+const STORAGE_KEY = 'meridian.audit.v1';
 
 interface AuditTrailContextType {
   events: AuditEvent[];

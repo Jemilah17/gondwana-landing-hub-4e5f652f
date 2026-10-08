@@ -15,9 +15,9 @@ const q3Pack = {
   meeting: 'Q3 2026 Board Meeting',
   date: '2026-08-28',
   time: '18:00 WAT',
-  venue: 'Gondwana House Boardroom, Windhoek',
-  entity: 'Gondwana Holdings Limited',
-  chairperson: 'Dave Smuts',
+  venue: 'Meridian House Boardroom, City A',
+  entity: 'Meridian Holdings Limited',
+  chairperson: 'Riley Chen',
 };
 
 const q3PackDocs = [
@@ -72,7 +72,7 @@ export default function DirectorMeetings() {
           : '';
     setRsvp({ status: 'confirmed', choice, detail });
     setChanging(false);
-    showToast('RSVP confirmed · Fabiola Schrywer notified');
+    showToast('RSVP confirmed · Alex Reyes notified');
   };
 
   const options = [
@@ -100,8 +100,8 @@ export default function DirectorMeetings() {
               {[
                 ['Date', 'Thursday 28 August 2026'],
                 ['Time', '18:00 WAT'],
-                ['Venue', 'Gondwana House Boardroom, Windhoek'],
-                ['Chairperson', 'Dave Smuts'],
+                ['Venue', 'Meridian House Boardroom, City A'],
+                ['Chairperson', 'Riley Chen'],
                 ['Format', 'In person'],
               ].map(([k, v]) => (
                 <div key={k}>

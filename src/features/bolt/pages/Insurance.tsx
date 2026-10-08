@@ -18,33 +18,33 @@ interface Policy {
 
 const POLICIES: Policy[] = [
   {
-    insurer: 'Hollard', name: 'Business Interruption', border: 'border-l-red',
-    ref: 'HOL-BI-2021', from: '2021-03-01', to: '2027-03-01', coverage: 'N$50,000,000',
+    insurer: 'Apex Insurance', name: 'Business Interruption', border: 'border-l-red',
+    ref: 'HOL-BI-2021', from: '2021-03-01', to: '2027-03-01', coverage: '$50,000,000',
     status: { label: 'Active — claim in progress', cls: 'bg-orange-tint text-orange' },
     subBadge: 'BI-2021-001 active',
     buttons: [{ label: 'View claim →', variant: 'primary' }, { label: 'View policy', variant: 'outline' }],
   },
   {
     insurer: 'Old Mutual', name: 'Directors & Officers', border: 'border-l-blue',
-    ref: 'OM-DO-2025', from: '2025-01-01', to: '2026-01-01', coverage: 'N$20,000,000',
+    ref: 'OM-DO-2025', from: '2025-01-01', to: '2026-01-01', coverage: '$20,000,000',
     status: { label: 'Renewal due', cls: 'bg-amber-tint text-amber' },
     buttons: [{ label: 'Renew', variant: 'primary' }, { label: 'View', variant: 'outline' }],
   },
   {
     insurer: 'Santam', name: 'Group property', border: 'border-l-green',
-    ref: 'SAN-PROP-2026', from: '2026-01-01', to: '2027-01-01', coverage: 'N$120,000,000',
+    ref: 'SAN-PROP-2026', from: '2026-01-01', to: '2027-01-01', coverage: '$120,000,000',
     status: { label: 'Active', cls: 'bg-green-tint text-green' },
     buttons: [{ label: 'View', variant: 'outline' }, { label: 'View', variant: 'outline' }],
   },
   {
-    insurer: 'Hollard', name: 'Public liability', border: 'border-l-orange',
-    ref: 'HOL-PL-2026', from: '2026-03-01', to: '2027-03-01', coverage: 'N$10,000,000',
+    insurer: 'Apex Insurance', name: 'Public liability', border: 'border-l-orange',
+    ref: 'HOL-PL-2026', from: '2026-03-01', to: '2027-03-01', coverage: '$10,000,000',
     status: { label: 'Active', cls: 'bg-green-tint text-green' },
     buttons: [{ label: 'View', variant: 'outline' }, { label: 'View', variant: 'outline' }],
   },
   {
     insurer: 'Mutual & Federal', name: 'Motor fleet', border: 'border-l-amber',
-    ref: 'MF-MOT-2026', from: '2026-01-01', to: '2027-01-01', coverage: 'N$5,000,000',
+    ref: 'MF-MOT-2026', from: '2026-01-01', to: '2027-01-01', coverage: '$5,000,000',
     status: { label: 'Active', cls: 'bg-green-tint text-green' },
     buttons: [{ label: 'View', variant: 'outline' }, { label: 'View', variant: 'outline' }],
   },
@@ -55,14 +55,14 @@ function fmt(d: string) {
 }
 
 const TIMELINE = [
-  { period: 'Mar 2021', text: 'Claim lodged with Hollard' },
-  { period: 'Mid 2021', text: 'Hollard objected to urgent court proceedings' },
+  { period: 'Mar 2021', text: 'Claim lodged with Apex Insurance' },
+  { period: 'Mid 2021', text: 'Apex Insurance objected to urgent court proceedings' },
   { period: 'Late 2021', text: 'Matter proceeding on normal time periods' },
   { period: '2022 — 2026', text: 'Active litigation, millions in legal costs' },
 ];
 
 const CONTACTS = [
-  { name: 'Hollard Namibia Insurance', phone: '+264 61 371 300' },
+  { name: 'Apex Insurance Namibia Insurance', phone: '+264 61 371 300' },
   { name: 'Old Mutual Namibia', phone: '+264 61 299 3000' },
   { name: 'Santam Namibia', phone: '+264 61 292 8000' },
   { name: 'Mutual & Federal', phone: '+264 61 297 1000' },
@@ -110,14 +110,14 @@ export default function Insurance() {
         <div className="px-6 py-5 flex gap-5 items-start">
           <div className="flex-1 min-w-0 space-y-4">
             <p className="text-[11px] text-muted">
-              All policies · Active claims · Renewal calendar · Gondwana Holdings Ltd
+              All policies · Active claims · Renewal calendar · Meridian Holdings Ltd
             </p>
 
             {/* Active claim alert */}
             <div className="bg-red-tint rounded-lg px-4 py-3 flex items-center gap-3">
               <AlertTriangle className="w-4 h-4 text-red shrink-0" />
               <p className="text-[11px] text-red flex-1">
-                Business Interruption claim active against Hollard Insurance. Lead director: Hannes Gouws. Matter: BI-2021-001.
+                Business Interruption claim active against Apex Insurance. Lead director: Quinn Harper. Matter: BI-2021-001.
               </p>
               <a href="/legal" className="text-[11px] font-medium text-orange hover:underline shrink-0">
                 View in legal matters →
@@ -150,7 +150,7 @@ export default function Insurance() {
                     <td className="px-4 py-3">
                       <span className="inline-flex px-[7px] py-[2px] rounded-lg text-[10px] font-medium bg-card text-orange">In litigation</span>
                     </td>
-                    <td className="px-4 py-3">Hannes Gouws</td>
+                    <td className="px-4 py-3">Quinn Harper</td>
                     <td className="px-4 py-3">
                       <button
                         onClick={() => setDrawerOpen(true)}
@@ -186,9 +186,9 @@ export default function Insurance() {
 
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="text-[11px] font-medium text-primary mb-1">Total coverage</h3>
-              <div className="text-[18px] font-medium text-primary">N$205,000,000</div>
+              <div className="text-[18px] font-medium text-primary">$205,000,000</div>
               <ul className="mt-2 space-y-1">
-                {[['BI', 'N$50M'], ['Property', 'N$120M'], ['D&O', 'N$20M'], ['Public liability', 'N$10M'], ['Fleet', 'N$5M']].map(([k, v]) => (
+                {[['BI', '$50M'], ['Property', '$120M'], ['D&O', '$20M'], ['Public liability', '$10M'], ['Fleet', '$5M']].map(([k, v]) => (
                   <li key={k} className="flex justify-between text-[10px] text-muted">
                     <span>{k}</span><span className="text-primary">{v}</span>
                   </li>
@@ -216,7 +216,7 @@ export default function Insurance() {
       <Drawer
         isOpen={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        title="BI-2021-001 — Hollard Business Interruption Claim"
+        title="BI-2021-001 — Apex Insurance Business Interruption Claim"
       >
         <div className="space-y-5">
           <div>
@@ -239,10 +239,10 @@ export default function Insurance() {
             <h4 className="text-[11px] font-medium text-primary mb-2">Lead director</h4>
             <span className="inline-flex items-center gap-2 px-2 py-1 rounded-lg bg-background">
               <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue text-white text-[8px] font-medium">HG</span>
-              <span className="text-[10px] text-primary">Hannes Gouws</span>
+              <span className="text-[10px] text-primary">Quinn Harper</span>
             </span>
             <p className="text-[10px] text-muted mt-2">
-              Hannes Gouws has managed this matter 7 days a week — per 4th AGM minutes June 2021
+              Quinn Harper has managed this matter 7 days a week — per 4th AGM minutes June 2021
             </p>
           </div>
 

@@ -3,12 +3,12 @@ import StatusPill from '../components/ui/StatusPills';
 import { DollarSign } from 'lucide-react';
 
 const directorsFees = [
-  { director: 'Dave Smuts', role: 'Chairperson', boardFee: 'N$10,000', committeeFee: 'N$5,000', meetings: 8, totalYtd: 'N$80,000' },
-  { director: 'Gys Joubert', role: 'MD', boardFee: 'N$10,000', committeeFee: 'N$5,000', meetings: 10, totalYtd: 'N$100,000' },
-  { director: 'James Mnyupe', role: 'AROC Chair', boardFee: 'N$10,000', committeeFee: 'N$5,000', meetings: 12, totalYtd: 'N$120,000' },
-  { director: 'David Namalenga', role: 'People Chair', boardFee: 'N$10,000', committeeFee: 'N$5,000', meetings: 9, totalYtd: 'N$90,000' },
-  { director: 'Hannes Gouws', role: 'NED', boardFee: 'N$10,000', committeeFee: 'N$5,000', meetings: 7, totalYtd: 'N$70,000' },
-  { director: 'Jaco Visser', role: 'CFO', boardFee: 'N$10,000', committeeFee: 'N$5,000', meetings: 9, totalYtd: 'N$90,000' },
+  { director: 'Riley Chen', role: 'Chairperson', boardFee: '$10,000', committeeFee: '$5,000', meetings: 8, totalYtd: '$80,000' },
+  { director: 'Morgan Reed', role: 'MD', boardFee: '$10,000', committeeFee: '$5,000', meetings: 10, totalYtd: '$100,000' },
+  { director: 'Casey Brooks', role: 'AROC Chair', boardFee: '$10,000', committeeFee: '$5,000', meetings: 12, totalYtd: '$120,000' },
+  { director: 'Avery Patel', role: 'People Chair', boardFee: '$10,000', committeeFee: '$5,000', meetings: 9, totalYtd: '$90,000' },
+  { director: 'Quinn Harper', role: 'NED', boardFee: '$10,000', committeeFee: '$5,000', meetings: 7, totalYtd: '$70,000' },
+  { director: 'Drew Bennett', role: 'CFO', boardFee: '$10,000', committeeFee: '$5,000', meetings: 9, totalYtd: '$90,000' },
 ];
 
 export default function Remuneration() {

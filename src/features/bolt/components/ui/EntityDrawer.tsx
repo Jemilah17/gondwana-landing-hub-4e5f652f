@@ -23,7 +23,7 @@ const entityTypePill = (type: string) => {
     Camp: 'bg-teal-tint text-teal',
     DNFBP: 'bg-amber-tint text-amber',
     Trust: 'bg-red-tint text-red',
-    'Car rental': 'bg-orange-tint text-orange',
+    'Logistics': 'bg-orange-tint text-orange',
     Pods: 'bg-green-tint text-green',
   };
   return colors[type] || 'bg-muted/10 text-muted';
@@ -41,10 +41,10 @@ const clusterPill = (clusterId: string) => {
 };
 
 const filingTypeColors: Record<string, string> = {
-  'BIPA Annual Return': 'bg-orange-tint text-orange',
-  'NTB Statutory Levy': 'bg-blue-tint text-blue',
-  'MoF Report': 'bg-purple-tint text-purple',
-  'FIC Compliance Return': 'bg-red-tint text-red',
+  'Companies Registry Annual Return': 'bg-orange-tint text-orange',
+  'Industry Statutory Levy': 'bg-blue-tint text-blue',
+  'Regulator Filing': 'bg-purple-tint text-purple',
+  'AML Compliance Return': 'bg-red-tint text-red',
   'AGM': 'bg-charcoal/10 text-charcoal',
   'Board Meeting': 'bg-green-tint text-green',
   'Audit': 'bg-amber-tint text-amber',

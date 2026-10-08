@@ -22,10 +22,10 @@ function fmt(dateStr: string) {
 }
 
 const TYPE_GROUPS: Record<string, string> = {
-  BIPA: 'BIPA Annual Return',
-  NTB: 'NTB Statutory Levy',
-  MoF: 'MoF Report',
-  FIC: 'FIC Compliance Return',
+  Companies Registry: 'Companies Registry Annual Return',
+  Industry Regulator: 'Industry Statutory Levy',
+  Regulator: 'Regulator Filing',
+  AML Authority: 'AML Compliance Return',
   BO: 'BO Declaration',
 };
 
@@ -172,7 +172,7 @@ export default function Deadlines() {
       <div className="p-6 flex gap-6 items-start">
         <div className="flex-1 space-y-5 min-w-0">
           <p className="text-[11px] text-muted">
-            All upcoming and overdue compliance deadlines — Gondwana Holdings
+            All upcoming and overdue compliance deadlines — Meridian Holdings
           </p>
 
           {/* Filter bar */}
@@ -183,9 +183,9 @@ export default function Deadlines() {
             </select>
             <select value={admin} onChange={e => setAdmin(e.target.value)} className="border border-border rounded-lg px-3 py-2 text-[12px] bg-card">
               <option value="all">All admins</option>
-              <option value="fabiola">Fabiola</option>
-              <option value="hilma">Hilma</option>
-              <option value="jemilah">Jemilah</option>
+              <option value="alex">Alex</option>
+              <option value="jordan">Jordan</option>
+              <option value="taylor">Taylor Morgan</option>
             </select>
             <select value={type} onChange={e => setType(e.target.value)} className="border border-border rounded-lg px-3 py-2 text-[12px] bg-card">
               <option value="all">All types</option>

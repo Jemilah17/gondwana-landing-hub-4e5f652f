@@ -63,9 +63,9 @@ export const defaultPack: BoardPackRecord = {
   meeting: 'Q3 2026 Board Meeting',
   date: '2026-08-28',
   time: '18:00 WAT',
-  venue: 'Gondwana House Boardroom, 42 Nelson Mandela Avenue, Windhoek',
-  entity: 'Gondwana Holdings Ltd',
-  chairperson: 'Dave Smuts',
+  venue: 'Meridian House Boardroom, 42 Nelson Mandela Avenue, City A',
+  entity: 'Meridian Holdings Ltd',
+  chairperson: 'Riley Chen',
   template: 'Standard board meeting (9 items)',
 };
 

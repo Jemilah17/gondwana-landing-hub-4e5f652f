@@ -13,8 +13,8 @@ export interface User {
 
 export const users: User[] = [
   {
-    id: 'fabiola',
-    name: 'Fabiola Schrywer',
+    id: 'alex',
+    name: 'Alex Reyes',
     initials: 'FS',
     role: 'Group Company Secretary',
     avatarColor: 'bg-orange',
@@ -25,8 +25,8 @@ export const users: User[] = [
     type: 'cosec',
   },
   {
-    id: 'hilma',
-    name: 'Hilma Antinda',
+    id: 'jordan',
+    name: 'Jordan Lee',
     initials: 'HA',
     role: 'Assistant CoSec',
     avatarColor: 'bg-green',
@@ -37,8 +37,8 @@ export const users: User[] = [
     type: 'cosec',
   },
   {
-    id: 'jemilah',
-    name: 'Jemilah',
+    id: 'taylor',
+    name: 'Taylor Morgan',
     initials: 'JM',
     role: 'Assistant CoSec',
     avatarColor: 'bg-blue',
@@ -71,18 +71,18 @@ const director = (
 });
 
 export const directors: User[] = [
-  director('dave', 'Dave Smuts', 'DS', 'Chairperson', 'bg-amber', ['A', 'B']),
-  director('gys', 'Gys Joubert', 'GJ', 'Managing Director', 'bg-blue', ['A', 'B', 'C', 'D', 'E']),
-  director('james', 'James Mnyupe', 'JM', 'Audit Risk & Opp Cttee', 'bg-green', ['A', 'C']),
-  director('davidn', 'David Namalenga', 'DN', 'Independent NED', 'bg-purple', ['A', 'D']),
-  director('hannes', 'Hannes Gouws', 'HG', 'Non-Executive Director', 'bg-orange', ['A', 'E']),
-  director('jaco', 'Jaco Visser', 'JV', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
+  director('riley', 'Riley Chen', 'DS', 'Chairperson', 'bg-amber', ['A', 'B']),
+  director('morgan', 'Morgan Reed', 'GJ', 'Managing Director', 'bg-blue', ['A', 'B', 'C', 'D', 'E']),
+  director('casey', 'Casey Brooks', 'JM', 'Audit Risk & Opp Cttee', 'bg-green', ['A', 'C']),
+  director('avery', 'Avery Patel', 'DN', 'Independent NED', 'bg-purple', ['A', 'D']),
+  director('quinn', 'Quinn Harper', 'HG', 'Non-Executive Director', 'bg-orange', ['A', 'E']),
+  director('drew', 'Drew Bennett', 'JV', 'Chief Financial Officer', 'bg-teal', ['A', 'B', 'C', 'D', 'E']),
 ];
 
 export const consultants: User[] = [
   {
     id: 'consultant-1',
-    name: 'Namibia CoSec Services',
+    name: 'External CoSec Services',
     initials: 'CS',
     role: 'Company Secretarial Consultant',
     avatarColor: 'bg-slate',

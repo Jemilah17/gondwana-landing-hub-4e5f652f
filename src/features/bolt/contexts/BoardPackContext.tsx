@@ -7,8 +7,8 @@ import { defaultPack, defaultRecipients, standardDocs } from '../data/boardPacks
  * Board pack progress (uploaded documents, chosen template, recipients, note,
  * compiled/distributed flags) is stored in this React Context and mirrored to
  * localStorage, keyed by pack ID. That survives navigating away and page
- * refreshes, but it is per-browser: work saved by Fabiola will NOT appear for
- * Jemilah or Hilma, and it is lost if the browser storage is cleared.
+ * refreshes, but it is per-browser: work saved by Alex will NOT appear for
+ * Taylor Morgan or Jordan, and it is lost if the browser storage is cleared.
  *
  * RECOMMENDATION: enable Supabase (Lovable Cloud, the native integration) and
  * move board packs into a `board_packs` / `board_pack_documents` table with
@@ -60,7 +60,7 @@ interface BoardPackContextValue {
   saveProgress: () => string;
 }
 
-const STORAGE_KEY = 'gondwana.boardPacks.v1';
+const STORAGE_KEY = 'meridian.boardPacks.v1';
 
 const BoardPackContext = createContext<BoardPackContextValue | null>(null);
 

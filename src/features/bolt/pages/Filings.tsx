@@ -94,10 +94,10 @@ export default function Filings() {
             className="border border-border rounded-lg px-3 py-2 text-[12px] bg-card"
           >
             <option value="all">All types</option>
-            <option value="BIPA Annual Return">BIPA Annual Return</option>
-            <option value="NTB Statutory Levy">NTB Statutory Levy</option>
-            <option value="MoF Report">MoF Report</option>
-            <option value="FIC Compliance Return">FIC Compliance Return</option>
+            <option value="Companies Registry Annual Return">Companies Registry Annual Return</option>
+            <option value="Industry Statutory Levy">Industry Statutory Levy</option>
+            <option value="Regulator Filing">Regulator Filing</option>
+            <option value="AML Compliance Return">AML Compliance Return</option>
             <option value="BO Declaration">BO Declaration</option>
           </select>
           <select

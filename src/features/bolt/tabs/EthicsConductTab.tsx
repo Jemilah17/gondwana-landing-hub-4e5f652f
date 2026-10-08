@@ -10,19 +10,19 @@ const ethicsCode = {
 };
 
 const directors = [
-  { name: 'Dave Smuts', signedDate: '2026-01-15', renewalDue: '2027-01-15', status: 'current' },
-  { name: 'Gys Joubert', signedDate: '2026-01-20', renewalDue: '2027-01-20', status: 'current' },
-  { name: 'James Mnyupe', signedDate: '2026-02-01', renewalDue: '2027-02-01', status: 'current' },
-  { name: 'David Namalenga', signedDate: '2026-01-18', renewalDue: '2027-01-18', status: 'current' },
-  { name: 'Hannes Gouws', signedDate: '2026-01-22', renewalDue: '2027-01-22', status: 'current' },
-  { name: 'Jaco Visser', signedDate: '2026-02-10', renewalDue: '2027-02-10', status: 'current' },
-  { name: 'Fabiola Schrywer', signedDate: '2026-01-25', renewalDue: '2027-01-25', status: 'current' },
+  { name: 'Riley Chen', signedDate: '2026-01-15', renewalDue: '2027-01-15', status: 'current' },
+  { name: 'Morgan Reed', signedDate: '2026-01-20', renewalDue: '2027-01-20', status: 'current' },
+  { name: 'Casey Brooks', signedDate: '2026-02-01', renewalDue: '2027-02-01', status: 'current' },
+  { name: 'Avery Patel', signedDate: '2026-01-18', renewalDue: '2027-01-18', status: 'current' },
+  { name: 'Quinn Harper', signedDate: '2026-01-22', renewalDue: '2027-01-22', status: 'current' },
+  { name: 'Drew Bennett', signedDate: '2026-02-10', renewalDue: '2027-02-10', status: 'current' },
+  { name: 'Alex Reyes', signedDate: '2026-01-25', renewalDue: '2027-01-25', status: 'current' },
 ];
 
 const trainingLog = [
-  { date: '2026-03-15', topic: 'Code of Ethics Annual Refresher', facilitator: 'Fabiola Schrywer', attendees: 7, completion: '100%' },
-  { date: '2025-09-20', topic: 'Conflict of Interest Training', facilitator: 'James Mnyupe', attendees: 7, completion: '100%' },
-  { date: '2025-06-12', topic: 'Whistleblower Procedures', facilitator: 'Dave Smuts', attendees: 6, completion: '86%' },
+  { date: '2026-03-15', topic: 'Code of Ethics Annual Refresher', facilitator: 'Alex Reyes', attendees: 7, completion: '100%' },
+  { date: '2025-09-20', topic: 'Conflict of Interest Training', facilitator: 'Casey Brooks', attendees: 7, completion: '100%' },
+  { date: '2025-06-12', topic: 'Whistleblower Procedures', facilitator: 'Riley Chen', attendees: 6, completion: '86%' },
   { date: '2025-03-10', topic: 'King IV Governance Principles', facilitator: 'External: PwC', attendees: 7, completion: '100%' },
 ];
 
@@ -37,7 +37,7 @@ export default function EthicsConductTab() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Ethics & Conduct</h2>
-        <p className="text-sm text-muted mt-1">Ethics framework and compliance for Gondwana Holdings Limited</p>
+        <p className="text-sm text-muted mt-1">Ethics framework and compliance for Meridian Holdings Limited</p>
       </div>
 
       {/* Code of Ethics Status Card */}

@@ -23,7 +23,7 @@ export default function ConsultantFilings() {
       <div className="p-6 space-y-4">
         <div className="flex items-center justify-between">
           <p className="text-[11px] text-muted">
-            All filings handed off to Namibia CoSec Services — {assigned.length} assigned
+            All filings handed off to External CoSec Services — {assigned.length} assigned
           </p>
           <Link
             to="/consultant-dashboard"

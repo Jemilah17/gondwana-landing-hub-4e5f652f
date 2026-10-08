@@ -22,9 +22,9 @@ const agreements: Agreement[] = [
   {
     ref: 'LEASE-001',
     type: 'Lease agreement',
-    parties: 'NamPark Authority & Canyon Lodge',
-    entity: 'Canyon Lodge',
-    entityCode: 'GCN-005',
+    parties: 'NamPark Authority & Northgate Manufacturing (Pty) Ltd',
+    entity: 'Northgate Manufacturing (Pty) Ltd',
+    entityCode: 'MGH-005',
     effectiveDate: '2015-01-01',
     expiryDate: '2027-12-31',
     noticePeriod: '90 days',
@@ -34,9 +34,9 @@ const agreements: Agreement[] = [
   {
     ref: 'SERV-002',
     type: 'Service agreement',
-    parties: 'Stier Vente & Gondwana Holdings',
-    entity: 'Gondwana Holdings',
-    entityCode: 'GCN-001',
+    parties: 'Stier Vente & Meridian Holdings',
+    entity: 'Meridian Holdings',
+    entityCode: 'MGH-001',
     effectiveDate: '2022-06-01',
     expiryDate: '2025-06-01',
     noticePeriod: '30 days',
@@ -46,9 +46,9 @@ const agreements: Agreement[] = [
   {
     ref: 'CONS-003',
     type: 'Conservation agreement',
-    parties: 'MET & Etosha King Nehale',
-    entity: 'Etosha King Nehale',
-    entityCode: 'GCN-009',
+    parties: 'MET & Keystone Retail Ltd',
+    entity: 'Keystone Retail Ltd',
+    entityCode: 'MGH-009',
     effectiveDate: '2020-03-01',
     expiryDate: '2026-09-30',
     noticePeriod: '60 days',
@@ -58,9 +58,9 @@ const agreements: Agreement[] = [
   {
     ref: 'INSURE-004',
     type: 'Insurance policy',
-    parties: 'Hollard & Gondwana Holdings',
-    entity: 'Gondwana Holdings',
-    entityCode: 'GCN-001',
+    parties: 'Apex Insurance & Meridian Holdings',
+    entity: 'Meridian Holdings',
+    entityCode: 'MGH-001',
     effectiveDate: '2021-03-01',
     expiryDate: '2026-03-01',
     noticePeriod: '30 days',
@@ -69,11 +69,11 @@ const agreements: Agreement[] = [
     hasClaim: true,
   },
   {
-    ref: 'NSX-005',
+    ref: 'Exchange-005',
     type: 'Bond documentation',
-    parties: 'NSX & Gondwana Holdings',
-    entity: 'Gondwana Holdings',
-    entityCode: 'GCN-001',
+    parties: 'Exchange & Meridian Holdings',
+    entity: 'Meridian Holdings',
+    entityCode: 'MGH-001',
     effectiveDate: '2021-03-01',
     expiryDate: '2026-03-01',
     noticePeriod: '60 days',
@@ -83,9 +83,9 @@ const agreements: Agreement[] = [
   {
     ref: 'IP-006',
     type: 'IP licence',
-    parties: 'GCN & The Narrative',
+    parties: 'MGH & The Narrative',
     entity: 'The Narrative',
-    entityCode: 'GCN-002',
+    entityCode: 'MGH-002',
     effectiveDate: '2021-06-24',
     expiryDate: '2026-06-24',
     noticePeriod: '30 days',
@@ -257,7 +257,7 @@ export default function AgreementsRegister() {
             <h4 className="text-[10px] font-medium text-primary mb-2">External counsel</h4>
             <div className="text-[10px] text-muted space-y-1">
               <div className="font-medium text-primary">Stier Vente and Associates</div>
-              <div>Windhoek, Namibia</div>
+              <div>City A, Namibia</div>
               <div className="flex items-center gap-1 text-orange">
                 <ExternalLink className="w-3 h-3" />
                 <span>Contact details</span>
@@ -357,7 +357,7 @@ export default function AgreementsRegister() {
                 className="w-full bg-background border border-border rounded-lg p-3 text-[10px] text-muted resize-none"
                 rows={3}
                 placeholder="Add notes about this agreement..."
-                defaultValue={selectedAgreement.hasClaim ? 'BI claim active - awaiting resolution from Hollard.' : ''}
+                defaultValue={selectedAgreement.hasClaim ? 'BI claim active - awaiting resolution from Apex Insurance.' : ''}
               />
             </div>
 

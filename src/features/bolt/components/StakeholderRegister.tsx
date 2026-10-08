@@ -1,10 +1,10 @@
 const stakeholderEngagements = [
-  { group: 'Board of Directors', contact: 'Gys Joubert (CEO)', method: 'Board meetings', frequency: 'Monthly', lastEngagement: '2026-06-28', issues: 'Q2 performance review', response: 'Strategic decisions made', nextDate: '2026-07-28' },
+  { group: 'Board of Directors', contact: 'Morgan Reed (CEO)', method: 'Board meetings', frequency: 'Monthly', lastEngagement: '2026-06-28', issues: 'Q2 performance review', response: 'Strategic decisions made', nextDate: '2026-07-28' },
   { group: 'Shareholders', contact: 'Company Secretary', method: 'AGM / Circulars', frequency: 'Annual + as needed', lastEngagement: '2026-05-15', issues: 'Dividend declaration', response: 'Approved at AGM', nextDate: '2027-05-15' },
-  { group: 'FIC (Financial Intelligence Centre)', contact: 'Head of Compliance', method: 'Reports / Audits', frequency: 'Quarterly', lastEngagement: '2026-06-01', issues: 'AML compliance review', response: 'All findings addressed', nextDate: '2026-09-01' },
-  { group: 'BIPA (Business Intellectual Property Authority)', contact: 'Legal Counsel', method: 'Filings / Updates', frequency: 'Annual', lastEngagement: '2025-12-10', issues: 'IP registrations', response: 'Renewals completed', nextDate: '2026-12-10' },
-  { group: 'NTB (Namibia Tourism Board)', contact: 'Operations Director', method: 'Licencing meetings', frequency: 'Semi-annual', lastEngagement: '2026-03-20', issues: 'License renewals', response: 'All licenses current', nextDate: '2026-09-20' },
-  { group: 'NSX (Namibia Stock Exchange)', contact: 'CFO', method: 'Regulatory filings', frequency: 'Quarterly', lastEngagement: '2026-06-30', issues: 'Quarterly reporting', response: 'Submitted on time', nextDate: '2026-09-30' },
+  { group: 'AML Authority', contact: 'Head of Compliance', method: 'Reports / Audits', frequency: 'Quarterly', lastEngagement: '2026-06-01', issues: 'AML compliance review', response: 'All findings addressed', nextDate: '2026-09-01' },
+  { group: 'Companies Registry (Business Intellectual Property Authority)', contact: 'Legal Counsel', method: 'Filings / Updates', frequency: 'Annual', lastEngagement: '2025-12-10', issues: 'IP registrations', response: 'Renewals completed', nextDate: '2026-12-10' },
+  { group: 'Industry Regulator', contact: 'Operations Director', method: 'Licencing meetings', frequency: 'Semi-annual', lastEngagement: '2026-03-20', issues: 'License renewals', response: 'All licenses current', nextDate: '2026-09-20' },
+  { group: 'Stock Exchange', contact: 'CFO', method: 'Regulatory filings', frequency: 'Quarterly', lastEngagement: '2026-06-30', issues: 'Quarterly reporting', response: 'Submitted on time', nextDate: '2026-09-30' },
   { group: 'Conservation Partners', contact: 'Sustainability Manager', method: 'Partnership meetings', frequency: 'Quarterly', lastEngagement: '2026-05-10', issues: 'Chobe conservation project', response: 'MOU renewed', nextDate: '2026-08-10' },
   { group: 'Community Leaders (Zambezi)', contact: 'Community Liaison', method: 'Community forums', frequency: 'Monthly', lastEngagement: '2026-06-25', issues: 'Employment opportunities', response: 'Recruitment plan shared', nextDate: '2026-07-25' },
 ];
@@ -20,7 +20,7 @@ export default function StakeholderRegister() {
   const stakeholderLevels = [
     { label: 'Board', description: '7 directors providing strategic oversight', size: 'w-24 h-24', color: 'bg-orange' },
     { label: 'Shareholders', description: '960+ shareholders across Namibia', size: 'w-40 h-40', color: 'bg-blue/20 border-blue' },
-    { label: 'Regulators', description: 'FIC, BIPA, NTB, NSX', size: 'w-56 h-56', color: 'bg-green/10 border-green' },
+    { label: 'Regulators', description: 'AML Authority, Companies Registry, Industry Regulator, Exchange', size: 'w-56 h-56', color: 'bg-green/10 border-green' },
     { label: 'Community', description: 'Conservation & local communities', size: 'w-72 h-72', color: 'bg-amber/10 border-amber' },
   ];
 
@@ -28,7 +28,7 @@ export default function StakeholderRegister() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-medium text-primary">Stakeholder Register</h2>
-        <p className="text-sm text-muted mt-1">Stakeholder identification and engagement tracking for Gondwana Holdings Limited</p>
+        <p className="text-sm text-muted mt-1">Stakeholder identification and engagement tracking for Meridian Holdings Limited</p>
       </div>
 
       {/* Concentric Circle Map */}
@@ -97,7 +97,7 @@ export default function StakeholderRegister() {
                 <tr
                   key={idx}
                   className={`hover:bg-background ${
-                    engagement.group.includes('FIC') || engagement.group.includes('NSX') ? 'bg-orange-tint/20' : ''
+                    engagement.group.includes('AML Authority') || engagement.group.includes('Exchange') ? 'bg-orange-tint/20' : ''
                   }`}
                 >
                   <td className="px-4 py-3 text-sm text-primary font-medium">{engagement.group}</td>
